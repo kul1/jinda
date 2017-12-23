@@ -4,7 +4,7 @@ Rails Application Generator using Freemind
 *[jinda](https://github.com/kul1/jinda)
   - ![jinda-screen](https://user-images.githubusercontent.com/3953832/34320849-f33deb68-e7c7-11e7-8f0b-22f9b1420b93.png)
 
-## Additional Extension Themes also available at 
+## Additional Extension themes also available at 
 * [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
   - ![j18-screen](https://user-images.githubusercontent.com/3953832/34298172-faa7e962-e6e1-11e7-93e2-19dfd4ab42af.png)
 
@@ -58,9 +58,9 @@ Then run bundle again to install additional gems added by jinda
 
     $ bundle
 
-configure mongoid
+configure mongoid, omniauth
 
-    $ rails generate jinda:mongoid
+    $ rails generate jinda:config
 
     Please make sure mongod is running then create admin user
 
@@ -153,7 +153,6 @@ then open file `app/controllers/products_controller.rb` and add `create` method 
 ![products_controller](http://songrit.googlecode.com/files/products_controller.png)
 
 
-... to be continued ...
 
 ## Contributing
 
