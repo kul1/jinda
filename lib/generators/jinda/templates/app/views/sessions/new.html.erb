@@ -1,0 +1,16 @@
+<%= form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do %>
+  <div class="field" data-role="fieldcontain">
+    <%= label_tag :auth_key, "User name" %>
+    <%= text_field_tag :auth_key %>
+  </div>
+  <div class="field" data-role="fieldcontain">
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password %>
+  </div>
+      <div class="field" data-role="fieldcontain" data-icon="info">
+      <%= label_tag :remember_me %>
+      <%= check_box_tag :remember_me, 1, params.permit[:remember_me] %>
+      </div>
+  <div class="actions"><%= submit_tag "Sign In" %></div>
+  <%= link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'} %>
+<% end %>

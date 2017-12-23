@@ -1,0 +1,32 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ * require_tree .
+ * require_self
+ *= require normalize-rails
+ */
+
+@import "jqm/jquery.mobile-1.2.1";
+@import "jqm/jquery.mobile.splitview";
+@import "jqm/jquery.mobile.grids.collapsible";
+@import "jqm/jquery.mobile.datebox.css";
+@import "jqm/sarabun";
+@import "jqm/jinda";
+@import "jqm/kul-4.2";
+@import "jqm/articles";
+@import "jqm/rouge";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+
+
+
+

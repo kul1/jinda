@@ -1,0 +1,23 @@
+- @title= "All Articles"
+= paginate @articles
+%table{:id=>"pending-table", :width=>"100%"}
+  %tr{:style=>"color:black; background-color:#97BF60;"}
+    %th User
+    %th Title
+    %th Description
+    %th Created
+    %th Updated
+    %th Delete
+  - @articles.each do |article|
+    %tr
+      %td= article.user.code if article.user
+      %td= link_to article.title, :controller=>"articles", :action=>"show", :id=>article.id
+      %td= article.text
+      %td= article.created_at
+      %td= article.updated_at
+      %td(align='center')
+        - next unless login?
+        - unless current_ma_user.role.upcase.split(',').include?("A")
+          - next unless article.user
+          - next unless current_ma_user == article.user
+        = link_to image_tag('delete.png', style:'border:none; float:none;'), "#", :onclick=>"if (confirm('Please Confirm')) {location.hash='/articles/destroy/#{article.id}';}"

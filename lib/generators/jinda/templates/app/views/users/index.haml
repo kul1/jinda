@@ -1,0 +1,13 @@
+.field(data-role="fieldcontain")
+  %label.ui-input-text Name
+  = b current_ma_user.code
+.field(data-role="fieldcontain")
+  %label.ui-input-text Email
+  = b current_ma_user.email
+.field(data-role="fieldcontain")
+  %label.ui-input-text Role
+  = b current_ma_user.role
+
+- if @xmains
+  %h2 Pending Tasks
+  = render :partial=>"jinda/pending_page", :locals=>{:xmains=>@xmains}

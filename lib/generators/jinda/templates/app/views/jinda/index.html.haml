@@ -1,0 +1,39 @@
+%div(style="text-align:center")
+  = image_tag "logo_jinda.png"
+
+  
+%h2 Current gems version found: 
+%ul
+  %li Ruby Version #{RUBY_VERSION }
+  %li Rails Version #{Rails.version }
+  %li gem jinda #{Gem.loaded_specs['jinda'].version}
+
+
+
+%h2 Requirements
+%ul  
+  %li Rubygems 2.4.1
+  %li Rails 5.1.4
+  %li rails new YOURAPP -skip-test-unit --skip-bundle --skip-active-record
+
+
+%h2 Installation
+%ul
+  %li gem 'jinda', '~> 0.0.8'
+  %li bundle
+  %li rails generate jinda:install
+  %li bundle
+  %li rails generate jinda:config
+  %li rake db:seed, will create initial user:password admin:secret
+  %li when update app/jinda/index.mm, run rake jinda:update
+
+%h2 Option: Themes available: Jinda_adminbsb, Jinda_adminlte
+%ul 
+  %li To install gem 'jinda_adminlte' 
+  %li Install 
+  %li gem 'jinda_adminlte' 
+  %li Then
+  %li $ bundle 
+  %li $ rails generate jinda_adminlte:install
+
+

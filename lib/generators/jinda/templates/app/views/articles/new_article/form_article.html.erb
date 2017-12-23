@@ -1,0 +1,14 @@
+<%- @title= 'New Article' %>
+<%
+  article = @article
+%>
+<%= fields_for article do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :text, "Description" %>
+  <%= f.text_field :text %>
+  <%= f.label :text, "Keywords" %>
+  <%= f.text_field :keywords %>
+  <%= f.label :body, "Body Content" %>
+  <%= f.cktext_area :body %>
+<% end %>
