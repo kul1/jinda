@@ -1,5 +1,6 @@
 # Jinda
 Rails Application Generator using Freemind
+
 *[jinda](https://github.com/kul1/jinda)
   - ![jinda-screen](https://user-images.githubusercontent.com/3953832/34320849-f33deb68-e7c7-11e7-8f0b-22f9b1420b93.png)
 
