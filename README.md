@@ -1,10 +1,13 @@
 # Jinda
 Rails Application Generator using Freemind
+*[jinda](https://github.com/kul1/jinda)
+  - ![jinda-screen](https://user-images.githubusercontent.com/3953832/34320849-f33deb68-e7c7-11e7-8f0b-22f9b1420b93.png)
+
 ## Additional Extension Themes also available at 
-* ![jinda_adminlte](https://github.com/kul1/jinda_adminlte)
+* [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
   - ![j18-screen](https://user-images.githubusercontent.com/3953832/34298172-faa7e962-e6e1-11e7-93e2-19dfd4ab42af.png)
 
-* ![jinda_adminbsb](https://github.com/kul1/jinda_adminbsb)
+* [jinda_adminbsb](https://github.com/kul1/jinda_adminbsb)
   - ![jinda-bsb](https://user-images.githubusercontent.com/3953832/34320779-bb0980d2-e7c6-11e7-855c-fafc23487ba5.png)
 
 ## Prerequisites
