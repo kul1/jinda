@@ -1,30 +1,11 @@
 # Jinda
-## v0.1.1.8 by Dec 23, 2017
-* Features:
-  * New themes for Jquery.mobile
-    * Top Down Collapsible instead of Leff Menu
-    
-## v0.1.1.7 by Nov 30, 2017
-* Fixed bug from comming Rails 5.2 in Dynamic router
-* Rewrite JindaController
-  * Subroutine from Jinda
-  * Namespace controller and view follow scaffold
+Rails Application Generator using Freemind
+## Additional Extension Themes also available at 
+* ![jinda_adminlte](https://github.com/kul1/jinda_adminlte)
+  - ![j18-screen](https://user-images.githubusercontent.com/3953832/34298172-faa7e962-e6e1-11e7-93e2-19dfd4ab42af.png)
 
-## v0.1.1.6 (current) by Oct 23, 2017
-* New Features:
-  * Samples method using Freemind, controller, view
-  * Articles with more features from samples
-  * Layout with pdf, html print
-
-## v0.1.1.5 (release Oct 19,2017)
-
-This is an extended version of Jinda with mixed workflow and rails app. Jinda maintain workflow feature with upgrade to most update ruby and rails.
-
-## Changelog
-
-* update for Rails 5.1.4
-* add facebook login [required: .env with facebook api and password]
-
+* ![jinda_adminbsb](https://github.com/kul1/jinda_adminbsb)
+  - ![jinda-bsb](https://user-images.githubusercontent.com/3953832/34320779-bb0980d2-e7c6-11e7-855c-fafc23487ba5.png)
 
 ## Prerequisites
 
