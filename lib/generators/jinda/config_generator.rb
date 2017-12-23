@@ -15,6 +15,7 @@ module Jinda
       desc "gen_image_store"
       def gen_image_store
         copy_file "cloudinary.yml","config/cloudinary.yml"
+        #copy_file ".env",".env"
         empty_directory "upload" # create upload directory just in case
       end
       desc "Set up omniauth config"
