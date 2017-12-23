@@ -146,16 +146,14 @@ Mongoid::Config.belongs_to_required_by_default = false
       def gen_user
         # copy_file "seeds.rb","db/seeds.rb"
       end
-      def gen_image_store
-        copy_file "cloudinary.yml","config/cloudinary.yml"
-        copy_file ".env",".env"
-        empty_directory "upload" # create upload directory just in case
-      end
+
       def finish
-        puts "Jinda gem ready for next configuration installation. please run the following command:\n"
+        puts "\n"
+        puts "Jinda gem ready for next configuration install.\n"
+        puts "Please run the following command:\n"
         puts "----------------------------------------\n"
         puts "bundle install\n"
-        puts "rake generate jinda:config\n"
+        puts "rails generate jinda:config\n"
         puts "rake jinda:seed\n"
         puts "----------------------------------------\n"
       end

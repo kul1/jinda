@@ -1,7 +1,9 @@
 module Jinda
   module Generators
     class ConfigGenerator < Rails::Generators::Base
-
+      def self.source_root
+        File.dirname(__FILE__) + "/templates"
+      end
       desc "Backup Files"
       def backup_files
         st="      "
@@ -10,6 +12,11 @@ module Jinda
         inside("config/initializes") {(File.file? "ckeditor.rb") ? (mv ckeditor.rb ckeditor.rb.bak) : (puts "new ckeditor.rb created")}
       end
 
+      desc "gen_image_store"
+      def gen_image_store
+        copy_file "cloudinary.yml","config/cloudinary.yml"
+        empty_directory "upload" # create upload directory just in case
+      end
       desc "Set up omniauth config"
       def setup_omniauth
         # gem 'bcrypt-ruby', '~> 3.0.0'
