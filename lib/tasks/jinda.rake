@@ -35,17 +35,32 @@ end
     t = ["*** generate ui ***"]
     Jinda::Module.all.each do |m|
       m.services.each do |s|
-        next if s.code=='link'
+
         dir ="app/views/#{s.module.code}"
         unless File.exists?(dir)
           Dir.mkdir(dir)
           t << "create directory #{dir}"
         end
+        
+        if s.code=='link'
+          #f= "app/views/#{s.module.code}/#{s.module.code}.haml"
+          f= "app/views/#{s.module.code}/index.haml"
+          unless File.exists?(f)
+            FileUtils.cp "app/jinda/template/linkview.haml", f
+            t << "create file #{f}"
+          end
+          next   
+        end
+        
         dir ="app/views/#{s.module.code}/#{s.code}"
         unless File.exists?(dir)
           Dir.mkdir(dir)
           t << "create directory #{dir}"
         end
+
+
+
+
         xml= REXML::Document.new(s.xml)
         xml.elements.each('*/node') do |activity|
           icon = activity.elements['icon']

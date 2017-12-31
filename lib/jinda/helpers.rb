@@ -217,14 +217,17 @@ module Jinda
       mseq= 0
       @services= xml.elements["//node[@TEXT='services']"] || REXML::Document.new
       @services.each_element('node') do |m|
+        # get icon for service menu
         ss= m.attributes["TEXT"]
         code, name= ss.split(':', 2)
         next if code.blank?
         next if code.comment?
         module_code= code.to_code
+        menu_icon = m_icon(m)
+
         # create or update to GmaModule
         ma_module= Jinda::Module.find_or_create_by :code=>module_code
-        ma_module.update_attributes :uid=>ma_module.id.to_s
+        ma_module.update_attributes :uid=>ma_module.id.to_s, :icon=>menu_icon
         protected_modules << ma_module.uid
         name = module_code if name.blank?
         ma_module.update_attributes :name=> name.strip, :seq=> mseq
@@ -335,12 +338,23 @@ module Jinda
         return nil
       end
     end
+    def m_icon(node)
+      mcons=[]
+      node.each_element("icon") do |mn|
+        mcons << mn.attributes["BUILTIN"]
+      end
+        ticon = mcons[0].to_s
+      return ticon
+    end
+
+    # Option to unlisted in the menu_mm if icon 'button_cancel'
     def listed(node)
       icons=[]
       node.each_element("icon") do |nn|
         icons << nn.attributes["BUILTIN"]
       end
-      return !icons.include?("closed")
+
+      return !icons.include?("button_cancel")
     end
     def ma_secured?(node)
       icons=[]
@@ -349,6 +363,14 @@ module Jinda
       end
       return icons.include?("password")
     end
+    def ma_menu?
+      icons=[]
+      node.each_element("icon") do |mn|
+        icons << mn.attributes["BUILTIN"]
+      end
+      return icons.include?("menu")
+    end
+
     def freemind2action(s)
       case s.downcase
       #when 'bookmark' # Excellent
@@ -393,6 +415,11 @@ module Jinda
 end
 
 class String
+  #
+  # Put comment in freemind with #
+  # Sample Freemind
+  # #ctrs:ctrs&Menu
+  #
   def comment?
     self[0]=='#'
   end
@@ -416,9 +443,9 @@ module ActionView
       end
     end
     class FormBuilder
-#      def date_select_thai(method)
-#        self.date_select method, :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year]
-#      end
+     def date_select_thai(method)
+       self.date_select method, :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year]
+     end
       def date_field(method, options = {})
         default= options[:default]  || self.object.send(method) || Date.today
         data_options= ({"mode"=>"calbox"}).merge(options)
