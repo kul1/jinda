@@ -389,8 +389,8 @@ module Jinda
         'redirect'
       when 'kaddressbook' #Phone
         'invoke' # invoke new service along the way
-      when 'list'
-        'list'
+      when 'list' # Output
+        'output'
       when 'mail'
         'mail'
       when 'xmag' # Tobe discussed

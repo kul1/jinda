@@ -345,7 +345,7 @@ class JindaController < ApplicationController
     File.open('public/doc.html','w') {|f| f.puts html }
     respond_to do |format|
       format.html {
-        render :plain=> @print+html, :layout => 'layouts/_page'
+        render :plain=> @print+html, :layout => 'layouts/jqm/_page'
         # render :text=> Maruku.new(doc).to_html, :layout => false
         # format.html {
         #   h = RDoc::Markup::ToHtml.new
