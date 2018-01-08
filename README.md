@@ -77,7 +77,7 @@ go to http://localhost:3000, click *Sign In* on the left menu, and enter user na
 
 Now open file `app/jinda/index.mm` using Freemind
 
-![index mm](https://cloud.githubusercontent.com/assets/3953832/25599716/90ea1c84-2f08-11e7-8240-dac26742862d.png)
+![index mm](https://user-images.githubusercontent.com/3953832/34680350-7906fbe8-f45e-11e7-8df5-969b4c735c6e.png)
 
 The 3 main branches are
 
@@ -89,7 +89,7 @@ The 3 main branches are
 
 Fiirst, we need to create some product so we click on models we'll see 2 models person and address. These are sample only. You can delete them or modify them however you want. We'll take a look at them first
 
-![index mm](https://user-images.githubusercontent.com/3953832/34680350-7906fbe8-f45e-11e7-8df5-969b4c735c6e.png)
+![models](https://user-images.githubusercontent.com/3953832/34681380-50b27dd6-f461-11e7-8472-3a14d76e0f16.png)
 
 The first sub branch (e.g. person) is the model name. According to Rails convention, this should be a singular word. The next sub branch are columns in the database. Let's take a look at each:
 
