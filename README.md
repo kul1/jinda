@@ -72,7 +72,7 @@ now the application is ready, start it as any Rails application
 
 go to http://localhost:3000, click *Sign In* on the left menu, and enter user name `admin` and password `secret`
 
-![home](https://cloud.githubusercontent.com/assets/3953832/25599624/deab1cee-2f07-11e7-8058-ef67a429e874.png)
+![login](https://user-images.githubusercontent.com/3953832/34680351-7919e8f2-f45e-11e7-9b9a-7b4dc691b601.png)
 
 
 Now open file `app/jinda/index.mm` using Freemind
@@ -89,7 +89,7 @@ The 3 main branches are
 
 Fiirst, we need to create some product so we click on models we'll see 2 models person and address. These are sample only. You can delete them or modify them however you want. We'll take a look at them first
 
-![image](https://cloud.githubusercontent.com/assets/3953832/25599768/139e95ba-2f09-11e7-98df-21b6caf9b664.png)
+![index mm](https://user-images.githubusercontent.com/3953832/34680350-7906fbe8-f45e-11e7-8df5-969b4c735c6e.png)
 
 The first sub branch (e.g. person) is the model name. According to Rails convention, this should be a singular word. The next sub branch are columns in the database. Let's take a look at each:
 
@@ -102,7 +102,7 @@ The first sub branch (e.g. person) is the model name. According to Rails convent
 
 In this example we just want a product model, so delete the person and address model and add a product branch like so
 
-![image](https://cloud.githubusercontent.com/assets/3953832/25599836/9bb82d58-2f09-11e7-9a26-c26a5d13c870.png)
+![freemind1](https://user-images.githubusercontent.com/3953832/34680349-78f1eea6-f45e-11e7-8e43-50d9025bb449.png)
 
 Save the mind map then run:
 
@@ -152,6 +152,15 @@ then open file `app/controllers/products_controller.rb` and add `create` method 
 
 ![products_controller](http://songrit.googlecode.com/files/products_controller.png)
 
+## Testing
+
+run following command:
+
+    rails generate jinda:rspec
+    guard init
+    guard
+
+![rspec](https://user-images.githubusercontent.com/3953832/34680352-7931d426-f45e-11e7-9f40-8b85b94c61bf.png)
 
 
 ## Contributing
