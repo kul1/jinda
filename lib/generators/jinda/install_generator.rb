@@ -10,17 +10,14 @@ module Jinda
         gem 'maruku', '~> 0.7.3'
         gem 'rouge'
         gem 'normalize-rails'
-        #gem 'font-awesome-rails'
         gem 'font-awesome-sass', '~> 4.7.0'
         gem 'ckeditor', github: 'galetahub/ckeditor'
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'
         gem 'jquery-turbolinks'
-
         gem 'mongo', '~> 2.2'
         gem 'bson', '~> 4.0'
         gem 'mongoid', github: 'mongodb/mongoid'
-        # gem "mongoid"
         gem 'nokogiri' # use for jinda/doc
         gem 'haml', git: 'https://github.com/haml/haml'
         gem 'haml-rails'
@@ -36,40 +33,55 @@ module Jinda
         gem 'kaminari-mongoid'
         gem 'jquery-rails'
         gem_group :development, :test do
-          gem "rspec"
-          gem "rspec-rails"
-          gem "better_errors"
-          gem "binding_of_caller"
+          gem 'rspec'
+          gem 'rspec-rails'
+          gem 'better_errors'
+          gem 'binding_of_caller'
           gem 'pry-byebug'
+          gem 'factory_bot_rails'
+          gem 'guard-rspec'
+          gem 'capybara'
+          gem 'rb-fsevent'
         end
       end
 
       def setup_app
         inside("public") { run "mv index.html index.html.bak" }
         inside("app/views/layouts") { run "mv application.html.erb application.html.erb.bak" }
+        inside("app/controllers") { run "mv application_controller.rb application_controller.rb.bak" }
+        inside("app/helpers") { run "mv application_helper.rb application_helper.rb.bak" }
         inside("app/assets/javascripts") { run "mv application.js application.js.bak" }
         inside("app/assets/stylesheets") { run "mv application.css application.css.bak" }
         inside("config/initializes") {(File.file? "omniauth.rb") ? (mv omniauth.rb omniauth.rb.bak) : (puts "new omniauth.rb created")}
         inside("config/initializes") {(File.file? "mongoid.rb") ? (mv mongoid.rb omniauth.rb.bak) : (puts "new mongoid.rb created")}
         inside("config/initializes") {(File.file? "ckeditor.rb") ? (mv ckeditor.rb ckeditor.rb.bak) : (puts "new ckeditor.rb created")}
         directory "app"
+        directory "spec"
       end
-
+      # routes created each line as reversed order button up in routes
       def setup_routes
-        route "root :to => 'jinda#index'"
-        route "mount Ckeditor::Engine => '/ckeditor'"
-        route "resources :identities"
-        route "resources :sessions"
+        route "root :to => 'jinda#index'"        
+        route "resources :jinda, :only => [:index, :new]"
         route "resources :password_resets"
-        route "post '/auth/:provider/callback' => 'sessions#create'"
-        route "get '/auth/:provider/callback' => 'sessions#create'"
-        route "get '/auth/failure' => 'sessions#failure'"
+        route "resources :sessions"
+        route "resources :identities"
+        route "resources :articles"
+        route "get '/articles/my' => 'articles/my'"
+        route "post '/jinda/end_form' => 'jinda#end_form'"
+        route "post '/jinda/pending' => 'jinda#index'"
+        route "\# get jinda method routes"
+        route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
+        route "jinda_methods += ['init','run','run_do','run_form','end_form']"
+        route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
+        route "\# get jinda method routes"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
-        route "get ':controller(/:action(/:id))(.:format)'"
-        route "post ':controller(/:action(/:id))(.:format)'"
+        route "get '/auth/:provider/callback' => 'sessions#create'"
+        route "post '/auth/:provider/callback' => 'sessions#create'"        
+        route "mount Ckeditor::Engine => '/ckeditor'"
       end
 
       def setup_env
+        run "mv README.md README.md.bak"
         create_file 'README.md', ''
         inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
           "\nrequire 'mongoid/railtie'\n"

@@ -15,7 +15,7 @@ module Jinda
       desc "gen_image_store"
       def gen_image_store
         copy_file "cloudinary.yml","config/cloudinary.yml"
-        #copy_file ".env",".env"
+        copy_file ".env",".env"
         empty_directory "upload" # create upload directory just in case
       end
       desc "Set up omniauth config"
@@ -74,11 +74,14 @@ end
         puts "      configured setup_ckeditor.\n"
         puts "      configured Mongoid.\n"
         puts "\n"
-        puts "Next: To set up user/password as admin/secret\n"
-        puts "Please run the following command:\n"
-        puts "----------------------------------------\n"
+        puts "      To set user/password as admin/secret run:\n"
+        puts "-----------------------------------------\n"
         puts "rake jinda:seed\n"
-        puts "----------------------------------------\n"
+        puts "-----------------------------------------\n"
+        puts "      To config rspect run:"
+        puts "-----------------------------------------\n"
+        puts "rails g jinda:rspec\n"
+        puts "-----------------------------------------\n"
       end
     end
   end

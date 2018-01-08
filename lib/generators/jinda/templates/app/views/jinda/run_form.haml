@@ -6,7 +6,7 @@
 - next_step = 'end_form'
 - if @help
   %div(data-role="collapsible" data-theme="e" data-content-theme="c" data-mini="true")
-    %h3 ตำแนะนำ
+    %h3 Help
     %p= markdown(@help)
 = form_tag({ :action => next_step } , {:multipart => true, :onSubmit=>'return validate()', :class=>form_class, "data-ajax"=>"#{ajax?(@ui)}"}) do
   = hidden_field_tag 'xmain_id', @xmain.id
