@@ -12,6 +12,7 @@ module Jinda
         empty_directory "spec/model"
         empty_directory "spec/routing"
         run "mv .rspec .rspec.bak"
+        run "guard init"
         copy_file ".rspec",".rspec"
       end
 
@@ -20,7 +21,6 @@ module Jinda
         puts "      Finish generate rspec:install.\n"
         puts "      To start guard run:\n"
         puts "-----------------------------------------\n"
-        puts "guard init\n"
         puts "guard \n"
         puts "-----------------------------------------\n"
       end      

@@ -82,7 +82,10 @@ end
         puts "-----------------------------------------\n"
         puts "rails g jinda:rspec\n"
         puts "-----------------------------------------\n"
-      end
+        puts "      To config minitest run:"
+        puts "-----------------------------------------\n"
+        puts "rails g jinda:minitest\n"
+        puts "-----------------------------------------\n"      end
     end
   end
 end

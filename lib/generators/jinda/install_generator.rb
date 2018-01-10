@@ -24,7 +24,7 @@ module Jinda
         gem 'mail'
         gem 'prawn'
         gem 'redcarpet'
-        gem 'bcrypt-ruby'
+        gem 'bcrypt'
         gem 'omniauth-identity'
         gem 'omniauth-facebook'
         gem 'dotenv-rails'
@@ -39,7 +39,9 @@ module Jinda
           gem 'binding_of_caller'
           gem 'pry-byebug'
           gem 'factory_bot_rails'
+          gem 'guard'
           gem 'guard-rspec'
+          gem 'guard-minitest'
           gem 'capybara'
           gem 'rb-fsevent'
         end
