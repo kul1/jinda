@@ -95,9 +95,20 @@ end
   end
 
   def process_models
+
     # app= get_app
     # t= ["process models"]
-    models= @app.elements["//node[@TEXT='models']"] || REXML::Document.new
+		#  xml map sample from index.mm 
+		#   node @CREATED=1273819432637 @ID=ID_1098419600 @MODIFIED=1334737006485 @TEXT=Jinda 
+		#    node @CREATED=1273819462973 @ID=ID_282419531 @MODIFIED=1493705904561 @POSITION=right @TEXT=services 
+		#     node @CREATED=1273819465949 @FOLDED=true @ID=ID_855471610 @MODIFIED=1493768913078 @POSITION=right @TEXT=roles 
+		#      node @CREATED=1273819456867 @ID=ID_1677010054 @MODIFIED=1493418874718 @POSITION=left @TEXT=models 
+		#       node @CREATED=1292122118499 @FOLDED=true @ID=ID_1957754752 @MODIFIED=1493705885123 @TEXT=person 
+		#       node @CREATED=1292122236285 @FOLDED=true @ID=ID_959987887 @MODIFIED=1493768919147 @TEXT=address 
+		#       node @CREATED=1493418879485 @ID=ID_1995497233 @MODIFIED=1493718770637 @TEXT=article 
+		#       node @CREATED=1493418915637 @ID=ID_429078131 @MODIFIED=1493418930081 @TEXT=comment 
+    
+		models= @app.elements["//node[@TEXT='models']"] || REXML::Document.new
     models.each_element('node') do |model|
       # t << "= "+model.attributes["TEXT"]
       model_name= model.attributes["TEXT"]

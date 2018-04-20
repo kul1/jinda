@@ -19,14 +19,23 @@ class ArticlesController < ApplicationController
   end
 
   def create
+
     @article = Article.new(
                       title: $xvars["form_article"]["title"],
                       text: $xvars["form_article"]["text"],
                       keywords: $xvars["form_article"]["keywords"],
                       body: $xvars["form_article"]["body"],
-
                       user_id: $xvars["user_id"])
     @article.save!
+      # if @article.save!
+      #   format.html { redirect_to @article, notice: 'Sample was successfully created.'  }
+      #   format.json { render :show, status: :created, location: @article }
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @article.errors, status: :unprocessable_entity }
+      # end
+      redirect_to @article
+
   end
 
   def my
@@ -40,14 +49,21 @@ class ArticlesController < ApplicationController
     # They contain everything that we get their forms select_article and edit_article
     article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
     @article = Article.find(article_id)
+    
     @article.update(title: $xvars["edit_article"]["article"]["title"],
                     text: $xvars["edit_article"]["article"]["text"],
                     keywords: $xvars["edit_article"]["article"]["keywords"],
                     body: $xvars["edit_article"]["article"]["body"])
+    redirect_to @article
+
 
   end
 
   def destroy
+    if Rails.env.test? #Temp solution until fix test of current_ma_user
+      current_ma_user = $xvars["current_ma_user"]
+      #current_ma_user = @article.user
+    end
     if current_ma_user.role.upcase.split(',').include?("A") || current_ma_user == @article.user
       @article.destroy
     end

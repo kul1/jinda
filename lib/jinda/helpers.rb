@@ -1,4 +1,13 @@
 # -*- encoding : utf-8 -*-
+# This helper handle 
+# 1. Read xml from mm file to run core program: 
+# 	process_services
+#
+#
+#
+#
+#
+######
 module Jinda
   module Helpers
     require "rexml/document"
@@ -30,12 +39,24 @@ module Jinda
     def code_text(s) # old def code(s)
       "<pre style='background-color: #efffef;'><code class='ruby' lang='ruby'>#{s}</code></pre>".html_safe
     end
+
     def refresh_to(url='/', option={})
-      if option[:alert]
-        ma_log option[:alert]
-      end
-      render inline: "<script>window.location.replace('#{url}')</script>"
+       if option[:alert]
+         ma_log option[:alert]
+       end
+      # skip # 
+      # Rails 5.2 now allow to use js inline call
+      #render inline: "<script>window.location.replace('#{url}')</script>"
+      redirect_to url
+      #render js: "window.location.replace(\'#{url}\')" 
     end
+
+    # def refresh_to
+    #   respond_to do |format|
+    #     format.js { render :js => "refresh();" }
+    #   end
+    # end
+
     def read_binary(path)
       File.open path, "rb" do |f| f.read end
     end
@@ -273,6 +294,7 @@ module Jinda
       Jinda::Service.not_in(:uid=>protected_services).delete_all
     end
     def get_app
+			binding.pry
       f= MM || "#{Rails.root}/app/jinda/index.mm"
       dir= File.dirname(f)
       t= REXML::Document.new(File.read(MM).gsub("\n","")).root
