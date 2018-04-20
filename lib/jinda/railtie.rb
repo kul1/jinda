@@ -4,11 +4,11 @@ require 'jinda/helpers'
 module Jinda
   require 'rails'
   class Railtie < Rails::Railtie
-    initializer "testing" do |app|
+    initializer 'testing' do |app|
       ActionController::Base.send :include, Jinda::Helpers
     end
     rake_tasks do
-      load "tasks/jinda.rake"
+      load 'tasks/jinda.rake'
     end
   end
 end
