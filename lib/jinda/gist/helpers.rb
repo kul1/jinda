@@ -1,13 +1,6 @@
-# -*- encoding : utf-8 -*-
-# This helper handle 
-# 1. Read xml from mm file to run core program: 
-# 	process_services
-#
-#
-#
-#
-#
-######
+##
+## All code of this gem in https://github.com/kul1/jinda
+##
 require 'active_support'
 require 'active_support/core_ext'
 module Jinda
@@ -18,23 +11,6 @@ module Jinda
     # methods from application_controller
     def b(s)
       "<b>#{s}</b>".html_safe
-    end
-    def date_thai(d= Time.now, options={})
-      unless d
-        ""
-      else
-        y = d.year+543
-        if options[:monthfull] || options[:month_full]
-          mh= ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
-        else
-          mh= ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
-        end
-        if options[:dateonly] || options[:date_only]
-          d.day.to_s+" "+mh[d.month-1]+" "+y.to_s
-        else
-          d.day.to_s+" "+mh[d.month-1]+" "+y.to_s+" เวลา "+sprintf("%02d",d.hour.to_s)+":"+sprintf("%02d",d.min.to_s)
-        end
-      end
     end
     def link_to_blank(body, url_options = {}, html_options = {})
       link_to(body, url_options, html_options.merge(target: "_blank"))
@@ -257,7 +233,6 @@ module Jinda
         ma_module.update_attributes :name=> name.strip, :seq=> mseq
         mseq += 1
         seq= 0
-
         m.each_element('node') do |s|
           service_name= s.attributes["TEXT"].to_s
           scode, sname= service_name.split(':', 2)
