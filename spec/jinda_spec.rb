@@ -1,15 +1,9 @@
-require 'jinda/helpers'
-require 'active_support/core_ext/regexp'
-require 'mongoid'
-require_relative '../lib/generators/jinda/templates/app/models/jinda/module.rb'
-require_relative '../lib/generators/jinda/templates/app/models/jinda/service.rb'
-#Dir[File.dirname(__FILE__) + './lib/generators/jinda/templates/app/models/jinda'].each {|file| puts file}
-require 'dotenv'
-Dotenv.load
-Mongoid.load!('./mongoid.yml')
-include Jinda::Helpers
-describe Jinda::Helpers do
-  before(:each) do
+require 'spec_helper.rb'
+require 'jinda/gemhelpers'
+include Jinda::GemHelpers
+
+describe Jinda::GemHelpers do
+  before(:all) do
     MM = 'lib/generators/jinda/templates/app/jinda/index.mm'
 		@app = get_app
   end
@@ -18,8 +12,18 @@ describe Jinda::Helpers do
     expect(result).not_to be_nil
   end
 
-	it 'process_services' do
+	it 'process_services features ' do
 		result = process_services
+		expect(result).not_to be_nil
+	end
+
+	it 'process_controllers features if no controller' do
+		result = process_controllers
+		expect(result).not_to be_nil
+	end
+
+	it 'generate view' do
+    result = gen_views
 		expect(result).not_to be_nil
 	end
 end
