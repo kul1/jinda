@@ -1,4 +1,13 @@
-# helper.rb
+# -*- encoding : utf-8 -*-
+# This helper handle 
+# 1. Read xml from mm file to run core program: 
+# 	process_services
+#
+#
+#
+#
+#
+######
 require 'active_support'
 require 'active_support/core_ext'
 module Jinda
@@ -301,43 +310,35 @@ module Jinda
       return t
     end
 
-
-
 		########################################################################
 		#                     move code from jinda.rake                        #
 		########################################################################
-
-		@tv = ["*** generate ui ***"]
+		
 		def gen_views
-			# t = ["*** generate ui ***"]
+			t = ["*** generate ui ***"]
 			Jinda::Module.all.each do |m|
 				m.services.each do |s|
-
 					dir ="app/views/#{s.module.code}"
-					# unless File.exists?(dir)
-					unless gen_view_file_exist?(dir)
-						gen_view_mkdir(dir,t)
-						# Dir.mkdir(dir)
-						# t << "create directory #{dir}"
+					unless File.exists?(dir)
+						Dir.mkdir(dir)
+						t << "create directory #{dir}"
 					end
 					
 					if s.code=='link'
 						#f= "app/views/#{s.module.code}/#{s.module.code}.haml"
 						f= "app/views/#{s.module.code}/index.haml"
-						# unless File.exists?(f)
-						unliess gen_view_file_exist?(f)	
-							gen_view_createfile(f,@tv)
-							# FileUtils.cp "app/jinda/template/linkview.haml", f
-							# t << "create file #{f}"
+						unless File.exists?(f)
+							FileUtils.cp "app/jinda/template/linkview.haml", f
+							t << "create file #{f}"
 						end
 						next   
 					end
 					
 					dir ="app/views/#{s.module.code}/#{s.code}"
-					# unless File.exists?(dir)
-						unless gen_view_file_exist?(dir)	
-						  gen_view_mkdir(dir,@tv)
-					  end
+					unless File.exists?(dir)
+						Dir.mkdir(dir)
+						t << "create directory #{dir}"
+					end
 
 					xml= REXML::Document.new(s.xml)
 					xml.elements.each('*/node') do |activity|
@@ -353,16 +354,15 @@ module Jinda
 						else
 							f= "app/views/#{s.module.code}/#{s.code}/#{code}.html.erb"
 						end
-						# unless File.exists?(f)
-						unless gen_view_file_exists?(f)
-							gen_view_createfile(f,t)
-							# FileUtils.cp "app/jinda/template/view.html.erb", f
+						unless File.exists?(f)
+							FileUtils.cp "app/jinda/template/view.html.erb", f
 							# ff=File.open(f, 'w'); ff.close
-							# t << "create file #{f}"
+							t << "create file #{f}"
 						end
 					end
 				end
-			puts @tv.join("\n")
+			end
+			puts t.join("\n")
 		end
 
 		def process_controllers
@@ -519,6 +519,25 @@ module Jinda
 		########################################################################
 		#                     END  code from jinda.rake                        #
 		########################################################################
+	
+		
+		########################################################################
+		#                  Method to be overrided by gemhelp                   #
+		########################################################################
+		def gen_view_file_exist?(dir)
+			File.exists?(dir)
+		end
+
+		def gen_view_mkdir(dir,t)
+			Dir.mkdir(dir)
+			t << "create directory #{dir}"
+		end
+
+		def gen_view_createfile(f,t)
+			FileUtils.cp "app/jinda/template/linkview.haml",f
+			t << "create file #{f}"
+		end
+		########################################################################
 		
 		def controller_exists?(modul)
       File.exists? "#{Rails.root}/app/controllers/#{modul}_controller.rb"
@@ -558,25 +577,7 @@ module Jinda
         return nil
       end
     end
-
-		########################################################
-		# Method to be over write by gemhelper.rb in test purpose
-		def gen_view_file_exist?(dir)
-			File.exists?(dir)
-		end
-
-		def gen_view_mkdir(dir,t)
-			Dir.mkdir(dir)
-			t << "create directory #{dir}"
-		end
-
-		def gen_view_createfile(f,t)
-			FileUtils.cp "app/jinda/template/linkview.haml",f
-			t << "create file #{f}"
-		end
-		########################################################
-		
-		def m_icon(node)
+    def m_icon(node)
       mcons=[]
       node.each_element("icon") do |mn|
         mcons << mn.attributes["BUILTIN"]
@@ -649,7 +650,8 @@ module Jinda
     #     %Q(<input name='#{self.object_name}[#{method}]' id='#{self.object_name}_#{method}' value='#{default.strftime("%F")}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>).html_safe
     #   end
     # end
-  # end to include class string
+  end
+end
 
 class String
   #
@@ -669,7 +671,6 @@ class String
     code.downcase.strip.gsub(' ','_').gsub(/[^#_\/a-zA-Z0-9]/,'')
   end
 end
-end # to include class string
 
 module ActionView
   module Helpers
@@ -779,5 +780,4 @@ EOT
       end
     end
   end
-end
 end
