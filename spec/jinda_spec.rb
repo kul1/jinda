@@ -16,9 +16,12 @@ describe Jinda::GemHelpers do
 		result = process_services
 		expect(result).not_to be_nil
 	end
+
 	# Test if create only new controller from mm.
 	# By removed ctrs_controller.rb from template
 	# Then test if only try to created output from gemhelpers
+	# Read https://stackoverflow.com/questions/17709317/how-to-test-puts-in-rspec
+	
 	it 'process_controllers only new controller' do
 		expect(STDOUT).to receive(:puts).with('    Rails generate controller ctrs')
 		result = process_controllers
