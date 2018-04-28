@@ -316,28 +316,31 @@ module Jinda
 		
 		def gen_views
 			t = ["*** generate ui ***"]
+
+			# create array of files to be tested
+			$afile = Array.new
+
 			Jinda::Module.all.each do |m|
 				m.services.each do |s|
 					dir ="app/views/#{s.module.code}"
-					unless File.exists?(dir)
-						Dir.mkdir(dir)
-						t << "create directory #{dir}"
+					unless gen_view_file_exist?(dir)
+						gen_view_mkdir(dir,t) 
 					end
 					
 					if s.code=='link'
-						#f= "app/views/#{s.module.code}/#{s.module.code}.haml"
 						f= "app/views/#{s.module.code}/index.haml"
-						unless File.exists?(f)
-							FileUtils.cp "app/jinda/template/linkview.haml", f
-							t << "create file #{f}"
+						$afile << f
+						unless gen_view_file_exist?(f)
+						  sv = "app/jinda/template/linkview.haml"
+						  f= "app/views/#{s.module.code}/index.haml"
+							gen_view_createfile(sv,f,t)
 						end
 						next   
 					end
 					
 					dir ="app/views/#{s.module.code}/#{s.code}"
-					unless File.exists?(dir)
-						Dir.mkdir(dir)
-						t << "create directory #{dir}"
+				  unless gen_view_file_exist?(dir)
+						gen_view_mkdir(dir,t) 
 					end
 
 					xml= REXML::Document.new(s.xml)
@@ -354,15 +357,17 @@ module Jinda
 						else
 							f= "app/views/#{s.module.code}/#{s.code}/#{code}.html.erb"
 						end
-						unless File.exists?(f)
-							FileUtils.cp "app/jinda/template/view.html.erb", f
-							# ff=File.open(f, 'w'); ff.close
-							t << "create file #{f}"
+						$afile << f
+						unless gen_view_file_exist?(f)
+							sv = "app/jinda/template/view.html.erb"
+							gen_view_createfile(sv,f,t)
 						end
 					end
 				end
 			end
+			puts $afile.join("\n")
 			puts t.join("\n")
+		  return $afile	
 		end
 
 		def process_controllers
@@ -522,7 +527,7 @@ module Jinda
 	
 		
 		########################################################################
-		#                  Method to be overrided by gemhelp                   #
+		#                  Methods to be overrided by gemhelp                  #
 		########################################################################
 		def gen_view_file_exist?(dir)
 			File.exists?(dir)
@@ -533,8 +538,9 @@ module Jinda
 			t << "create directory #{dir}"
 		end
 
-		def gen_view_createfile(f,t)
-			FileUtils.cp "app/jinda/template/linkview.haml",f
+		def gen_view_createfile(s,f,t)
+			FileUtils.cp s,f
+			# FileUtils.cp "app/jinda/template/linkview.haml",f
 			t << "create file #{f}"
 		end
 		########################################################################

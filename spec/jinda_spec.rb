@@ -24,9 +24,14 @@ describe Jinda::GemHelpers do
 		result = process_controllers
 	end
 
-	xit 'generate view' do
+	it 'generate view files' do
     result = gen_views
-		expect(result).not_to be_nil
+		result.each do |r|
+			#expected_file = $gem_root + "/spec/temp/" + r
+			expected_file = "spec/temp/" + r
+			fexist = File.exist?(expected_file)
+			expect(fexist).to be true
+		end
 	end
 
 end

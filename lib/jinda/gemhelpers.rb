@@ -24,6 +24,26 @@ module Jinda
 				end
 			end
 
+			def gen_view_file_exist?(dir)
+				gdir = $gem_root + "/spec/temp/" + dir
+				File.exists?(gdir)
+			end
+
+			def gen_view_mkdir(dir,t)
+				gdir = $gem_root + "/spec/temp/" + dir
+				Dir.mkdir(gdir)
+				t << "create directory #{gdir}"
+			end
+
+			def gen_view_createfile(sv,f,t)
+				gsv = $gem_root + "/lib/generators/jinda/templates/" + sv
+				gf  = $gem_root + "/spec/temp/" + f
+				FileUtils.cp gsv,gf
+				# FileUtils.cp "app/jinda/template/linkview.haml",f
+				t << "create file #{gf}"
+			end
+
+
 	end
 end
 	
