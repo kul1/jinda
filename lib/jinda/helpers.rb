@@ -2,18 +2,15 @@
 # This helper handle 
 # 1. Read xml from mm file to run core program: 
 # 	process_services
-#
-#
-#
-#
-#
-######
+# 2. Update Models, Services, Runseqs from index.mm (XML)
+# 3. Rake Task to create app models, views and controller from index.mm(updated)
+################################################################################
+
 require 'active_support'
 require 'active_support/core_ext'
 module Jinda
   module Helpers
     require "rexml/document"
-		require 'pry'
     include REXML
     # methods from application_controller
     def b(s)
@@ -208,6 +205,12 @@ module Jinda
     #     ""
     #   end
     # end
+		
+		# ##########################################################################
+		#
+		# Create / Update Modules, Runseqs, Services from XML
+		#
+		# ##########################################################################
     def process_services
       # todo: persist mm_md5
       xml= @app||get_app
@@ -232,6 +235,9 @@ module Jinda
         module_code= code.to_code
         menu_icon = m_icon(m)
 
+		# ##########################################################################
+		# First Node eg: Module Name 
+		# ##########################################################################
         # create or update to GmaModule
         ma_module= Jinda::Module.find_or_create_by :code=>module_code
         ma_module.update_attributes :uid=>ma_module.id.to_s, :icon=>menu_icon
@@ -241,6 +247,9 @@ module Jinda
         mseq += 1
         seq= 0
 
+		# ##########################################################################
+		# Second Nodes eg: Role, Link otherwise Services
+		# ##########################################################################
         m.each_element('node') do |s|
           service_name= s.attributes["TEXT"].to_s
           scode, sname= service_name.split(':', 2)
@@ -262,6 +271,10 @@ module Jinda
             seq += 1
             protected_services << ma_service.uid
           else
+
+		# ##########################################################################
+		# Second and Third Nodes eg: Role, Normal Services
+		# ##########################################################################
             # normal service
             step1 = s.elements['node']
             role= get_option_xml("role", step1) || ""
@@ -280,8 +293,12 @@ module Jinda
       Jinda::Module.not_in(:uid=>protected_modules).delete_all
       Jinda::Service.not_in(:uid=>protected_services).delete_all
     end
+
+		# ##########################################################################
+		#                         Load index.mm from Rails
+		# ##########################################################################
     def get_app
-		  # MM was defined in config/initializer/jinda.rb
+		  # MM was defined in Rails: config/initializer/jinda.rb
 			f= MM || "#{Rails.root}/app/jinda/index.mm" 
 			dir= File.dirname(f)
       t= REXML::Document.new(File.read(MM).gsub("\n","")).root
@@ -311,7 +328,7 @@ module Jinda
     end
 
 		########################################################################
-		#                     move code from jinda.rake                        #
+		#                            Jinda Rake Task                           #
 		########################################################################
 		
 		def gen_views
