@@ -29,8 +29,8 @@ module Jinda
        end
       # skip # 
       # Rails 5.2 now allow to use js inline call
-      #render inline: "<script>window.location.replace('#{url}')</script>"
-      redirect_to url
+      render inline: "<script>window.location.replace('#{url}')</script>"
+      #redirect_to url
       #render js: "window.location.replace(\'#{url}\')" 
     end
 

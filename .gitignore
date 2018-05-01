@@ -7,7 +7,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-.env
 *.swo
 *.swp
 /.idea/
