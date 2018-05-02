@@ -251,7 +251,11 @@ class JindaController < ApplicationController
         }
 
       else
-        v = v.to_unsafe_h unless v.class == String
+				# bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
+        # v = v.to_unsafe_h unless v.class == String
+				if v.class ==  String
+					v = v.to_unsafe_h
+				end
         eval "@xvars[@runseq.code][k] = v"
       end
     }

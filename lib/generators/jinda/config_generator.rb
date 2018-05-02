@@ -86,7 +86,12 @@ end
         puts "      To config minitest run:"
         puts "-----------------------------------------\n"
         puts "rails g jinda:minitest\n"
-        puts "-----------------------------------------\n"      end
+        puts "-----------------------------------------\n"
+        puts "      To login with facebook"
+        puts "-----------------------------------------\n"
+				puts "Please config. in .env or restore from .env-bak \n"
+        puts "-----------------------------------------\n"
+			end
     end
   end
 end
