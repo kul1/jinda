@@ -40,7 +40,7 @@ class JindaController < ApplicationController
     module_code, code = params[:s].split(":")
     @service= Jinda::Service.where(:module_code=> module_code, :code=> code).first
     # @service= Jinda::Service.where(:module_code=> params[:module], :code=> params[:service]).first
-    if @service && authorize_init?
+		if @service && authorize_init?
       xmain = create_xmain(@service)
       result = create_runseq(xmain)
       unless result
@@ -253,9 +253,6 @@ class JindaController < ApplicationController
       else
 				# bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
         # v = v.to_unsafe_h unless v.class == String
-				if v.class ==  String
-					v = v.to_unsafe_h
-				end
         eval "@xvars[@runseq.code][k] = v"
       end
     }
