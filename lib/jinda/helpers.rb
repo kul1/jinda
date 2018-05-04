@@ -4,6 +4,21 @@
 # 	process_services
 # 2. Update Models, Services, Runseqs from index.mm (XML)
 # 3. Rake Task to create app models, views and controller from index.mm(updated)
+#
+# What is xmain, runseq and xvar ?
+# 
+# |----  xmain 1 -----|
+#  runseq1    runseq2
+#
+# Let make analogy or example compare with Invoicing
+# Each xmain is like each invoice header
+# Each invoice detail is like runseq
+# So, There are only certain number of services limit in freemind index.mm
+# But xmain will increase when entering each menu (services) and will increase along with activities by each user just like log file
+#  
+# 
+# xvar is (become) global variable of current program including user, runseq, and services
+#
 ################################################################################
 
 require 'active_support'
@@ -28,7 +43,7 @@ module Jinda
          ma_log option[:alert]
        end
       # skip # 
-      # Rails 5.2 now allow to use js inline call
+      # Rails 5.2 not allow to use js inline call
       render inline: "<script>window.location.replace('#{url}')</script>"
       #redirect_to url
       #render js: "window.location.replace(\'#{url}\')" 
