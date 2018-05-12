@@ -36,6 +36,8 @@ class JindaController < ApplicationController
   ####################################################################################################]
   # prepare xmain.runseq eg: how many form_step or total_step and step properties check if authorized
   ####################################################################################################]
+  # view menu by user selected what service (module and code) to run (not all services like menu did
+  # Its only one service 
   def init
     module_code, code = params[:s].split(":")
     @service= Jinda::Service.where(:module_code=> module_code, :code=> code).first
@@ -59,6 +61,8 @@ class JindaController < ApplicationController
   end
   ####################################################################################################]
   # run if, form, mail, output etc depend on icon in freemind
+	# action from @runseq.action == do,     form,			if,     output
+	# Then will call				def run_do, run_form, run_if, run_output
   ####################################################################################################]
   def run
     init_vars(params[:id])
@@ -76,6 +80,9 @@ class JindaController < ApplicationController
         redirect_to_root
       else
         service= @xmain.service
+				###############################################################################################
+				# Run View Form f created template by jinda rake follow freemind mm file
+				###############################################################################################
         if service
           @title= "Transaction ID #{@xmain.xid}: #{@xmain.name} / #{@runseq.name}"
           fhelp= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.md"
@@ -440,6 +447,7 @@ class JindaController < ApplicationController
     @xvars= xmain.xvars
     default_role= get_default_role
     xml= xmain.service.xml
+	binding.pry
     root = REXML::Document.new(xml).root
     i= 0; j= 0 # i= step, j= form_step
     root.elements.each('node') do |activity|

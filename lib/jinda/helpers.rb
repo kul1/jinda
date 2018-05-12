@@ -560,6 +560,7 @@ module Jinda
 		
 		########################################################################
 		#                  Methods to be overrided by gemhelp                  #
+		#                            for Rspec Test
 		########################################################################
 		def gen_view_file_exist?(dir)
 			File.exists?(dir)
