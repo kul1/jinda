@@ -62,24 +62,18 @@ module Jinda
       end
       # routes created each line as reversed order button up in routes
       def setup_routes
-        route "root :to => 'jinda#index'"        
-        route "resources :jinda, :only => [:index, :new]"
-        route "resources :password_resets"
-        route "resources :sessions"
-        route "resources :identities"
-        route "resources :articles"
-        route "get '/articles/my' => 'articles/my'"
-        route "post '/jinda/end_form' => 'jinda#end_form'"
-        route "post '/jinda/pending' => 'jinda#index'"
-        route "\# get jinda method routes"
-        route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_do','run_form','end_form']"
-        route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
-        route "\# get jinda method routes"
+				route "root :to => 'jinda#index'"
+				route "mount Ckeditor::Engine => '/ckeditor'"
+				route "resources :users"
+				route "resources :identities"
+				route "resources :sessions"
+				route "resources :password_resets"
+				route "post '/auth/:provider/callback' => 'sessions#create'"
+				route "get '/auth/:provider/callback' => 'sessions#create'"
+				route "get '/auth/failure' => 'sessions#failure'"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
-        route "get '/auth/:provider/callback' => 'sessions#create'"
-        route "post '/auth/:provider/callback' => 'sessions#create'"        
-        route "mount Ckeditor::Engine => '/ckeditor'"
+				route "get ':controller(/:action(/:id))(.:format)'"
+				route "post ':controller(/:action(/:id))(.:format)'"
       end
 
       def setup_env

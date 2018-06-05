@@ -447,7 +447,6 @@ class JindaController < ApplicationController
     @xvars= xmain.xvars
     default_role= get_default_role
     xml= xmain.service.xml
-	binding.pry
     root = REXML::Document.new(xml).root
     i= 0; j= 0 # i= step, j= form_step
     root.elements.each('node') do |activity|
