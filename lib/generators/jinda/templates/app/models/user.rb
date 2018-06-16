@@ -28,8 +28,10 @@ class User
   end
   
   def self.from_omniauth(auth)
-    where(auth.slice(:uid, :provider, :email)).first_or_create do |user|
-      case auth.provider 
+		# Rails now no longer support slice 
+    # where(auth.slice(:uid, :provider, :email)).first_or_create do |user|
+		where(uid: auth.uid, provider: auth.provider, email: auth.info.email).first_or_create do |user|
+			case auth.provider 
         when 'identity'
           identity = Identity.find auth.uid
           user.code = identity.code
