@@ -54,9 +54,9 @@ module Jinda
         inside("app/helpers") { run "mv application_helper.rb application_helper.rb.bak" }
         inside("app/assets/javascripts") { run "mv application.js application.js.bak" }
         inside("app/assets/stylesheets") { run "mv application.css application.css.bak" }
-        inside("config/initializes") {(File.file? "omniauth.rb") ? (mv omniauth.rb omniauth.rb.bak) : (puts "new omniauth.rb created")}
-        inside("config/initializes") {(File.file? "mongoid.rb") ? (mv mongoid.rb omniauth.rb.bak) : (puts "new mongoid.rb created")}
-        inside("config/initializes") {(File.file? "ckeditor.rb") ? (mv ckeditor.rb ckeditor.rb.bak) : (puts "new ckeditor.rb created")}
+        inside("config/initializers") {(File.file? "omniauth.rb") ? (mv omniauth.rb omniauth.rb.bak) : (puts "new omniauth.rb created")}
+        inside("config/initializers") {(File.file? "mongoid.rb") ? (mv mongoid.rb omniauth.rb.bak) : (puts "new mongoid.rb created")}
+        inside("config/initializers") {(File.file? "ckeditor.rb") ? (mv ckeditor.rb ckeditor.rb.bak) : (puts "new ckeditor.rb created")}
         directory "app"
         directory "spec"
       end

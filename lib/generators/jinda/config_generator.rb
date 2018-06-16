@@ -77,7 +77,7 @@ end
         puts "\n"
         puts "      To set user/password as admin/secret run:\n"
         puts "-----------------------------------------\n"
-        puts "rake jinda:seed\n"
+        puts "rails jinda:seed\n"
         puts "-----------------------------------------\n"
         puts "      To config rspect run:"
         puts "-----------------------------------------\n"
