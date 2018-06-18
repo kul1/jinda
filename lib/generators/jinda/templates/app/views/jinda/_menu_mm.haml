@@ -3,9 +3,24 @@
   - unless m.role.blank?
     - next unless login?
     - next unless current_ma_user.role
-    - next unless current_ma_user.role.upcase.split(',').include?(m.role.upcase)
+    -# next unless current_ma_user.role.upcase.split(',').include?(m.role.upcase)
+    -# ####################### Remove w space in role ###################
+    - next unless current_ma_user.role.upcase.split(",").map!(&:strip).include?(m.role.upcase)
+
   %li
+    -# ########################### Main Display Menu ####################
     = m.name
+    -# ##################################################################
+    -# Code to display current login user role and required role for menu
+    -# ##################################################################
+    
+    -# if defined?(current_ma_user.role) && !current_ma_user.role.blank?
+      =# current_ma_user.role
+    -# if m.role?
+      =# m.role.upcase
+
+    -# ##################################################################
+      
     %ul
       - m.services.asc(:seq).each do |s|
         - next unless s.list
@@ -15,7 +30,7 @@
         - unless s.role.blank?
           - next unless login?
           - next unless current_ma_user.role
-          - next unless current_ma_user.role.upcase.split(',').include?(s.role.upcase)
+          - next unless current_ma_user.role.upcase.split(",").map!(&:strip).include?(s.role.upcase)
         - if s.code.downcase=="link"
           - name, url = s.name.split(":", 2)
           - url.strip!
