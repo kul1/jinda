@@ -21,4 +21,6 @@
         %li
           = link_to "Refresh", "#", :onclick=>"window.location.replace('/')"
         - if !login?    
-          = link_to image_tag( 'facebook-sign-in-button.png'), '/auth/facebook', rel: "external"  
+          .login-box
+            = link_to image_tag( 'facebook-continue-button.png'), '/auth/facebook', rel: "external", class: "facebook-connect.social-button" 
+            = link_to image_tag( 'google-continue-button.png'), '/auth/google_oauth2', rel: "external", class: "google-connect.social-button"
