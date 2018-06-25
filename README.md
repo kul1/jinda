@@ -2,7 +2,7 @@
 Rails Application Generator using Freemind
 
 * [jinda](https://github.com/kul1/jinda)
-  - ![jinda-screen](https://user-images.githubusercontent.com/3953832/34320849-f33deb68-e7c7-11e7-8f0b-22f9b1420b93.png)
+  - ![jinda-screen](https://user-images.githubusercontent.com/3953832/41832753-0143339a-7813-11e8-9ef9-c1601443c604.png)
 
 ## Additional Extension themes also available at 
 * [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
@@ -72,8 +72,7 @@ now the application is ready, start it as any Rails application
 
 go to http://localhost:3000, click *Sign In* on the left menu, and enter user name `admin` and password `secret`
 
-![login](https://user-images.githubusercontent.com/3953832/34680351-7919e8f2-f45e-11e7-9b9a-7b4dc691b601.png)
-
+![login](https://user-images.githubusercontent.com/3953832/41832924-d868f8f0-7813-11e8-93bb-19c0357cf604.png)
 
 Now open file `app/jinda/index.mm` using Freemind
 
