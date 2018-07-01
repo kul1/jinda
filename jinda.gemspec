@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Generate Rails workflow from mind map: Freemind}
   spec.homepage      = 'https://github.com/kul1/jinda'
   spec.license       = 'MIT'
-  spec.files         = Dir['Rakefile', '{bin,lib,test}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
+	spec.files         = Dir['Rakefile', '{bin,lib,test}/**/*', 'README*', 'LICENSE*', 'lib/generators/jinda/templates/.env'] & `git ls-files -z`.split("\0")
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
