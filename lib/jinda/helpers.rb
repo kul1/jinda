@@ -81,6 +81,31 @@ module Jinda
       default_role= Jinda::Role.where(:code =>'default').first
       return default_role ? default_role.name.to_s : ''
     end
+
+		def sign_in?
+			if current_ma_user.present?
+				return true
+			else
+				return false
+			end
+		end
+
+		# ############################### Themes ###################################
+		#
+		# Check login user information from User model: name(code), image for Themes
+		#
+		# ##########################################################################
+		def get_login_user_info
+			if current_ma_user.present?
+				$user_image = current_ma_user.image
+				$user_name = current_ma_user.code
+			else
+				$user_image = asset_url("dist/img/user2-160x160.jpg")
+				$user_name = 'Guest User'
+			end
+			return $user_image, $user_name
+		end
+
     def name2code(s)
       # rather not ignore # symbol cause it could be comment
       code, name = s.split(':')
@@ -205,7 +230,6 @@ module Jinda
       # end
       #@user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
       @user ||= User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
-
     end
 
     def ui_action?(s)

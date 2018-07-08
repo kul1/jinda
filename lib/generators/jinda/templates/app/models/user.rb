@@ -10,6 +10,7 @@ class User
   field :auth_token, :type => String
   field :password_reset_token, :type => String
   field :password_reset_sent_at,:type => DateTime
+	field :image, :type => String
 
 
   belongs_to :identity, :polymorphic => true, :optional => true
@@ -42,6 +43,7 @@ class User
           user.provider = auth.provider
           user.code = auth.info.name
           user.role = "M"
+					user.image = auth.info.image
         end
       end
     end
