@@ -7,6 +7,8 @@ class Identity
   field :email, :type => String
   field :password_digest, :type => String
   field :auth_token, :type => String
+	field :image, :type => String
+	
 
 
   validates_presence_of :code
