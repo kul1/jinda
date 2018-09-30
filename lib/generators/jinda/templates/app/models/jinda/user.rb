@@ -10,8 +10,7 @@ class Jinda::User
   field :auth_token, :type => String
   field :password_reset_token, :type => String
   field :password_reset_sent_at,:type => DateTime
-	field :image, :type => String
-
+  field :image, :type => String
 
   belongs_to :identity, :polymorphic => true, :optional => true
   has_many :xmains, :class_name => "Jinda::Xmain"
@@ -29,10 +28,10 @@ class Jinda::User
   end
   
   def self.from_omniauth(auth)
-		# Rails now no longer support slice 
-    # where(auth.slice(:uid, :provider, :email)).first_or_create do |user|
-		where(uid: auth.uid, provider: auth.provider, email: auth.info.email).first_or_create do |user|
-			case auth.provider 
+  # Rails now no longer support slice 
+  # where(auth.slice(:uid, :provider, :email)).first_or_create do |user|
+    where(uid: auth.uid, provider: auth.provider, email: auth.info.email).first_or_create do |user|
+      case auth.provider 
         when 'identity'
           identity = Identity.find auth.uid
           user.code = identity.code
@@ -43,7 +42,7 @@ class Jinda::User
           user.provider = auth.provider
           user.code = auth.info.name
           user.role = "M"
-					user.image = auth.info.image
+          user.image = auth.info.image
         end
       end
     end
@@ -57,7 +56,6 @@ class Jinda::User
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
-end
-
+  end
 
 end
