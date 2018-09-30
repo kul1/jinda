@@ -16,6 +16,5 @@
       %td= article.text.html_safe
       %td= article.created_at.strftime('%m/%d/%Y')
       %td= article.updated_at.strftime('%m/%d/%Y')
-      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), "#", :onclick=>"if (confirm('Please Confirm')) {location.hash='/articles/destroy/#{article.id}';}"
+      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), {controller: "articles", action: "destroy",  article_id: article.id}, data: { confirm: "Please Confirm" }
       %td(align='center')= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'articles:xedit_article', article_id: article.id}, data: { confirm: "Please Confirm" }
-
