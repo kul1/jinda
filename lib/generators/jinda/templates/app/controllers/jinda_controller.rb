@@ -247,19 +247,25 @@ class JindaController < ApplicationController
   def end_form
     init_vars(params[:xmain_id])
     eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
+		# Search for uploaded file name if exist
     params.each { |k,v|
       if params[k].respond_to? :original_filename
         get_image(k, params[k])
-      elsif params[k]['filename'].respond_to? :original_filename
-        eval "@xvars[@runseq.code][k] = v"
+			# check if params of array in form eg: edit_article	
+      elsif params[k].is_a?(ActionController::Parameters)
         params[k].each { |k1,v1|
-          next unless v1.respond_to?(:original_filename)
+					# eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
+					eval "@xvars[@runseq.code][k1] = v1" 
+					next unless v1.respond_to?(:original_filename)
           get_image1(k, k1, params[k][k1])
         }
-
       else
 				# bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
-        # v = v.to_unsafe_h unless v.class == String
+				# Solution:
+				# https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
+				# v = v.to_unsafe_h unless v.class == String
+				# v = params.require[k] unless v.class == String
+        v = v.to_s unless v.class == String
         eval "@xvars[@runseq.code][k] = v"
       end
     }

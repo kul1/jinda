@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :load_article, only: [:show, :destroy]
-  before_action :load_comments, only: :show
+  before_action :load_comments, only: [:show]
 
 	def index
     @articles = Article.desc(:created_at).page(params[:page]).per(10)
@@ -15,11 +15,9 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     @page_title       = 'Member Login'
-
   end
 
   def create
-
     @article = Article.new(
                       title: $xvars["form_article"]["title"],
                       text: $xvars["form_article"]["text"],
@@ -27,15 +25,19 @@ class ArticlesController < ApplicationController
                       body: $xvars["form_article"]["body"],
                       user_id: $xvars["user_id"])
     @article.save!
-      # if @article.save!
-      #   format.html { redirect_to @article, notice: 'Sample was successfully created.'  }
-      #   format.json { render :show, status: :created, location: @article }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @article.errors, status: :unprocessable_entity }
-      # end
-      redirect_to @article
 
+		# comment out to use jinda_controller end_action
+    # redirect_to @article
+    #   if @article.save!
+		#		 # format.html { redirect_to @article, notice: 'Sample was successfully created.'  }
+    #       format.html { redirect_to @article  }
+    #       format.json { render :show, status: :created, location: @article }
+		#		 end
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @article.errors, status: :unprocessable_entity }
+    #   end
+	
   end
 
   def my
@@ -47,19 +49,23 @@ class ArticlesController < ApplicationController
     # $xvars["select_article"] and $xvars["edit_article"]
     # These are variables.
     # They contain everything that we get their forms select_article and edit_article
-    article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
+  
+		article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
     @article = Article.find(article_id)
-    
-    @article.update(title: $xvars["edit_article"]["article"]["title"],
-                    text: $xvars["edit_article"]["article"]["text"],
-                    keywords: $xvars["edit_article"]["article"]["keywords"],
-                    body: $xvars["edit_article"]["article"]["body"])
-    redirect_to @article
-
-
+    @article.update(title: $xvars["edit_article"]["title"],
+                    text: $xvars["edit_article"]["text"],
+                    keywords: $xvars["edit_article"]["keywords"],
+                    body: $xvars["edit_article"]["body"]
+										)
+    # redirect_to @article
+		# comment out to use jinda_controller end_action
   end
 
   def destroy
+		# duplicated from jinda_controller
+		# Expected to use in jinda)controller
+	#
+    current_ma_user = Jinda::User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
     if Rails.env.test? #Temp solution until fix test of current_ma_user
       current_ma_user = $xvars["current_ma_user"]
       #current_ma_user = @article.user
@@ -67,13 +73,14 @@ class ArticlesController < ApplicationController
     if current_ma_user.role.upcase.split(',').include?("A") || current_ma_user == @article.user
       @article.destroy
     end
-      redirect_to :action=>'index'
+      #redirect_to :action=>'index'
+      redirect_to :action=>'my'
   end
 
   private
 
   def load_article
-    @article = Article.find(params[:id])
+		@article = Article.find(params.require(:article_id))
   end
 
   def load_comments

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   # see app/views/sessions/new.html.erb for sample
   def create
     auth = request.env["omniauth.auth"]
-    user = User.from_omniauth(auth)
+    user = Jinda::User.from_omniauth(auth)
     session[:user_id] = user.id
     if params.permit[:remember_me]
       cookies.permanent[:auth_token] = user.auth_token

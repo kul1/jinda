@@ -233,7 +233,8 @@ module Jinda
       #   return nil
       # end
       #@user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-      @user ||= User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
+      @user ||= Jinda::User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
+			return @user
     end
 
     def ui_action?(s)
