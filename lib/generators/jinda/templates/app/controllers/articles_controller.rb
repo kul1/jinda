@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :load_article, only: [:show, :destroy]
+  before_action :load_article, only: [:show,]
+  before_action :load_edit_article, only: [:edit, :destroy]
   before_action :load_comments, only: [:show]
 
 	def index
@@ -25,19 +26,7 @@ class ArticlesController < ApplicationController
                       body: $xvars["form_article"]["body"],
                       user_id: $xvars["user_id"])
     @article.save!
-
-		# comment out to use jinda_controller end_action
-    # redirect_to @article
-    #   if @article.save!
-		#		 # format.html { redirect_to @article, notice: 'Sample was successfully created.'  }
-    #       format.html { redirect_to @article  }
-    #       format.json { render :show, status: :created, location: @article }
-		#		 end
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @article.errors, status: :unprocessable_entity }
-    #   end
-	
+    refresh_to 	
   end
 
   def my
@@ -53,12 +42,10 @@ class ArticlesController < ApplicationController
 		article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
     @article = Article.find(article_id)
     @article.update(title: $xvars["edit_article"]["title"],
-                    text: $xvars["edit_article"]["text"],
+                    tenxt: $xvars["edit_article"]["text"],
                     keywords: $xvars["edit_article"]["keywords"],
                     body: $xvars["edit_article"]["body"]
 										)
-    # redirect_to @article
-		# comment out to use jinda_controller end_action
   end
 
   def destroy
@@ -79,8 +66,12 @@ class ArticlesController < ApplicationController
 
   private
 
-  def load_article
+  def load_edit_article
 		@article = Article.find(params.require(:article_id))
+  end
+  
+	def load_article
+		@article = Article.find(params.permit(:id))
   end
 
   def load_comments
