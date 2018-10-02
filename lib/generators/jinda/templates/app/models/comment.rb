@@ -5,7 +5,7 @@ class Comment
   include Mongoid::Timestamps
   field :body, :type => String
   belongs_to :article
-  belongs_to :user
+  belongs_to :user, :class_name => "Jinda::User"
   validates :body, :user_id, :article_id, presence: true
   # jinda end
 end

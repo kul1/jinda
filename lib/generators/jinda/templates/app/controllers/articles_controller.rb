@@ -26,7 +26,6 @@ class ArticlesController < ApplicationController
                       body: $xvars["form_article"]["body"],
                       user_id: $xvars["user_id"])
     @article.save!
-    refresh_to 	
   end
 
   def my
@@ -42,7 +41,7 @@ class ArticlesController < ApplicationController
 		article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
     @article = Article.find(article_id)
     @article.update(title: $xvars["edit_article"]["title"],
-                    tenxt: $xvars["edit_article"]["text"],
+                    text: $xvars["edit_article"]["text"],
                     keywords: $xvars["edit_article"]["keywords"],
                     body: $xvars["edit_article"]["body"]
 										)
