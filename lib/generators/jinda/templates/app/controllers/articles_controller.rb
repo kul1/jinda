@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
     @page_title       = 'Member Login'
   end
 
@@ -35,7 +34,7 @@ class ArticlesController < ApplicationController
 
   def update
     # $xvars["select_article"] and $xvars["edit_article"]
-    # These are variables.
+		# These are variables with params when called
     # They contain everything that we get their forms select_article and edit_article
   
 		article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
@@ -48,19 +47,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    #
 		# duplicated from jinda_controller
 		# Expected to use in jinda)controller
-	#
     current_ma_user = Jinda::User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
+
     if Rails.env.test? #Temp solution until fix test of current_ma_user
       current_ma_user = $xvars["current_ma_user"]
       #current_ma_user = @article.user
     end
+
     if current_ma_user.role.upcase.split(',').include?("A") || current_ma_user == @article.user
       @article.destroy
     end
-      #redirect_to :action=>'index'
-      redirect_to :action=>'my'
+
+    redirect_to :action=>'my'
   end
 
   private
@@ -69,7 +70,7 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params.require(:article_id))
   end
   
-	def load_article
+  def load_article
 		@article = Article.find(params.permit(:id))
   end
 

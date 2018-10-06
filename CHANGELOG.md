@@ -1,3 +1,6 @@
+## v0.2.7
+* Remove dynamic routes to support Rails 6
+
 ## v0.1.1.5
 * pdf print
 * html print
