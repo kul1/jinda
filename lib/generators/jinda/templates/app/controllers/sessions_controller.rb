@@ -16,18 +16,20 @@ class SessionsController < ApplicationController
     else
       cookies[:auth_token] = user.auth_token
     end
-    refresh_to root_path, :ma_notice => "Logged in"
+    # refresh_to root_path, :ma_notice => "Logged in" # Called by jinda_conroller
+    # redirect_to root_path
+		redirect_to articles_my_path
+
   rescue
     redirect_to root_path, :alert=> "Authentication failed, please try again."
   end
 
   def destroy
-    #session[:user_id] = nil
+    session[:user_id] = nil
     cookies.delete(:auth_token)
-    # redirect_to '/jinda/help'
-    refresh_to root_path, :ma_notice => "Logged Out"
-    #  render not work!!
-    #redirect_to 'jinda/index'
+    refresh_to root_path, :ma_notice => "Logged Out" # called by jinda_controller, not pass tested
+    # redirect_to root_path # Ok with test
+
   end
 
   def failure

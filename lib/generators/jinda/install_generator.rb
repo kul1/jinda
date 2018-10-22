@@ -40,10 +40,12 @@ module Jinda
           gem 'binding_of_caller'
           gem 'pry-byebug'
           gem 'factory_bot_rails'
+					gem 'database_cleaner'
           gem 'guard'
           gem 'guard-rspec'
           gem 'guard-minitest'
           gem 'capybara'
+					gem 'selenium-webdriver'
           gem 'rb-fsevent'
         end
       end
