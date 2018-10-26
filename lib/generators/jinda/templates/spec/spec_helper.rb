@@ -5,11 +5,11 @@ require 'capybara/rspec'
 # This file is copied to spec/ when you run 'rails generate rspec:install'
   OmniAuth.config.test_mode = true
   omniauth_hash = { 'provider' => 'google_oauth2',
-                    'uid' => '105362273761620533373',
+                    'uid' => '12345',
                     'info' => {
-                        'name' => 'Kulsoft',
-                        'email' => 'kulsoft.net@gmail.com',
-                        'nickname' => 'kulsoft'
+											'name' => 'tg',
+                        'email' => 'test@gmail.com',
+                        'nickname' => 'TG'
                     },
                     'extra' => {'raw_info' =>
                                     { 'location' => 'San Francisco',
@@ -20,11 +20,11 @@ require 'capybara/rspec'
   OmniAuth.config.add_mock(:google_oauth2, omniauth_hash)
 
   omniauth_hash = { 'provider' => 'facebook',
-                    'uid' => '105362273761620533373',
+                    'uid' => '67890',
                     'info' => {
-                      'name' => 'Peter Colling',
-                      'email' => '1.0@kul.asia',
-                      'nickname' => 'Peter C'
+                      'name' => 'facebookuser',
+											'email' => 'facebook@test.coma',
+                      'nickname' => 'FB'
                       },
                     'extra' => {'raw_info' =>
                       {'location' => 'LA',
