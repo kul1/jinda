@@ -1,5 +1,7 @@
 class Jinda::User
   include Mongoid::Document
+	# https://docs.mongodb.com/mongoid/master/tutorials/mongoid-indexes/
+  index({ code: 1 }, { unique: true, name: "code_index" })
   before_create {generate_token(:auth_token)}
   field :provider, :type => String
   field :uid, :type => String
@@ -14,6 +16,9 @@ class Jinda::User
 
   belongs_to :identity, :polymorphic => true, :optional => true
   has_many :xmains, :class_name => "Jinda::Xmain"
+  validates :code,
+		presence: true,
+		uniqueness: true
 
   ## Add to create forgot password
   def generate_token(column)

@@ -1,21 +1,20 @@
-# essions_controller_spec.rb
-require 'spec_helper'
-
+# sessions_controller_spec.rb
+# 1. Set up the mock
+# 2. Make the request
+# 3. Test whatever code is attached to the callback
+# require 'spec_helper'
+require 'rails_helper'
 describe SessionsController do
 
 	describe "Google" do
 
 		before do
+	
 			request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+			visit '/auth/google_oauth2'
 		end
 
 		describe "#create" do
-
-			it "should successfully create a user" do
-				expect {
-					post :create, params: {provider: :google_oauth2}
-				}.to change{ Jinda::User.count }.by(1)
-			end
 
 			it "should successfully create a session" do
 				session[:user_id].should be_nil
@@ -54,15 +53,10 @@ describe SessionsController do
 
 		before do
 			request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+			visit '/auth/facebook'
 		end
 
 		describe "#create" do
-
-			it "should successfully create a user" do
-				expect {
-					post :create, params: {provider: :facebook}
-				}.to change{ Jinda::User.count }.by(1)
-			end
 
 			it "should successfully create a session" do
 				session[:user_id].should be_nil

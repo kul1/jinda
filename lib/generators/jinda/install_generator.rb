@@ -47,6 +47,7 @@ module Jinda
           gem 'capybara'
 					gem 'selenium-webdriver'
           gem 'rb-fsevent'
+					gem 'valid_attribute'
         end
       end
 
