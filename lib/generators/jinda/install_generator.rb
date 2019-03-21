@@ -84,7 +84,7 @@ module Jinda
         route "post '/jinda/pending' => 'jinda#index'"
         route "post '/jinda/init' => 'jinda#init'"
         route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_do','run_form','end_form']"
+        route "jinda_methods += ['init','run','run_do','run_form','end_form','error_logs']"
         route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
         route "\# start jiinda method routes"
 			end
