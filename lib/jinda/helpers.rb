@@ -159,15 +159,15 @@ module Jinda
       end
     end
     def ma_log(message)
-        Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
-          :unread=> true, :ip=> ($ip || request.env["REMOTE_ADDR"])
-      # if session[:user_id]
-      #   Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
-      #     :user_id => $user.id, :unread=> true, :ip=>request.env["REMOTE_ADDR"]
-      # else
-      #   Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
-      #     :unread=> true, :ip=>request.env["REMOTE_ADDR"]
-      # end
+      #  Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
+      #    :unread=> true, :ip=> ($ip || request.env["REMOTE_ADDR"])
+       if session[:user_id]
+         Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
+           :user_id => $user.id, :unread=> true, :ip=>request.env["REMOTE_ADDR"]
+       else
+         Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
+           :unread=> true, :ip=>request.env["REMOTE_ADDR"]
+       end
     end
 
     alias :ma_notice :ma_log
