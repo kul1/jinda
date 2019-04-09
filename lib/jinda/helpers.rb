@@ -102,12 +102,14 @@ module Jinda
         $user_image = current_ma_user.image
         $user_name = current_ma_user.code
         $user_email = current_ma_user.email
+        $user_id = current_ma_user.try(:id)
       else
         $user_image = asset_url("user.png", :width => "48")
         $user_name = 'Guest User'
         $user_email = 'guest@sample.com'
+        $user_id = ''
       end
-      return $user_image, $user_name, $user_email
+      return $user_image, $user_name, $user_email,$user_id
     end
 
     def name2code(s)

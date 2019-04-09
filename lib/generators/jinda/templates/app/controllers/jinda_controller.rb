@@ -8,6 +8,9 @@ class JindaController < ApplicationController
   def error_logs
     @xmains = Jinda::Xmain.in(status:['E']).desc(:created_at).page(params[:page]).per(10)
   end
+  def notice_logs
+    @notices= Jinda::Notice.desc(:created_at).page(params[:page]).per(10)
+  end
   def pending
     @title= "Pending Tasks"
     @xmains = Jinda::Xmain.in(status:['R','I']).asc(:created_at)
@@ -42,7 +45,7 @@ class JindaController < ApplicationController
     module_code, code = params[:s].split(":")
     @service= Jinda::Service.where(:module_code=> module_code, :code=> code).first
     # @service= Jinda::Service.where(:module_code=> params[:module], :code=> params[:service]).first
-		if @service && authorize_init?
+    if @service && authorize_init?
       xmain = create_xmain(@service)
       result = create_runseq(xmain)
       unless result
@@ -61,8 +64,8 @@ class JindaController < ApplicationController
   end
   ####################################################################################################]
   # run if, form, mail, output etc depend on icon in freemind
-	# action from @runseq.action == do,     form,			if,     output
-	# Then will call				def run_do, run_form, run_if, run_output
+  # action from @runseq.action == do,     form,			if,     output
+  # Then will call				def run_do, run_form, run_if, run_output
   ####################################################################################################]
   def run
     init_vars(params[:id])
@@ -80,19 +83,22 @@ class JindaController < ApplicationController
         redirect_to_root
       else
         service= @xmain.service
-				###############################################################################################
-				# Run View Form f created template by jinda rake follow freemind mm file
-				###############################################################################################
+        ###############################################################################################
+        # Run View Form f created template by jinda rake follow freemind mm file
+        ###############################################################################################
         if service
           @title= "Transaction ID #{@xmain.xid}: #{@xmain.name} / #{@runseq.name}"
           fhelp= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.md"
           @help = File.read(fhelp) if File.exists?(fhelp)
           f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
-          @ui= File.read(f)
-        else
+          if File.file?(f)
+            @ui= File.read(f)
+          else
           # flash[:notice]= "Error: Can not find the view file for this controller"
           ma_log "Error: Can not find the view file for this controller"
           redirect_to_root
+          end
+
         end
       end
     else
@@ -169,15 +175,15 @@ class JindaController < ApplicationController
       if Jinda::Doc.where(:runseq_id=>@runseq.id).exists?
         @doc= Jinda::Doc.where(:runseq_id=>@runseq.id).first
         @doc.update_attributes :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
-                               :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
-                               :ip=> get_ip, :service=>service, :ma_display=>ma_display,
-                               :ma_secured => @xmain.service.ma_secured
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured
       else
         @doc= Jinda::Doc.create :name=> @runseq.name,
-                                  :content_type=>"output", :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
-                                  :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
-                                  :ip=> get_ip, :service=>service, :ma_display=>ma_display,
-                                  :ma_secured => @xmain.service.ma_secured
+          :content_type=>"output", :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured
       end
       @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
       @message = "Finish" if @runseq.end
@@ -198,10 +204,10 @@ class JindaController < ApplicationController
     f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
     @ui= File.read(f).html_safe
     @doc= Jinda::Doc.create :name=> @runseq.name,
-                              :content_type=>"mail", :data_text=> render_to_string(:inline=>@ui, :layout=>false),
-                              :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
-                              :ip=> get_ip, :service=>service, :ma_display=>false,
-                              :ma_secured => @xmain.service.ma_secured
+      :content_type=>"mail", :data_text=> render_to_string(:inline=>@ui, :layout=>false),
+      :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+      :ip=> get_ip, :service=>service, :ma_display=>false,
+      :ma_secured => @xmain.service.ma_secured
     eval "@xvars[:#{@runseq.code}] = url_for(:controller=>'jinda', :action=>'document', :id=>@doc.id)"
     mail_from = get_option('from')
     # sender= render_to_string(:inline=>mail_from) if mail_from
@@ -247,24 +253,24 @@ class JindaController < ApplicationController
   def end_form
     init_vars(params[:xmain_id])
     eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
-		# Search for uploaded file name if exist
+    # Search for uploaded file name if exist
     params.each { |k,v|
       if params[k].respond_to? :original_filename
         get_image(k, params[k])
-			# check if params of array in form eg: edit_article	
+        # check if params of array in form eg: edit_article	
       elsif params[k].is_a?(ActionController::Parameters)
         params[k].each { |k1,v1|
-					# eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
-					eval "@xvars[@runseq.code][k1] = v1" 
-					next unless v1.respond_to?(:original_filename)
+          # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
+          eval "@xvars[@runseq.code][k1] = v1" 
+          next unless v1.respond_to?(:original_filename)
           get_image1(k, k1, params[k][k1])
         }
       else
-				# bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
-				# Solution:
-				# https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
-				# v = v.to_unsafe_h unless v.class == String
-				# v = params.require[k] unless v.class == String
+        # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
+        # Solution:
+        # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
+        # v = v.to_unsafe_h unless v.class == String
+        # v = params.require[k] unless v.class == String
         v = v.to_s unless v.class == String
         eval "@xvars[@runseq.code][k] = v"
       end
@@ -304,14 +310,14 @@ class JindaController < ApplicationController
   # process images from first level
   def get_image(key, params)
     doc = Jinda::Doc.create(
-        :name=> key.to_s,
-        :xmain=> @xmain.id,
-        :runseq=> @runseq.id,
-        :filename=> params.original_filename,
-        :content_type => params.content_type || 'application/zip',
-        :data_text=> '',
-        :ma_display=>true,
-        :ma_secured => @xmain.service.ma_secured )
+      :name=> key.to_s,
+      :xmain=> @xmain.id,
+      :runseq=> @runseq.id,
+      :filename=> params.original_filename,
+      :content_type => params.content_type || 'application/zip',
+      :data_text=> '',
+      :ma_display=>true,
+      :ma_secured => @xmain.service.ma_secured )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.open(filename,"wb") { |f| f.write(params.read) }
@@ -327,13 +333,13 @@ class JindaController < ApplicationController
   # process images from second level, e.g,, fields_for
   def get_image1(key, key1, params)
     doc = Jinda::Doc.create(
-        :name=> "#{key}_#{key1}",
-        :xmain=> @xmain.id,
-        :runseq=> @runseq.id,
-        :filename=> params.original_filename,
-        :content_type => params.content_type || 'application/zip',
-        :data_text=> '',
-        :ma_display=>true, :ma_secured => @xmain.service.ma_secured )
+      :name=> "#{key}_#{key1}",
+      :xmain=> @xmain.id,
+      :runseq=> @runseq.id,
+      :filename=> params.original_filename,
+      :content_type => params.content_type || 'application/zip',
+      :data_text=> '',
+      :ma_display=>true, :ma_secured => @xmain.service.ma_secured )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.open(filename,"wb") { |f| f.write(params.read) }
@@ -365,15 +371,15 @@ class JindaController < ApplicationController
         #   h = RDoc::Markup::ToHtml.new
         #   render :text=> h.convert(doc), :layout => 'layouts/_page'
       }
-      format.pdf  {
-        latex= Maruku.new(doc).to_latex
-        File.open('tmp/doc.md','w') {|f| f.puts doc}
-        File.open('tmp/doc.tex','w') {|f| f.puts latex}
-        # system('pdflatex tmp/doc.tex ')
-        # send_file( 'tmp/doc.pdf', :type => ‘application/pdf’,
-        # :disposition => ‘inline’, :filename => 'doc.pdf')
-        render :plain=>'done'
-      }
+        format.pdf  {
+          latex= Maruku.new(doc).to_latex
+          File.open('tmp/doc.md','w') {|f| f.puts doc}
+          File.open('tmp/doc.tex','w') {|f| f.puts latex}
+          # system('pdflatex tmp/doc.tex ')
+          # send_file( 'tmp/doc.pdf', :type => ‘application/pdf’,
+          # :disposition => ‘inline’, :filename => 'doc.pdf')
+          render :plain=>'done'
+        }
     end
   end
   # handle uploaded image
@@ -397,7 +403,7 @@ class JindaController < ApplicationController
     @xvars= @xmain.xvars
     # flash.now[:notice]= "รายการ #{@xmain.id} ได้ถูกยกเลิกแล้ว" if @xmain.status=='X'
     ma_log "Task #{@xmain.id} is cancelled" if @xmain.status=='X'
-      # flash.now[:notice]= "transaction #{@xmain.id} was cancelled" if @xmain.status=='X'
+    # flash.now[:notice]= "transaction #{@xmain.id} was cancelled" if @xmain.status=='X'
   rescue
     refresh_to "/", :alert => "Could not find task number <b> #{params[:xid]} </b>"
   end
@@ -434,20 +440,20 @@ class JindaController < ApplicationController
     custom_controller= "#{c}Controller"
     params["return"] = request.env['HTTP_REFERER']
     Jinda::Xmain.create :service=>service,
-                          :start=>Time.now,
-                          :name=>service.name,
-                          :ip=> get_ip,
-                          :status=>'I', # init
-                          :user=>current_ma_user,
-                          :xvars=> {
-                              :service_id=>service.id,
-                              :p=>params.to_unsafe_h,
-                              :id=>params[:id],
-                              :user_id=>current_ma_user.try(:id),
-                              :custom_controller=>custom_controller,
-                              :host=>request.host,
-                              :referer=>request.env['HTTP_REFERER']
-                          }
+      :start=>Time.now,
+      :name=>service.name,
+      :ip=> get_ip,
+      :status=>'I', # init
+      :user=>current_ma_user,
+      :xvars=> {
+        :service_id=>service.id,
+        :p=>params.to_unsafe_h,
+        :id=>params[:id],
+        :user_id=>current_ma_user.try(:id),
+        :custom_controller=>custom_controller,
+        :host=>request.host,
+        :referer=>request.env['HTTP_REFERER']
+      }
   end
   def create_runseq(xmain)
     @xvars= xmain.xvars
@@ -484,10 +490,10 @@ class JindaController < ApplicationController
       role= get_option_xml("role", activity) || default_role
       rule= get_option_xml("rule", activity) || "true"
       runseq= Jinda::Runseq.create :xmain=>xmain.id,
-                                     :name=> name, :action=> action,
-                                     :code=> code, :role=>role.upcase, :rule=> rule,
-                                     :rstep=> i, :form_step=> j, :status=>'I',
-                                     :xml=>activity.to_s
+        :name=> name, :action=> action,
+        :code=> code, :role=>role.upcase, :rule=> rule,
+        :rstep=> i, :form_step=> j, :status=>'I',
+        :xml=>activity.to_s
       xmain.current_runseq= runseq.id if i==1
     end
     @xvars['total_steps']= i
@@ -497,7 +503,7 @@ class JindaController < ApplicationController
     @xmain= Jinda::Xmain.find xmain
     @xvars= @xmain.xvars
     @runseq= @xmain.runseqs.find @xmain.current_runseq
-#    authorize?
+    #    authorize?
     @xvars['current_step']= @runseq.rstep
     @xvars['referrer']= request.referrer
     session[:xmain_id]= @xmain.id
@@ -523,10 +529,10 @@ class JindaController < ApplicationController
   def store_asset
     if params[:content]
       doc = GmaDoc.create! :name=> 'asset',
-                           :filename=> (params[:file_name]||''),
-                           :content_type => (params[:content_type] || 'application/zip'),
-                           :data_text=> '',
-                           :ma_display=>true
+        :filename=> (params[:file_name]||''),
+        :content_type => (params[:content_type] || 'application/zip'),
+        :data_text=> '',
+        :ma_display=>true
       path = (IMAGE_LOCATION || "tmp")
       File.open("#{path}/f#{doc.id}","wb") { |f|
         f.puts(params[:content])

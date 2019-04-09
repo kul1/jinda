@@ -12,6 +12,7 @@ module Jinda
         gem 'normalize-rails'
         gem 'font-awesome-sass', '~> 4.7.0'
         gem 'ckeditor', github: 'galetahub/ckeditor'
+
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'
         gem 'jquery-turbolinks'
@@ -27,7 +28,7 @@ module Jinda
         gem 'bcrypt'
         gem 'omniauth-identity'
         gem 'omniauth-facebook'
-				gem 'omniauth-google-oauth2'
+	    gem 'omniauth-google-oauth2'
         gem 'dotenv-rails'
         gem 'cloudinary'
         gem 'kaminari'
@@ -40,14 +41,15 @@ module Jinda
           gem 'binding_of_caller'
           gem 'pry-byebug'
           gem 'factory_bot_rails'
-					gem 'database_cleaner'
+		  gem 'database_cleaner'
           gem 'guard'
           gem 'guard-rspec'
           gem 'guard-minitest'
           gem 'capybara'
-					gem 'selenium-webdriver'
+		  gem 'selenium-webdriver'
           gem 'rb-fsevent'
-					gem 'valid_attribute'
+		  gem 'valid_attribute'
+          gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
         end
       end
 
@@ -73,21 +75,21 @@ module Jinda
         route "resources :identities"
         route "resources :users"
         route "resources :articles"
-				route "get '/articles/my/destroy' => 'articles#destroy'"
+		route "get '/articles/my/destroy' => 'articles#destroy'"
         route "get '/articles/my' => 'articles/my'"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
         route "get '/auth/:provider/callback' => 'sessions#create'"
         route "post '/auth/:provider/callback' => 'sessions#create'"        
+		route "\# end jinda method routes"
         route "mount Ckeditor::Engine => '/ckeditor'"
-				route "\# end jinda method routes"
         route "post '/jinda/end_form' => 'jinda#end_form'"
         route "post '/jinda/pending' => 'jinda#index'"
         route "post '/jinda/init' => 'jinda#init'"
         route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_do','run_form','end_form','error_logs']"
+        route "jinda_methods += ['init','run','run_do','run_form','end_form','error_logs', 'notice_logs', 'cancel']"
         route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
         route "\# start jiinda method routes"
-			end
+	  end
 
       def setup_env
         run "mv README.md README.md.bak"
@@ -105,6 +107,10 @@ module Jinda
     g.test_framework  :rspec
     g.integration_tool :rspec
   end
+
+  # config time zone
+  config.time_zone = "Central Time (US & Canada)"
+
   # gmail config
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

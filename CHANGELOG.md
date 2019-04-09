@@ -1,3 +1,7 @@
+## v0.3.4
+* Fixed namespace in class user
+* Compatible with jinda_todo
+
 ## v0.2.7
 * Remove dynamic routes to support Rails 6
 

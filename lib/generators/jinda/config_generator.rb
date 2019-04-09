@@ -9,7 +9,6 @@ module Jinda
         st="      "
         inside("config/initializers") {(File.file? "omniauth.rb") ? (run "mv omniauth.rb omniauth.rb.bak") : (puts "new omniauth.rb created")}
         inside("config/initializers") {(File.file? "mongoid.rb") ? (run "mv mongoid.rb omniauth.rb.bak") : (puts "new mongoid.rb created")}
-        inside("config/initializers") {(File.file? "ckeditor.rb") ? (run "mv ckeditor.rb ckeditor.rb.bak") : (puts "new ckeditor.rb created")}
 				(File.file? ".env") ? (run "cp .env .env-bak") : (puts "backup .env")
       end
 

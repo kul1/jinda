@@ -11,7 +11,7 @@ class Jinda::Doc
   field :cloudinary, :type => Boolean
   belongs_to :xmain, :class_name => "Jinda::Xmain"
   belongs_to :runseq, :class_name => "Jinda::Runseq"
-  belongs_to :user
+  belongs_to :user, :class_name => "Jinda::User"
   belongs_to :service, :class_name => "Jinda::Service"
   field :ip, :type => String
   field :ma_display, :type => Boolean

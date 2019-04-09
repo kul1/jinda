@@ -5,7 +5,7 @@ class Jinda::Notice
   field :message, :type => String
   field :unread, :type => Boolean
   field :ip, :type => String
-  belongs_to :user
+  belongs_to :user, :class_name => "Jinda::User"
 
   def self.recent(user_id, ip)
     where(unread: true, ip: ip).last
