@@ -94,6 +94,7 @@ module Jinda
       def setup_env
         run "mv README.md README.md.bak"
         create_file 'README.md', ''
+        copy_file 'install.sh', 'install.sh'
         inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
           "\nrequire 'mongoid/railtie'\n"
           "\nrequire 'rexml/document'\n"
@@ -174,14 +175,17 @@ Mongoid::Config.belongs_to_required_by_default = false
         # copy_file "seeds.rb","db/seeds.rb"
       end
 
+
       def finish
         puts "\n"
         puts "Jinda gem ready for next configuration install.\n"
-        puts "Please run the following command:\n"
+        puts "    (or short cut with sh install.sh)\n" 
+        puts "Normally you will use  the following command:\n"
         puts "----------------------------------------\n"
         puts "bundle install\n"
         puts "rails generate jinda:config\n"
         puts "rake jinda:seed\n"
+        puts 
         puts "----------------------------------------\n"
       end
     end

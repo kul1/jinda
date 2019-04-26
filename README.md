@@ -36,7 +36,7 @@ app without ActiveRecord
 
 ## Add jinda to your Gemfile:
 
-    gem 'jinda', '~> 0.3.4'
+    gem 'jinda', '~> 0.3.5'
 
 For Development (most updated)
 
@@ -57,6 +57,8 @@ generate jinda application
 Then run bundle again to install additional gems added by jinda
 
     $ bundle
+
+    (or run all with "sh install.sh" )
 
 configure mongoid, omniauth
 

@@ -1,3 +1,6 @@
+## v0.3.5
+* Fixed missing font in asset pipe line
+
 ## v0.3.4
 * Fixed namespace in class user
 * Compatible with jinda_todo
