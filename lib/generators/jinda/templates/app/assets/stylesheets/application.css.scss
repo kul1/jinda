@@ -13,21 +13,15 @@
  *= require normalize-rails
  */
 
-@import "jqm/jquery.mobile-1.2.1";
-@import "jqm/jquery.mobile.splitview";
-@import "jqm/jquery.mobile.grids.collapsible";
-@import "jqm/jquery.mobile.datebox.css";
-@import "jqm/sarabun";
-@import "jqm/jinda";
-@import "jqm/kul-4.2";
-@import "jqm/articles";
-@import "jqm/app.scss";
+@import "jquery.mobile-1.2.1";
+@import "jquery.mobile.splitview";
+@import "jquery.mobile.grids.collapsible";
+@import "jquery.mobile.datebox.css";
+@import "sarabun";
+@import "jinda";
+@import "kul-4.2";
+@import "articles";
+@import "app.scss";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "jqm/social";
-
-
-
-
-
-
+@import "social";

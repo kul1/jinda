@@ -4,13 +4,13 @@
 # 3. Test whatever code is attached to the callback
 # require 'spec_helper'
 require 'rails_helper'
-describe SessionsController do
+describe SessionsController, type: :controller do
 
-	describe "Google" do
+	describe "Google"  do
 
 		before do
 	
-			request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+			@request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
 			visit '/auth/google_oauth2'
 		end
 
@@ -52,7 +52,7 @@ describe SessionsController do
 	describe "Facebook" do
 
 		before do
-			request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+			@request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
 			visit '/auth/facebook'
 		end
 

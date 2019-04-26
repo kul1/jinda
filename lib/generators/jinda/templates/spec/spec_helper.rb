@@ -19,7 +19,7 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
 # https://github.com/DatabaseCleaner/database_cleaner #
-  config.use_transactional_fixtures = false
+#  config.use_transactional_fixtures = false
 	# https://stackoverflow.com/questions/15148585/undefined-method-visit-when-using-rspec-and-capybara-in-rails
 	config.include Capybara::DSL
 

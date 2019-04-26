@@ -1,7 +1,10 @@
 # in spec/support/omniauth_macro.rb
 module OmniauthMacros
+require 'omniauth'
+  #To enable all request to OmniAuth short circuited to use below mock authentication hash the  /auth/provider will redirect immediately to /auth/provider/call back
+  # https://github.com/omniauth/omniauth/wiki/Integration-Testing
+  OmniAuth.config.test_mode = true
 
-OmniAuth.config.test_mode = true
   omniauth_hash = { 'provider' => 'google_oauth2',
                     'uid' => '105362273761620533373',
                     'info' => {

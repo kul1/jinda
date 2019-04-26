@@ -80,8 +80,11 @@ end
         puts "-----------------------------------------\n"
         puts "rails jinda:seed\n"
         puts "-----------------------------------------\n"
-        puts "      To config rspect run:"
+        puts "      To test with rspec  run:"
         puts "-----------------------------------------\n"
+        puts "rspec\n"
+        puts "-----------------------------------------\n"
+        puts "      To config rspec run:"
         puts "rails g jinda:rspec\n"
         puts "run $chromediver for Capybara & Chrome\n"
         puts "-----------------------------------------\n"
@@ -91,7 +94,7 @@ end
         puts "-----------------------------------------\n"
         puts "      To login with facebook"
         puts "-----------------------------------------\n"
-				puts "Please config. in .env or restore from .env-bak \n"
+		puts "Please config. in .env or restore from .env-bak \n"
         puts "-----------------------------------------\n"
       end
     end

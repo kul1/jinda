@@ -1,3 +1,6 @@
+require 'active_support'
+require 'active_support/core_ext'
+
 # -*- encoding : utf-8 -*-
 # This helper handle 
 # 1. Read xml from mm file to run core program: 
@@ -20,9 +23,6 @@
 # xvar is (become) global variable of current program including user, runseq, and services
 #
 ################################################################################
-
-require 'active_support'
-require 'active_support/core_ext'
 
 
 module Jinda
