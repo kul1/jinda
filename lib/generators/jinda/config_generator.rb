@@ -7,9 +7,9 @@ module Jinda
       desc "Backup Files"
       def backup_files
         st="      "
-        inside("config/initializers") {(File.file? "omniauth.rb") ? (run "mv omniauth.rb omniauth.rb.bak") : (puts "new omniauth.rb created")}
-        inside("config/initializers") {(File.file? "mongoid.rb") ? (run "mv mongoid.rb omniauth.rb.bak") : (puts "new mongoid.rb created")}
-				(File.file? ".env") ? (run "cp .env .env-bak") : (puts "backup .env")
+        # inside("config/initializers") {(File.file? "omniauth.rb") ? (copy_file "omniauth.rb",  "omniauth.rb.bak") : (puts "new omniauth.rb created")}
+        # inside("config/initializers") {(File.file? "mongoid.rb") ? (copy_file "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
+				(File.file? ".env") ? (copy_file ".env", ".env-bak") : (puts "backup .env")
       end
 
       desc "gen_image_store"

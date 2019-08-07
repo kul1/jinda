@@ -55,14 +55,14 @@ module Jinda
 
       def setup_app
         # inside("public") { run "mv index.html index.html.bak" }
-        inside("app/views/layouts") {(File.file? "application.html.erb") ? (run  "mv application.html.erb application.html.erb.bak" ) : ( puts "no app/views/layout/ application.html.erb")}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? (run  "mv application_controller.rb application_controller.rb.bak" ) : ( puts "no app/controller/application_controller.rb")}
-        inside("app/helpers") {(File.file? "application_helper.rb") ? (run  "mv application_helper.rb application_helper.rb.bak") : ( puts "no app/helpers/application_helper.rb")}
-        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (run  "mv javascripts.js javascripts.js.bak") : ( puts "no javascript.js")}
-        inside("app/assets/stylesheets") {(File.file? "javascripts.css") ? (run  "mv javascripts.css javascripts.css.bak") : ( puts "no javascript.css")}
-        inside("config/initializers") {(File.file? "omniauth.rb") ? (run  "mv omniauth.rb omniauth.rb.bak") : (puts "new omniauth.rb created")}
-        inside("config/initializers") {(File.file? "mongoid.rb") ? (run  "mv mongoid.rb omniauth.rb.bak") : (puts "new mongoid.rb created")}
-        inside("config/initializers") {(File.file? "ckeditor.rb") ? (run  "mv ckeditor.rb ckeditor.rb.bak") : (puts "new ckeditor.rb created")}
+        inside("app/views/layouts") {(File.file? "application.html.erb") ? (copy_file  'application.html.erb', 'application.html.erb.bak') : ( puts "no app/views/layout/ application.html.erb")}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? (copy_file  'application_controller.rb', 'application_controller.rb.bak' ) : ( puts "no app/controller/application_controller.rb")}
+        inside("app/helpers") {(File.file? "application_helper.rb") ? (copy_file  'application_helper.rb', 'application_helper.rb.bak') : ( puts "no app/helpers/application_helper.rb")}
+        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (copy_file 'javascripts.js', 'javascripts.js.bak') : ( puts "no javascript.js")}
+        inside("app/assets/stylesheets") {(File.file? "javascripts.css") ? (copy_file 'javascripts.css', 'javascripts.css.bak') : ( puts "no javascript.css")}
+        inside("config/initializers") {(File.file? "omniauth.rb") ? (copy_file 'omniauth.rb', 'omniauth.rb.bak') : (puts "no omniauth.rb")}
+        # inside("config/initializers") {(File.file? "mongoid.rb") ? (copy_file 'mongoid.rb', 'mongoid.rb.bak') : (puts "no mongoid.rb")}
+        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (copy_file 'ckeditor.rb ckeditor.rb.bak') : (puts "no ckeditor.rb ")}
         directory "app"
         directory "spec"
       end
@@ -92,7 +92,7 @@ module Jinda
 	  end
 
       def setup_env
-        run "mv README.md README.md.bak"
+        copy_file "README.md", "README.md.bak"
         create_file 'README.md', ''
         copy_file 'install.sh', 'install.sh'
         inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
