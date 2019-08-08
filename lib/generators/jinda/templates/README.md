@@ -32,7 +32,7 @@ These versions works for sure but others may do.
 Supposed we want to create ecommerce web site, first create a Rails
 app without ActiveRecord
 
-    $ rails new YOURAPP -BOT
+    $ rails new YOURAPP -BOTJ
 
 ## Add jinda to your Gemfile:
 
