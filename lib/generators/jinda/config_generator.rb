@@ -7,16 +7,16 @@ module Jinda
       desc "Backup Files"
       def backup_files
         st="      "
-        # inside("config/initializers") {(File.file? "omniauth.rb") ? (copy_file "omniauth.rb",  "omniauth.rb.bak") : (puts "new omniauth.rb created")}
-        # inside("config/initializers") {(File.file? "mongoid.rb") ? (copy_file "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
-				(File.file? ".env") ? (copy_file ".env", ".env-bak") : (puts "backup .env")
+        # inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv "omniauth.rb",  "omniauth.rb.bak") : (puts "new omniauth.rb created")}
+        # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
+				(File.file? ".env") ? (FileUtils.mv ".env", ".env-bak") : (puts "backup .env")
       end
 
       desc "gen_image_store"
       def gen_image_store
-        copy_file "cloudinary.yml","config/cloudinary.yml"
-        copy_file ".env",".env"
-				copy_file "dot.rspec",".rspec"
+        # FileUtils.cp "cloudinary.yml","config/cloudinary.yml"
+        # FileUtils.cp "dot.env",".env"
+	    # FileUtils.cp "dot.rspec",".rspec"
         empty_directory "upload" # create upload directory just in case
       end
       desc "Set up omniauth config"

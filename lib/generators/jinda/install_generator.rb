@@ -54,17 +54,21 @@ module Jinda
       end
 
       def setup_app
-        # inside("public") { run "mv index.html index.html.bak" }
-        inside("app/views/layouts") {(File.file? "application.html.erb") ? (copy_file  'application.html.erb', 'application.html.erb.bak') : ( puts "no app/views/layout/ application.html.erb")}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? (copy_file  'application_controller.rb', 'application_controller.rb.bak' ) : ( puts "no app/controller/application_controller.rb")}
-        inside("app/helpers") {(File.file? "application_helper.rb") ? (copy_file  'application_helper.rb', 'application_helper.rb.bak') : ( puts "no app/helpers/application_helper.rb")}
-        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (copy_file 'javascripts.js', 'javascripts.js.bak') : ( puts "no javascript.js")}
-        inside("app/assets/stylesheets") {(File.file? "javascripts.css") ? (copy_file 'javascripts.css', 'javascripts.css.bak') : ( puts "no javascript.css")}
-        inside("config/initializers") {(File.file? "omniauth.rb") ? (copy_file 'omniauth.rb', 'omniauth.rb.bak') : (puts "no omniauth.rb")}
-        # inside("config/initializers") {(File.file? "mongoid.rb") ? (copy_file 'mongoid.rb', 'mongoid.rb.bak') : (puts "no mongoid.rb")}
-        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (copy_file 'ckeditor.rb ckeditor.rb.bak') : (puts "no ckeditor.rb ")}
+        # inside("public") { run "FileUtils.mv index.html index.html.bak" }
+          inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( puts "no seeds.rb")}
+        inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( puts "no app/views/layout/ application.html.erb")}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( puts "no app/controller/application_controller.rb")}
+        inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( puts "no app/helpers/application_helper.rb")}
+        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (FileUtils.mv 'javascripts.js', 'javascripts.js.bak') : ( puts "no javascript.js")}
+        inside("app/assets/stylesheets") {(File.file? "javascripts.css") ? (FileUtils.mv 'javascripts.css', 'javascripts.css.bak') : ( puts "no javascript.css")}
+        inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (puts "no omniauth.rb")}
+        # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (puts "no mongoid.rb")}
+        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (FileUtils.mv 'ckeditor.rb ckeditor.rb.bak') : (puts "no ckeditor.rb ")}
         directory "app"
         directory "spec"
+        directory "db"
+        directory "config"
+        directory "dot"
       end
       # routes created each line as reversed order button up in routes
       def setup_routes
@@ -92,9 +96,9 @@ module Jinda
 	  end
 
       def setup_env
-        copy_file "README.md", "README.md.bak"
+        FileUtils.mv "README.md", "README.md.bak"
         create_file 'README.md', ''
-        copy_file 'install.sh', 'install.sh'
+        # FileUtils.mv 'install.sh', 'install.sh'
         inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
           "\nrequire 'mongoid/railtie'\n"
           "\nrequire 'rexml/document'\n"
@@ -172,7 +176,7 @@ Mongoid::Config.belongs_to_required_by_default = false
         end
       end
       def gen_user
-        # copy_file "seeds.rb","db/seeds.rb"
+        # FileUtils.cp "db/seeds.rb","db/seeds.rb"
       end
 
 
