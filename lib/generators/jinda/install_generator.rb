@@ -55,20 +55,37 @@ module Jinda
 
       def setup_app
         # inside("public") { run "FileUtils.mv index.html index.html.bak" }
-          inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( puts "no seeds.rb")}
-        inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( puts "no app/views/layout/ application.html.erb")}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( puts "no app/controller/application_controller.rb")}
-        inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( puts "no app/helpers/application_helper.rb")}
-        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (FileUtils.mv 'javascripts.js', 'javascripts.js.bak') : ( puts "no javascript.js")}
-        inside("app/assets/stylesheets") {(File.file? "javascripts.css") ? (FileUtils.mv 'javascripts.css', 'javascripts.css.bak') : ( puts "no javascript.css")}
-        inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (puts "no omniauth.rb")}
-        # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (puts "no mongoid.rb")}
-        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (FileUtils.mv 'ckeditor.rb ckeditor.rb.bak') : (puts "no ckeditor.rb ")}
+          inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( say "no seeds.rb", :green)}
+        inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( say "no app/views/layout/ application.html.erb", :blue )}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( say "no app/controller/application_controller.rb, :blue ")}
+        inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( say "no app/helpers/application_helper.rb", :blue)}
+        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (FileUtils.mv 'javascripts.js', 'javascripts.js.bak') : ( say "no javascript.js", :blue)}
+        inside("app/assets/stylesheets") {(File.file? "application.css") ? (FileUtils.mv 'application.css', 'application.css.bak') : ( say "no application.css", :blue)}
+        inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (say "no omniauth.rb", :blue)}
+        # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (say "no mongoid.rb")}
+        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (FileUtils.mv 'ckeditor.rb ckeditor.rb.bak') : (say "no ckeditor.rb ")}
         directory "app"
         directory "spec"
         directory "db"
         directory "config"
         directory "dot"
+        # 
+        # CHECK IF EXISTING CODE THEN REQUIRED MANUAL MIGRATION
+        # If no javascripts.js or css (New application), then can use javascript.js or css from org files.
+        inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
+        inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
+        inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda-org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/application_controller.rb', 'application_controller.rb')}
+        inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda-org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/admins_controller.rb', 'admins_controller.rb')}
+        inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda-org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/articles_controller.rb', 'articles_controller.rb')}
+        inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "Please merge existing jinda-org/comments_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/comments_controller.rb', 'comments_controller.rb')}
+        inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "Please merge existing jinda-org/identities_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/identities_controller.rb', 'identities_controller.rb')}
+        inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda-org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/jinda_controller.rb', 'jinda_controller.rb')}
+        inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "Please merge existing jinda-org/password_resets_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/password_resets_controller.rb', 'password_resets_controller.rb')}
+        inside("app/controllers") {(File.file? "password_resets.rb") ? ( say "Please merge existing jinda-org/password_resets.rb after this installation", :red) : (FileUtils.mv 'jinda-org/password_resets.rb', 'password_resets.rb')}
+        inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "Please merge existing jinda-org/sessions_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/sessions_controller.rb', 'sessions_controller.rb')}
+        inside("app/controllers") {(File.file? "users_controller.rb") ? ( say "Please merge existing jinda-org/users_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/users_controller.rb', 'users_controller.rb')}
+        inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "Please merge existing jinda-org/sitemap_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/sitemap_controller.rb', 'sitemap_controller.rb')}
       end
       # routes created each line as reversed order button up in routes
       def setup_routes
@@ -99,10 +116,11 @@ module Jinda
         FileUtils.mv "README.md", "README.md.bak"
         create_file 'README.md', ''
         # FileUtils.mv 'install.sh', 'install.sh'
-        inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
-          "\nrequire 'mongoid/railtie'\n"
-          "\nrequire 'rexml/document'\n"
-        end
+        # inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
+        # inject_into_file 'config/application.rb', :after => 'require "rails"' do
+        #   "\nrequire 'rexml/document'\n"+
+        #   "\nrequire 'mongoid/railtie'\n"
+        # end
         application do
 %q{
   # Jinda default
@@ -114,19 +132,19 @@ module Jinda
   end
 
   # config time zone
-  config.time_zone = "Central Time (US & Canada)"
+  # config.time_zone = "Central Time (US & Canada)"
 
   # gmail config
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => 'user@gmail.com',
-    :password             => 'secret',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :user_name            => 'user@gmail.com',
+  #   :password             => 'secret',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true  }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
 }
         end
         initializer "jinda.rb" do
@@ -137,7 +155,7 @@ DEFAULT_HEADER = 'Jinda'
 DEFAULT_DESCRIPTION = 'Rails Application Generator'
 DEFAULT_KEYWORDS = %w[Jinda Rails ruby Generator]
 GMAP = false
-ADSENSE = true
+# ADSENSE = true
 NEXT = "Next >"
 # comment IMAGE_LOCATION to use cloudinary (specify params in config/cloudinary.yml)
 IMAGE_LOCATION = "upload"
@@ -175,22 +193,18 @@ Mongoid::Config.belongs_to_required_by_default = false
 "\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
         end
       end
-      def gen_user
-        # FileUtils.cp "db/seeds.rb","db/seeds.rb"
-      end
-
 
       def finish
-        puts "\n"
-        puts "Jinda gem ready for next configuration install.\n"
-        puts "    (or short cut with sh install.sh)\n" 
-        puts "Normally you will use  the following command:\n"
-        puts "----------------------------------------\n"
-        puts "bundle install\n"
-        puts "rails generate jinda:config\n"
-        puts "rake jinda:seed\n"
-        puts 
-        puts "----------------------------------------\n"
+        say "\n"
+        say "Jinda gem ready for next configuration install.\n"
+        say "    (or short cut with sh install.sh)\n" 
+        say "Normally you will use  the following command:\n"
+        say "----------------------------------------\n"
+        say "bundle install\n"
+        say "rails generate jinda:config\n"
+        say "rake jinda:seed\n"
+        say 
+        say "----------------------------------------\n"
       end
     end
   end
