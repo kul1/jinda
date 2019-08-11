@@ -99,6 +99,7 @@ module Jinda
 		route "get '/articles/my/destroy' => 'articles#destroy'"
         route "get '/articles/my' => 'articles/my'"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
+        route "get '/auth/failure' => 'sessions#destroy'"
         route "get '/auth/:provider/callback' => 'sessions#create'"
         route "post '/auth/:provider/callback' => 'sessions#create'"        
 		route "\# end jinda method routes"

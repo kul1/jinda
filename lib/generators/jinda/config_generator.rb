@@ -30,9 +30,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :fields => [:code, :email],
     :on_failed_registration=> lambda { |env|
       IdentitiesController.action(:new).call(env)
-  }
+    }
   provider :facebook, ENV['FACEBOOK_API'], ENV['FACEBOOK_KEY']
 	provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+
+  OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+
 end
 }
         end
