@@ -15,7 +15,7 @@ Rails Application Generator using Freemind
 
 These versions works for sure but others may do.
 
-* Ruby 2.5.0
+* Ruby 2.5.5
 * Rails 5.2.3
 * MongoDB 6
 * Freemind 1.0.1
@@ -32,11 +32,11 @@ These versions works for sure but others may do.
 Supposed we want to create ecommerce web site, first create a Rails
 app without ActiveRecord
 
-    $ rails new YOURAPP -BOT
+    $ rails new YOURAPP -BOTJ
 
 ## Add jinda to your Gemfile:
 
-    gem 'jinda', '~> 0.3.5'
+    gem 'jinda', '~> 0.3.9'
 
 For Development (most updated)
 
