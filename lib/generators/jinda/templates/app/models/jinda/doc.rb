@@ -3,13 +3,20 @@ class Jinda::Doc
   include Mongoid::Document
   # jinda begin
   include Mongoid::Timestamps
-  field :issue_on, :type => Date
-  field :process_at, :type => Date
-  field :summary, :type => String
+  field :a, :type => String
+  field :b, :type => String
+  field :c, :type => String
+  field :d, :type => String
+  field :x, :type => String
+  field :y, :type => String
+  field :z, :type => String
+  field :s, :type => String
+  field :t, :type => String
+  field :u, :type => String
+  field :w, :type => String
+  field :yes, :type => Boolean
   field :dscan, :type => String
-  field :hotel, :type => String
-  field :done, :type => Boolean
-  field :rnum, :type => String
-  field :confidential, :type => String
+  field :process_at, :type => Date
+  field :issue_on, :type => Date
   # jinda end
 end
