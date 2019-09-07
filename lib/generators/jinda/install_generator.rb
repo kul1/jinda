@@ -12,13 +12,12 @@ module Jinda
         gem 'normalize-rails'
         gem 'font-awesome-sass', '~> 4.7.0'
         gem 'ckeditor', github: 'galetahub/ckeditor'
-
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'
         gem 'jquery-turbolinks'
-        gem 'mongo', '~> 2.2'
+        gem 'mongo', '~> 2.5.1'
         gem 'bson', '~> 4.0'
-        gem 'mongoid', '6.1.0'
+        gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git', branch: 'master'
         gem 'nokogiri' # use for jinda/doc
         gem 'haml', git: 'https://github.com/haml/haml'
         gem 'haml-rails'
@@ -29,6 +28,7 @@ module Jinda
         gem 'omniauth-identity'
         gem 'omniauth-facebook'
 	    gem 'omniauth-google-oauth2'
+        gem 'omniauth-rails_csrf_protection'
         gem 'dotenv-rails'
         gem 'cloudinary'
         gem 'kaminari'
@@ -75,17 +75,17 @@ module Jinda
         inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
         inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
         inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda-org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/application_controller.rb', 'application_controller.rb')}
-        inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda-org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/admins_controller.rb', 'admins_controller.rb')}
-        inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda-org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/articles_controller.rb', 'articles_controller.rb')}
-        inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "Please merge existing jinda-org/comments_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/comments_controller.rb', 'comments_controller.rb')}
-        inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "Please merge existing jinda-org/identities_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/identities_controller.rb', 'identities_controller.rb')}
-        inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda-org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/jinda_controller.rb', 'jinda_controller.rb')}
-        inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "Please merge existing jinda-org/password_resets_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/password_resets_controller.rb', 'password_resets_controller.rb')}
-        inside("app/controllers") {(File.file? "password_resets.rb") ? ( say "Please merge existing jinda-org/password_resets.rb after this installation", :red) : (FileUtils.mv 'jinda-org/password_resets.rb', 'password_resets.rb')}
-        inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "Please merge existing jinda-org/sessions_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/sessions_controller.rb', 'sessions_controller.rb')}
-        inside("app/controllers") {(File.file? "users_controller.rb") ? ( say "Please merge existing jinda-org/users_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/users_controller.rb', 'users_controller.rb')}
-        inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "Please merge existing jinda-org/sitemap_controller.rb after this installation", :red) : (FileUtils.mv 'jinda-org/sitemap_controller.rb', 'sitemap_controller.rb')}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda_org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/application_controller.rb', 'application_controller.rb')}
+        inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda_org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/admins_controller.rb', 'admins_controller.rb')}
+        inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda_org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/articles_controller.rb', 'articles_controller.rb')}
+        inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "Please merge existing jinda_org/comments_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/comments_controller.rb', 'comments_controller.rb')}
+        inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "Please merge existing jinda_org/identities_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/identities_controller.rb', 'identities_controller.rb')}
+        inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda_org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/jinda_controller.rb', 'jinda_controller.rb')}
+        inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "Please merge existing jinda_org/password_resets_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/password_resets_controller.rb', 'password_resets_controller.rb')}
+        inside("app/controllers") {(File.file? "password_resets.rb") ? ( say "Please merge existing jinda_org/password_resets.rb after this installation", :red) : (FileUtils.mv 'jinda_org/password_resets.rb', 'password_resets.rb')}
+        inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "Please merge existing jinda_org/sessions_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sessions_controller.rb', 'sessions_controller.rb')}
+        inside("app/controllers") {(File.file? "users_controller.rb") ? ( say "Please merge existing jinda_org/users_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/users_controller.rb', 'users_controller.rb')}
+        inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "Please merge existing jinda_org/sitemap_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sitemap_controller.rb', 'sitemap_controller.rb')}
       end
       # routes created each line as reversed order button up in routes
       def setup_routes

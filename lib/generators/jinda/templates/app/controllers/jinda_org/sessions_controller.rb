@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
     @title= 'Sign In'
   end
 
+  def failure
+    redirect_to login_path, alert: "Authentication failed, please try again."
+  end
+
   # to refresh the page, must know BEFOREHAND that the action needs refresh
   # then use attribute 'data-ajax'=>'false'
   # see app/views/sessions/new.html.erb for sample
