@@ -1,3 +1,9 @@
+
+## v0.4.0
+* Compatible with ruby-2.6.3@rails-6.0.0
+* Fixed login-fail broke
+* Fixed Jinda:config
+
 ## v0.3.5
 * Fixed missing font in asset pipe line
 
