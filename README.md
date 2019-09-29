@@ -1,8 +1,7 @@
 # Jinda
 Rails Application Generator using Freemind
-
 * [jinda](https://github.com/kul1/jinda)
-  - ![jinda-screen](https://user-images.githubusercontent.com/3953832/41832753-0143339a-7813-11e8-9ef9-c1601443c604.png)
+  -![Screen Shot 2019-09-07 at 1 00 03 PM](https://user-images.githubusercontent.com/3953832/64478408-f5feb500-d175-11e9-9d07-8b41f3c47924.png)
 
 ## Additional Extension themes also available at 
 * [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
@@ -28,6 +27,10 @@ These versions works for sure but others may do.
 * authentication use omniauth-identity
 
 ## Sample Application
+
+### Sample Jinda in Docker
+
+* https://github.com/kul1/b-255523-jd
 
 Supposed we want to create ecommerce web site, first create a Rails
 app without ActiveRecord
