@@ -27,7 +27,8 @@ These versions works for sure but others may do.
 * authentication use omniauth-identity
 
 ## Sample Application
-
+### Screen shot install Jinda
+* https://www.youtube.com/watch?v=XUXv7Yrskjk&feature=youtu.be
 ### Sample Jinda in Docker
 
 * https://github.com/kul1/b-255523-jd
