@@ -17,10 +17,10 @@ module Jinda
         gem 'jquery-turbolinks'
         gem 'mongo', '~> 2.7.0'
         gem 'bson', '~> 4.0'
-        gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git', branch: 'master'
+        gem 'mongoid', '~> 6.0'
         gem 'nokogiri' # use for jinda/doc
-        gem 'haml', git: 'https://github.com/haml/haml'
-        gem 'haml-rails'
+        gem 'haml', '~> 5.1', '>= 5.1.2'
+        gem 'haml-rails', '~> 1.0'
         gem 'mail'
         gem 'prawn'
         gem 'redcarpet'
