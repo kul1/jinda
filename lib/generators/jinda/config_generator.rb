@@ -11,7 +11,6 @@ module Jinda
                 # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
                 (File.file? ".env") ? (FileUtils.mv ".env", ".env-bak") : (puts "backup .env")
             end
-
             desc "gen_image_store"
             def gen_image_store
                 # FileUtils.cp "cloudinary.yml","config/cloudinary.yml"

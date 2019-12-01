@@ -1,7 +1,10 @@
 
+## v0.4.3
+* Fixed asked overwrite manifest.js
+
 ## v0.4.2
 * Fixed mongoid version to support Rails 6
-*
+
 ## v0.4.1
 * Fixed to work with ruby-2.6.3@rails-6.0.1
 * Required manifest work javascript in asset pipeline instead of web pack
