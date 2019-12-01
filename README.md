@@ -16,7 +16,7 @@ Rails Application Generator using Freemind
 These versions works for sure but others may do.
 
 * Ruby 2.6.3
-* Rails 6.0.0
+* Rails 6.0.1
 * MongoDB 6
 * Freemind 1.0.1
 

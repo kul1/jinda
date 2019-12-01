@@ -15,7 +15,7 @@ module Jinda
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'
         gem 'jquery-turbolinks'
-        gem 'mongo', '~> 2.5.1'
+        gem 'mongo', '~> 2.7.0'
         gem 'bson', '~> 4.0'
         gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git', branch: 'master'
         gem 'nokogiri' # use for jinda/doc
@@ -25,9 +25,10 @@ module Jinda
         gem 'prawn'
         gem 'redcarpet'
         gem 'bcrypt'
-        gem 'omniauth-identity'
-        gem 'omniauth-facebook'
-	    gem 'omniauth-google-oauth2'
+        gem 'omniauth', '1.8.1'
+        gem 'omniauth-identity', '1.1.1'
+        gem 'omniauth-facebook', '5.0.0'
+        gem 'omniauth-google-oauth2', '0.5.3'
         gem 'omniauth-rails_csrf_protection'
         gem 'dotenv-rails'
         gem 'cloudinary'
@@ -72,9 +73,9 @@ module Jinda
         # 
         # CHECK IF EXISTING CODE THEN REQUIRED MANUAL MIGRATION
         # If no javascripts.js or css (New application), then can use javascript.js or css from org files.
-        inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
-        inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
-        inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
+        # inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
+        # inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
+        # inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
         inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda_org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/application_controller.rb', 'application_controller.rb')}
         inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda_org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/admins_controller.rb', 'admins_controller.rb')}
         inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda_org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/articles_controller.rb', 'articles_controller.rb')}

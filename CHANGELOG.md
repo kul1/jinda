@@ -1,4 +1,12 @@
 
+## v0.4.1
+* Fixed to work with ruby-2.6.3@rails-6.0.1
+* Required manifest work javascript in asset pipeline instead of web pack
+* removed disable_enter_key
+* dispable check for javascript.js and css
+* Known bugs: omniauth for facebook/google
+* Fixed gem version: omniauth
+
 ## v0.4.0
 * Compatible with ruby-2.6.3@rails-6.0.0
 * Fixed login-fail broke
