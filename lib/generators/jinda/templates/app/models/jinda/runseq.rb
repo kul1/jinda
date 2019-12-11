@@ -2,7 +2,7 @@
 class Jinda::Runseq
   include Mongoid::Document
   include Mongoid::Timestamps
-  belongs_to :user, :class_name => "Jinda::User"
+  belongs_to :user, :class_name => "User"
   belongs_to :xmain, :class_name => "Jinda::Xmain"
 
   field :action, :type => String

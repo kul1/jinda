@@ -9,7 +9,7 @@
     - @notice= notice
     - current_notice = @notice.id
     - #current_notice_user = @notice.user
-    - notice_user = (Jinda::User.find @notice.user ? notice.user : 0)
+    - notice_user = (User.find @notice.user ? notice.user : 0)
     - (notice_user_name = notice_user.code) if notice_user
 
     %tr

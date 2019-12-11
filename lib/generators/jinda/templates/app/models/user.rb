@@ -1,4 +1,4 @@
-class Jinda::User
+class User
   include Mongoid::Document
 	# https://docs.mongodb.com/mongoid/master/tutorials/mongoid-indexes/
   index({ code: 1 }, { unique: true, name: "code_index" })

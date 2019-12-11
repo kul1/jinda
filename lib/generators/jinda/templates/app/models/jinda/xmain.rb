@@ -10,7 +10,7 @@ class Jinda::Xmain
   field :name, :type => String
   field :ip, :type => String
   field :status, :type => String
-  belongs_to :user, :class_name => "Jinda::User"
+  belongs_to :user, :class_name => "User"
   field :xvars, :type => Hash
   field :current_runseq, :type => String
   # Jinda end

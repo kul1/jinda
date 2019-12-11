@@ -4,5 +4,5 @@ class Jinda::Role
   include Mongoid::Timestamps
   field :code, :type => String
   field :name, :type => String
-  belongs_to :user, :class_name => "Jinda::User"
+  belongs_to :user, :class_name => "User"
 end

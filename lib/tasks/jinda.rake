@@ -19,7 +19,7 @@ namespace :jinda do
     unless Identity.where(code:"admin").exists?
       identity= Identity.create :code => "admin", :email => "admin@test.com", :password => "secret",
 				:password_confirmation => "secret", :image => "https://user-images.githubusercontent.com/3953832/42472827-50ed8cbc-8388-11e8-8982-fa523c25288f.png"
-      Jinda::User.create :provider => "identity", :uid => identity.id.to_s, :code => identity.code,
+      User.create :provider => "identity", :uid => identity.id.to_s, :code => identity.code,
 				:email => identity.email, :role => "M,A,D", :auth_token => "71JxMH5fxi23zinBoq1uKA", :image => identity.image
     end
   end
