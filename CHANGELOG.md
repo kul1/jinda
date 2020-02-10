@@ -1,6 +1,9 @@
 
 ## v0.4.4
 * Fixed css for step number
+* Known bug Social login not work with new devise
+* Move Jinda::User back to User
+* Remove summary from Template view
 *
 ## v0.4.3
 * Fixed asked overwrite manifest.js

@@ -10,7 +10,7 @@ module Jinda
         gem 'maruku', '~> 0.7.3'
         gem 'rouge'
         gem 'normalize-rails'
-        gem 'font-awesome-sass', '~> 4.7.0'
+        gem 'font-awesome-rails'
         gem 'ckeditor', github: 'galetahub/ckeditor'
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'

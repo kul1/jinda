@@ -1,4 +1,26 @@
 # -*- encoding : utf-8 -*-
+######################################################  @runseq  ####################################################
+#  @runseq => #<Jinda::Runseq _id: 5df31912a54d758417a7afc9, 
+#   created_at: 2019-12-13 04:52:34 UTC, 
+#   updated_at: 2019-12-13 04:52:43 UTC, 
+#   user_id: nil, 
+#   xmain_id: BSON::ObjectId('5df31912a54d758417a7afc7'), 
+#   action: "do", 
+#   status: "R", 
+#   code: "create", 
+#   name: "Create Article", 
+#   role: "", 
+#   rule: "true", 
+#   rstep: 2, 
+#   form_step: 1, 
+#   start: 2019-12-13 04:52:43 UTC, 
+#   stop: nil, 
+#   end: true, 
+#   xml: "<node CREATED='1493419491125' ID='ID_1687683396' MODIFIED='1493483244848' TEXT='create: Create Article'><icon BUILTIN='bookmark'/></node>", 
+#   ip: nil>
+
+######################################################################################################################
+
 class JindaController < ApplicationController
   def index
   end

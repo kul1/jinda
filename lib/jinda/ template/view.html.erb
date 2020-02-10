@@ -14,8 +14,6 @@
   </div-->
   <%= f.label :issue_on, "Dated" %>
   <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
-  <%= f.label :y, "Summary" %>
-  <%= f.text_area :summary, :cols=>50, :rows=>6 %>
   <%= f.label :dscan, "Attached document" %>
   <%= f.file_field :dscan %>
 <% end %>
