@@ -1,4 +1,9 @@
 
+## v0.4.5
+* Add Notes Module
+* Add API for Notes
+* Add mail for Notes
+
 ## v0.4.4
 * Fixed css for step number
 * Known bug Social login not work with new devise
