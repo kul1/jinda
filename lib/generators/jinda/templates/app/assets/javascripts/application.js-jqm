@@ -22,5 +22,7 @@
 //= require turbolinks
 //= require jqm/disable_enter_key.js
 //= require ckeditor/init
+//= require disable_enter_key.js
+//= require notes.js
 
 

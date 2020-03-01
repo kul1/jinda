@@ -19,6 +19,7 @@ module Jinda
         gem 'mongo', '~> 2.7.0'
         gem 'bson', '~> 4.0'
         gem 'mongoid', '>= 6.0'
+        gem 'turbolinks_render'
         gem 'nokogiri' # use for jinda/doc
         gem 'haml', '~> 5.1', '>= 5.1.2'
         gem 'haml-rails', '~> 1.0'
@@ -43,14 +44,14 @@ module Jinda
           gem 'binding_of_caller'
           gem 'pry-byebug'
           gem 'factory_bot_rails'
-		  gem 'database_cleaner'
+		      gem 'database_cleaner'
           gem 'guard'
           gem 'guard-rspec'
           gem 'guard-minitest'
           gem 'capybara'
-		  gem 'selenium-webdriver'
+		      gem 'selenium-webdriver'
           gem 'rb-fsevent'
-		  gem 'valid_attribute'
+		      gem 'valid_attribute'
           gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
         end
       end
@@ -61,7 +62,7 @@ module Jinda
         inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( say "no app/views/layout/ application.html.erb", :blue )}
         inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( say "no app/controller/application_controller.rb, :blue ")}
         inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( say "no app/helpers/application_helper.rb", :blue)}
-        inside("app/assets/javascripts") {(File.file? "javascripts.js") ? (FileUtils.mv 'javascripts.js', 'javascripts.js.bak') : ( say "no javascript.js", :blue)}
+        inside("app/assets/javascripts") {(File.file? 'application.js') ? (FileUtils.mv 'application.js', 'application.js.bak') : ( say "no application.js", :blue)}
         inside("app/assets/stylesheets") {(File.file? "application.css") ? (FileUtils.mv 'application.css', 'application.css.bak') : ( say "no application.css", :blue)}
         inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (say "no omniauth.rb", :blue)}
         # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (say "no mongoid.rb")}
@@ -89,29 +90,41 @@ module Jinda
         inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "Please merge existing jinda_org/sessions_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sessions_controller.rb', 'sessions_controller.rb')}
         inside("app/controllers") {(File.file? "users_controller.rb") ? ( say "Please merge existing jinda_org/users_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/users_controller.rb', 'users_controller.rb')}
         inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "Please merge existing jinda_org/sitemap_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sitemap_controller.rb', 'sitemap_controller.rb')}
+        inside("app/controllers") {(File.file? "notes_controller.rb") ? ( say "Please merge existing jinda_org/notes_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/notes_controller.rb', 'notes_controller.rb')}
       end
       # routes created each line as reversed order button up in routes
       def setup_routes
+        route "end"
+        route "  end"
+        route "    namespace :v1 do resources :notes, :only => [:index] end"
+        route "  namespace :api do"
+        route "post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'" 
+        route "get '/api/v1/notes/my' => 'api/v1/notes#my'"
+        route "\# api"
         route "root :to => 'jinda#index'"        
         route "resources :jinda, :only => [:index, :new]"
         route "resources :password_resets"
         route "resources :sessions"
         route "resources :identities"
         route "resources :users"
+        route "resources :notes"
         route "resources :articles"
-		route "get '/articles/my/destroy' => 'articles#destroy'"
+        route "get '/notes/destroy/:id' => 'notes#destroy'"
+        route "get '/notes/my/destroy/:id' => 'notes#destroy'"
+        route "get '/notes/my' => 'notes/my'"
+		    route "get '/articles/my/destroy' => 'articles#destroy'"
         route "get '/articles/my' => 'articles/my'"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
         route "get '/auth/failure' => 'sessions#destroy'"
         route "get '/auth/:provider/callback' => 'sessions#create'"
         route "post '/auth/:provider/callback' => 'sessions#create'"        
-		route "\# end jinda method routes"
+		    route "\# end jinda method routes"
         route "mount Ckeditor::Engine => '/ckeditor'"
         route "post '/jinda/end_form' => 'jinda#end_form'"
         route "post '/jinda/pending' => 'jinda#index'"
         route "post '/jinda/init' => 'jinda#init'"
         route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_do','run_form','end_form','error_logs', 'notice_logs', 'cancel']"
+        route "jinda_methods += ['init','run','run_mail','document','run_do','run_form','end_form','error_logs', 'notice_logs', 'cancel']"
         route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
         route "\# start jiinda method routes"
 	  end
@@ -157,7 +170,7 @@ MM = "#{Rails.root}/app/jinda/index.mm"
 DEFAULT_TITLE = 'Jinda'
 DEFAULT_HEADER = 'Jinda'
 DEFAULT_DESCRIPTION = 'Rails Application Generator'
-DEFAULT_KEYWORDS = %w[Jinda Rails ruby Generator]
+DEFAULT_KEYWORDS = %w[Jinda Rails ruby Generator, Prateep Kul]
 GMAP = false
 # ADSENSE = true
 NEXT = "Next >"
