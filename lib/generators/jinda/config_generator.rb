@@ -43,18 +43,6 @@ module Jinda
                 end
             end
 
-            # gem 'ckeditor', github: 'galetahub/ckeditor'      
-            # rails generate ckeditor:install --orm=mongoid --backend=paperclip
-            desc "Set up setup_ckeditor config"
-            def setup_ckeditor
-                initializer "ckeditor.rb" do
-                  %q{# gem 'ckeditor', github: 'galetahub/ckeditor'      
-                    Ckeditor.setup do |config|
-                      require 'ckeditor/orm/mongoid'
-                    end  
-                  }  
-                end            
-            end
 
             desc "Set up mongoid config"
             def setup_mongoid
@@ -79,7 +67,6 @@ module Jinda
 
             def finish
                 puts "      configured omniauth.\n"
-                puts "      configured setup_ckeditor.\n"
                 puts "      configured Mongoid.\n"
                 puts "\n"
                 puts "      To set user/password as admin/secret run:\n"

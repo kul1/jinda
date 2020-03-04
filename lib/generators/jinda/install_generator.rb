@@ -12,31 +12,32 @@ module Jinda
         gem 'normalize-rails'
         gem 'font-awesome-rails'
         gem 'font-awesome-sass', '~> 5.12.0'
-        gem 'ckeditor', github: 'galetahub/ckeditor'
         gem 'mongoid-paperclip', require: 'mongoid_paperclip'
         gem 'meta-tags'
-        gem 'jquery-turbolinks'
-        gem 'mongo', '~> 2.7.0'
-        gem 'bson', '~> 4.0'
-        gem 'mongoid', '>= 6.0'
+        gem 'jquery-turbolinks', '2.1.0'
+        gem 'mongo', '2.11.3'
+        gem 'bson', '4.4.2'
+        gem 'mongoid', '7.1.0.rc0'
         gem 'turbolinks_render'
-        gem 'nokogiri' # use for jinda/doc
+        gem 'nokogiri', '1.10.9'
         gem 'haml', '~> 5.1', '>= 5.1.2'
         gem 'haml-rails', '~> 1.0'
         gem 'mail'
         gem 'prawn'
         gem 'redcarpet'
         gem 'bcrypt'
-        gem 'omniauth', '~> 1.8.1'
+        gem 'oauth2', '1.4.4'
+        gem 'omniauth', '1.9.1'
+        gem 'omniauth-oauth2', '1.6.0'
         gem 'omniauth-identity', '~> 1.1.1'
-        gem 'omniauth-facebook', '~> 5.0.0'
-        gem 'omniauth-google-oauth2', '~> 0.5.3'
+        gem 'omniauth-facebook', '6.0.0'
+        gem 'omniauth-google-oauth2', '0.8.0'
         gem 'omniauth-rails_csrf_protection'
-        gem 'dotenv-rails'
-        gem 'cloudinary'
-        gem 'kaminari'
-        gem 'kaminari-mongoid'
-        gem 'jquery-rails'
+        gem 'dotenv-rails', '2.7.5'
+        gem 'cloudinary', '1.13.2'
+        gem 'kaminari', '1.2.0'
+        gem 'kaminari-mongoid', '1.0.1'
+        gem 'jquery-rails', '4.3.5'
         gem_group :development, :test do
           gem 'rspec'
           gem 'rspec-rails'
@@ -66,7 +67,6 @@ module Jinda
         inside("app/assets/stylesheets") {(File.file? "application.css") ? (FileUtils.mv 'application.css', 'application.css.bak') : ( say "no application.css", :blue)}
         inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (say "no omniauth.rb", :blue)}
         # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (say "no mongoid.rb")}
-        # inside("config/initializers") {(File.file? "ckeditor.rb") ? (FileUtils.mv 'ckeditor.rb ckeditor.rb.bak') : (say "no ckeditor.rb ")}
         inside("app/assets/config") {(File.file? "manifest.js") ? (FileUtils.mv "manifest.js", "manifest.js-rails") : (puts "backup to manifest.js-rails")}
         directory "app"
         directory "spec"
@@ -119,7 +119,6 @@ module Jinda
         route "get '/auth/:provider/callback' => 'sessions#create'"
         route "post '/auth/:provider/callback' => 'sessions#create'"        
 		    route "\# end jinda method routes"
-        route "mount Ckeditor::Engine => '/ckeditor'"
         route "post '/jinda/end_form' => 'jinda#end_form'"
         route "post '/jinda/pending' => 'jinda#index'"
         route "post '/jinda/init' => 'jinda#init'"
