@@ -30,7 +30,6 @@ module Jinda
         gem 'omniauth-identity', '~> 1.1.1'
         gem 'omniauth-facebook', '6.0.0'
         gem 'omniauth-google-oauth2', '0.8.0'
-        gem 'omniauth-rails_csrf_protection'
         gem 'dotenv-rails'
         gem 'cloudinary'
         gem 'kaminari', '1.2.0'
@@ -92,41 +91,21 @@ module Jinda
         inside("app/controllers") {(File.file? "notes_controller.rb") ? ( say "Please merge existing jinda_org/notes_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/notes_controller.rb', 'notes_controller.rb')}
       end
       # routes created each line as reversed order button up in routes
-      def setup_routes
-        route "end"
-        route "  end"
-        route "    namespace :v1 do resources :notes, :only => [:index] end"
-        route "  namespace :api do"
-        route "post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'" 
-        route "get '/api/v1/notes/my' => 'api/v1/notes#my'"
-        route "\# api"
-        route "root :to => 'jinda#index'"        
-        route "resources :jinda, :only => [:index, :new]"
-        route "resources :password_resets"
-        route "resources :sessions"
-        route "resources :identities"
-        route "resources :users"
-        route "resources :notes"
-        route "resources :articles"
-        route "get '/notes/destroy/:id' => 'notes#destroy'"
-        route "get '/notes/my/destroy/:id' => 'notes#destroy'"
-        route "get '/notes/my' => 'notes/my'"
-		    route "get '/articles/my/destroy' => 'articles#destroy'"
-        route "get '/articles/my' => 'articles/my'"
-        route "get '/logout' => 'sessions#destroy', :as => 'logout'"
-        route "get '/auth/failure' => 'sessions#destroy'"
-        route "get '/auth/:provider/callback' => 'sessions#create'"
-        route "post '/auth/:provider/callback' => 'sessions#create'"        
-		    route "\# end jinda method routes"
-        route "mount Ckeditor::Engine => '/ckeditor'"
-        route "post '/jinda/end_form' => 'jinda#end_form'"
-        route "post '/jinda/pending' => 'jinda#index'"
-        route "post '/jinda/init' => 'jinda#init'"
-        route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_mail','document','run_do','run_form','end_form','error_logs', 'notice_logs', 'cancel']"
-        route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
-        route "\# start jiinda method routes"
-	  end
+
+      def setup_routes                                                                     
+         route "root :to => 'jinda#index'"     
+         route "mount Ckeditor::Engine => '/ckeditor'"                                     
+         route "resources :users"
+         route "resources :identities"
+         route "resources :sessions"
+         route "resources :password_resets"
+         route "post '/auth/:provider/callback' => 'sessions#create'"
+         route "get '/auth/:provider/callback' => 'sessions#create'"
+         route "get '/auth/failure' => 'sessions#failure'"
+         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
+         route "get ':controller(/:action(/:id))(.:format)'"
+         route "post ':controller(/:action(/:id))(.:format)'"
+       end           
 
       def setup_env
         FileUtils.mv "README.md", "README.md.bak"
