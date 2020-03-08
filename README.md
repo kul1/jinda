@@ -1,4 +1,4 @@
-# Jinda
+# Jinda-5
 Rails Application Generator using Freemind
 * [jinda](https://github.com/kul1/jinda)
   -![Screen Shot 2019-09-07 at 1 00 03 PM](https://user-images.githubusercontent.com/3953832/64478408-f5feb500-d175-11e9-9d07-8b41f3c47924.png)
@@ -14,8 +14,8 @@ Rails Application Generator using Freemind
 
 These versions works for sure but others may do.
 
-* Ruby 2.6.3
-* Rails 6.0.1
+* Ruby 2.5.0
+* Rails 5.2.0
 * MongoDB 6
 * Freemind 1.0.1
 
@@ -40,11 +40,11 @@ app without ActiveRecord
 
 ## Add jinda to your Gemfile:
 
-    gem 'jinda', '~> 0.4.4'
+    gem 'jinda-5', '~> 0.4.5'
 
 For Development (most updated)
 
-    gem 'jinda', github:'kul1/jinda'
+    gem 'jinda', github:'kul1/jinda', branch: 'jinda-5'
 
 depend on your operating system, you may need to uncomment
 

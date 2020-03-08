@@ -4,9 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jinda/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'jinda'
+  spec.name          = 'jinda-5'
   spec.version       = Jinda::VERSION
-  spec.authors       = ['Prateep Kul', 'Korakot Leemakdej']
+  spec.authors       = ['Prateep Kul']
   spec.email         = ['1.0@kul.asia']
 
   spec.summary       = %q{Rails workflow from mind map: Freemind}
