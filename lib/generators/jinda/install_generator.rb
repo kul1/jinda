@@ -32,7 +32,6 @@ module Jinda
         gem 'omniauth-identity', '~> 1.1.1'
         gem 'omniauth-facebook', '6.0.0'
         gem 'omniauth-google-oauth2', '0.8.0'
-        gem 'omniauth-rails_csrf_protection'
         gem 'dotenv-rails', '2.7.5'
         gem 'cloudinary', '1.13.2'
         gem 'kaminari', '1.2.0'
