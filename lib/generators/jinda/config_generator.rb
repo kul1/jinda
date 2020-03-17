@@ -31,7 +31,7 @@ module Jinda
                                  IdentitiesController.action(:new).call(env)
                                }
                       provider :facebook, ENV['FACEBOOK_API'], ENV['FACEBOOK_KEY']
-                      provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+                      provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], skip_jwt: true
                     end
 
                     # https://stackoverflow.com/questions/11461084/handle-omniautherror-invalid-credentials-for-identity-login
