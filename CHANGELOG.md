@@ -1,3 +1,9 @@
+## v0.4.7
+# Add hidden mm_menu using check list with button_cancel
+
+## v0.4.6
+* Fixed Rails 6 Invalid iat
+* Add hidden menu
 
 ## v0.4.5
 * Add Notes Module
