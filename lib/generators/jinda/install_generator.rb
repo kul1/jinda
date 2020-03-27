@@ -38,6 +38,7 @@ module Jinda
         gem 'kaminari-mongoid', '1.0.1'
         gem 'jquery-rails', '4.3.5'
         gem_group :development, :test do
+          gem 'shoulda'
           gem 'rspec'
           gem 'rspec-rails'
           gem 'better_errors'

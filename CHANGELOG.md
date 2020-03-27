@@ -1,6 +1,7 @@
 ## v0.4.7
 # Add hidden mm_menu using check list with button_cancel
-
+# Known bug: redirect to it's menu ===== go to root from xvars['p']['return']
+#
 ## v0.4.6
 * Fixed Rails 6 Invalid iat
 * Add hidden menu
