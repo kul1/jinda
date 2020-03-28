@@ -27,7 +27,7 @@ RSpec.configure  do |config|
 
 
 	# Added to make factorybot work
-	FactoryBot.allow_class_lookup = false 
+	# FactoryBot.allow_class_lookup = false 
 	config.use_transactional_fixtures = false
 	config.include FactoryBot::Syntax::Methods
 	config.before do

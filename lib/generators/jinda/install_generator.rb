@@ -21,7 +21,7 @@ module Jinda
         gem 'turbolinks_render'
         gem 'nokogiri', '1.10.9'
         gem 'haml', '~> 5.1', '>= 5.1.2'
-        gem 'haml-rails', '~> 1.0'
+        gem 'haml-rails', '~> 2.0.1'
         gem 'mail'
         gem 'prawn'
         gem 'redcarpet'
