@@ -1,3 +1,6 @@
+## v0.4.9
+# Fixed dotrspec
+
 ## v0.4.8
 # Verify rspec test option in rails g jinda:rspec
 # Add test in Article/my
