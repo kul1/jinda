@@ -7,10 +7,10 @@ module Jinda
 
       desc "config rspec"
       def gen_rspec
-        generate "rspec:install"
-        empty_directory "spec/support" 
-        empty_directory "spec/model"
-        empty_directory "spec/routing"
+        # generate "rspec:install"
+        # empty_directory "spec/support" 
+        # empty_directory "spec/model"
+        # empty_directory "spec/routing"
         copy_file ".rspec", ".rspec.bak"
         run "guard init"
         copy_file ".rspec",".rspec"
