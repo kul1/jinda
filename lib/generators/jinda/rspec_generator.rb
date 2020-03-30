@@ -11,9 +11,9 @@ module Jinda
         # empty_directory "spec/support" 
         # empty_directory "spec/model"
         # empty_directory "spec/routing"
-        copy_file ".rspec", ".rspec.bak"
+        # copy_file ".rspec", ".rspec.bak"
         run "guard init"
-        copy_file ".rspec",".rspec"
+        copy_file "dotrspec",".rspec"
       end
 
       desc "Finish generate rspec:install"

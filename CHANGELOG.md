@@ -1,3 +1,7 @@
+## v0.4.8
+# Verify rspec test option in rails g jinda:rspec
+# Add test in Article/my
+
 ## v0.4.7
 # Add hidden mm_menu using check list with button_cancel
 # Known bug: redirect to it's menu ===== go to root from xvars['p']['return']
