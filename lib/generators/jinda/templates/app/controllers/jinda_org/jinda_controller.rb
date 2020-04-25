@@ -273,7 +273,13 @@ class JindaController < ApplicationController
 
 
   def end_form
-    init_vars(params[:xmain_id])
+    # Check error using xmain_id to redirect_to_root and return
+    if params[:xmain_id]
+      init_vars(params[:xmain_id])
+    else
+      ma_log "Known Bug : repeated end_form "
+      redirect_to_root and return
+    end
     eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
     # Search for uploaded file name if exist
     params.each { |k,v|

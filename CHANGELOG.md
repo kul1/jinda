@@ -1,3 +1,6 @@
+## v0.5.0
+# Add scss for all modules
+
 ## v0.4.9
 # Fixed dotrspec
 
