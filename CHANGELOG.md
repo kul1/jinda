@@ -1,5 +1,7 @@
 ## v0.5.0
 # Add scss for all modules
+# Fixed Display
+# Fixed routes for Rails 5 and under
 
 ## v0.4.9
 # Fixed dotrspec

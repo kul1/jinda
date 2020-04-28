@@ -15,8 +15,8 @@ Rails Application Generator using Freemind
 
 These versions works for sure but others may do.
 
-* Ruby 2.5.5
-* Rails 5.2.3
+* Ruby 2.7.0
+* Rails 6.0.2
 * MongoDB 6
 * Freemind 1.0.1
 
@@ -36,7 +36,7 @@ app without ActiveRecord
 
 ## Add jinda to your Gemfile:
 
-    gem 'jinda', '~> 0.3.9'
+    gem 'jinda', '~> 0.5.0'
 
 For Development (most updated)
 
