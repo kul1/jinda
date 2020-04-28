@@ -63,13 +63,22 @@ module Jinda
     def redirect_to_root
       redirect_to root_path
     end
+    # Todo refactor code
     def get_option(opt, runseq=@runseq)
+      ma_log("Todo in def get_option(opt, runseq=@runseq)")
       xml= REXML::Document.new(runseq.xml).root
       url=''
-      xml.each_element('///node') do |n|
-        text= n.attributes['TEXT']
-        url= text if text =~/^#{opt}:\s*/
+      # xml.each_element('///node') do |n|
+      xml.each_element('/node') do |n|
+        if n.attributes['TEXT']
+          text = n.attributes['TEXT']
+          puts "text = " + text
+          url= text if text =~ /^#{opt}:\s*/
+          puts "url = " + url
+          ma_log("Todo in def get_option(opt, runseq=@runseq)")
+        end
       end
+      return nil if url.blank?
       c, h= url.split(':', 2)
       opt= h ? h.strip : false
     end

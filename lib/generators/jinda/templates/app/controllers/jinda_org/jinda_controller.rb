@@ -86,8 +86,8 @@ class JindaController < ApplicationController
   end
   ####################################################################################################]
   # run if, form, mail, output etc depend on icon in freemind
-  # action from @runseq.action == do,     form,			if,     output
-  # Then will call				def run_do, run_form, run_if, run_output
+  # action from @r.action == do, form, if, output
+  # Then will call def run_do, run_form, run_if, run_output
   ####################################################################################################]
   def run
     init_vars(params[:id])
@@ -111,6 +111,9 @@ class JindaController < ApplicationController
         if service
           @title= "Transaction ID #{@xmain.xid}: #{@xmain.name} / #{@runseq.name}"
           fhelp= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.md"
+        ###############################################################################################
+        # Check if help file available for this form
+        ###############################################################################################
           @help = File.read(fhelp) if File.exists?(fhelp)
           f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
           if File.file?(f)
@@ -120,8 +123,8 @@ class JindaController < ApplicationController
           ma_log "Error: Can not find the view file for this controller"
           redirect_to_root
           end
-
         end
+        init_vars(params[:id])
       end
     else
       redirect_to_root
@@ -189,6 +192,7 @@ class JindaController < ApplicationController
   def run_output
     init_vars(params[:id])
     service= @xmain.service
+    # disp= get_option("ma_display")
     disp= get_option("ma_display")
     ma_display = (disp && !affirm(disp)) ? false : true
     if service
@@ -209,7 +213,8 @@ class JindaController < ApplicationController
       end
       @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
       @message = "Finish" if @runseq.end
-      eval "@xvars[@runseq.code] = url_for(:controller=>'Jinda', :action=>'document', :id=>@doc.id)"
+      ma_log("Todo defined?(NSG_NEXT : Next >>)")
+      eval "@xvars[@runseq.code] = url_for(:controller=>'jinda', :action=>'document', :id=>@doc.id)"
     else
       # flash[:notice]= "Error: Can not find the view file for this controller"
       ma_log "Error: Can not find the view file for this controller"
@@ -274,35 +279,36 @@ class JindaController < ApplicationController
 
   def end_form
     # Check error using xmain_id to redirect_to_root and return
-    if params[:xmain_id]
-      init_vars(params[:xmain_id])
-    else
-      ma_log "Known Bug : repeated end_form "
-      redirect_to_root and return
-    end
-    eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
-    # Search for uploaded file name if exist
-    params.each { |k,v|
-      if params[k].respond_to? :original_filename
-        get_image(k, params[k])
-        # check if params of array in form eg: edit_article	
-      elsif params[k].is_a?(ActionController::Parameters)
-        params[k].each { |k1,v1|
-          # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
-          eval "@xvars[@runseq.code][k1] = v1" 
-          next unless v1.respond_to?(:original_filename)
-          get_image1(k, k1, params[k][k1])
-        }
+      if params[:xmain_id]
+        init_vars(params[:xmain_id])
       else
-        # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
-        # Solution:
-        # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
-        # v = v.to_unsafe_h unless v.class == String
-        # v = params.require[k] unless v.class == String
-        v = v.to_s unless v.class == String
-        eval "@xvars[@runseq.code][k] = v"
+        ma_log "Known Bug : repeated end_form "
+        redirect_to_root and return
       end
-    }
+      eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
+      # Search for uploaded file name if exist
+      params.each { |k,v|
+        if params[k].respond_to? :original_filename
+          get_image(k, params[k])
+          # check if params of array in form eg: edit_article	
+        elsif params[k].is_a?(ActionController::Parameters)
+          params[k].each { |k1,v1|
+            # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
+            eval "@xvars[@runseq.code][k1] = v1" 
+            next unless v1.respond_to?(:original_filename)
+            get_image1(k, k1, params[k][k1])
+          }
+        else
+      # https://stackoverflow.com/questions/34949505/rails-5-unable-to- retrieve-hash-values-from-parameter     # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
+          # Solution:
+          # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
+          # v = v.to_unsafe_h unless v.class == String
+          # v = params.require[k] unless v.class == String
+          v = v.to_s unless v.class == String
+          # Create @xvars[@runseq.code]
+          eval "@xvars[@runseq.code][k] = v"
+        end
+      }
     end_action
   end
 
@@ -389,6 +395,7 @@ class JindaController < ApplicationController
     @intro = File.read('README.md')
     @print= "<div align='right'><img src='/assets/printer.png'/> <a href='/jinda/doc_print' target='_blank'/>Print</a></div>"
     doc= render_to_string 'doc.md', :layout => false
+
     html= Maruku.new(doc).to_html
     File.open('public/doc.html','w') {|f| f.puts html }
     respond_to do |format|
@@ -463,6 +470,9 @@ class JindaController < ApplicationController
   end
 
   private
+ ###############################################################################################
+ # Each Service at one moment will create one xmain
+ ###############################################################################################
   def create_xmain(service)
     c = name2camel(service.module.code)
     custom_controller= "#{c}Controller"
@@ -483,6 +493,9 @@ class JindaController < ApplicationController
         :referer=>request.env['HTTP_REFERER']
       }
   end
+ ###############################################################################################
+ # Each xmain  will create many run_seq as many as steps and form_steps 
+ ###############################################################################################
   def create_runseq(xmain)
     @xvars= xmain.xvars
     default_role= get_default_role
@@ -527,6 +540,7 @@ class JindaController < ApplicationController
     @xvars['total_steps']= i
     @xvars['total_form_steps']= j
   end
+
   def init_vars(xmain)
     @xmain= Jinda::Xmain.find xmain
     @xvars= @xmain.xvars

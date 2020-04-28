@@ -92,9 +92,9 @@ module Jinda
         inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "Please merge existing jinda_org/sitemap_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sitemap_controller.rb', 'sitemap_controller.rb')}
         inside("app/controllers") {(File.file? "notes_controller.rb") ? ( say "Please merge existing jinda_org/notes_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/notes_controller.rb', 'notes_controller.rb')}
       end
-      # routes created each line as reversed order button up in routes
+      # routes created each line as reversed order in routes
       def setup_routes
-        route "end"
+      #  route "end"
         route "  end"
         route "    namespace :v1 do resources :notes, :only => [:index] end"
         route "  namespace :api do"
@@ -119,14 +119,16 @@ module Jinda
         route "get '/auth/:provider/callback' => 'sessions#create'"
         route "post '/auth/:provider/callback' => 'sessions#create'"        
 		    route "\# end jinda method routes"
+        route "post '/jinda/end_output' => 'jinda#end_output'"
         route "post '/jinda/end_form' => 'jinda#end_form'"
         route "post '/jinda/pending' => 'jinda#index'"
         route "post '/jinda/init' => 'jinda#init'"
         route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['init','run','run_mail','document','run_do','run_form','end_form','error_logs', 'notice_logs', 'cancel']"
-        route "jinda_methods = ['pending','status','search','doc','logs','ajax_notice']"  
+        route "jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']"
+        route "jinda_methods += ['init', 'run', 'run_mail', 'document', 'run_do', 'run_form', 'end_form']"
+        route "jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']"  
         route "\# start jiinda method routes"
-	  end
+	    end
 
       def setup_env
         FileUtils.mv "README.md", "README.md.bak"
