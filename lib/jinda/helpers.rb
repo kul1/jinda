@@ -30,6 +30,119 @@ module Jinda
     require "rexml/document"
     include REXML
     # methods from application_controller
+
+ ###############################################################################################
+ # Each Service at one moment will create one xmain
+ ###############################################################################################
+  def create_xmain(service)
+    c = name2camel(service.module.code)
+    custom_controller= "#{c}Controller"
+    params["return"] = request.env['HTTP_REFERER']
+    Jinda::Xmain.create :service=>service,
+      :start=>Time.now,
+      :name=>service.name,
+      :ip=> get_ip,
+      :status=>'I', # init
+      :user=>current_ma_user,
+      :xvars=> {
+        :service_id=>service.id,
+        :p=>params.to_unsafe_h,
+        :id=>params[:id],
+        :user_id=>current_ma_user.try(:id),
+        :custom_controller=>custom_controller,
+        :host=>request.host,
+        :referer=>request.env['HTTP_REFERER']
+      }
+  end
+ ###############################################################################################
+ # Each xmain  will create many run_seq as many as steps and form_steps 
+ ###############################################################################################
+  def create_runseq(xmain)
+    @xvars= xmain.xvars
+    default_role= get_default_role
+    xml= xmain.service.xml
+    root = REXML::Document.new(xml).root
+    i= 0; j= 0 # i= step, j= form_step
+    root.elements.each('node') do |activity|
+      text= activity.attributes['TEXT']
+      next if ma_comment?(text)
+      next if text =~/^rule:\s*/
+      action= freemind2action(activity.elements['icon'].attributes['BUILTIN']) if activity.elements['icon']
+      return false unless action
+      i= i + 1
+      output_ma_display= false
+      if action=='output'
+        ma_display= get_option_xml("display", activity)
+        if ma_display && !affirm(ma_display)
+          output_ma_display= false
+        else
+          output_ma_display= true
+        end
+      end
+      j= j + 1 if (action=='form' || output_ma_display)
+      @xvars['referer'] = activity.attributes['TEXT'] if action=='redirect'
+      if action!= 'if' && !text.blank?
+        scode, name= text.split(':', 2)
+        name ||= scode; name.strip!
+        code= name2code(scode)
+      else
+        code= text
+        name= text
+      end
+      role= get_option_xml("role", activity) || default_role
+      rule= get_option_xml("rule", activity) || "true"
+      runseq= Jinda::Runseq.create :xmain=>xmain.id,
+        :name=> name, :action=> action,
+        :code=> code, :role=>role.upcase, :rule=> rule,
+        :rstep=> i, :form_step=> j, :status=>'I',
+        :xml=>activity.to_s
+      xmain.current_runseq= runseq.id if i==1
+    end
+    @xvars['total_steps']= i
+    @xvars['total_form_steps']= j
+  end
+
+  def init_vars(xmain)
+    @xmain= Jinda::Xmain.find xmain
+    @xvars= @xmain.xvars
+    @runseq= @xmain.runseqs.find @xmain.current_runseq
+    #    authorize?
+    @xvars['current_step']= @runseq.rstep
+    @xvars['referrer']= request.referrer
+    session[:xmain_id]= @xmain.id
+    session[:runseq_id]= @runseq.id
+    unless params[:action]=='run_call'
+      @runseq.start ||= Time.now
+      @runseq.status= 'R' # running
+      @runseq.save
+    end
+    $xmain= @xmain; $xvars= @xvars
+    $runseq_id= @runseq.id
+    $user_id= current_ma_user.try(:id)
+  end
+  def init_vars_by_runseq(runseq_id)
+    @runseq= Jinda::Runseq.find runseq_id
+    @xmain= @runseq.xmain
+    @xvars= @xmain.xvars
+    #@xvars[:current_step]= @runseq.rstep
+    @runseq.start ||= Time.now
+    @runseq.status= 'R' # running
+    @runseq.save
+  end
+ # # handle uploaded image
+    def document
+      doc = Jinda::Doc.find params[:id]
+      if doc.cloudinary
+        require 'net/http'
+        require "uri"
+        uri = URI.parse(doc.url)
+        data = Net::HTTP.get_response(uri)
+        send_data(data.body, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+      else
+        data= read_binary(doc.url)
+        send_data(data, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+      end
+    end
     def b(s)
       "<b>#{s}</b>".html_safe
     end

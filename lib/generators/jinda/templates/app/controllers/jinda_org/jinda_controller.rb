@@ -24,6 +24,8 @@
 class JindaController < ApplicationController
   def index
   end
+=begin
+
   def logs
     @xmains = Jinda::Xmain.all.desc(:created_at).page(params[:page]).per(10)
   end
@@ -428,20 +430,20 @@ class JindaController < ApplicationController
         }
     end
   end
-  # handle uploaded image
-  def document
-    doc = Jinda::Doc.find params[:id]
-    if doc.cloudinary
-      require 'net/http'
-      require "uri"
-      uri = URI.parse(doc.url)
-      data = Net::HTTP.get_response(uri)
-      send_data(data.body, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
-    else
-      data= read_binary(doc.url)
-      send_data(data, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
-    end
-  end
+ # # handle uploaded image
+ # def document
+ #   doc = Jinda::Doc.find params[:id]
+ #   if doc.cloudinary
+ #     require 'net/http'
+ #     require "uri"
+ #     uri = URI.parse(doc.url)
+ #     data = Net::HTTP.get_response(uri)
+ #     send_data(data.body, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+ #   else
+ #     data= read_binary(doc.url)
+ #     send_data(data, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+ #   end
+ # end
   def status
     @xmain= Jinda::Xmain.where(:xid=>params[:xid]).first
     @title= "Task number #{params[:xid]} #{@xmain.name}"
@@ -481,6 +483,8 @@ class JindaController < ApplicationController
   end
 
   private
+=begin
+
  ###############################################################################################
  # Each Service at one moment will create one xmain
  ###############################################################################################
@@ -579,6 +583,8 @@ class JindaController < ApplicationController
     @runseq.status= 'R' # running
     @runseq.save
   end
+=end
+
   def store_asset
     if params[:content]
       doc = GmaDoc.create! :name=> 'asset',
