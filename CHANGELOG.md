@@ -1,3 +1,8 @@
+## v0.5.1
+# Add fixed in case error from missing file in freemind
+# Change ma_display to display in option check def run_output
+# Able to list output in runseq or form
+
 ## v0.5.0
 # Add scss for all modules
 # Fixed Display

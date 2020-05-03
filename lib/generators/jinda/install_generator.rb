@@ -150,7 +150,7 @@ module Jinda
   end
 
   # config time zone
-  # config.time_zone = "Central Time (US & Canada)"
+  config.time_zone = "Central Time (US & Canada)"
 
   # gmail config
   # config.action_mailer.delivery_method = :smtp

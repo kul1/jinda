@@ -65,17 +65,13 @@ module Jinda
     end
     # Todo refactor code
     def get_option(opt, runseq=@runseq)
-      ma_log("Todo in def get_option(opt, runseq=@runseq)")
       xml= REXML::Document.new(runseq.xml).root
       url=''
-      # xml.each_element('///node') do |n|
-      xml.each_element('/node') do |n|
+      # get option from second element of node using '//node'
+      xml.each_element('//node') do |n|
         if n.attributes['TEXT']
           text = n.attributes['TEXT']
-          puts "text = " + text
           url= text if text =~ /^#{opt}:\s*/
-          puts "url = " + url
-          ma_log("Todo in def get_option(opt, runseq=@runseq)")
         end
       end
       return nil if url.blank?
@@ -642,11 +638,13 @@ module Jinda
         return true
       end
     end
+    # return nil or value of opt: if provided
     def get_option_xml(opt, xml)
       if xml
         url=''
         xml.each_element('node') do |n|
           text= n.attributes['TEXT']
+          # check if opt match from beginning of text
           url= text if text =~/^#{opt}/
         end
         return nil if url.blank?

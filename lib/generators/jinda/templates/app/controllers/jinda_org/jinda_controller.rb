@@ -170,6 +170,7 @@ class JindaController < ApplicationController
     $user_id= current_ma_user.try(:id)
     set_global
     controller = Kernel.const_get(@xvars['custom_controller']).new
+    # call controller to do the freemind task using Star symbol eg: Update
     result = controller.send(@runseq.code)
     init_vars_by_runseq($runseq_id)
     @xvars = $xvars
@@ -192,10 +193,13 @@ class JindaController < ApplicationController
   def run_output
     init_vars(params[:id])
     service= @xmain.service
-    # disp= get_option("ma_display")
-    disp= get_option("ma_display")
+    # disp= get_option("display")
+    # disp = Nil or :"??????"
+    disp= get_option("display")
     ma_display = (disp && !affirm(disp)) ? false : true
-    if service
+    # Todo check if file is available
+    # if service and file exist
+    if service && !@runseq.code.blank? 
       f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
       @ui= File.read(f)
       if Jinda::Doc.where(:runseq_id=>@runseq.id).exists?
@@ -203,27 +207,34 @@ class JindaController < ApplicationController
         @doc.update_attributes :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
           :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
           :ip=> get_ip, :service=>service, :ma_display=>ma_display,
-          :ma_secured => @xmain.service.ma_secured
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
       else
         @doc= Jinda::Doc.create :name=> @runseq.name,
           :content_type=>"output", :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
           :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
           :ip=> get_ip, :service=>service, :ma_display=>ma_display,
-          :ma_secured => @xmain.service.ma_secured
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
       end
-      @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
+      # @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
+      @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next >>"
       @message = "Finish" if @runseq.end
       ma_log("Todo defined?(NSG_NEXT : Next >>)")
       eval "@xvars[@runseq.code] = url_for(:controller=>'jinda', :action=>'document', :id=>@doc.id)"
     else
-      # flash[:notice]= "Error: Can not find the view file for this controller"
+      flash[:notice]= "Error: Can not find the view file for this controller"
       ma_log "Error: Can not find the view file for this controller"
       redirect_to_root
     end
-    #ma_display= get_option("ma_display")
+    #
+    # Check if ma_display available
+    #
+    # ma_display= get_option("ma_display")
     unless ma_display
       end_action
     end
+    # display from  @ui
   end
   def run_mail
     init_vars(params[:id])
@@ -511,7 +522,7 @@ class JindaController < ApplicationController
       i= i + 1
       output_ma_display= false
       if action=='output'
-        ma_display= get_option_xml("ma_display", activity)
+        ma_display= get_option_xml("display", activity)
         if ma_display && !affirm(ma_display)
           output_ma_display= false
         else
@@ -520,7 +531,7 @@ class JindaController < ApplicationController
       end
       j= j + 1 if (action=='form' || output_ma_display)
       @xvars['referer'] = activity.attributes['TEXT'] if action=='redirect'
-      if action!= 'if'
+      if action!= 'if' && !text.blank?
         scode, name= text.split(':', 2)
         name ||= scode; name.strip!
         code= name2code(scode)
