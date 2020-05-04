@@ -1,4 +1,5 @@
 module JindaGeneralConcern
+  extend ActiveSupport::Concern
 
   def index
   end
