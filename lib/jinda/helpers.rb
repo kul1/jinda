@@ -22,7 +22,7 @@ require 'active_support/core_ext'
 # 
 # xvar is (become) global variable of current program including user, runseq, and services
 #
-################################################################################
+########################################################################]
 
 
 module Jinda
@@ -30,6 +30,155 @@ module Jinda
     require "rexml/document"
     include REXML
     # methods from application_controller
+
+    ########################################################################]
+    # Each Service at one moment will create one xmain
+    ########################################################################]
+    def create_xmain(service)
+      c = name2camel(service.module.code)
+      custom_controller= "#{c}Controller"
+      params["return"] = request.env['HTTP_REFERER']
+      Jinda::Xmain.create :service=>service,
+        :start=>Time.now,
+        :name=>service.name,
+        :ip=> get_ip,
+        :status=>'I', # init
+        :user=>current_ma_user,
+        :xvars=> {
+          :service_id=>service.id,
+          :p=>params.to_unsafe_h,
+          :id=>params[:id],
+          :user_id=>current_ma_user.try(:id),
+          :custom_controller=>custom_controller,
+          :host=>request.host,
+          :referer=>request.env['HTTP_REFERER']
+        }
+    end
+    def clear_xmains
+      Jinda::Xmain.where(:status =>{'$in'=>['R','I']}).update_all(:status=>'X')
+      redirect_to action:"pending"
+    end
+    def ajax_notice
+      if notice=Jinda::Notice.recent(current_ma_user, request.env["REMOTE_ADDR"])
+        notice.update_attribute :unread, false
+        js = "notice('#{notice.message}');"
+      else
+        js = ""
+      end
+      render plain: "<script>#{js}</script>"
+    end
+
+    ########################################################################]
+    #  Each xmain  will create many run_seq as many as steps and form_steps 
+    ########################################################################]
+    #
+    ##############################  @runseq ################################]
+    #  @runseq => #<Jinda::Runseq _id: 5df31912a54d758417a7afc9, 
+    #   created_at: 2019-12-13 04:52:34 UTC, 
+    #   updated_at: 2019-12-13 04:52:43 UTC, 
+    #   user_id: nil, 
+    #   xmain_id: BSON::ObjectId('5df31912a54d758417a7afc7'), 
+    #   action: "do", 
+    #   status: "R", 
+    #   code: "create", 
+    #   name: "Create Article", 
+    #   role: "", 
+    #   rule: "true", 
+    #   rstep: 2, 
+    #   form_step: 1, 
+    #   start: 2019-12-13 04:52:43 UTC, 
+    #   stop: nil, 
+    #   end: true, 
+    #   xml: "<node CREATED='1493419491125' ID='ID_1687683396' MODIFIED='1493483244848' TEXT='create: Create Article'><icon BUILTIN='bookmark'/></node>", 
+    #   ip: nil>
+    ########################################################################]
+
+    def create_runseq(xmain)
+      @xvars= xmain.xvars
+      default_role= get_default_role
+      xml= xmain.service.xml
+      root = REXML::Document.new(xml).root
+      i= 0; j= 0 # i= step, j= form_step
+      root.elements.each('node') do |activity|
+        text= activity.attributes['TEXT']
+        next if ma_comment?(text)
+        next if text =~/^rule:\s*/
+        action= freemind2action(activity.elements['icon'].attributes['BUILTIN']) if activity.elements['icon']
+        return false unless action
+        i= i + 1
+        output_ma_display= false
+        if action=='output'
+          ma_display= get_option_xml("display", activity)
+          if ma_display && !affirm(ma_display)
+            output_ma_display= false
+          else
+            output_ma_display= true
+          end
+        end
+        j= j + 1 if (action=='form' || output_ma_display)
+        @xvars['referer'] = activity.attributes['TEXT'] if action=='redirect'
+        if action!= 'if' && !text.blank?
+          scode, name= text.split(':', 2)
+          name ||= scode; name.strip!
+          code= name2code(scode)
+        else
+          code= text
+          name= text
+        end
+        role= get_option_xml("role", activity) || default_role
+        rule= get_option_xml("rule", activity) || "true"
+        runseq= Jinda::Runseq.create :xmain=>xmain.id,
+          :name=> name, :action=> action,
+          :code=> code, :role=>role.upcase, :rule=> rule,
+          :rstep=> i, :form_step=> j, :status=>'I',
+          :xml=>activity.to_s
+        xmain.current_runseq= runseq.id if i==1
+      end
+      @xvars['total_steps']= i
+      @xvars['total_form_steps']= j
+    end
+
+    def init_vars(xmain)
+      @xmain= Jinda::Xmain.find xmain
+      @xvars= @xmain.xvars
+      @runseq= @xmain.runseqs.find @xmain.current_runseq
+      #    authorize?
+      @xvars['current_step']= @runseq.rstep
+      @xvars['referrer']= request.referrer
+      session[:xmain_id]= @xmain.id
+      session[:runseq_id]= @runseq.id
+      unless params[:action]=='run_call'
+        @runseq.start ||= Time.now
+        @runseq.status= 'R' # running
+        @runseq.save
+      end
+      $xmain= @xmain; $xvars= @xvars
+      $runseq_id= @runseq.id
+      $user_id= current_ma_user.try(:id)
+    end
+    def init_vars_by_runseq(runseq_id)
+      @runseq= Jinda::Runseq.find runseq_id
+      @xmain= @runseq.xmain
+      @xvars= @xmain.xvars
+      #@xvars[:current_step]= @runseq.rstep
+      @runseq.start ||= Time.now
+      @runseq.status= 'R' # running
+      @runseq.save
+    end
+
+    def document
+      doc = Jinda::Doc.find params[:id]
+      if doc.cloudinary
+        require 'net/http'
+        require "uri"
+        uri = URI.parse(doc.url)
+        data = Net::HTTP.get_response(uri)
+        send_data(data.body, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+      else
+        data= read_binary(doc.url)
+        send_data(data, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
+      end
+    end
     def b(s)
       "<b>#{s}</b>".html_safe
     end
@@ -41,9 +190,9 @@ module Jinda
     end
 
     def refresh_to(url='/', option={})
-       if option[:alert]
-         ma_log option[:alert]
-       end
+      if option[:alert]
+        ma_log option[:alert]
+      end
       # skip # 
       # Rails 5.2 not allow to use js inline call
       render inline: "<script>window.location.replace('#{url}')</script>"
@@ -156,7 +305,7 @@ module Jinda
       xml= @service.xml
       step1 = REXML::Document.new(xml).root.elements['node']
       role= get_option_xml("role", step1) || ""
-  #    rule= get_option_xml("rule", step1) || true
+      #    rule= get_option_xml("rule", step1) || true
       return true if role==""
       unless current_ma_user
         return role.blank?
@@ -168,13 +317,13 @@ module Jinda
     def ma_log(message)
       #  Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
       #    :unread=> true, :ip=> ($ip || request.env["REMOTE_ADDR"])
-       if session[:user_id]
-         Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
-           :user_id => $user.id, :unread=> true, :ip=>request.env["REMOTE_ADDR"]
-       else
-         Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
-           :unread=> true, :ip=>request.env["REMOTE_ADDR"]
-       end
+      if session[:user_id]
+        Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
+          :user_id => $user.id, :unread=> true, :ip=>request.env["REMOTE_ADDR"]
+      else
+        Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
+          :unread=> true, :ip=>request.env["REMOTE_ADDR"]
+      end
     end
 
     alias :ma_notice :ma_log
@@ -241,7 +390,7 @@ module Jinda
       # end
       #@user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
       @user ||= User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
-			return @user
+      return @user
     end
 
     def ui_action?(s)
@@ -256,7 +405,7 @@ module Jinda
     #     ""
     #   end
     # end
-    
+
     # ##########################################################################
     #
     # Create / Update Modules, Runseqs, Services from XML
@@ -286,9 +435,9 @@ module Jinda
         module_code= code.to_code
         menu_icon = m_icon(m)
 
-    # ##########################################################################
-    # First Node eg: Module Name 
-    # ##########################################################################
+        # ##########################################################################
+        # First Node eg: Module Name 
+        # ##########################################################################
         # create or update to GmaModule
         ma_module= Jinda::Module.find_or_create_by :code=>module_code
         ma_module.update_attributes :uid=>ma_module.id.to_s, :icon=>menu_icon
@@ -298,9 +447,9 @@ module Jinda
         mseq += 1
         seq= 0
 
-    # ##########################################################################
-    # Second Nodes eg: Role, Link otherwise Services
-    # ##########################################################################
+        # ##########################################################################
+        # Second Nodes eg: Role, Link otherwise Services
+        # ##########################################################################
         m.each_element('node') do |s|
           service_name= s.attributes["TEXT"].to_s
           scode, sname= service_name.split(':', 2)
@@ -323,9 +472,9 @@ module Jinda
             protected_services << ma_service.uid
           else
 
-    # ##########################################################################
-    # Second and Third Nodes eg: Role, Normal Services
-    # ##########################################################################
+            # ##########################################################################
+            # Second and Third Nodes eg: Role, Normal Services
+            # ##########################################################################
             # normal service
             step1 = s.elements['node']
             role= get_option_xml("role", step1) || ""
@@ -381,7 +530,7 @@ module Jinda
     ########################################################################
     #                            Jinda Rake Task                           #
     ########################################################################
-    
+
     def gen_views
       t = ["*** generate ui ***"]
 
@@ -394,7 +543,7 @@ module Jinda
           unless gen_view_file_exist?(dir)
             gen_view_mkdir(dir,t) 
           end
-          
+
           if s.code=='link'
             f= "app/views/#{s.module.code}/index.haml"
             $afile << f
@@ -405,7 +554,7 @@ module Jinda
             end
             next   
           end
-          
+
           dir ="app/views/#{s.module.code}/#{s.code}"
           unless gen_view_file_exist?(dir)
             gen_view_mkdir(dir,t) 
@@ -449,18 +598,18 @@ module Jinda
 
     def process_models
 
-    # app= get_app
-    # t= ["process models"]
-    #  xml map sample from index.mm 
-    #   node @CREATED=1273819432637 @ID=ID_1098419600 @MODIFIED=1334737006485 @TEXT=Jinda 
-    #    node @CREATED=1273819462973 @ID=ID_282419531 @MODIFIED=1493705904561 @POSITION=right @TEXT=services 
-    #     node @CREATED=1273819465949 @FOLDED=true @ID=ID_855471610 @MODIFIED=1493768913078 @POSITION=right @TEXT=roles 
-    #      node @CREATED=1273819456867 @ID=ID_1677010054 @MODIFIED=1493418874718 @POSITION=left @TEXT=models 
-    #       node @CREATED=1292122118499 @FOLDED=true @ID=ID_1957754752 @MODIFIED=1493705885123 @TEXT=person 
-    #       node @CREATED=1292122236285 @FOLDED=true @ID=ID_959987887 @MODIFIED=1493768919147 @TEXT=address 
-    #       node @CREATED=1493418879485 @ID=ID_1995497233 @MODIFIED=1493718770637 @TEXT=article 
-    #       node @CREATED=1493418915637 @ID=ID_429078131 @MODIFIED=1493418930081 @TEXT=comment 
-    
+      # app= get_app
+      # t= ["process models"]
+      #  xml map sample from index.mm 
+      #   node @CREATED=1273819432637 @ID=ID_1098419600 @MODIFIED=1334737006485 @TEXT=Jinda 
+      #    node @CREATED=1273819462973 @ID=ID_282419531 @MODIFIED=1493705904561 @POSITION=right @TEXT=services 
+      #     node @CREATED=1273819465949 @FOLDED=true @ID=ID_855471610 @MODIFIED=1493768913078 @POSITION=right @TEXT=roles 
+      #      node @CREATED=1273819456867 @ID=ID_1677010054 @MODIFIED=1493418874718 @POSITION=left @TEXT=models 
+      #       node @CREATED=1292122118499 @FOLDED=true @ID=ID_1957754752 @MODIFIED=1493705885123 @TEXT=person 
+      #       node @CREATED=1292122236285 @FOLDED=true @ID=ID_959987887 @MODIFIED=1493768919147 @TEXT=address 
+      #       node @CREATED=1493418879485 @ID=ID_1995497233 @MODIFIED=1493718770637 @TEXT=article 
+      #       node @CREATED=1493418915637 @ID=ID_429078131 @MODIFIED=1493418930081 @TEXT=comment 
+
       models= @app.elements["//node[@TEXT='models']"] || REXML::Document.new
       models.each_element('node') do |model|
         # t << "= "+model.attributes["TEXT"]
@@ -468,14 +617,14 @@ module Jinda
         next if model_name.comment?
         model_code= name2code(model_name)
         model_file= "#{Rails.root}/app/models/#{model_code}.rb"
-    
+
         if File.exists?(model_file)
           doc= File.read(model_file)
         else
           system("rails generate model #{model_code}")
           doc= File.read(model_file)
         end
-    
+
         doc = add_utf8(doc)
         attr_hash= make_fields(model)
         doc = add_jinda(doc, attr_hash)
@@ -492,14 +641,14 @@ module Jinda
     def add_jinda(doc, attr_hash)
       if doc =~ /#{@btext}/
         s1,s2,s3= doc.partition(/  #{@btext}.*#{@etext}\n/m)
-        s2= ""
+          s2= ""
       else
         s1,s2,s3= doc.partition("include Mongoid::Document\n")
       end
       doc= s1+s2+ <<-EOT
   #{@btext}
   include Mongoid::Timestamps
-  EOT
+      EOT
 
       attr_hash.each do |a|
         # doc+= "\n*****"+a.to_s+"\n"
@@ -592,8 +741,8 @@ module Jinda
     ########################################################################
     #                     END  code from jinda.rake                        #
     ########################################################################
-  
-    
+
+
     ########################################################################
     #                  Methods to be overrided by gemhelp                  #
     #                            for Rspec Test
@@ -613,7 +762,7 @@ module Jinda
       t << "create file #{f}"
     end
     ########################################################################
-    
+
     def controller_exists?(modul)
       File.exists? "#{Rails.root}/app/controllers/#{modul}_controller.rb"
     end
@@ -659,7 +808,7 @@ module Jinda
       node.each_element("icon") do |mn|
         mcons << mn.attributes["BUILTIN"]
       end
-        ticon = mcons[0].to_s
+      ticon = mcons[0].to_s
       return ticon
     end
 
@@ -689,8 +838,8 @@ module Jinda
 
     def freemind2action(s)
       case s.downcase
-      #when 'bookmark' # Excellent
-      #  'call'
+        #when 'bookmark' # Excellent
+        #  'call'
       when 'bookmark' # Excellent
         'do'
       when 'attach' # Look here
@@ -741,9 +890,9 @@ class String
   end
   def to_code
     s= self.dup
-#    s.downcase!
-#    s.gsub! /[\s\-_]/, ""
-#    s
+    #    s.downcase!
+    #    s.gsub! /[\s\-_]/, ""
+    #    s
     code, name = s.split(':')
     code.downcase.strip.gsub(' ','_').gsub(/[^#_\/a-zA-Z0-9]/,'')
   end
@@ -759,9 +908,9 @@ module ActionView
       end
     end
     class FormBuilder
-     def date_select_thai(method)
-       self.date_select method, :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year]
-     end
+      def date_select_thai(method)
+        self.date_select method, :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year]
+      end
       def date_field(method, options = {})
         default= options[:default]  || self.object.send(method) || Date.today
         data_options= ({"mode"=>"calbox"}).merge(options)
@@ -852,7 +1001,7 @@ module ActionView
       init_map();
     });
   </script>
-EOT
+        EOT
         out.html_safe
       end
     end
