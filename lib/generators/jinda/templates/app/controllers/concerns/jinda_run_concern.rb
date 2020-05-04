@@ -14,17 +14,17 @@ module JindaRunConcern
         if service
           @title= "Transaction ID #{@xmain.xid}: #{@xmain.name} / #{@runseq.name}"
           fhelp= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.md"
-        ###############################################################################################
-        # Check if help file available for this form
-        ###############################################################################################
+          ###############################################################################################
+          # Check if help file available for this form
+          ###############################################################################################
           @help = File.read(fhelp) if File.exists?(fhelp)
           f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
           if File.file?(f)
             @ui= File.read(f)
           else
-          # flash[:notice]= "Error: Can not find the view file for this controller"
-          ma_log "Error: Can not find the view file for this controller"
-          redirect_to_root
+            # flash[:notice]= "Error: Can not find the view file for this controller"
+            ma_log "Error: Can not find the view file for this controller"
+            redirect_to_root
           end
         end
         init_vars(params[:id])
@@ -170,36 +170,36 @@ module JindaRunConcern
 
   def end_form
     # Check error using xmain_id to redirect_to_root and return
-      if params[:xmain_id]
-        init_vars(params[:xmain_id])
+    if params[:xmain_id]
+      init_vars(params[:xmain_id])
+    else
+      ma_log "Known Bug : repeated end_form "
+      redirect_to_root and return
+    end
+    eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
+    # Search for uploaded file name if exist
+    params.each { |k,v|
+      if params[k].respond_to? :original_filename
+        get_image(k, params[k])
+        # check if params of array in form eg: edit_article	
+      elsif params[k].is_a?(ActionController::Parameters)
+        params[k].each { |k1,v1|
+          # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
+          eval "@xvars[@runseq.code][k1] = v1" 
+          next unless v1.respond_to?(:original_filename)
+          get_image1(k, k1, params[k][k1])
+        }
       else
-        ma_log "Known Bug : repeated end_form "
-        redirect_to_root and return
+        # https://stackoverflow.com/questions/34949505/rails-5-unable-to- retrieve-hash-values-from-parameter     # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
+        # Solution:
+        # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
+        # v = v.to_unsafe_h unless v.class == String
+        # v = params.require[k] unless v.class == String
+        v = v.to_s unless v.class == String
+        # Create @xvars[@runseq.code]
+        eval "@xvars[@runseq.code][k] = v"
       end
-      eval "@xvars[@runseq.code] = {} unless @xvars[@runseq.code]"
-      # Search for uploaded file name if exist
-      params.each { |k,v|
-        if params[k].respond_to? :original_filename
-          get_image(k, params[k])
-          # check if params of array in form eg: edit_article	
-        elsif params[k].is_a?(ActionController::Parameters)
-          params[k].each { |k1,v1|
-            # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
-            eval "@xvars[@runseq.code][k1] = v1" 
-            next unless v1.respond_to?(:original_filename)
-            get_image1(k, k1, params[k][k1])
-          }
-        else
-      # https://stackoverflow.com/questions/34949505/rails-5-unable-to- retrieve-hash-values-from-parameter     # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
-          # Solution:
-          # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
-          # v = v.to_unsafe_h unless v.class == String
-          # v = params.require[k] unless v.class == String
-          v = v.to_s unless v.class == String
-          # Create @xvars[@runseq.code]
-          eval "@xvars[@runseq.code][k] = v"
-        end
-      }
+    }
     end_action
   end
 
@@ -232,4 +232,5 @@ module JindaRunConcern
       redirect_to :action=>'run', :id=>@xmain.id and return
     end
   end
+
 end 

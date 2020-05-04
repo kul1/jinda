@@ -3,38 +3,12 @@
 class JindaController < ApplicationController
   include JindaRunConcern
   include JindaGeneralConcern
-
-  def index
-  end
-
-  def logs
-    @xmains = Jinda::Xmain.all.desc(:created_at).page(params[:page]).per(10)
-  end
-  def error_logs
-    @xmains = Jinda::Xmain.in(status:['E']).desc(:created_at).page(params[:page]).per(10)
-  end
-  def notice_logs
-    @notices= Jinda::Notice.desc(:created_at).page(params[:page]).per(10)
-  end
-  def pending
-    @title= "Pending Tasks"
-    @xmains = Jinda::Xmain.in(status:['R','I']).asc(:created_at)
-  end
-  def cancel
-    Jinda::Xmain.find(params[:id]).update_attributes :status=>'X'
-    if params[:return]
-      redirect_to params[:return]
-    else
-      redirect_to action:"pending"
-    end
-  end
-
   # view menu by user selected what service (module and code) to run (not all services like menu did
   # Its only one service 
+
   def init
     module_code, code = params[:s].split(":")
     @service= Jinda::Service.where(:module_code=> module_code, :code=> code).first
-    # @service= Jinda::Service.where(:module_code=> params[:module], :code=> params[:service]).first
     if @service && authorize_init?
       xmain = create_xmain(@service)
       result = create_runseq(xmain)
@@ -67,4 +41,5 @@ class JindaController < ApplicationController
       redirect_to_root
     end
   end
+
 end

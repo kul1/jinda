@@ -1,4 +1,34 @@
 module JindaGeneralConcern
+
+  def index
+  end
+
+  def logs
+    @xmains = Jinda::Xmain.all.desc(:created_at).page(params[:page]).per(10)
+  end
+
+  def error_logs
+    @xmains = Jinda::Xmain.in(status:['E']).desc(:created_at).page(params[:page]).per(10)
+  end
+
+  def notice_logs
+    @notices= Jinda::Notice.desc(:created_at).page(params[:page]).per(10)
+  end
+
+  def pending
+    @title= "Pending Tasks"
+    @xmains = Jinda::Xmain.in(status:['R','I']).asc(:created_at)
+  end
+
+  def cancel
+    Jinda::Xmain.find(params[:id]).update_attributes :status=>'X'
+    if params[:return]
+      redirect_to params[:return]
+    else
+      redirect_to action:"pending"
+    end
+  end
+
   # process images from first level
   def get_image(key, params)
     doc = Jinda::Doc.create(
@@ -22,6 +52,7 @@ module JindaGeneralConcern
       doc.update_attributes :url => result["url"], :basename => File.basename(result["url"]), :cloudinary => true
     end
   end
+
   # process images from second level, e.g,, fields_for
   def get_image1(key, key1, params)
     doc = Jinda::Doc.create(
@@ -43,9 +74,11 @@ module JindaGeneralConcern
       doc.update_attributes :url => result["url"], :basename => File.basename(result["url"]), :cloudinary => true
     end
   end
+
   def doc_print
     render :file=>'public/doc.html', :layout=>'layouts/print'
   end
+
   # generate documentation for application
   def doc
     require 'rdoc'
@@ -75,6 +108,7 @@ module JindaGeneralConcern
         }
     end
   end
+
   def status
     @xmain= Jinda::Xmain.where(:xid=>params[:xid]).first
     @title= "Task number #{params[:xid]} #{@xmain.name}"
@@ -86,8 +120,10 @@ module JindaGeneralConcern
   rescue
     refresh_to "/", :alert => "Could not find task number <b> #{params[:xid]} </b>"
   end
+
   def help
   end
+
   def search
     @q = params[:q] || params[:ma_search][:q] || ""
     @title = "ผลการค้นหา #{@q}"
@@ -100,17 +136,20 @@ module JindaGeneralConcern
       do_search
     end
   end
+
   def err404
     # ma_log 'ERROR', 'main/err404'
     flash[:notice] = "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     ma_log "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     redirect_to '/'
   end
+
   def err500
     # ma_log 'ERROR', 'main/err500'
     flash[:notice] = "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     ma_log "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     redirect_to '/'
   end
+
 end
 
