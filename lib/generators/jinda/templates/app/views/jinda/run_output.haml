@@ -22,7 +22,7 @@
       %th= t "user"
       %th= "date"
     - @xmain.docs.each do |doc|
-      - next unless doc.display
+      - next unless doc.ma_display
       %tr
         %td= doc.id
         %td
@@ -32,7 +32,7 @@
             = image_tag 'page_attach.png'
           = link_to_blank align_text(doc.name), :controller=>"jinda", :action=>:document, :id=>doc.id
         %td= doc.filename
-        %td= doc.user.name
-        %td= date_thai doc.updated_at
+        %td= doc.user.code
+        %td= doc.updated_at
   = submit_tag @message
 %p

@@ -166,19 +166,6 @@ module Jinda
       @runseq.save
     end
 
-    def document
-      doc = Jinda::Doc.find params[:id]
-      if doc.cloudinary
-        require 'net/http'
-        require "uri"
-        uri = URI.parse(doc.url)
-        data = Net::HTTP.get_response(uri)
-        send_data(data.body, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
-      else
-        data= read_binary(doc.url)
-        send_data(data, :filename=>doc.filename, :type=>doc.content_type, :disposition=>"inline")
-      end
-    end
     def b(s)
       "<b>#{s}</b>".html_safe
     end
