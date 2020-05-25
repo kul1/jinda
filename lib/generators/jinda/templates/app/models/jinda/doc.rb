@@ -2,6 +2,7 @@
 class Jinda::Doc
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Attributes::Dynamic
   field :name, :type => String
   field :filename, :type => String
   field :content_type, :type => String
@@ -14,8 +15,12 @@ class Jinda::Doc
   belongs_to :user
   belongs_to :service, :class_name => "Jinda::Service"
   field :ip, :type => String
+  field :description, :type => String
+  field :category, :type => String
   field :ma_display, :type => Boolean
   field :ma_secured, :type => Boolean
+  field :dscan, :type => String
+  field :keywords, :type => String
 
   def self.search(q, page, per_page=PER_PAGE)
     paginate :per_page=>per_page, :page => page, :conditions =>

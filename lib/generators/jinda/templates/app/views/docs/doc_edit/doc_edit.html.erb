@@ -2,8 +2,8 @@
     doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
 %>
 <%= fields_for doc do |f| %>
-  <%= f.label :category, "Category" %>
-  <%= f.select :category, [["Book", "book"], ["Letter", "letter"], ["Brochure", "brochure"]] %>
+  <%= f.label :content_type, "Content type" %>
+  <%= f.select :content_type, [["pdf file", "pdf"], ["png file", "png"], ["html file", "html"]] %>
   <!--div>
     </div-->
     <%= f.label :issue_on, "Dated" %>
@@ -11,16 +11,11 @@
 
     <%= f.label :dscan, "Attached document" %>
     <%= f.file_field :dscan %>
+    <%= f.label :filename, "File Name" %>
   <% end %>
-  <div>
-  <%= label_tag :description, "Description" %>
-  <%= text_field_tag :description %>
-  </div>
+  <%= label_tag :x, "x field" %>
+  <%= text_field_tag :x %>
   <div>
     <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
     <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
-  </div>
-  <div>
-  <%= label_tag :keywords, "Search Keywords" %>
-  <%= text_field_tag :keywords %>
   </div>

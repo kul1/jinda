@@ -55,6 +55,7 @@ module JindaGeneralConcern
   end
 
   # process images from second level, e.g,, fields_for
+  # save uploaded file info to Doc
   def get_image1(key, key1, params)
     doc = Jinda::Doc.create(
       :name=> "#{key}_#{key1}",
@@ -63,16 +64,19 @@ module JindaGeneralConcern
       :filename=> params.original_filename,
       :content_type => params.content_type || 'application/zip',
       :data_text=> '',
+      :dscan=> '',
+      :description=>'',
+      :keywords=>'',
       :ma_display=>true, :ma_secured => @xmain.service.ma_secured )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.open(filename,"wb") { |f| f.write(params.read) }
       eval "@xvars[@runseq.code][key][key1] = '#{url_for(:action=>'document', :id=>doc.id, :only_path => true)}' "
-      doc.update_attributes :url => filename, :basename => File.basename(filename), :cloudinary => false
+      doc.update_attributes :url => filename, :basename => File.basename(filename), :cloudinary => false, :dscan => @xvars[@runseq.code][key][key1]
     else
       result = Cloudinary::Uploader.upload(params)
       eval %Q{ @xvars[@runseq.code][key][key1] = '#{result["url"]}' }
-      doc.update_attributes :url => result["url"], :basename => File.basename(result["url"]), :cloudinary => true
+      doc.update_attributes :url => result["url"], :basename => File.basename(result["url"]), :cloudinary => true, :dscan => @xvars[@runseq.code][key][key1]
     end
   end
 
@@ -81,6 +85,7 @@ module JindaGeneralConcern
   end
 
   # generate documentation for application
+  # search data from Doc
   def document
     doc = Jinda::Doc.find params[:id]
     if doc.cloudinary
@@ -101,7 +106,6 @@ module JindaGeneralConcern
     @intro = File.read('README.md')
     @print= "<div align='right'><img src='/assets/printer.png'/> <a href='/jinda/doc_print' target='_blank'/>Print</a></div>"
     doc= render_to_string 'doc.md', :layout => false
-
     html= Maruku.new(doc).to_html
     File.open('public/doc.html','w') {|f| f.puts html }
     respond_to do |format|
@@ -141,7 +145,7 @@ module JindaGeneralConcern
 
   def search
     @q = params[:q] || params[:ma_search][:q] || ""
-    @title = "ผลการค้นหา #{@q}"
+    @title = "Search Result #{@q}"
     @backbtn= true
     @cache= true
     if @q.blank?

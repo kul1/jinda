@@ -68,16 +68,19 @@ module JindaRunConcern
     end_action(next_runseq)
   end
 
+    # call controller to do the freemind task using Star symbol eg: Update
+    # not for run_form
   def run_do
     init_vars(params[:id])
     @runseq.start ||= Time.now
     @runseq.status= 'R' # running
     $runseq_id= @runseq.id
     $user_id= current_ma_user.try(:id)
+    # $xmain, $runseq, $user, $xvars, $ip from local
     set_global
     controller = Kernel.const_get(@xvars['custom_controller']).new
-    # call controller to do the freemind task using Star symbol eg: Update
     result = controller.send(@runseq.code)
+    # save local var to database
     init_vars_by_runseq($runseq_id)
     @xvars = $xvars
     @xvars[@runseq.code.to_sym]= result.to_s
@@ -95,6 +98,100 @@ module JindaRunConcern
     @runseq.stop= Time.now
     @runseq.save
     refresh_to "/", :alert => "Sorry opeation error at  #{@xmain.id} #{@xvars['error']}"
+  end
+
+  def run_list
+    init_vars(params[:id])
+    service= @xmain.service
+    # disp= get_option("display")
+    # disp = Nil or :"??????"
+    # get option from last node: rule, role, display
+    disp= get_option("display")
+    # change from Nil to false and string to true
+    ma_display = (disp && !affirm(disp)) ? false : true
+    # Todo check if file is available
+    # if service and file exist
+    # ma_display from disp of 3rd level node as rule, role, display
+    if service && !@runseq.code.blank? 
+      f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
+      @ui= File.read(f)
+      if Jinda::Doc.where(:runseq_id=>@runseq.id).exists?
+        @doc= Jinda::Doc.where(:runseq_id=>@runseq.id).first
+        @doc.update_attributes :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
+      else
+        @doc= Jinda::Doc.create :name=> @runseq.name,
+          :content_type=>"output", :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
+      end
+      # @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
+      @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next >>"
+      @message = "Finish" if @runseq.end
+      ma_log("Todo defined?(NSG_NEXT : Next >>)")
+      eval "@xvars[@runseq.code] = url_for(:controller=>'jinda', :action=>'document', :id=>@doc.id)"
+    else
+      flash[:notice]= "Error: Can not find the view file for this controller"
+      ma_log "Error: Can not find the view file for this controller"
+      redirect_to_root
+    end
+    # Check if ma_display available
+    # ma_display= get_option("display")
+    # if not ma_display then no display both controller-view and content then  end back to root
+    unless ma_display
+      end_action
+    end
+    # controller display from  @ui
+  end
+
+  def run_folder
+    init_vars(params[:id])
+    service= @xmain.service
+    # disp= get_option("display")
+    # disp = Nil or :"??????"
+    disp= get_option("display")
+    ma_display = (disp && !affirm(disp)) ? false : true
+    # Todo check if file is available
+    # if service and file exist
+    if service && !@runseq.code.blank? 
+      f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
+      @ui= File.read(f)
+      if Jinda::Doc.where(:runseq_id=>@runseq.id).exists?
+        @doc= Jinda::Doc.where(:runseq_id=>@runseq.id).first
+        @doc.update_attributes :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
+      else
+        @doc= Jinda::Doc.create :name=> @runseq.name,
+          :content_type=>"output", :data_text=> render_to_string(:inline=>@ui, :layout=>"utf8"),
+          :xmain=>@xmain, :runseq=>@runseq, :user=>current_ma_user,
+          :ip=> get_ip, :service=>service, :ma_display=>ma_display,
+          :ma_secured => @xmain.service.ma_secured,
+          :filename => "#{@runseq.code}.html.erb"
+      end
+      # @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
+      @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next >>"
+      @message = "Finish" if @runseq.end
+      ma_log("Todo defined?(NSG_NEXT : Next >>)")
+      eval "@xvars[@runseq.code] = url_for(:controller=>'jinda', :action=>'document', :id=>@doc.id)"
+    else
+      flash[:notice]= "Error: Can not find the view file for this controller"
+      ma_log "Error: Can not find the view file for this controller"
+      redirect_to_root
+    end
+    # Check if ma_display available
+    # ma_display= get_option("display")
+    unless ma_display
+      end_action
+    end
+    # controller display from  @ui
   end
 
   def run_output
@@ -135,11 +232,11 @@ module JindaRunConcern
       redirect_to_root
     end
     # Check if ma_display available
-    # ma_display= get_option("ma_display")
+    # ma_display= get_option("display")
     unless ma_display
       end_action
     end
-    # display from  @ui
+    # controller display from  @ui
   end
 
   def run_mail
@@ -168,8 +265,11 @@ module JindaRunConcern
     end_action
   end
 
+  # Store params to @xvars[@runseq]
+  # Perform task from the form input eg: attach file
+  # replace end_action (for form)
+  # Store params attach file to @xvars to use in get_image
   def end_form
-    # Check error using xmain_id to redirect_to_root and return
     if params[:xmain_id]
       init_vars(params[:xmain_id])
     else
@@ -183,13 +283,17 @@ module JindaRunConcern
         get_image(k, params[k])
         # check if params of array in form eg: edit_article	
       elsif params[k].is_a?(ActionController::Parameters)
+        eval "@xvars[@runseq.code][k] = {} unless @xvars[@runseq.code][k]"
         params[k].each { |k1,v1|
           # eval "@xvars[@runseq.code][k1] = params.require(k1).permit(k1)"
-          eval "@xvars[@runseq.code][k1] = v1" 
+          eval "@xvars[@runseq.code][k][k1] = v1" 
           next unless v1.respond_to?(:original_filename)
+          doc = {}
           get_image1(k, k1, params[k][k1])
         }
       else
+        # No file attached
+        #
         # https://stackoverflow.com/questions/34949505/rails-5-unable-to- retrieve-hash-values-from-parameter     # bug in to_unsalfe_h rails 5.1.6 https://github.com/getsentry/raven-ruby/issues/799
         # Solution:
         # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
@@ -200,10 +304,21 @@ module JindaRunConcern
         eval "@xvars[@runseq.code][k] = v"
       end
     }
-    end_action
+  end_action
+  rescue => e
+    @xmain.status='E'
+    @xvars['error']= e.to_s+e.backtrace.to_s
+    @xmain.xvars= $xvars
+    @xmain.save
+    @runseq.status= 'F' #finish
+    @runseq.stop= Time.now
+    @runseq.save
+    ma_log "Error:end_form "
+    refresh_to "/", :alert => "Sorry opeation error at  #{@xmain.id} #{@xvars['error']}"
   end
 
   def end_action(next_runseq = nil)
+    # not for form
     #    @runseq.status='F' unless @runseq_not_f
     @xmain.xvars= @xvars
     @xmain.status= 'R' # running

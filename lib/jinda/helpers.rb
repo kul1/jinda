@@ -107,7 +107,7 @@ module Jinda
         return false unless action
         i= i + 1
         output_ma_display= false
-        if action=='output'
+        if action== ('output'|| 'list' ||'folder')
           ma_display= get_option_xml("display", activity)
           if ma_display && !affirm(ma_display)
             output_ma_display= false
@@ -293,6 +293,7 @@ module Jinda
       step1 = REXML::Document.new(xml).root.elements['node']
       role= get_option_xml("role", step1) || ""
       #    rule= get_option_xml("rule", step1) || true
+      rule= get_option_xml("rule", step1) || true
       return true if role==""
       unless current_ma_user
         return role.blank?
@@ -300,6 +301,7 @@ module Jinda
         return false unless current_ma_user.role
         return current_ma_user.has_role(role)
       end
+
     end
     def ma_log(message)
       #  Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
@@ -841,8 +843,12 @@ module Jinda
         'redirect'
       when 'kaddressbook' #Phone
         'invoke' # invoke new service along the way
-      when 'list' # Output
+      when 'idea' # output
         'output'
+      when 'list' # List
+        'list'
+      when 'folder' # Folder
+        'folder'
       when 'mail'
         'mail'
       when 'xmag' # Tobe discussed

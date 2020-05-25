@@ -83,6 +83,7 @@ module Jinda
         inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda_org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/admins_controller.rb', 'admins_controller.rb')}
         inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda_org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/articles_controller.rb', 'articles_controller.rb')}
         inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "Please merge existing jinda_org/comments_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/comments_controller.rb', 'comments_controller.rb')}
+        inside("app/controllers") {(File.file? "docs_controller.rb") ? ( say "Please merge existing jinda_org/docs_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/docs_controller.rb', 'docs_controller.rb')}
         inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "Please merge existing jinda_org/identities_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/identities_controller.rb', 'identities_controller.rb')}
         inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda_org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/jinda_controller.rb', 'jinda_controller.rb')}
         inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "Please merge existing jinda_org/password_resets_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/password_resets_controller.rb', 'password_resets_controller.rb')}
@@ -107,11 +108,15 @@ module Jinda
         route "resources :sessions"
         route "resources :identities"
         route "resources :users"
+        route "resources :docs"
         route "resources :notes"
         route "resources :articles"
+        route "get '/jinda/document/:id' => 'jinda#document'"
         route "get '/notes/destroy/:id' => 'notes#destroy'"
         route "get '/notes/my/destroy/:id' => 'notes#destroy'"
+        route "get '/docs/my/destroy' => 'docs#destroy'"
         route "get '/notes/my' => 'notes/my'"
+        route "get '/docs/my' => 'docs/my'"
 		    route "get '/articles/my/destroy' => 'articles#destroy'"
         route "get '/articles/my' => 'articles/my'"
         route "get '/logout' => 'sessions#destroy', :as => 'logout'"
