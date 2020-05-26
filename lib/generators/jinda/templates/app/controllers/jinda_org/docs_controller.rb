@@ -14,16 +14,18 @@ class DocsController < ApplicationController
   end
 
   def doc_update
-    # $xvars["select_doc"] and $xvars["doc_form"]
-		# These are variables with params when called
-    # They contain everything that we get their forms select_doc and doc_form
     
-    @doc = Jinda::Doc.where(:runseq_id => $xvars["doc_form"]["runseq_id"]).first
-    @doc.update(description: $xvars["doc_form"]["description"],
-                    category: $xvars["doc_form"]["category"],
+    if Jinda::Doc.where(:runseq_id => $xvars["doc_form"]["runseq_id"]).exists?
+      @doc = Jinda::Doc.where(:runseq_id => $xvars["doc_form"]["runseq_id"]).first
+      @doc.update(description: $xvars["doc_form"]["description"],
+                    category: $xvars["doc_form"]["jinda_doc"]["category"],
                     keywords: $xvars["doc_form"]["keywords"],
                     user_id: $xvars["user_id"]
 										)
+    else
+      # create here
+      # Todo
+    end
   end
 
   def destroy

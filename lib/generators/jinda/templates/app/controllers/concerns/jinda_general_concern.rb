@@ -67,12 +67,17 @@ module JindaGeneralConcern
       :dscan=> '',
       :description=>'',
       :keywords=>'',
+      :category=>'',
       :ma_display=>true, :ma_secured => @xmain.service.ma_secured )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.open(filename,"wb") { |f| f.write(params.read) }
       eval "@xvars[@runseq.code][key][key1] = '#{url_for(:action=>'document', :id=>doc.id, :only_path => true)}' "
-      doc.update_attributes :url => filename, :basename => File.basename(filename), :cloudinary => false, :dscan => @xvars[@runseq.code][key][key1]
+      doc.update_attributes :url => filename, 
+        :basename => File.basename(filename), 
+        :cloudinary => false, 
+        :dscan => @xvars[@runseq.code][key][key1],
+        :user_id => @xvars["user_id"]
     else
       result = Cloudinary::Uploader.upload(params)
       eval %Q{ @xvars[@runseq.code][key][key1] = '#{result["url"]}' }

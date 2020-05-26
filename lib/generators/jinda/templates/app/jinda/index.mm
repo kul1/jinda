@@ -62,7 +62,8 @@
 <icon BUILTIN="bookmark"/>
 </node>
 </node>
-<node CREATED="1493419562726" ID="ID_339628868" MODIFIED="1590180788280" TEXT="doc_edit: Edit Document">
+<node CREATED="1493419562726" ID="ID_339628868" MODIFIED="1590424956484" TEXT="doc_edit: Edit Document">
+<icon BUILTIN="button_cancel"/>
 <node CREATED="1493419577933" ID="ID_801950372" MODIFIED="1590180699851" TEXT="doc_select: Select Document">
 <icon BUILTIN="attach"/>
 <node CREATED="1493479602815" ID="ID_761787946" MODIFIED="1493479606921" TEXT="role:m"/>
