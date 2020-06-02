@@ -20,8 +20,8 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(
-      title: $xvars["new_note"]["title"],
-      body: $xvars["new_note"]["body"],
+      title: $xvars["new_note"]["note"]["title"],
+      body: $xvars["new_note"]["note"]["body"],
       user_id: $xvars["user_id"])
     @note.save!
     # if @note.save!
@@ -31,7 +31,6 @@ class NotesController < ApplicationController
     #   format.html { render :new }
     #   format.json { render json: @note.errors, status: :unprocessable_entity }
     # end
-    redirect_to @note
 
   end
 
@@ -42,10 +41,8 @@ class NotesController < ApplicationController
     # They contain everything that we get their forms select_note and edit_note
     note_id = $xvars["select_note"] ? $xvars["select_note"]["id"] : $xvars["p"]["note_id"]
     @note = Note.find(note_id)
-    @note.update(title: $xvars["edit_note"]["title"],
-                 body: $xvars["edit_note"]["body"])
-    redirect_to @note
-
+    @note.update(title: $xvars["edit_note"]["note"]["title"],
+                 body: $xvars["edit_note"]["note"]["body"])
   end
 
   def delete

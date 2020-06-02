@@ -1,3 +1,9 @@
+## v0.5.4
+# Fixed Note and API
+
+## v0.5.3
+# Add Document module sample
+
 ## v0.5.1
 # Add fixed in case error from missing file in freemind
 # Change ma_display to display in option check def run_output
