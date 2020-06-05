@@ -2,6 +2,7 @@
 <%
   article = @article
 %>
+<div id="article-table">
 <%= fields_for article do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
@@ -12,3 +13,4 @@
   <%= f.label :body, "Body Content" %>
   <%= f.text_area :body %>
 <% end %>
+</div>

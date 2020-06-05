@@ -1,14 +1,19 @@
 
+#article-title {
+  text-align: left;
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  color:#333;
+}
+
 #title {
   font-size: 14pt;
   font-weight: bold;
-  text-align: center;
-  background: #d2f0ff;
+  text-align: left;
   font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
   color:#333;
 
 }
-#text {
+#text{
   font-size: 14pt;
   font-weight: bold;
   text-align:left;
@@ -41,7 +46,6 @@
 #table th {
   background-color: #bcecff;
   color:#333;
-;
   width:100%;
 }
 
@@ -59,12 +63,14 @@
   font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
   /*font-size: 110%;*/
 }
-.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li { padding: 7px 75px 7px 15px; display: block; }
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li { padding: 7px 75px 7px 7px; display: block; }
 .ui-link-inherit { font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;}
 label.ui-input-text {
   font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
   /*font-size: 110%;*/
   text-shadow: none;
+  margin: 2% 2% 0 0;
+
 }
 label.ui-select {
   font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;

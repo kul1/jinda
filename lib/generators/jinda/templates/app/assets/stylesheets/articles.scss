@@ -1,16 +1,28 @@
 
+
+#article-table {
+  font-size: 14pt;
+  font-weight: bold;
+  text-align: left;
+  background:#f7f7f7;
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  padding:2px 5px;
+  color:#333;
+
+}
+
 #article-title {
   font-size: 14pt;
   font-weight: bold;
-  text-align: center;
-  background: #d2f0ff;
+  text-align: left;
+  background:#f7f7f7;
   font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  padding:2px 5px;
   color:#333;
 
 }
 #article-text {
-  font-size: 14pt;
-  font-weight: bold;
+  font-size: 8pt;
   text-align:left;
   border:1px solid #c1c1c1;
   background:#f7f7f7;
@@ -28,7 +40,6 @@
 
 #comment-body {
   font-size: 10pt;
-  font-weight: bold;
   text-align:left;
   color:#333;
 }
@@ -41,7 +52,6 @@
 #article-table th {
   background-color: #bcecff;
   color:#333;
-;
   width:100%;
 }
 

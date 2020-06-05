@@ -1,3 +1,7 @@
+## v0.5.5
+# Add forward function when finish runseq
+# Fixed css in Article
+
 ## v0.5.4
 # Fixed Note and API
 
