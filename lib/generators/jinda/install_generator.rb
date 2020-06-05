@@ -130,6 +130,7 @@ module Jinda
         route "post '/jinda/init' => 'jinda#init'"
         route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
         route "jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']"
+        route "jinda_methods += ['run_redirect', 'run_direct_to']"
         route "jinda_methods += ['init', 'run', 'run_mail', 'document', 'run_do', 'run_form', 'end_form']"
         route "jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']"  
         route "\# start jiinda method routes"

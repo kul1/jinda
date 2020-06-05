@@ -23,6 +23,7 @@ class JindaController < ApplicationController
       #Above line cause error update_attribute in heroku shown in logs and it was proposed to fixed in github:'kul1/g241502'
       # Main action run with :id
       redirect_to :action=>'run', :id=>xmain.id
+      
     else
       refresh_to "/", :alert => "Error: cannot process"
       error_run_xmain = "Error_run_xmain"

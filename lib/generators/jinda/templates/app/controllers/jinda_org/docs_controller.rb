@@ -14,6 +14,7 @@ class DocsController < ApplicationController
   end
 
   def doc_update
+    # Instead of creaete, Doc record was created in form, when upload file
     
     if Jinda::Doc.where(:runseq_id => $xvars["doc_form"]["runseq_id"]).exists?
       @doc = Jinda::Doc.where(:runseq_id => $xvars["doc_form"]["runseq_id"]).first

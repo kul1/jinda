@@ -199,6 +199,7 @@ module Jinda
     def redirect_to_root
       redirect_to root_path
     end
+
     # Todo refactor code
     def get_option(opt, runseq=@runseq)
       xml= REXML::Document.new(runseq.xml).root
@@ -840,7 +841,8 @@ module Jinda
       when 'help' # Question
         'if'
       when 'forward' # Forward
-        'redirect'
+        # 'redirect'
+        'direct_to'
       when 'kaddressbook' #Phone
         'invoke' # invoke new service along the way
       when 'idea' # output

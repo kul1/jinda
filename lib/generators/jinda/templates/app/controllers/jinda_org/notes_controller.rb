@@ -3,7 +3,8 @@ class NotesController < ApplicationController
   # before_action :xload_current_ma_user, only: [:destroy]
 
   def index
-    @notes = Note.desc(:created_at).page(params[:page]).per(10)
+    # @notes = Note.desc(:created_at).page(params[:page]).per(10)
+    @notes = Note
   end
 
   def my

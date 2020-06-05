@@ -60,6 +60,20 @@ module JindaRunConcern
     end_action(next_runseq)
   end
 
+  # redirect when finish last runseq
+  # eg: http://localhost:3000/notes/my
+  def run_direct_to
+    init_vars(params[:id])
+    next_runseq= @xmain.runseqs.where(:id.ne=>@runseq.id, :code=>@runseq.code).first
+    if !@runseq.code.blank? 
+      @xvars['p']['return'] = @runseq.code
+    else
+      flash[:notice]= "Error: missing required forward path in Freemind"
+      ma_log "Error: require forward path in Freemind"
+    end
+    end_action(next_runseq)
+  end
+
   def run_redirect
     init_vars(params[:id])
     # next_runseq= @xmain.runseqs.first :conditions=>["id != ? AND code = ?",@runseq.id, @runseq.code]
