@@ -1,3 +1,8 @@
+## v0.5.6
+# Add run_if
+# Refactoring head
+# Add validation plug-in 1.1.2 for Note and Article
+
 ## v0.5.5
 # Add forward function when finish runseq
 # Fixed css in Article

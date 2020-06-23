@@ -1,13 +1,10 @@
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="distribution" content="global" />
-  <meta name="robots" content="follow, all" />
-  <meta name="language" content="en, th" />
-  <title>eLocal</title>
-  <link rel="shortcut icon" href="/assets/favicon.ico" />
-  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-  <%= stylesheet_link_tag "jinda", "sarabun" %>
+  <%= favicon_link_tag %>
+  <%= csrf_meta_tags %>
+  <%= meta_tags %> 
   <meta name="description" content="Jinda" />
-  <%= javascript_include_tag "jquery.tools.min.js"  %>
-  <%= javascript_include_tag "application", "flashobject", "FusionCharts"  %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track":"reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  <%= stylesheet_link_tag "jinda", "sarabun" %>
+  <script src = "https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js" ></script>
 </head>
