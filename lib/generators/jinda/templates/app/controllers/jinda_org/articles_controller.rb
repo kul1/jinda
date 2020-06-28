@@ -1,23 +1,30 @@
 class ArticlesController < ApplicationController
-  before_action :load_article, only: [:show,]
-  before_action :load_edit_article, only: [:edit, :destroy]
-  before_action :load_comments, only: [:show]
+ before_action :load_articles, except: [:destroy] 
+ before_action :load_my_articles, only: [:my]
+ before_action :load_article, only: [:destroy, :update]
 
 	def index
-    @articles = Article.desc(:created_at).page(params[:page]).per(10)
+    # before_action
 	end
 
-  def show 
+  def my
+    # before_action
+  end
+
+  def show
+    @article = Article.find(params[:article_id])
+    @comments = @article.comments.desc(:created_at).page(params[:page]).per(10)
     prepare_meta_tags(title: @article.title,
                       description: @article.text,
                       keywords: @article.keywords)
   end
 
   def edit
-    @page_title       = 'Member Login'
+    @page_title       = 'Edit Article'
   end
 
   def create
+    # Use Jinda $xvars
     @article = Article.new(
                       title: $xvars["form_article"]["title"],
                       text: $xvars["form_article"]["text"],
@@ -27,51 +34,67 @@ class ArticlesController < ApplicationController
     @article.save!
   end
 
-  def my
-    @articles = Article.where(user_id: current_ma_user).desc(:created_at).page(params[:page]).per(10)
-    @page_title       = 'Member Login'
+  def my_update
+    # before_action
+    @article.update(title: $xvars["edit_article"]["article"]["title"],
+                    text: $xvars["edit_article"]["article"]["text"],
+                    keywords: $xvars["edit_article"]["article"]["keywords"],
+                    body: $xvars["edit_article"]["article"]["body"]
+										)
   end
 
-  def update
-    # $xvars["select_article"] and $xvars["edit_article"]
-		# These are variables with params when called
-    # They contain everything that we get their forms select_article and edit_article
-  
-		article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
-    @article = Article.find(article_id)
-    @article.update(title: $xvars["edit_article"]["title"],
-                    text: $xvars["edit_article"]["text"],
-                    keywords: $xvars["edit_article"]["keywords"],
-                    body: $xvars["edit_article"]["body"]
+  def j_update
+    # Use Jinda $xvars
+		@article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
+    @article = Article.find_by :id => @article_id
+    @article.update(title: $xvars["edit_article"]["article"]["title"],
+                    text: $xvars["edit_article"]["article"]["text"],
+                    keywords: $xvars["edit_article"]["article"]["keywords"],
+                    body: $xvars["edit_article"]["article"]["body"]
 										)
   end
 
   def destroy
-    #
-		# duplicated from jinda_controller
-		# Expected to use in jinda)controller
-    current_ma_user = User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
+    # Use Rails 
+    # before_action
 
-    if Rails.env.test? #Temp solution until fix test of current_ma_user
-      current_ma_user = $xvars["current_ma_user"]
-      #current_ma_user = @article.user
-    end
-
-    if current_ma_user.role.upcase.split(',').include?("A") || current_ma_user == @article.user
+    if current_admin? || current_ma_user == @article.user
       @article.destroy
     end
 
-    redirect_to :action=>'my'
+      action = (current_admin? ? 'index' : 'my') 
+      redirect_to :action=> (current_admin? ? 'index' : 'my') 
   end
 
   private
+  
+  def  current_admin?
+    if current_ma_user.role.upcase.split(',').include?("A") 
+      return true
+    else
+      return false
+    end
+  end
+
+
+  def load_articles
+    @articles = Article.desc(:created_at).page(params[:page]).per(10)
+  end
+
+  def load_my_articles
+    @my_articles = @articles.where(user: current_ma_user)
+  end
+
+  def load_article
+    @article = Article.find(params[:article_id])
+  end
+
+  def article_params
+    params[:article_id]
+  end
 
   def load_edit_article
-		@article = Article.find(params.require(:article_id))
-  end
-  
-  def load_article
-		@article = Article.find(params.permit(:id))
+    @article = Article.find(params.require(:article).permit(:article_id))
   end
 
   def load_comments

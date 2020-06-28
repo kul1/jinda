@@ -7,18 +7,19 @@
 
 #article-text= @article.body.html_safe
 
-= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'articles:xedit_article', article_id: @article.id}, data: { confirm: "Please Confirm" }
+= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "comments", action: "create", article_id: @article.id}, data: { confirm: "Please Confirm" }
 - @comments.each do |comment|
   %div#article-comment.ui-corner-all
     Author:    
     %b= comment.user.code if comment.user
     %div#comment-body
       %i= comment.body
-
+-# 
 - if login?
   %h3 Add a comment:
-  = form_for @article.comments.build, url: "/jinda/init?s=comments:new_comment" do |f|
+  = form_for([@comment, @article.comments.build]) do |f|
     = f.hidden_field :article_id, :value => @article.id
     = f.label :body, "Comment"
     = f.text_area :body
+    = f.hidden_field :user_id, :value => current_ma_user
     = f.submit

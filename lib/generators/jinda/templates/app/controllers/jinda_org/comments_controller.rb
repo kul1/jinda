@@ -1,17 +1,19 @@
 class CommentsController < ApplicationController
 
   def create
-    # $xvars['p'] is the query parameters like params in rails guide:
-    # private
-    # def comment_params
-    #   params.require(:comment).permit(:commenter, :body)
-    # end
-    #
-    @article = Article.find($xvars['p']['comment']['article_id'])
-    @comment = @article.comments.new(
-                      body: $xvars['p']['comment']['body'],
-                      user_id: $xvars["user_id"])
+    @article = Article.find(article_params["article_id"])
+    @comment = @article.comments.new(comment_params)
     @comment.save!
+    redirect_to controller: 'articles', action: 'show', article_id: @article
   end
 
+  private
+
+  def article_params
+    params.require(:comment).permit(:article_id)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body, :article_id, :user_id)
+  end
 end

@@ -1,7 +1,7 @@
 - @title= "My Articles"
 %p
 - @page_title  = 'All Articlces'
-= paginate @articles
+= paginate @my_articles
 %table#article-table
   %tr
     %th Title
@@ -10,9 +10,9 @@
     %th Updated
     %th Delete
     %th Edit  
-  - @articles.each do |article|
+  - @my_articles.each do |article|
     %tr
-      %td= link_to article.title, :controller=>"articles", :action=>"show", :id=>article.id
+      %td= link_to article.title, :controller=>"articles", :action=>"show", :article_id => article.id
       %td= article.text.html_safe
       %td= article.created_at.strftime('%m/%d/%Y')
       %td= article.updated_at.strftime('%m/%d/%Y')
