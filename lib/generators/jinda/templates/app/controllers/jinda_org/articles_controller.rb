@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
  before_action :load_articles, except: [:destroy] 
  before_action :load_my_articles, only: [:my]
- before_action :load_article, only: [:destroy, :update]
+ before_action :load_article, only: [:destroy, :edit]
 
 	def index
     # before_action
@@ -34,13 +34,15 @@ class ArticlesController < ApplicationController
     @article.save!
   end
 
-  def my_update
-    # before_action
-    @article.update(title: $xvars["edit_article"]["article"]["title"],
-                    text: $xvars["edit_article"]["article"]["text"],
-                    keywords: $xvars["edit_article"]["article"]["keywords"],
-                    body: $xvars["edit_article"]["article"]["body"]
+  def update
+    @article = Article.find(params[:id])
+    @article.update(
+                    title: params["article"]["title"],
+                    text: params["article"]["text"],
+                    keywords: params["article"]["keywords"],
+                    body: params["article"]["body"]
 										)
+    redirect_to :action=> 'show', :article_id => @article.id
   end
 
   def j_update

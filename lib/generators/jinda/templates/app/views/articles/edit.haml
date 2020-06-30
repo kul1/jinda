@@ -1,12 +1,12 @@
 
-%h1= @article.title
-%h1= title 'Member Login'
+%h1= @page_title
 .content= @article.text
-%div= markdown(@article.body)
 
-= form_for @article, url: "/jinda/init?s=articles:edit_article" do |f|
+= form_for @article, :article_id => @article.id  do |f|
   = f.label :title, "Title"
-  = f.text_field :title
+  = f.text_field :title, :required => true 
+  = f.label :text, "Description" 
+  = f.text_field :text, :required => true 
   = f.label :body, "Body Content"
-  = f.cktext_area :body, rows: 10
+  = f.text_area :body, rows: 10
   = f.submit
