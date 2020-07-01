@@ -40,7 +40,7 @@ app without ActiveRecord
 
 ## Add jinda to your Gemfile:
 
-    gem 'jinda', '~> 0.5.7'
+    gem 'jinda', '~> 0.5.8'
 
 For Development (most updated)
 

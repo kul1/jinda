@@ -1,3 +1,8 @@
+## v0.5.8
+# Re. Article
+# Fixed 'meta_tag'
+# Known bug: admin logs error
+
 ## v0.5.7
 # Refactoring Article
 
