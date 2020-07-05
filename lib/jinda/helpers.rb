@@ -853,7 +853,8 @@ module Jinda
         'folder'
       when 'mail'
         'mail'
-      when 'xmag' # Tobe discussed
+      # when 'xmag' # Tobe discussed
+      when 'To be discusssed'
         'search'  
       end
     end

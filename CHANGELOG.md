@@ -1,3 +1,6 @@
+## v0.5.9
+# Hot fixed remove test of index.mm for search
+
 ## v0.5.8
 # Re. Article
 # Fixed 'meta_tag'
