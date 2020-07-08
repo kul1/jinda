@@ -1,43 +1,53 @@
-.container
+.content-header
   %div(style="text-align:center")
     = image_tag "logo_jinda.png"
-
-    
-  %h2 Current gems version found: 
-  %ul
-    %li Ruby Version #{RUBY_VERSION }
-    %li Rails Version #{Rails.version }
-    %li gem jinda #{Gem.loaded_specs['jinda'].version}
-
-
-
-  %h2 Recently tested with:
-  %ul  
-    %li Rubygems 2.7.1
-    %li Rails 6.0.3
-    %li rails new YOURAPP --skip-test-unit --skip-bundle --skip-active-record --skip-javascript --skip-turbolinks 
-    %li (rails new YOURAPP -BOTJ)
-
-
-  %h2 Installation
-  %ul
-    %li add gem 'jinda', '0.5.9'
-    %li bundle
-    %li rails generate jinda:install
-    %li (run all with "sh install.sh" )
-    %li bundle
-    %li rails generate jinda:config
-    %li rails jinda:seed, will create initial user:password admin:secret
-    %li when update app/jinda/index.mm, run rake jinda:update
-
-
-  %h2 Option: Themes available: Jinda_adminbsb, Jinda_adminlte
-  %ul 
-    %li To install gem 'jinda_adminlte' 
-    %li Install 
-    %li gem 'jinda_adminlte' 
-    %li Then
-    %li $ bundle 
-    %li $ rails generate jinda_adminlte:install
-
-
+  %ol.breadcrumb 
+    %li.fa.fa-dashboard
+      Dashboard
+.content
+  %div.row::before 
+    %div.col-lg-3.col-xs-6
+      %div.small-box.bg-aqua
+        %div.inner
+          %b Current gems version found: 
+          %ul
+            %li Ruby Version #{RUBY_VERSION }
+            %li Rails Version #{Rails.version }
+            %li gem jinda #{Gem.loaded_specs['jinda'].version}
+    %div.col-lg-3.col-xs-6
+      %div.small-box.bg-green
+        %div.inner
+          %b Recently tested with:
+          %ul  
+            %li Rubygems 2.7.1
+            %li Rails 6.0.3
+    %div.col-lg-3.col-xs-6
+      %div.small-box.bg-yellow
+        %div.inner
+          %b Create New Rails:
+          %ul  
+            %li rails new YOURAPP --skip-test-unit --skip-bundle --skip-active-record --skip-javascript --skip-turbolinks 
+            %li (rails new YOURAPP -BOTJ)
+    %div.col-lg-3.col-xs-6
+      %div.small-box.bg-red
+        %div.inner
+          %b Installation
+          %ul
+            %li add gem 'jinda', '0.5.8' to Gemfile then $ bundle
+            %li rails generate jinda:install, then bundle
+            %li rails generate jinda:config
+            %li rails jinda:seed, will create initial user:password admin:secret
+            %li when update app/jinda/index.mm, run rake jinda:update
+    %div.col-lg-3.col-xs-6
+      %div.small-box.bg-blue
+        %div.inner
+          %b Option: Themes available: Jinda_adminbsb, Jinda_adminlte
+          %ul 
+            %li To install gem 'jinda_adminlte' 
+            %li Install 
+            %li gem 'jinda_adminlte' 
+            %li Then
+            %li $ bundle 
+            %li $ rails generate jinda_adminlte:install
+  
+  
