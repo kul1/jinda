@@ -1,3 +1,6 @@
+
+## v0.6.0
+# Fixed to work with jinda_adminlte
 ## v0.5.9
 # Hot fixed remove test of index.mm for search
 
