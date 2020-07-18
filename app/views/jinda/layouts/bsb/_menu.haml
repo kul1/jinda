@@ -1,0 +1,47 @@
+- head = login? ? current_ma_user.code : DEFAULT_HEADER
+
+.menu
+  %ul.list
+    %li.header MAIN NAVIGATION
+    %li.active
+      %a{:href =>"/jinda","data-panel" => "main"}
+        %i.material-icons home
+        %span Home
+
+    = render 'layouts/jqm/menu_mm'
+
+    - if login?
+      %li
+        %a{:href=>"/jinda/pending", "data-panel" => "main"} Pending Tasks
+      %li
+        %a{"data-panel" => "main", :href => logout_path, "data-ajax"=>"false"}
+          %i.material-icons layers
+          %span Sign Out
+    - else
+      %li
+        %a{:href =>new_session_path,"data-panel" => "main"}
+          %i.material-icons layers
+          %span Sign In
+      %li
+        %a{:href =>new_identity_path, "data-panel" => "main"}
+          %i.material-icons layers
+          %span Sign Up 
+    %li
+      = link_to "Refresh", "#", :onclick=>"window.location.replace('/')"
+    - if !login?  
+      %a.btn.btn-block.btn-social.btn-facebook{:href => "/auth/facebook", rel: "external"}
+        %i.material-icons facebook
+        %span Sign in with Facebook
+    
+.legal
+  .copyright
+    © 2016 - 2017
+    = succeed "." do
+      %a{:href => "javascript:void(0);"} AdminBSB - Material Design
+  .version
+    %b Version:
+    1.0.5
+
+
+
+      

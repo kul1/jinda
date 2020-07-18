@@ -2,7 +2,6 @@ Jinda::Engine.routes.draw do
   resources :articles do
     resources :comments
   end
-  root to: 'articles#index'
 
   # start jiinda method routes
   jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']
@@ -15,4 +14,5 @@ Jinda::Engine.routes.draw do
   post '/jinda/end_form' => 'jinda#end_form'
   post '/jinda/end_output' => 'jinda#end_output'
   # end jinda method routes
+  root to: 'jinda#index'
 end

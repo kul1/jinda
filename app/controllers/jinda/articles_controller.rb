@@ -1,3 +1,6 @@
+require_dependency "jinda/application_controller"
+
+module Jinda
 class ArticlesController < ApplicationController
  before_action :load_articles, except: [:destroy] 
  before_action :load_my_articles, only: [:my]
@@ -103,4 +106,5 @@ class ArticlesController < ApplicationController
     @comments = @article.comments.find_all
   end
 
+end
 end

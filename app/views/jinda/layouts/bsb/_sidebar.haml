@@ -1,0 +1,155 @@
+%section
+  / Left Sidebar
+  %aside#leftsidebar.sidebar
+    / User Info
+    .user-info
+      .image
+        %img{:alt => "User", :height => "48", :src => asset_url("user.png", :width => "48")}/
+      .info-container
+        .name{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"} John Doe
+        .email john.doe@example.com
+        .btn-group.user-helper-dropdown
+          %i.material-icons{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown"} keyboard_arrow_down
+          %ul.dropdown-menu.pull-right
+            %li
+              %a{:href => "javascript:void(0);"}
+                %i.material-icons> person
+                Profile
+            %li.divider{:role => "seperator"}
+            %li
+              %a{:href => "javascript:void(0);"}
+                %i.material-icons> group
+                Followers
+            %li
+              %a{:href => "javascript:void(0);"}
+                %i.material-icons> shopping_cart
+                Sales
+            %li
+              %a{:href => "javascript:void(0);"}
+                %i.material-icons> favorite
+                Likes
+            %li.divider{:role => "seperator"}
+            %li
+              %a{:href => "javascript:void(0);"}
+                %i.material-icons> input
+                Sign Out
+    / #User Info
+    / Menu
+    = render "layouts/jqm/menu"
+
+    / #Footer
+  / #END# Left Sidebar
+  / Right Sidebar
+  %aside#rightsidebar.right-sidebar
+    %ul.nav.nav-tabs.tab-nav-right{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"data-toggle" => "tab", :href => "#skins"} SKINS
+      %li{:role => "presentation"}
+        %a{"data-toggle" => "tab", :href => "#settings"} SETTINGS
+    .tab-content
+      #skins.tab-pane.fade.in.active.in.active{:role => "tabpanel"}
+        %ul.demo-choose-skin
+          %li.active{"data-theme" => "red"}
+            .red
+            %span Red
+          %li{"data-theme" => "pink"}
+            .pink
+            %span Pink
+          %li{"data-theme" => "purple"}
+            .purple
+            %span Purple
+          %li{"data-theme" => "deep-purple"}
+            .deep-purple
+            %span Deep Purple
+          %li{"data-theme" => "indigo"}
+            .indigo
+            %span Indigo
+          %li{"data-theme" => "blue"}
+            .blue
+            %span Blue
+          %li{"data-theme" => "light-blue"}
+            .light-blue
+            %span Light Blue
+          %li{"data-theme" => "cyan"}
+            .cyan
+            %span Cyan
+          %li{"data-theme" => "teal"}
+            .teal
+            %span Teal
+          %li{"data-theme" => "green"}
+            .green
+            %span Green
+          %li{"data-theme" => "light-green"}
+            .light-green
+            %span Light Green
+          %li{"data-theme" => "lime"}
+            .lime
+            %span Lime
+          %li{"data-theme" => "yellow"}
+            .yellow
+            %span Yellow
+          %li{"data-theme" => "amber"}
+            .amber
+            %span Amber
+          %li{"data-theme" => "orange"}
+            .orange
+            %span Orange
+          %li{"data-theme" => "deep-orange"}
+            .deep-orange
+            %span Deep Orange
+          %li{"data-theme" => "brown"}
+            .brown
+            %span Brown
+          %li{"data-theme" => "grey"}
+            .grey
+            %span Grey
+          %li{"data-theme" => "blue-grey"}
+            .blue-grey
+            %span Blue Grey
+          %li{"data-theme" => "black"}
+            .black
+            %span Black
+      #settings.tab-pane.fade{:role => "tabpanel"}
+        .demo-settings
+          %p GENERAL SETTINGS
+          %ul.setting-list
+            %li
+              %span Report Panel Usage
+              .switch
+                %label
+                  %input{:checked => "checked", :type => "checkbox"}/
+                  %span.lever
+            %li
+              %span Email Redirect
+              .switch
+                %label
+                  %input{:type => "checkbox"}/
+                  %span.lever
+          %p SYSTEM SETTINGS
+          %ul.setting-list
+            %li
+              %span Notifications
+              .switch
+                %label
+                  %input{:checked => "checked", :type => "checkbox"}/
+                  %span.lever
+            %li
+              %span Auto Updates
+              .switch
+                %label
+                  %input{:checked => "checked", :type => "checkbox"}/
+                  %span.lever
+          %p ACCOUNT SETTINGS
+          %ul.setting-list
+            %li
+              %span Offline
+              .switch
+                %label
+                  %input{:type => "checkbox"}/
+                  %span.lever
+            %li
+              %span Location Permission
+              .switch
+                %label
+                  %input{:checked => "checked", :type => "checkbox"}/
+                  %span.lever

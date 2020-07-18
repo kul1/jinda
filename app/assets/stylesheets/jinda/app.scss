@@ -1,0 +1,90 @@
+
+#article-title {
+  text-align: left;
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  color:#333;
+}
+
+#title {
+  font-size: 14pt;
+  font-weight: bold;
+  text-align: left;
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  color:#333;
+
+}
+#text{
+  font-size: 14pt;
+  font-weight: bold;
+  text-align:left;
+  border:1px solid #c1c1c1;
+  background:#f7f7f7;
+  padding:2px 5px;
+  color:#333;
+}
+#comment {
+  font-size: 8pt;
+  text-align:left;
+  border:1px solid #c1c1c1;
+  background:#f7f7f7;
+  padding:2px 5px;
+  color:#333;
+}
+
+#body {
+  font-size: 10pt;
+  font-weight: bold;
+  text-align:left;
+  color:#333;
+}
+#table {
+  width:100%;
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+
+}
+
+#table th {
+  background-color: #bcecff;
+  color:#333;
+  width:100%;
+}
+
+#table td {
+  border: 1px;
+  padding: 8px;
+  witdth:100%;
+}
+
+
+.ui-btn-inner { padding: 2px 25px; }
+.ui-btn-up-c,
+.ui-btn-hover-c,
+.ui-btn-down-c {
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  /*font-size: 110%;*/
+}
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li { padding: 7px 75px 7px 7px; display: block; }
+.ui-link-inherit { font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;}
+label.ui-input-text {
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  /*font-size: 110%;*/
+  text-shadow: none;
+  margin: 2% 2% 0 0;
+
+}
+label.ui-select {
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  /*font-size: 110%;*/
+  text-shadow: none;
+}
+.ui-body-c {
+  font-family: 'TH SarabunPSK', Helvetica, Arial, sans-serif;
+  /*font-size: 1.4em;*/
+  text-shadow: none;
+}
+.ui-header .ui-title, .ui-footer .ui-title { font-family: 'TH SarabunPSK'; text-align: center; display: block; margin: .2em 90px .3em;  padding: 0;  text-overflow: ellipsis; overflow: hidden; white-space: nowrap; outline: 0 !important; }
+
+
+
+
+

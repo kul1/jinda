@@ -1,0 +1,52 @@
+#tooltip{
+  position:absolute;
+  border:1px solid #333;
+  background:#f7f5d1;
+  padding:2px 5px;
+  color:#333;
+  display:none;
+}
+#notice {
+  color: #F90609;
+  background-color: #EBD1D1;
+  font-weight: bolder;
+  padding-left: 10px;
+}
+.step {
+  /*display: table-row;*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.steps_more {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background:url(images/button_blue.png) no-repeat;
+  display: table-cell;
+  text-align:center;
+}
+.step_now {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background:url(images/button_red.png) no-repeat;
+  display: table-cell;
+  text-align:center;
+}
+.steps_done {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background:url(images/button_black.png) no-repeat;
+  display: table-cell;
+  text-align:center;
+}

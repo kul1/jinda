@@ -1,0 +1,147 @@
+%nav.navbar
+  .container-fluid
+    .navbar-header
+      %a.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#navbar-collapse", "data-toggle" => "collapse", :href => "javascript:void(0);"}
+      %a.bars{:href => "javascript:void(0);"}
+      %a.navbar-brand{:href => "index.html"} ADMINBSB - MATERIAL DESIGN
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        / Call Search
+        %li
+          %a.js-search{"data-close" => "true", :href => "javascript:void(0);"}
+            %i.material-icons search
+        / #END# Call Search
+        / Notifications
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);", :role => "button"}
+            %i.material-icons notifications
+            %span.label-count 7
+          %ul.dropdown-menu
+            %li.header NOTIFICATIONS
+            %li.body
+              %ul.menu
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-light-green
+                      %i.material-icons person_add
+                    .menu-info
+                      %h4 12 new members joined
+                      %p
+                        %i.material-icons access_time
+                        14 mins ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-cyan
+                      %i.material-icons add_shopping_cart
+                    .menu-info
+                      %h4 4 sales made
+                      %p
+                        %i.material-icons access_time
+                        22 mins ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-red
+                      %i.material-icons delete_forever
+                    .menu-info
+                      %h4
+                        %b Nancy Doe
+                        deleted account
+                      %p
+                        %i.material-icons access_time
+                        3 hours ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-orange
+                      %i.material-icons mode_edit
+                    .menu-info
+                      %h4
+                        %b Nancy
+                        changed name
+                      %p
+                        %i.material-icons access_time
+                        2 hours ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-blue-grey
+                      %i.material-icons comment
+                    .menu-info
+                      %h4
+                        %b John
+                        commented your post
+                      %p
+                        %i.material-icons access_time
+                        4 hours ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-light-green
+                      %i.material-icons cached
+                    .menu-info
+                      %h4
+                        %b John
+                        updated status
+                      %p
+                        %i.material-icons access_time
+                        3 hours ago
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    .icon-circle.bg-purple
+                      %i.material-icons settings
+                    .menu-info
+                      %h4 Settings updated
+                      %p
+                        %i.material-icons access_time
+                        Yesterday
+            %li.footer
+              %a{:href => "javascript:void(0);"} View All Notifications
+        / #END# Notifications
+        / Tasks
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);", :role => "button"}
+            %i.material-icons flag
+            %span.label-count 9
+          %ul.dropdown-menu
+            %li.header TASKS
+            %li.body
+              %ul.menu.tasks
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    %h4
+                      Footer display issue
+                      %small 32%
+                    .progress
+                      .progress-bar.bg-pink{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "85", :role => "progressbar", :style => "width: 32%"}
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    %h4
+                      Make new buttons
+                      %small 45%
+                    .progress
+                      .progress-bar.bg-cyan{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "85", :role => "progressbar", :style => "width: 45%"}
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    %h4
+                      Create new dashboard
+                      %small 54%
+                    .progress
+                      .progress-bar.bg-teal{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "85", :role => "progressbar", :style => "width: 54%"}
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    %h4
+                      Solve transition issue
+                      %small 65%
+                    .progress
+                      .progress-bar.bg-orange{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "85", :role => "progressbar", :style => "width: 65%"}
+                %li
+                  %a{:href => "javascript:void(0);"}
+                    %h4
+                      Answer GitHub questions
+                      %small 92%
+                    .progress
+                      .progress-bar.bg-purple{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "85", :role => "progressbar", :style => "width: 92%"}
+            %li.footer
+              %a{:href => "javascript:void(0);"} View All Tasks
+        / #END# Tasks
+        %li.pull-right
+          %a.js-right-sidebar{"data-close" => "true", :href => "javascript:void(0);"}
+            %i.material-icons more_vert
+/ #Top Bar
