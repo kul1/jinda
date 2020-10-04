@@ -1,3 +1,5 @@
+## v0.6.1
+# Update dependency
 
 ## v0.6.0
 # Fixed to work with jinda_adminlte

@@ -19,7 +19,7 @@ module Jinda
         gem 'bson', '4.4.2'
         gem 'mongoid', '7.1.0.rc0'
         gem 'turbolinks_render'
-        gem 'nokogiri', '1.10'
+        gem 'nokogiri', '1.10.10'
         gem 'haml', '~> 5.1', '>= 5.1.2'
         gem 'haml-rails', '~> 2.0.1'
         gem 'mail'
