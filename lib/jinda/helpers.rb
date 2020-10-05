@@ -645,7 +645,10 @@ module Jinda
         if a[:edit]
           doc += "  #{a[:text]}\n"
         else
-          doc += "  field :#{a[:code]}, :type => #{a[:type].capitalize}\n"
+          # Fixed: Capitalize only first char
+          # doc += "  field :#{a[:code]}, :type => #{a[:type].capitalize}\n"
+          a[:type][0] = a[:type][0].capitalize 
+          doc += "  field :#{a[:code]}, :type => #{a[:type]}\n"
         end
       end
       doc += "  #{@etext}\n"
