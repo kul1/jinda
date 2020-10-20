@@ -1,19 +1,31 @@
 class CommentsController < ApplicationController
+  before_action :comment_params, only: [:create]
+  before_action :load_commmentable
+
+  def index
+    @comments = @commentable.comments 
+  end
 
   def create
-    @article = Article.find(article_params["article_id"])
-    @comment = @article.comments.new(comment_params)
+    @comment = @commentable.comments.new comment_params
     @comment.save!
-    redirect_to controller: 'articles', action: 'show', article_id: @article
+    redirect_to [@commentable], notice: "Comment created"
   end
 
   private
 
-  def article_params
-    params.require(:comment).permit(:article_id)
-  end
+  # def article_params
+  #   params.require(:comment).permit(:article_id)
+  # end
 
   def comment_params
-    params.require(:comment).permit(:body, :article_id, :user_id)
+    resource = request.path.split('/')[1]                                
+    commentable_id = "#{resource.singularize.to_sym}_id" #:article_id
+    params.require(:comment).permit(:body, :user_id, commentable_id.to_sym)
   end
+
+  def load_commmentable                                                        
+    resource, id = request.path.split('/')[1,2]                                
+    @commentable = resource.singularize.classify.constantize.find(id)          
+  end     
 end

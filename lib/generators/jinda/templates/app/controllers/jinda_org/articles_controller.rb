@@ -12,8 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:article_id])
-    @comments = @article.comments.desc(:created_at).page(params[:page]).per(10)
+    @article = Article.find(article_params)
+    @commentable = @article
+    @comments = @commentable.comments.desc(:created_at).page(params[:page]).per(10)
+
     prepare_meta_tags(title: @article.title,
                       description: @article.text,
                       keywords: @article.keywords)
@@ -92,7 +94,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params[:article_id]
+    [params[:article_id], params[:id]].detect { |p| !p.nil? }
   end
 
   def load_edit_article

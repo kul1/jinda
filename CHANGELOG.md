@@ -1,3 +1,6 @@
+## v0.6.2
+# Change to use polymorphic association
+
 ## v0.6.1
 # Update dependency
 
