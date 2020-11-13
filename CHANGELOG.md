@@ -1,3 +1,6 @@
+## v0.6.3
+# Removed bundler 1.16
+
 ## v0.6.2
 # Change to use polymorphic association
 
