@@ -1,3 +1,6 @@
+## v0.6.5
+# Add Docker
+
 ## v0.6.4
 # Remove binding.pry
 
