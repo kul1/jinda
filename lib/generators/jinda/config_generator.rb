@@ -65,6 +65,13 @@ module Jinda
                 end
             end
 
+           #  desc "Setup Dockerfile"
+           #  def setup_docker
+           #      FileUtils.mv "Dockerfile", "Dockerfile"
+           #      FileUtils.mv "docker-compose.yml", "docker-compose.yml"
+           #      FileUtils.mv "entrypoint.sh", "entrypoint.sh"
+           #  end
+
             def finish
                 puts "      configured omniauth.\n"
                 puts "      configured Mongoid.\n"
