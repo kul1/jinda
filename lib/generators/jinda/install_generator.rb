@@ -79,13 +79,14 @@ module Jinda
         # inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
         # inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
         # inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda_org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/application_controller.rb', 'application_controller.rb')}
         inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "Please merge existing jinda_org/admins_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/admins_controller.rb', 'admins_controller.rb')}
         inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "Please merge existing jinda_org/articles_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/articles_controller.rb', 'articles_controller.rb')}
         inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "Please merge existing jinda_org/comments_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/comments_controller.rb', 'comments_controller.rb')}
         inside("app/controllers") {(File.file? "docs_controller.rb") ? ( say "Please merge existing jinda_org/docs_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/docs_controller.rb', 'docs_controller.rb')}
         inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "Please merge existing jinda_org/identities_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/identities_controller.rb', 'identities_controller.rb')}
-        inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda_org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/jinda_controller.rb', 'jinda_controller.rb')}
+        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "Pleas merge existing jinda_org/application_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/application_controller.rb', 'application_controller.rb')}
+        ## Moved to Engine
+        # inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "Please merge existing jinda_org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/jinda_controller.rb', 'jinda_controller.rb')}
         inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "Please merge existing jinda_org/password_resets_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/password_resets_controller.rb', 'password_resets_controller.rb')}
         inside("app/controllers") {(File.file? "password_resets.rb") ? ( say "Please merge existing jinda_org/password_resets.rb after this installation", :red) : (FileUtils.mv 'jinda_org/password_resets.rb', 'password_resets.rb')}
         inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "Please merge existing jinda_org/sessions_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/sessions_controller.rb', 'sessions_controller.rb')}
@@ -94,49 +95,50 @@ module Jinda
         inside("app/controllers") {(File.file? "notes_controller.rb") ? ( say "Please merge existing jinda_org/notes_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/notes_controller.rb', 'notes_controller.rb')}
       end
       # routes created each line as reversed order in routes
+      # Moved routes to Engine
       def setup_routes
       #  route "end"
-        route "  end"
-        route "    namespace :v1 do resources :notes, :only => [:index] end"
-        route "  namespace :api do"
-        route "post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'" 
-        route "get '/api/v1/notes/my' => 'api/v1/notes#my'"
-        route "\# api"
+      #   route "  end"
+      #   route "    namespace :v1 do resources :notes, :only => [:index] end"
+      #   route "  namespace :api do"
+      #   route "post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'" 
+      #   route "get '/api/v1/notes/my' => 'api/v1/notes#my'"
+      #   route "\# api"
         route "root :to => 'jinda#index'"        
-        route "resources :jinda, :only => [:index, :new]"
-        route "resources :password_resets"
-        route "resources :sessions"
-        route "resources :identities"
-        route "resources :users"
-        route "resources :docs"
-        route "resources :notes"
-        route "resources :comments"
-        route "resources :articles do resources :comments end"
-        route "get '/jinda/document/:id' => 'jinda#document'"
-        route "get '/notes/destroy/:id' => 'notes#destroy'"
-        route "get '/notes/my/destroy/:id' => 'notes#destroy'"
-        route "get '/docs/my/destroy' => 'docs#destroy'"
-        route "get '/notes/my' => 'notes/my'"
-        route "get '/docs/my' => 'docs/my'"
-        route "get '/articles/edit' => 'articles/edit'"
-        route "get '/articles/show' => 'articles/show'"
-		    route "get '/articles/my/destroy' => 'articles#destroy'"
-        route "get '/articles/my' => 'articles#my'"
-        route "get '/logout' => 'sessions#destroy', :as => 'logout'"
-        route "get '/auth/failure' => 'sessions#destroy'"
-        route "get '/auth/:provider/callback' => 'sessions#create'"
-        route "post '/auth/:provider/callback' => 'sessions#create'"        
-		    route "\# end jinda method routes"
-        route "post '/jinda/end_output' => 'jinda#end_output'"
-        route "post '/jinda/end_form' => 'jinda#end_form'"
-        route "post '/jinda/pending' => 'jinda#index'"
-        route "post '/jinda/init' => 'jinda#init'"
-        route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-        route "jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']"
-        route "jinda_methods += ['run_redirect', 'run_direct_to','run_if']"
-        route "jinda_methods += ['init', 'run', 'run_mail', 'document', 'run_do', 'run_form', 'end_form']"
-        route "jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']"  
-        route "\# start jiinda method routes"
+      #   route "resources :jinda, :only => [:index, :new]"
+      #   route "resources :password_resets"
+      #   route "resources :sessions"
+      #   route "resources :identities"
+      #   route "resources :users"
+      #   route "resources :docs"
+      #   route "resources :notes"
+      #   route "resources :comments"
+      #   route "resources :articles do resources :comments end"
+      #   route "get '/jinda/document/:id' => 'jinda#document'"
+      #   route "get '/notes/destroy/:id' => 'notes#destroy'"
+      #   route "get '/notes/my/destroy/:id' => 'notes#destroy'"
+      #   route "get '/docs/my/destroy' => 'docs#destroy'"
+      #   route "get '/notes/my' => 'notes/my'"
+      #   route "get '/docs/my' => 'docs/my'"
+      #   route "get '/articles/edit' => 'articles/edit'"
+      #   route "get '/articles/show' => 'articles/show'"
+		  #   route "get '/articles/my/destroy' => 'articles#destroy'"
+      #   route "get '/articles/my' => 'articles#my'"
+      #   route "get '/logout' => 'sessions#destroy', :as => 'logout'"
+      #   route "get '/auth/failure' => 'sessions#destroy'"
+      #   route "get '/auth/:provider/callback' => 'sessions#create'"
+      #   route "post '/auth/:provider/callback' => 'sessions#create'"        
+		  #   route "\# end jinda method routes"
+      #   route "post '/jinda/end_output' => 'jinda#end_output'"
+      #   route "post '/jinda/end_form' => 'jinda#end_form'"
+      #   route "post '/jinda/pending' => 'jinda#index'"
+      #   route "post '/jinda/init' => 'jinda#init'"
+      #   route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
+      #   route "jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']"
+      #   route "jinda_methods += ['run_redirect', 'run_direct_to','run_if']"
+      #   route "jinda_methods += ['init', 'run', 'run_mail', 'document', 'run_do', 'run_form', 'end_form']"
+      #   route "jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']"  
+      #   route "\# start jiinda method routes"
 	    end
 
       def setup_env
@@ -210,6 +212,7 @@ Mongoid::Config.belongs_to_required_by_default = false
         end
         inject_into_file 'config/environments/development.rb', :after => 'config.action_mailer.raise_delivery_errors = false' do
           "\n  config.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+          "\n  config.assets.check_precompiled_asset = false"
         end
         inject_into_file 'config/environments/production.rb', :after => 'config.assets.compile = false' do
           "\n  config.assets.compile = true"
