@@ -3,7 +3,6 @@ module Jinda
   module GemHelpers
 	  require 'jinda/helpers'
 		include Jinda::Helpers
-		require 'pry'
 			# Find gem root 
 			spec = Gem::Specification.find_by_name("jinda")
 			$gem_root = spec.gem_dir

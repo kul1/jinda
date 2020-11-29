@@ -10,6 +10,15 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jinda_jqm
+//= require jquery
+//= require jquery_ujs
+//= require jquery.mobile.splitview
+//= require jquery.mobile-1.2.1
+//= require jquery.mobile.datebox
+//= require iscroll-wrapper
+//= require iscroll
+//= require jinda
+//  require turbolinks
+//  require disable_enter_key.js
 
 

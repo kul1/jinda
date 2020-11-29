@@ -210,6 +210,7 @@ Mongoid::Config.belongs_to_required_by_default = false
         end
         inject_into_file 'config/environments/development.rb', :after => 'config.action_mailer.raise_delivery_errors = false' do
           "\n  config.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+          "\n  config.assets.check_precompiled_asset = false"
         end
         inject_into_file 'config/environments/production.rb', :after => 'config.assets.compile = false' do
           "\n  config.assets.compile = true"
