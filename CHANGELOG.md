@@ -1,3 +1,6 @@
+## v0.6.7
+# Require Rails < 6.1
+
 ## v0.6.6
 # Change to Engine
 
