@@ -1,3 +1,6 @@
+## v0.6.9
+# Add config
+
 ## v0.6.8
 # Add app
 
