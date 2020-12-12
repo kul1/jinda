@@ -1,3 +1,6 @@
+## v0.6.8
+# Add app
+
 ## v0.6.7
 # Require Rails < 6.1
 
