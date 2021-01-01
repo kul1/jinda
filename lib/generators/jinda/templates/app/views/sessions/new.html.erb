@@ -1,20 +1,26 @@
 <div class="container">
-	<div class="ui.head">
-		<%= form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do %>
-			<div class="field" data-role="fieldcontain">
-				<%= label_tag :auth_key, "User name" %>
-				<%= text_field_tag :auth_key %>
-			</div>
-			<div class="field" data-role="fieldcontain">
-				<%= label_tag :password, "Password" %>
-				<%= password_field_tag :password %>
-			</div>
-			<div class="field" data-role="fieldcontain" data-icon="info">
-				<%= label_tag :remember_me %>
-				<%= check_box_tag :remember_me, 1, params.permit[:remember_me] %>
-			</div>
-			<div class="actions"><%= submit_tag "Sign In" %></div>
-			<%= link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'} %>
-		<% end %>
-	</div>
+  <div id="logreg-forms">
+    <div class="sign_in">
+
+      <%= form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do %>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+        <div class="form-control" data-role="fieldcontain">
+          <%= label_tag :auth_key, "User name" %>
+          <%= text_field_tag :auth_key %>
+        </div>
+        <div class="form-control" data-role="fieldcontain">
+          <%= label_tag :password, "Password" %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="field" data-role="fieldcontain" data-icon="info">
+          <%= label_tag :remember_me %>
+          <%= check_box_tag :remember_me, 1, params.permit[:remember_me] %>
+        </div>
+
+        <button class="btn btn-success btn-block actions" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+        <%= link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'} %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
 </div>

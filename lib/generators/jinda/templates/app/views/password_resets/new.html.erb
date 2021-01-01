@@ -1,7 +1,13 @@
-<%= form_tag password_resets_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="actions"><%= submit_tag "Reset Password" %></div>
-<% end %>
+<div class="container">
+	<div id="logreg-forms">
+		<div class="sign_in">
+			<%= form_tag password_resets_path, :method => :post do %>
+				<div class="field">
+					<%= label_tag :email %>
+					<%= text_field_tag :email, params[:email] %>
+				</div>
+        <button class="btn btn-success btn-block actions" type="submit"><i class="fas fa-sign-in-alt"></i> Reset Password</button>
+			<% end %>
+		</div>
+	</div>
+</div>
