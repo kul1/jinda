@@ -65,12 +65,13 @@ module Jinda
                 end
             end
 
-           #  desc "Setup Dockerfile"
-           #  def setup_docker
-           #      FileUtils.mv "Dockerfile", "Dockerfile"
-           #      FileUtils.mv "docker-compose.yml", "docker-compose.yml"
-           #      FileUtils.mv "entrypoint.sh", "entrypoint.sh"
-           #  end
+            desc "Setup Dockerfile"
+            def setup_docker
+              puts "      Setup Docker files"
+              FileUtils.cp source_paths[0]+"/"+"Dockerfile", "Dockerfile"
+              FileUtils.cp source_paths[0]+"/"+"docker-compose.yml", "docker-compose.yml"
+              FileUtils.cp source_paths[0]+"/"+"entrypoint.sh", "entrypoint.sh"
+            end
 
             def finish
                 puts "      configured omniauth.\n"

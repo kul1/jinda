@@ -1,12 +1,27 @@
-
-%h1= @page_title
-.content= @article.text
-
-= form_for @article, :article_id => @article.id  do |f|
-  = f.label :title, "Title"
-  = f.text_field :title, :required => true 
-  = f.label :text, "Description" 
-  = f.text_field :text, :required => true 
-  = f.label :body, "Body Content"
-  = f.text_area :body, rows: 10
-  = f.submit
+.content-wrapper
+  .container
+    .card
+      .row.mt-0.mb-5.d-flex.justify-content-center.align-items-center
+        .col-md-10.col-sm-12
+          %h2.display-3.mt-5.pt-5
+            = @article.title
+            = link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
+          %h4.display-5
+            = @article.body.html_safe
+    %hr
+    %h1= @page_title
+    = @article.text
+    .container
+      .card
+        = form_for @article, :html => {:class => "form-horizontal center"} , :article_id => @article.id  do |f|
+          .form-group 
+            = f.label :title, "Title", class: "col-md-4 control-label"
+            = f.text_field :title, class: "col-md-4 control-label", :required => true 
+          .form-group 
+            = f.label :text, "Description", class: "col-md-4 control-label"
+            = f.text_field :text, class: "col-md-4 control-label", :required => true 
+          .form-group 
+            = f.label :body, "Body Content", class: "col-md-4 control-label"
+            = f.text_area :body, rows: 10, class: "col-md-4 control-label"
+          .form-group 
+            = f.submit "Submit",  class: "btn btn-default btn-primary"

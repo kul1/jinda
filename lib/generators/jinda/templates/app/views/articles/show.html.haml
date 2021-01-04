@@ -1,26 +1,28 @@
 - title @article.title
 - description @article.text
 - keywords @article.keywords
-
-= link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
-%div{"data-role" => "menu_mm", "data-theme" => "b", "data-backbtn"=>"false"}
-  #article-title= @article.title
-
-#article-text= @article.body.html_safe
-
-- @comments.each do |comment|
-  %div#article-comment.ui-corner-all
-    Author:    
-    %b= comment.user.code if comment.user
-    %div#comment-body
-      %i= comment.body
--# 
-- if login?
-  %h3 Add a comment:
-  =# form_for([@comment, @article.comments.build]) do |f|
-  = form_with(model: [@article, Comment.new], local: true) do |f|
-    = f.hidden_field :article_id, :value => @article.id
-    = f.label :body, "Comment"
-    = f.text_area :body
-    = f.hidden_field :user_id, :value => current_ma_user
-    = f.submit
+.container
+	.row.mt-0.mb-5.d-flex.justify-content-center.align-items-center
+		.col-md-10.col-sm-12
+			%h2.display-3.mt-5.pt-5
+				= @article.title
+				= link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
+			%h4.display-5
+				= @article.body.html_safe
+	%hr
+	- @comments.each do |comment|
+		%div#article-comment.ui-corner-all
+			Author:    
+			%b= comment.user.code if comment.user
+			%div#comment-body
+				%i= comment.body
+	-# 
+		- if login?
+			%h3 Add a comment:
+		=# form_for([@comment, @article.comments.build]) do |f|
+			= form_with(model: [@article, Comment.new], local: true) do |f|
+				= f.hidden_field :article_id, :value => @article.id
+			= f.label :body, "Comment"
+			= f.text_area :body
+			= f.hidden_field :user_id, :value => current_ma_user
+			= f.submit
