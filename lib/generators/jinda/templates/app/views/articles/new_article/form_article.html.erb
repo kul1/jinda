@@ -2,7 +2,7 @@
 <%
   article = @article
 %>
-<div id="article-table">
+<div class ="module-table">
 <%= fields_for article do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title, :required => true %>
