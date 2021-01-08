@@ -1,3 +1,6 @@
+## v0.7.0.2
+# Fixed login_fail warning
+
 ## v0.7.0.1
 # Add css Article
 
