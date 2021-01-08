@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
+    # redirect_to login_path, alert: "Authentication failed, please try again."
     redirect_to login_path, alert: "Authentication failed, please try again."
   end
 
@@ -21,8 +22,8 @@ class SessionsController < ApplicationController
       cookies[:auth_token] = user.auth_token
     end
     # refresh_to root_path, :ma_notice => "Logged in" # Called by jinda_conroller
-    # redirect_to root_path
-		redirect_to articles_my_path
+    redirect_to root_path
+		# redirect_to articles_my_path
 
   rescue
     redirect_to root_path, :alert=> "Authentication failed, please try again."
@@ -38,6 +39,6 @@ class SessionsController < ApplicationController
 
   def failure
     ma_log "Authentication failed, please try again."
-    redirect_to root_path, :alert=> "Authentication failed, please try again."
+    redirect_to new_session_path, :alert=> "Authentication failed, please try again."
   end
 end

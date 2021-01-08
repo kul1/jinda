@@ -4,6 +4,9 @@
 
       <%= form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do %>
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+        <div class="label-warning">
+          <%= flash[:alert] %>
+        </div>
         <div class="form-control" data-role="fieldcontain">
           <%= label_tag :auth_key, "User name" %>
           <%= text_field_tag :auth_key %>

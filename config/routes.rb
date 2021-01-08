@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # end jinda method routes
   post '/auth/:provider/callback' => 'sessions#create'
   get '/auth/:provider/callback' => 'sessions#create'
-  get '/auth/failure' => 'sessions#destroy'
+  get '/auth/failure' => 'sessions#failure'
   get '/logout' => 'sessions#destroy', :as => 'logout'
   get '/articles/my' => 'articles#my'
   get '/articles/my/destroy' => 'articles#destroy'
