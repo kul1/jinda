@@ -1,3 +1,3 @@
 module Jinda
-  VERSION = "0.7.0.3"
+  VERSION = "0.7.0.4"
 end

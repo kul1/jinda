@@ -1,3 +1,6 @@
+## v0.7.0.4
+# Change login back w/o bootstrap
+
 ## v0.7.0.3
 # Change login to use Bootstrap
 - Known bugs: JQM login bug with bootstrap
