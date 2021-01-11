@@ -1,3 +1,7 @@
+## v0.7.0.3
+# Change login to use Bootstrap
+- Known bugs: JQM login bug with bootstrap
+
 ## v0.7.0.2
 # Fixed login_fail warning
 
