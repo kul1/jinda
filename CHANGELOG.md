@@ -1,3 +1,10 @@
+## v0.7.1.2
+# Fixed comment / user info
+
+## v0.7.1.0
+# support Rails 6.1
+# fixed bug mongoid 7.2.0 using git@github.com:kul1/mongoid.git'
+
 ## v0.7.0.4
 # Change login back w/o bootstrap
 

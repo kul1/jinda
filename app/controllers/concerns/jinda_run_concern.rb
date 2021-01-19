@@ -18,9 +18,12 @@ module JindaRunConcern
           # Check if help file available for this form
           ###############################################################################################
           @help = File.read(fhelp) if File.exists?(fhelp)
-          f= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
-          if File.file?(f)
-            @ui= File.read(f)
+          f1= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
+          f2= "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.haml"
+          if File.file?(f1)
+            @ui= File.read(f1)
+          elsif File.file?(f2)
+            @ui= File.read(f2)
           else
             # flash[:notice]= "Error: Can not find the view file for this controller"
             ma_log "Error: Can not find the view file for this controller"
