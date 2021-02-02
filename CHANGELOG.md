@@ -1,3 +1,6 @@
+## v0.7.4
+# Add check for gem before install
+
 ## v0.7.3
 # rescue ruby 2.7 in markdown''
 

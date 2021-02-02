@@ -1,65 +1,105 @@
 module Jinda
   module Generators
     class InstallGenerator < Rails::Generators::Base
+      require 'pry'
       desc "Install jinda component to existing Rails app "
       def self.source_root
         File.dirname(__FILE__) + "/templates"
       end
 
       def setup_gems
-        gem 'maruku', '~> 0.7.3'
-        gem 'rouge'
-        gem 'normalize-rails'
-        gem 'font-awesome-rails'
-        gem 'font-awesome-sass', '~> 5.12.0'
-        gem 'mongoid-paperclip', require: 'mongoid_paperclip'
-        gem 'meta-tags'
-        gem 'jquery-turbolinks', '2.1.0'
-        gem 'mongo', '2.11.3'
-        gem 'bson', '4.4.2'
-        gem 'mongoid', git: 'git@github.com:kul1/mongoid.git'
-        gem 'turbolinks_render'
-        gem 'nokogiri', '~> 1.11.0'
-        gem 'haml', '~> 5.1', '>= 5.1.2'
-        gem 'haml-rails', '~> 2.0.1'
-        gem 'mail'
-        gem 'prawn'
-        gem 'redcarpet'
-        gem 'bcrypt'
-        gem 'oauth2', '1.4.4'
-        gem 'omniauth', '1.9.1'
-        gem 'omniauth-oauth2', '1.6.0'
-        gem 'omniauth-identity', '~> 1.1.1'
-        gem 'omniauth-facebook', '6.0.0'
-        gem 'omniauth-google-oauth2', '0.8.0'
-        gem 'dotenv-rails'
-        gem 'cloudinary', '1.13.2'
-        gem 'kaminari', '1.2.0'
-        gem 'kaminari-mongoid', '1.0.1'
-        gem 'jquery-rails', '4.3.5'
-        gem_group :development, :test do
-          gem 'shoulda'
-          gem 'rspec'
-          gem 'rspec-rails'
-          gem 'better_errors'
-          gem 'binding_of_caller'
-          gem 'pry-byebug'
-          gem 'factory_bot_rails'
-		      gem 'database_cleaner'
-          gem 'guard'
-          gem 'guard-rspec'
-          gem 'guard-minitest'
-          gem 'capybara'
-		      gem 'selenium-webdriver'
-          gem 'rb-fsevent'
-		      gem 'valid_attribute'
-          gem 'faker' 
+        # define required gems: jinda_gem, jinda_dev_gem
+        jinda_gem = 
+          [
+            ["maruku", "~> 0.7.3"],
+            ["rouge"],
+            ["normalize-rails"],
+            ["font-awesome-rails"],
+            ["font-awesome-sass", "~> 5.12.0"],
+            ["mongoid-paperclip", require: "mongoid_paperclip"],
+            ["meta-tags"],
+            ["jquery-turbolinks", "2.1.0"],
+            ["mongo", "2.11.3"],
+            ["bson", "4.4.2"],
+            ["mongoid", git: "git@github.com:kul1/mongoid.git"],
+            ["turbolinks_render"],
+            ["nokogiri", "~> 1.11.0"],
+            ["haml", "~> 5.1", ">= 5.1.2"],
+            ["haml-rails", "~> 2.0.1"],
+            ["mail"],
+            ["prawn"],
+            ["redcarpet"],
+            ["bcrypt"],
+            ["oauth2", "1.4.4"],
+            ["omniauth", "1.9.1"],
+            ["omniauth-oauth2", "1.6.0"],
+            ["omniauth-identity", "~> 1.1.1"],
+            ["omniauth-facebook", "6.0.0"],
+            ["omniauth-google-oauth2", "0.8.0"],
+            ["dotenv-rails"],
+            ["cloudinary", "1.13.2"],
+            ["kaminari", "1.2.0"],
+            ["kaminari-mongoid", "1.0.1"],
+            ["jquery-rails", "4.3.5"]
+        ]
+        jinda_dev_gem =
+          [
+            ["shoulda"],
+            ["rspec"],
+            ["rspec-rails"],
+            ["better_errors"],
+            ["binding_of_caller"],
+            ["pry-byebug"],
+            ["factory_bot_rails"],
+            ["database_cleaner"],
+            ["guard"],
+            ["guard-rspec"],
+            ["guard-minitest"],
+            ["capybara"],
+            ["selenium-webdriver"],
+            ["rb-fsevent"],
+            ["valid_attribute"],
+            ["faker"]
+        ]
+        # Open Gemfile add gem if not exist
+        jinda_gem.each do |g|
+          unless %x(gem list #{g[0]}).include?(g[0])
+            if g.count == 1
+              gem g[0]
+            else
+              gem g[0], g[1]
+            end
+          else
+            puts "#{g[0]} already exist in Gemfile"
+          end
         end
+
+        # create list of gem in sub-group dev and test
+        jinda_dev_new  = Array.new
+        jinda_dev_gem.each do |g|
+          unless %x(gem list #{g[0]}).include?(g[0])
+            jinda_dev_new << g
+          else
+            puts "#{g[0]} already exist in Gemfile"
+          end
+        end
+        unless jinda_dev_new.count == 0
+          gem_group :development, :test do
+            jinda_dev_new.each do |n|
+              if n.count == 1
+                gem n[0]
+              else
+                gem n[0], n[1]
+              end
+            end
+          end
+        end
+
       end
 
       def setup_app
         # inside("public") { run "FileUtils.mv index.html index.html.bak" }
-          inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( say "no seeds.rb", :green)}
+        inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( say "no seeds.rb", :green)}
         inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( say "no app/views/layout/ application.html.erb", :blue )}
         inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( say "no app/controller/application_controller.rb, :blue ")}
         inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( say "no app/helpers/application_helper.rb", :blue)}
@@ -97,61 +137,14 @@ module Jinda
       # routes created each line as reversed order in routes
       # Moved routes to Engine
       def setup_routes
-      #  route "end"
-      #   route "  end"
-      #   route "    namespace :v1 do resources :notes, :only => [:index] end"
-      #   route "  namespace :api do"
-      #   route "post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'" 
-      #   route "get '/api/v1/notes/my' => 'api/v1/notes#my'"
-      #   route "\# api"
         route "root :to => 'jinda#index'"        
-      #   route "resources :jinda, :only => [:index, :new]"
-      #   route "resources :password_resets"
-      #   route "resources :sessions"
-      #   route "resources :identities"
-      #   route "resources :users"
-      #   route "resources :docs"
-      #   route "resources :notes"
-      #   route "resources :comments"
-      #   route "resources :articles do resources :comments end"
-      #   route "get '/jinda/document/:id' => 'jinda#document'"
-      #   route "get '/notes/destroy/:id' => 'notes#destroy'"
-      #   route "get '/notes/my/destroy/:id' => 'notes#destroy'"
-      #   route "get '/docs/my/destroy' => 'docs#destroy'"
-      #   route "get '/notes/my' => 'notes/my'"
-      #   route "get '/docs/my' => 'docs/my'"
-      #   route "get '/articles/edit' => 'articles/edit'"
-      #   route "get '/articles/show' => 'articles/show'"
-		  #   route "get '/articles/my/destroy' => 'articles#destroy'"
-      #   route "get '/articles/my' => 'articles#my'"
-      #   route "get '/logout' => 'sessions#destroy', :as => 'logout'"
-      #   route "get '/auth/failure' => 'sessions#destroy'"
-      #   route "get '/auth/:provider/callback' => 'sessions#create'"
-      #   route "post '/auth/:provider/callback' => 'sessions#create'"        
-		  #   route "\# end jinda method routes"
-      #   route "post '/jinda/end_output' => 'jinda#end_output'"
-      #   route "post '/jinda/end_form' => 'jinda#end_form'"
-      #   route "post '/jinda/pending' => 'jinda#index'"
-      #   route "post '/jinda/init' => 'jinda#init'"
-      #   route "jinda_methods.each do \|aktion\| get \"/jinda/\#\{aktion\}\" => \"jinda#\#\{aktion\}\" end"
-      #   route "jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']"
-      #   route "jinda_methods += ['run_redirect', 'run_direct_to','run_if']"
-      #   route "jinda_methods += ['init', 'run', 'run_mail', 'document', 'run_do', 'run_form', 'end_form']"
-      #   route "jinda_methods = ['pending', 'status', 'search', 'doc', 'doc_print', 'logs', 'ajax_notice']"  
-      #   route "\# start jiinda method routes"
-	    end
+      end
 
       def setup_env
         FileUtils.mv "README.md", "README.md.bak"
         create_file 'README.md', ''
-        # FileUtils.mv 'install.sh', 'install.sh'
-        # inject_into_file 'config/application.rb', :after => 'require "active_resource/railtie"' do
-        # inject_into_file 'config/application.rb', :after => 'require "rails"' do
-        #   "\nrequire 'rexml/document'\n"+
-        #   "\nrequire 'mongoid/railtie'\n"
-        # end
         application do
-%q{
+          %q{
   # Jinda default
   config.generators do |g|
     g.orm             :mongoid
@@ -174,10 +167,10 @@ module Jinda
   #   :enable_starttls_auto => true  }
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.perform_deliveries = true
-}
+          }
         end
         initializer "jinda.rb" do
-%q{# encoding: utf-8
+          %q{# encoding: utf-8
 MM = "#{Rails.root}/app/jinda/index.mm"
 DEFAULT_TITLE = 'Jinda'
 DEFAULT_HEADER = 'Jinda'
@@ -190,11 +183,11 @@ NEXT = "Next >"
 IMAGE_LOCATION = "upload"
 # for debugging
 # DONT_SEND_MAIL = true
-}
+          }
         end
 
-initializer "mongoid.rb" do
-%q{# encoding: utf-8
+        initializer "mongoid.rb" do
+          %q{# encoding: utf-8
 #
 # Mongoid 6 follows the new pattern of AR5 requiring a belongs_to relation to always require its parent
 # belongs_to` will now trigger a validation error by default if the association is not present.
@@ -203,12 +196,12 @@ initializer "mongoid.rb" do
 # `config.active_record.belongs_to_required_by_default = true` in initializer.)
 #
 Mongoid::Config.belongs_to_required_by_default = false
-}
+          }
         end
 
         inject_into_file 'config/environment.rb', :after => "initialize!"  do
           "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" +
-          "\nclass Hash\n  remove_method :read\nrescue\nend"
+            "\nclass Hash\n  remove_method :read\nrescue\nend"
         end
         inject_into_file 'config/environments/development.rb', :after => 'config.action_mailer.raise_delivery_errors = false' do
           "\n  config.action_mailer.default_url_options = { :host => 'localhost:3000' }"
@@ -218,9 +211,9 @@ Mongoid::Config.belongs_to_required_by_default = false
           "\n  config.assets.compile = true"
         end
         inject_into_file 'config/initializers/assets.rb', :after => '# Precompile additional assets.
-' do        
-"Rails.application.config.assets.precompile += %w( sarabun.css )" +
-"\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
+        ' do        
+          "Rails.application.config.assets.precompile += %w( sarabun.css )" +
+            "\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
         end
       end
 
