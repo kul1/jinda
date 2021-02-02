@@ -1,3 +1,6 @@
+## v0.7.4.1
+# Fixed required pry
+
 ## v0.7.4
 # Add check for gem before install
 
