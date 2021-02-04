@@ -1,15 +1,15 @@
 module Jinda
   module Generators
     class InstallGenerator < Rails::Generators::Base
-  #    require 'pry'
+      require 'pry'
       desc "Install jinda component to existing Rails app "
       def self.source_root
         File.dirname(__FILE__) + "/templates"
       end
 
       def setup_gems
-        # define required gems: jinda_gem, jinda_dev_gem
-        jinda_gem = 
+#         # define required gems: jinda_gem, jinda_dev_gem
+         jinda_gem = 
           [
             ["bson", "4.4.2"],
             ["maruku", "~> 0.7.3"],
@@ -37,16 +37,17 @@ module Jinda
             ["cloudinary", "1.13.2"],
             ["kaminari", "1.2.0"],
             ["jquery-rails", "4.3.5"]
-        ]
-
+          ]
+# 
         jinda_custom = 
           [
             ["mongoid-paperclip", require: "mongoid_paperclip"],
             ["kaminari-mongoid", "1.0.1"],
             ["nokogiri", "~> 1.11.0"],
             ["mongoid", git: "git@github.com:kul1/mongoid.git"]
+            # ["mongoid", "~> 7.1.0"]
           ]
-
+# 
         jinda_dev_gem =
           [
             ["shoulda"],
@@ -67,28 +68,28 @@ module Jinda
             ["faker"]
           ]
 
-        # Check each jinda_gem and create new array if found one otherwise just create.
-        # Open Gemfile add gem if not exist
-        jinda_gem.each do |g|
-          unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
-            if g.count == 2
-                gem g[0], g[1]
-            else
-              gem g[0]
-            end
-          else
-            if g.count == 2
-              xgem_0 = %x(gem list -e #{g[0]})
-              unless xgem_0.include?(("#{g[1]}").gsub(/[~> ]/, ''))
-                say "    Found existing #{xgem_0} in Gemfile or System, Please edit Gemfile", :red
-                gem g[0], g[1]
-              else  
-                say "     Checking #{g[0]} found Ver. #{g[1]} already exist in Gemfile", :green
-              end 
-            end
-            say "     SKIP adding #{g[0]} in Gemfile", :yellow
-          end
-        end
+         # Check each jinda_gem and create new array if found one otherwise just create.
+         # Open Gemfile add gem if not exist
+         jinda_gem.each do |g|
+           unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
+             if g.count == 2
+                 gem g[0], g[1]
+             else
+               gem g[0]
+             end
+           else
+             if g.count == 2
+               xgem_0 = %x(gem list -e #{g[0]})
+               unless xgem_0.include?(("#{g[1]}").gsub(/[~> ]/, ''))
+                 say "    Found existing #{xgem_0} in Gemfile or System, Please edit Gemfile", :red
+                 gem g[0], g[1]
+               else  
+                 say "     Checking #{g[0]} found Ver. #{g[1]} already exist in Gemfile", :green
+               end 
+             end
+             say "     SKIP adding #{g[0]} in Gemfile", :yellow
+           end
+         end
 
         # create list of gem in sub-group dev and test
         jinda_dev_new  = Array.new
@@ -111,28 +112,26 @@ module Jinda
           end
         end
 
-        # create list of custom gem
-        jinda_custom_new = Array.new
-        jinda_custom.each do |g|
-          unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
-            jinda_dev_new << g
-          else
-            say "     #{g[0]} already exist in Gemfile", :yellow
-          end
-        end
-        unless jinda_custom_new.count == 0
-            jinda_custom_new.each do |c|
-            say "     Checking if #{g[0]} already exist in Gemfile", :yellow
-              if n.count == 1
-                gem c[0]
-              else
-                gem c[0], c[1]
-              end
-            end
-        end
-
-        
-
+         # create list of custom gem
+         jinda_custom_new = Array.new
+         jinda_custom.each do |g|
+           # unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
+           unless File.read("Gemfile").include?("#{g[0]}, #{g[1]}")
+             jinda_custom_new << g
+           else
+             say "     #{g[0]} already exist in Gemfile", :yellow
+           end
+         end
+         unless jinda_custom_new.count == 0
+             jinda_custom_new.each do |c|
+             say "     Checking if #{c[0]} already exist in Gemfile", :yellow
+               if c.count == 1
+                 gem c[0]
+               else
+                 gem c[0], c[1]
+               end
+             end
+         end
       end
 
       def setup_app
@@ -225,18 +224,18 @@ IMAGE_LOCATION = "upload"
         end
         # Move mongoid.rb to jinda:config
         # To avoid repeate install jinda:install crash
-         initializer "mongoid.rb" do
-           %q{# encoding: utf-8
- #
- # Mongoid 6 follows the new pattern of AR5 requiring a belongs_to relation to always require its parent
- # belongs_to` will now trigger a validation error by default if the association is not present.
- # You can turn this off on a per-association basis with `optional: true`.
- # (Note this new default only applies to new Rails apps that will be generated with
- # `config.active_record.belongs_to_required_by_default = true` in initializer.)
- #
- Mongoid::Config.belongs_to_required_by_default = false
-           }
-         end
+          initializer "mongoid.rb" do
+            %q{# encoding: utf-8
+  #
+  # Mongoid 6 follows the new pattern of AR5 requiring a belongs_to relation to always require its parent
+  # belongs_to` will now trigger a validation error by default if the association is not present.
+  # You can turn this off on a per-association basis with `optional: true`.
+  # (Note this new default only applies to new Rails apps that will be generated with
+  # `config.active_record.belongs_to_required_by_default = true` in initializer.)
+  #
+  Mongoid::Config.belongs_to_required_by_default = false
+            }
+          end
 
         inject_into_file 'config/environment.rb', :after => "initialize!"  do
           "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" +

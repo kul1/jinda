@@ -8,7 +8,7 @@ module Jinda
             def backup_files
                 st="      "
                 # inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv "omniauth.rb",  "omniauth.rb.bak") : (puts "new omniauth.rb created")}
-                # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
+                inside("config") {(File.file? "mongoid.yml") ? (FileUtils.mv "mongoid.yml", "mongoid.yml.bak") : (puts "new mongoid.yml will be created")}
                 (File.file? ".env") ? (FileUtils.mv ".env", ".env-bak") : (puts "backup .env")
             end
             desc "gen_image_store"
@@ -49,7 +49,6 @@ module Jinda
                 inject_into_file 'config/mongoid.yml', :after => '  # raise_not_found_error: true' do
                     "\n    raise_not_found_error: false"
                 end
-
                 inject_into_file 'config/mongoid.yml', :after => '  # belongs_to_required_by_default: true' do
                     "\n    belongs_to_required_by_default: false"
                 end
