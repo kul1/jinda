@@ -43,7 +43,6 @@ module Jinda
                 end
             end
 
-
             desc "Set up mongoid config"
             def setup_mongoid
                 generate "mongoid:config"
