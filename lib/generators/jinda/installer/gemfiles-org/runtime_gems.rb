@@ -1,0 +1,30 @@
+# @runtime_gems = Array.new
+@@runtime_gems = 
+ [
+   ["bson", "4.4.2"],
+   ["maruku", "~> 0.7.3"],
+   ["bcrypt"],
+   ["rouge"],
+   ["normalize-rails"],
+   ["font-awesome-rails"],
+   ["font-awesome-sass", "~> 5.12.0"],
+   ["meta-tags"],
+   ["jquery-turbolinks", "2.1.0"],
+   ["mongo", "2.11.3"],
+   ["turbolinks_render"],
+   ["haml-rails", "~> 2.0.1"],
+   ["haml", "~> 5.1", ">= 5.1.2"],
+   ["mail"],
+   ["prawn"],
+   ["redcarpet"],
+   ["oauth2", "1.4.4"],
+   ["omniauth", "1.9.1"],
+   ["omniauth-oauth2", "1.6.0"],
+   ["omniauth-identity", "~> 1.1.1"],
+   ["omniauth-facebook", "6.0.0"],
+   ["omniauth-google-oauth2", "0.8.0"],
+   ["dotenv-rails"],
+   ["cloudinary", "1.13.2"],
+   ["kaminari", "1.2.0"],
+   ["jquery-rails", "4.3.5"]
+ ]

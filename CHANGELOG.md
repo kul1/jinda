@@ -1,3 +1,7 @@
+
+## v0.7.5.0
+# Reinstall jinda Ok
+
 ## v0.7.4.1
 # Fixed required pry
 
