@@ -16,11 +16,19 @@ namespace :jinda do
 
   desc "generate admin user"
   task :seed=> :environment do
-    unless Identity.where(code:"admin").exists?
-      identity= Identity.create :code => "admin", :email => "admin@test.com", :password => "secret",
-				:password_confirmation => "secret", :image => "https://user-images.githubusercontent.com/3953832/42472827-50ed8cbc-8388-11e8-8982-fa523c25288f.png"
-      User.create :provider => "identity", :uid => identity.id.to_s, :code => identity.code,
-				:email => identity.email, :role => "M,A,D", :auth_token => "71JxMH5fxi23zinBoq1uKA", :image => identity.image
+    usamples  = [
+      { code: 'admin', password: 'secret', email: 'admin@test.com', role: 'M,A,D'},
+      { code: 'tester', password: 'password', email: 'tester@test.com', role: 'M'}
+    ]
+    usamples.each do |h|
+      code  = h[:code].to_s
+      email = h[:email].to_s
+      password = h[:password].to_s
+      role = h[:role].to_s
+      unless Identity.where(code: code).exists?
+        identity= Identity.create :code => code, :email => email, :password => password , :password_confirmation => password
+        User.create :provider => "identity", :uid => identity.id.to_s, :code => identity.code,:email => identity.email, :role => role
+      end
     end
   end
 

@@ -1,7 +1,6 @@
 module Jinda
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      require 'pry'
       desc "Install jinda component to existing Rails app "
       def self.source_root
         File.dirname(__FILE__) + "/templates"
