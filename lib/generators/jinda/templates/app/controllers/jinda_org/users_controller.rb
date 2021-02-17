@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def update_user
     # can't use session, current_ma_user inside jinda methods
     $user.update_attribute :email, $xvars["enter_user"]["user"]["email"]
+    $user.update_attribute :image, $xvars["enter_user"]["user"]["image"]
   end
   def change_password
     # check if old password correct

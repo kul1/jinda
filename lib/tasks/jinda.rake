@@ -17,8 +17,8 @@ namespace :jinda do
   desc "generate admin user"
   task :seed=> :environment do
     usamples  = [
-      { code: 'admin', password: 'secret', email: 'admin@test.com', role: 'M,A,D'},
-      { code: 'tester', password: 'password', email: 'tester@test.com', role: 'M'}
+      { code: 'admin', password: 'secret', email: 'admin@test.com', role: 'M,A,D', image: ''}
+      { code: 'tester', password: 'password', email: 'tester@test.com', role: 'M', image: 'https://www.manateeschools.net/cms/lib/FL02202357/Centricity/domain/2439/staff_photos/fflinststone.jpg'}
     ]
     usamples.each do |h|
       code  = h[:code].to_s

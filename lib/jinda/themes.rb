@@ -6,7 +6,7 @@
 # ##########################################################################
 def get_login_user_info
   if current_ma_user.present?
-    $user_image = current_ma_user.image
+    $user_image = ((current_ma_user.image != "") ? current_ma_user.image :  asset_url("user.png", :width => "48"))
     $user_name = current_ma_user.code
     $user_email = current_ma_user.email
     $user_id = current_ma_user.try(:id)
@@ -91,8 +91,8 @@ def markdown(text)
     flash[:notice] = "This ruby version not support #{error}"
     return
   end
-    red = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
-    red.render(erbified).html_safe
+  red = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  red.render(erbified).html_safe
 end
 def align_text(s, pixel=3)
   "<span style='position:relative; top:-#{pixel}px;'>#{s}</span>".html_safe
