@@ -1,23 +1,34 @@
-- title @article.title
-- description @article.text
-- keywords @article.keywords
+- title @show[:article][:title]
+- description @show[:article][:text]
+- keywords @show[:article][:keywords]
 .container
   %div.row::before 
     %div.col-md-12
       .row-description
         %h2.display-3.mt-5.pt-5
-          = @article.title
+          = @show[:article][:title]
           = link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
+        %div.font-weight-light
+          by
+          %img.img-circle{:alt => "User Image", src: @show[:user][:image] }/
+        %div.font-weight-light
+          = @show[:user][:code]
+        %div.font-weight-light
+          = @show[:article][:created_at]
         %hr
-          = @article.text
+          = @show[:article][:text]
         %h4.row-body
-          = @article.body.html_safe
+          = @show[:article][:body].html_safe
           %hr
-          - @comments.each do |comment|
+          - @show[:comments].each do |comment|
             %div#article-comment.ui-corner-all
               .col-md-12
                 %div.small-box.bg-white.text-info
                   %div.inner
+                    %div.font-weight-light
+                      - user_image = get_user_image(comment.user_id)
+                      %img.comment-user-image{:alt => "User Image", src: user_image}/
+
                     %div.font-weight-light
                       Author:    
                       %b= comment.name if comment.name
@@ -30,9 +41,9 @@
           %hr
             %h4.col-md-12
               Add a comment:
-              = form_with(model: [@article, Comment.new], local: true) do |f|
+              = form_with(model: [@show[:article], Comment.new], local: true) do |f|
                 .form-group 
-                  = f.hidden_field :article_id, :value => @article.id
+                  = f.hidden_field :article_id, :value => @show[:article][:id]
                 .form-group 
                   = f.label :body, "Comment"
                 .form-group 

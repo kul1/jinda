@@ -15,7 +15,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(article_params)
     @commentable = @article
     @comments = @commentable.comments.desc(:created_at).page(params[:page]).per(10)
-
+    @user = User.find(@article.user_id)
+    @show = Hash.new
+    @show = {:article => @article, :comments => @comments, :user => @user}
     prepare_meta_tags(title: @article.title,
                       description: @article.text,
                       keywords: @article.keywords)

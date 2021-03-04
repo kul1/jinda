@@ -18,6 +18,13 @@ def get_login_user_info
   end
   return $user_image, $user_name, $user_email,$user_id
 end
+# search image from User in Article/View/Show
+def get_user_image(user_id)
+  user_image = User.find(user_id).image
+  user_image = ((user_image != "") ? user_image :  asset_url("user.png", :width => "48"))
+  return user_image
+end
+
 
 def name2code(s)
   # rather not ignore # symbol cause it could be comment
