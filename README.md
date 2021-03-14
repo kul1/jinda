@@ -34,8 +34,8 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 
 These versions works for sure but others may do.
 
-- Ruby 2.7.1
-- Rails 6.1.0
+- Ruby 3.0.0
+- Rails 6.1.3
 - MongoDB 6
 - Freemind 1.0.1
 
