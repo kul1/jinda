@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'mongoid', '~> 7.1.0'
   # then require rails < 6.1.0 bx mongoid
   # spec.add_runtime_dependency 'rails', '< 6.1'
+  spec.add_runtime_dependency 'rexml', '~> 3.2'
 end

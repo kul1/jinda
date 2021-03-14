@@ -1,3 +1,9 @@
+## v0.7.5.3
+# Fix Article report, admin icon
+# Fixed rexml issue in Rails-6.1.3
+
+## v0.7.5.2
+# Fix Article report, admin icon
 
 ## v0.7.5.0
 # Reinstall jinda Ok

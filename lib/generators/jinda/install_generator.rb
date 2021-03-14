@@ -34,7 +34,9 @@ module Jinda
             ["dotenv-rails"],
             ["cloudinary", "1.13.2"],
             ["kaminari", "1.2.0"],
-            ["jquery-rails", "4.3.5"]
+            ["jquery-rails", "4.3.5"],
+            ["rexml", "~> 3.2.4"]
+
         ]
 
         jinda_custom = 
