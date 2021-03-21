@@ -22,14 +22,15 @@ describe SessionsController, type: :controller do
 				session[:user_id].should_not be_nil
 			end
 
-			it "should redirect the user to the articles/my url" do
+			it "should redirect the user to root_path " do
 				post :create, params: {provider: :google_oauth2}
-				response.should redirect_to articles_my_path
+				response.should redirect_to root_path 
 			end
 
 		end
 
-		describe "#destroy", js: true  do
+		#describe "#destroy", js: true  do
+		describe "#destroy"  do
 			before do
 				post :create, params: {provider: :google_oauth2}
 			end
@@ -49,7 +50,8 @@ describe SessionsController, type: :controller do
 		end
 	end
 
-	describe "Facebook" do
+	skip describe "Facebook" do
+  # skip or finish at config facebook
 
 		before do
 			@request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
@@ -71,7 +73,7 @@ describe SessionsController, type: :controller do
 
 		end
 
-		describe "#destroy", js: true  do
+		describe "#destroy" do
 			before do
 				post :create, params: {provider: :facebook}
 			end

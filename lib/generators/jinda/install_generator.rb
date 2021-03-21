@@ -56,7 +56,7 @@ module Jinda
             ["binding_of_caller"],
             ["pry-byebug"],
             ["factory_bot_rails"],
-            ["database_cleaner"],
+            ["database_cleaner-mongoid"],
             ["guard"],
             ["guard-rspec"],
             ["guard-minitest"],

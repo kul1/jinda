@@ -8,6 +8,9 @@ require 'valid_attribute'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+	config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+
   # config.include SpecTestHelper, :type => :controller
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -42,12 +45,12 @@ RSpec.configure do |config|
         uncommitted transaction data setup over the spec's database connection.
       MSG
     end
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(:deletion)
   end
 
   config.before(:each, :js => true) do
     #DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :deletion
   end
 
   config.before(:each, type: :feature) do
@@ -60,7 +63,7 @@ RSpec.configure do |config|
       # under test that does *not* share a database connection with the
       # specs, so use truncation strategy.
       # DatabaseCleaner.strategy = :truncation
-      DatabaseCleaner[:mongoid].strategy = :truncation
+      DatabaseCleaner[:mongoid].strategy = :deletion
 
     end
   end
