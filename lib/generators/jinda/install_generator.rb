@@ -35,6 +35,7 @@ module Jinda
             ["cloudinary", "1.13.2"],
             ["kaminari", "1.2.0"],
             ["jquery-rails", "4.3.5"],
+            ["mongoid"],
             ["rexml", "~> 3.2.4"]
 
         ]
@@ -43,8 +44,7 @@ module Jinda
           [
             ["mongoid-paperclip", require: "mongoid_paperclip"],
             ["kaminari-mongoid", "1.0.1"],
-            ["nokogiri", "~> 1.11.0"],
-            ["mongoid", git: "git@github.com:kul1/mongoid.git"]
+            ["nokogiri", "~> 1.11.0"]
           ]
 
         jinda_dev_gem =

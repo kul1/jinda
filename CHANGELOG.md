@@ -1,3 +1,6 @@
+## v0.7.5.4
+# Replace gem 'mongoid'
+
 ## v0.7.5.3
 # Fix Article report, admin icon
 # Fixed rexml issue in Rails-6.1.3
