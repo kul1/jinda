@@ -1,5 +1,5 @@
 require 'spec_helper.rb'
-require 'jinda/gem_helpers'
+require 'lib/jinda/gem_helpers'
 include Jinda::GemHelpers
 
 describe Jinda::GemHelpers do
