@@ -5,14 +5,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: log untrusted output
+      run: |
 
-    - uses: ruby/setup-ruby@v2
-      with:
-        # Not needed with a .ruby-version file
-        ruby-version: 2.7
-        # runs 'bundle install' and caches installed gems automatically
-        bundler-cache: true
+        # disable command workflow processing
+        echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
+
+        # log untrusted output
+        echo "untrusted output"
+
+        # enable workflow command processing
+        echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
 
     # run RSpec tests
     # - run: bundle exec rspec
