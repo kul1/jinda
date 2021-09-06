@@ -7,14 +7,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@v2
       with:
         # Not needed with a .ruby-version file
         ruby-version: 2.7
         # runs 'bundle install' and caches installed gems automatically
         bundler-cache: true
-        # Fixed error
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
     # run RSpec tests
     # - run: bundle exec rspec
