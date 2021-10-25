@@ -8,6 +8,6 @@ rm -f /myapp/tmp/pids/server.pid
 bundle exec rake assets:precompile
 # Add admin user
 # rake db:seed
-rake jinda:seed
+bundle exec rake jinda:seed
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"

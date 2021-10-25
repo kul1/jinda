@@ -1,21 +1,16 @@
-version: '3.5'
+version: '3'
 services:
   web:
     build: .
-    env_file: .env
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - mongodb:/data/db
+      - .:/myapp
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - mongodb
 
-  db:
+  mongodb:
     image: mongo
-    volumes:
-      - mongodata:/data/db
     ports:
-      - "27888:27017"
-  volumes:
-    mongodata:
+      - "27017:27017"
