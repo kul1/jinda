@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency 'activesupport','~> 4.1.11', '>= 4.1.11'
   # mongoid bottle neck
   spec.add_development_dependency 'mongoid', '~> 7.1.0'
+  spec.add_development_dependency 'mongoid-rspec', '~> 2.1.0'
   # then require rails < 6.1.0 bx mongoid
   # spec.add_runtime_dependency 'rails', '< 6.1'
   spec.add_runtime_dependency 'rexml', '~> 3.2'
