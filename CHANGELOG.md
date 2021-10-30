@@ -1,3 +1,6 @@
+## v0.7.6.0
+# fixed test gem
+
 ## v0.7.5.5
 # fixed mongoid for rails-6.1.3
 

@@ -1,23 +1,26 @@
-<%#
-  doc = Doc.new :issue_on=> Date.today, :process_at => Time.now
+<%
+    doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
 %>
-<%#= fields_for doc do |f| %>
-  <%#= f.label :rnum, "Reference number" %>
-  <%#= f.text_field :rnum %>
+<%= fields_for doc do |f| %>
+  <%= f.label :category, "Category" %>
+  <%= f.select :category, [["Book", "book"], ["Letter", "letter"], ["Brochure", "brochure"]] %>
   <!--div>
-    <%#= f.label :confidential, "Confidentiality" , :class=>"ui-input-text" %>
-    <%#= f.select :confidential, [['normal',0],['secret',1],['top secret',2]],{},"data-native-menu"=>"false" %>
-  </div-->
-  <%#= f.label :issue_on, "Dated" %>
-  <%#= f.date_field :issue_on, "blackDays"=>[0,6] %>
-  <%#= f.label :summary, "Summary" %>
-  <%#= f.text_area :summary, :cols=>50, :rows=>6 %>
-  <%#= f.label :dscan, "Attached document" %>
-  <%#= f.file_field :dscan %>
-<%# end %>
-<%#= label_tag :hotel, "Ungroup field" %>
-<%#= text_field_tag :hotel %>
-<!--div>
-  <%#= label_tag :done1, "Logic field", :class=>"ui-input-text" %>
-  <%#= select_tag :done1, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
-</div-->
+    </div-->
+    <%= f.label :issue_on, "Dated" %>
+    <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
+
+    <%= f.label :dscan, "Attached document" %>
+    <%= f.file_field :dscan %>
+  <% end %>
+  <div>
+  <%= label_tag :description, "Description" %>
+  <%= text_field_tag :description %>
+  </div>
+  <div>
+    <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
+    <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
+  </div>
+  <div>
+  <%= label_tag :keywords, "Search Keywords" %>
+  <%= text_field_tag :keywords %>
+  </div>

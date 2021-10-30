@@ -2,7 +2,8 @@
     #                            Jinda Rake Task                           #
     ########################################################################
 
-    def gen_views
+    def gen_views(prefix="")
+      @prefix = prefix.empty? ? "" : (prefix+"/")
       t = ["*** generate ui ***"]
 
       # create array of files to be tested
@@ -10,23 +11,23 @@
 
       Jinda::Module.all.each do |m|
         m.services.each do |s|
-          dir ="app/views/#{s.module.code}"
+          dir = @prefix + "app/views/#{s.module.code}"
           unless gen_view_file_exist?(dir)
             gen_view_mkdir(dir,t) 
           end
 
           if s.code=='link'
-            f= "app/views/#{s.module.code}/index.haml"
+            f= @prefix+"app/views/#{s.module.code}/index.haml"
             $afile << f
             unless gen_view_file_exist?(f)
               sv = "app/jinda/template/linkview.haml"
-              f= "app/views/#{s.module.code}/index.haml"
+              f= @prefix+"app/views/#{s.module.code}/index.haml"
               gen_view_createfile(sv,f,t)
             end
             next   
           end
 
-          dir ="app/views/#{s.module.code}/#{s.code}"
+          dir = @prefix+"app/views/#{s.module.code}/#{s.code}"
           unless gen_view_file_exist?(dir)
             gen_view_mkdir(dir,t) 
           end
@@ -41,9 +42,9 @@
             next if code_name.comment?
             code= name2code(code_name)
             if action=="pdf"
-              f= "app/views/#{s.module.code}/#{s.code}/#{code}.pdf.prawn"
+              f= @prefix + "app/views/#{s.module.code}/#{s.code}/#{code}.pdf.prawn"
             else
-              f= "app/views/#{s.module.code}/#{s.code}/#{code}.html.erb"
+              f= @prefix + "app/views/#{s.module.code}/#{s.code}/#{code}.html.erb"
             end
             $afile << f
             unless gen_view_file_exist?(f)

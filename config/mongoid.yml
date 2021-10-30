@@ -1,0 +1,19 @@
+production:
+  clients: 
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
+development:
+  clients: 
+    default:
+      database: jinda
+      hosts:
+        - localhost:27017
+test:
+  clients: 
+    default:
+      database: jinda
+      hosts:
+        - localhost:27017

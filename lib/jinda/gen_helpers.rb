@@ -9,7 +9,7 @@
     end
 
     def gen_view_mkdir(dir,t)
-      Dir.mkdir(dir)
+      FileUtils.mkdir_p(dir) unless File.exists?(dir)
       t << "create directory #{dir}"
     end
 

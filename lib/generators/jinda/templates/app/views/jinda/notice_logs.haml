@@ -1,0 +1,18 @@
+- @title= "Notice Error Logs"
+= paginate @notices
+%table{:id=>"pending-table", :width=>"100%"}
+  %tr{:style=>"color:white; background-color:#97BF60;"}
+    %th created
+    %th user
+    %th message
+  - @notices.each do |notice|
+    - @notice= notice
+    - current_notice = @notice.id
+    - #current_notice_user = @notice.user
+    - notice_user = (User.find @notice.user ? notice.user : 0)
+    - (notice_user_name = notice_user.code) if notice_user
+
+    %tr
+      %td(style='vertical-align:top;')= notice.created_at
+      %td(style='vertical-align:top;')= notice_user_name
+      %td(style='vertical-align:top;')= notice.message 
