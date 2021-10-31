@@ -20,7 +20,9 @@
             f= @prefix+"app/views/#{s.module.code}/index.haml"
             $afile << f
             unless gen_view_file_exist?(f)
-              sv = "app/jinda/template/linkview.haml"
+              # check if test (@prefix) 
+              # sv = "app/jinda/template/linkview.haml"
+              sv = @prefix.blank? ? "app/jinda/template/linkview.haml" : "lib/generators/jinda/templates/app/jinda/template/linkview.haml"
               f= @prefix+"app/views/#{s.module.code}/index.haml"
               gen_view_createfile(sv,f,t)
             end
@@ -48,7 +50,8 @@
             end
             $afile << f
             unless gen_view_file_exist?(f)
-              sv = "app/jinda/template/view.html.erb"
+              # sv = "app/jinda/template/view.html.erb"
+              sv = @prefix.blank? ? "app/jinda/template/linkview.haml" : "lib/generators/jinda/templates/app/jinda/template/linkview.haml"
               gen_view_createfile(sv,f,t)
             end
           end

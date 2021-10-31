@@ -21,7 +21,7 @@ describe Jinda::GemHelpers do
 	end
 
 	# To test if can create only new controller from mm.
-	# By check method controller_exists?(modul)
+  # By check method controller_exists?(modul) in lib..template
 
 	it 'process_controllers check if any controller exists' do
     check_module = 'users'
