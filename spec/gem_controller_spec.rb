@@ -43,6 +43,14 @@ describe Jinda::GemHelpers do
 			fexist = File.exist?(expected_file)
 			expect(fexist).to be true
 		end
-	end
+  end
+
+  it 'add mm file from new controller' do
+    tmm     = ['C1','C2','C3']
+    add_mm  = ['C4','C5']
+    new_mm  = tmm+add_mm
+    expected_mm = ['C1','C2','C3','C4','C5']
+    expect(expected_mm).to match_array new_mm
+    end
 
 end
