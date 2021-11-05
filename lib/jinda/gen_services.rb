@@ -34,6 +34,7 @@
         # ##########################################################################
         # create or update to Jinda::Module model
         ma_module= Jinda::Module.find_or_create_by :code=>module_code
+        binding.pry
         ma_module.update_attributes :uid=>ma_module.id.to_s, :icon=>menu_icon
         protected_modules << ma_module.uid
         name = module_code if name.blank?
