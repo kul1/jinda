@@ -47,9 +47,13 @@ describe Jinda::GemHelpers do
 
   it 'add controller to database' do
     s_controller = 'spec/temp/app/controllers/test_controller.rb'
-    result = gen_database_controller(s_controller, prefix="spec/temp")
-    ma_module = Jinda::Module.find_or_create_by :code=>'test'
-    expected(ma_module).to be true
+    # expected_module_names  = list_controller_names(prefix="spec/temp")
+    # result = list_controller_names(prefix="spec/temp")
+    result = gen_module_controller
+    # result = gen_module_controller(s_controller, prefix="spec/temp")
+    # ma_module = Jinda::Module.find_or_create_by :code=>'test'
+    # expected(ma_module).to be true
+    binding.pry
   end
 
 end
