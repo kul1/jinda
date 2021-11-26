@@ -45,5 +45,12 @@ describe Jinda::GemHelpers do
 		end
   end
 
+  after(:all) do
+    `rm -rf spec/temp`
+    puts '*** temp files removed  ***'
+  end
+
+
+
 
 end
