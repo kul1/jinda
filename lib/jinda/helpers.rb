@@ -22,7 +22,6 @@ module Jinda
     require_relative 'gen_services'
     require_relative 'gen_controller'
     require_relative 'get_app'
-    require_relative 'gen_modules'
   end
 end
 

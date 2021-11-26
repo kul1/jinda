@@ -45,35 +45,5 @@ describe Jinda::GemHelpers do
 		end
   end
 
-  it 'add controller to database' do
-    s_controller = 'spec/temp/app/controllers/test_controller.rb'
-    # expected_module_names  = list_controller_names(prefix="spec/temp")
-    # result = list_controller_names(prefix="spec/temp")
-    result = gen_module_controller
-    # result = gen_module_controller(s_controller, prefix="spec/temp")
-    # ma_module = Jinda::Module.find_or_create_by :code=>'test'
-    # expected(ma_module).to be true
-    binding.pry
-  end
 
 end
-
-
-# Todo
-=begin
-
-  it 'add mm file from new controller' do
-    tmm     = ['C1','C2','C3']
-    add_mm  = ['C4','C5']
-    new_mm  = tmm+add_mm
-    expected_mm = ['C1','C2','C3','C4','C5']
-    expect(expected_mm).to match_array new_mm
-    end
-
-
-
-
-
-
-
-=end  

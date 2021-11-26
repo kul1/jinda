@@ -13,5 +13,4 @@
       @tdir   = "#{@prefix}app/controllers/*_controller.rb"
       # dir_module_names = Dir.glob("#{@prefix}app/controllers/*_controller.rb").map { |path| (path.match(/(\w+)/); $1) }
       dir_module_names = Dir.glob(@tdir).map {|path| (path.match(/(\w+)_controller.rb/); $1)}
-      binding.pry
     end
