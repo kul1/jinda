@@ -1,0 +1,21 @@
+- @title= "My Articles"
+%p
+- @page_title  = 'All Articlces'
+= paginate @articles
+%table#article-table
+  %tr
+    %th Title
+    %th Description
+    %th Created
+    %th Updated
+    %th Delete
+    %th Edit  
+  - @articles.each do |article|
+    %tr
+      %td= link_to article.title, :controller=>"articles", :action=>"show", :id=>article.id
+      %td= article.text.html_safe
+      %td= article.created_at.strftime('%m/%d/%Y')
+      %td= article.updated_at.strftime('%m/%d/%Y')
+      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), "#", :onclick=>"if (confirm('Please Confirm')) {location.hash='/articles/destroy/#{article.id}';}"
+      %td(align='center')= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'articles:xedit_article', article_id: article.id}, data: { confirm: "Please Confirm" }
+
