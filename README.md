@@ -42,6 +42,18 @@ These versions works for sure but others may do.
 - MongoDB 6
 - Freemind 1.0.1
 
+## Note for Mac M1
+
+- Once finish configure: Ruby and Rails version
+- Need Pre-install Nokogiri as follow:
+
+```
+
+arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-libraries
+
+
+```
+
 ## Convention
 
 - database is MongoDB
