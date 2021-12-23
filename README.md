@@ -53,6 +53,9 @@ arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-l
 
 
 ```
+## Note for Rails 7
+
+- depend on  mongoid dependencies: activemodel need to satify with Rails 7
 
 ## Convention
 
