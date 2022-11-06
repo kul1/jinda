@@ -1,3 +1,6 @@
+## v0.7.7.2
+# config with Jenkins
+
 ## v0.7.6.0
 # fixed test gem
 
