@@ -1,5 +1,5 @@
 /*
- * This is a manif.est file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
@@ -8,8 +8,25 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  *= require normalize-rails
  */
-@import "jinda_jqm.css.scss"
+
+@import "jquery.mobile-1.2.1";
+@import "jquery.mobile.splitview";
+@import "jquery.mobile.grids.collapsible";
+@import "jquery.mobile.datebox.css";
+@import "sarabun";
+@import "jinda";
+@import "kul-4.2";
+@import "articles";
+@import "app.scss";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "social";
+
+
+
+
+
+
+
