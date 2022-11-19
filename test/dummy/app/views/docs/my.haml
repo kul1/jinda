@@ -1,0 +1,27 @@
+- @title= "My Documents"
+%p
+- @page_title  = 'All Documents'
+= paginate @docs
+%table#document-table
+  %tr
+    %th File Name
+    %th Description
+    %th Category
+    %th Created
+    %th Delete
+    %th Edit  
+  - @docs.each do |doc|
+    %tr
+      - @temp = doc.dscan
+      - if !@temp.blank?
+        - @dscan = @temp.scan(/document\/([^*]*)/).last.last
+        %td= link_to doc.filename, "#{jinda_document_path}?id=#{@dscan}", target: :_blank
+      - else
+        %td= doc.filename
+      %td= doc.description
+      %td= doc.category
+      %td= doc.created_at.strftime('%m/%d/%Y')
+      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), {controller: "docs", action: "destroy",  doc_id: doc.id}, data: { confirm: "Please Confirm" }
+      %td(align='center')= image_tag('pencil.png', style:'border:none; float:none;')
+      - # To do
+      - # %td(align='center')= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'docs:xedit_doc', doc_id: doc.id}, data: { confirm: "Please Confirm" }

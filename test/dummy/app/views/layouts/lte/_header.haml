@@ -1,0 +1,111 @@
+
+%header.main-header
+  / Logo
+  %a.logo{:href => root_path}
+    / mini logo for sidebar mini 50x50 pixels
+    %span.logo-mini
+      %b> J
+      LTE
+    / logo for regular state and mobile devices
+    %span.logo-lg
+      %b> Jinda
+      LTE
+  / Header Navbar: style can be found in header.less
+  %nav.navbar.navbar-static-top
+    / Sidebar toggle button
+    %a.sidebar-toggle{"data-toggle" => "push-menu", :href => "#", :role => "button"}
+      %span.sr-only Toggle lte
+
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.dropdown.messages-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-envelope-o
+            %span.label.label-success 4
+          %ul.dropdown-menu
+            %li.header
+              You have 4 messages
+            %li
+              %ul.menu
+                %li
+                  %a{:href => "#"}
+                  .pull-left
+                    - get_login_user_info
+                    %img.img-circle{:alt => "User Image", src: $user_image}/
+                  %h4
+                    Sender Name
+                    %small
+                      %i.fa.fa-clock-o>
+                      5 mins
+                  %p
+                    Message Excerpt
+            %li.footer
+              %a{:href => "#"} See All Messages
+        %li.dropdown.notifications-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-bell-o
+            %span.label.label-warning 10
+          %ul.dropdown-menu
+            %li.header
+              You have 10 notifications
+            %li
+              %ul.menu
+                %li
+                  %a{:href => "#"}
+                    %i.ion.ion-ios-people.info>
+                    Notification title
+            %li.footer
+              %a{:href => "#"} View all
+        %li.dropdown.tasks-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-flag-o
+            %span.label.label-danger 9
+          %ul.dropdown-menu
+            %li.header
+              You have 9 tasks
+            %li
+              %ul.menu
+                %li
+                  %a{:href => "#"}
+                  %h3
+                    Design some buttons
+                    %small.pull-right 20%
+                  .progress.xs
+                    .progress-bar.progress-bar-aqua{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 20%"}
+                      %span.sr-only 20% Complete
+            %li.footer
+              %a{:href => "#"} View all tasks
+        %li.dropdown.user.user-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            - get_login_user_info
+            %img.user-image{:alt => "User Image", src: $user_image}/
+            %span.hidden-xs #{$user_name}
+          %ul.dropdown-menu
+            %li.user-header
+              %img.img-circle{:alt => "User Image", :src => $user_image}/
+              %p
+                #{$user_name} - Developer
+                %small Member since Nov. 2012
+                
+            - if !login? 
+              %li.user-body
+                / Add Profile and Status here
+                %li
+                  .col-xs-4.text-center
+                    %a{:href => '/auth/facebook', "data-panel" => "main", rel: "external"}
+                      %i.fa.fa-facebook 
+                  .col-xs-4.text-center
+                    %a{:href => '/auth/google_oauth2', "data-panel" => "main", rel: "external"}
+                      %i.fa.fa-google
+            %li.user-footer
+              .pull-right
+              - if login?
+                %li
+                  %a.btn.btn-default.btn-flat{"data-panel" => "main", :href => logout_path, "data-ajax"=>"false"} Sign Out
+              - else
+                %li
+                  %a.btn.btn-default.btn-flat{:href =>new_session_path,"data-panel" => "main"}
+                    %i.fa.fa-circle-o
+                    %span
+                      Sign In
+    
