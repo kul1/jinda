@@ -1,37 +1,48 @@
-orbs:
-  ruby-rails: sul-dlss/ruby-rails@3.1.2
- jobs:
-   build:
-     working_directory: ~/jinda/test/dummy
-     docker:
-       - image: cimg/ruby:2.7-node
-     steps:
-       - ruby/install-deps
-   test:
-     parallelism: 3
-     docker:
-       - image: cimg/ruby:2.7-node
-       - image: circleci/mongo
-     environment:
-       BUNDLE_JOBS: "3"
-       BUNDLE_RETRY: "3"
-       RAILS_ENV: test
-     steps:
-       - checkout
-       - run:
-           name: Wait for DB
-       - run:
-           name: Database setup
-           command: bundle exec rails jinda:seed
-       # Run rspec in parallel
-       - ruby/rspec-test
-       - ruby/rubocop-check
+version: 2.1
 
- workflows:
-   version: 2
-   build_and_test:
-     jobs:
-       - build
-       - test:
-           requires:
-             - build
+orbs:
+  ruby: circleci/ruby@1.1.0
+  node: circleci/node@2
+
+jobs:
+  build:
+    working_directory: ~/jinda/test/dummy
+    docker:
+      - image: cimg/ruby:2.7-node
+      - image: circleci/mongo
+    steps:
+      - checkout
+      - ruby/install-deps
+      # Store bundle cache
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:2.7-node
+      - image: circleci/mongo
+        environment:
+          BUNDLE_JOBS: "3"
+          BUNDLE_RETRY: "3"
+          RAILS_ENV: test
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Database setup
+          command: bundle exec rails jinda:seed
+      # Run rspec in parallel
+      - ruby/rspec-test
+      - ruby/rubocop-check
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+
