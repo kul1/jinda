@@ -1,12 +1,14 @@
 ---
 version: 2.1
+orbs:
+  ruby: circleci/ruby@2.0.0
  jobs:
    build:
      working_directory: ~/jinda/test/dummy
      docker:
        - image: cimg/ruby:2.7-node
      steps:
-       - checkout
+       - ruby/install-deps
    test:
      parallelism: 3
      docker:
