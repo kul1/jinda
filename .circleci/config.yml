@@ -30,8 +30,19 @@ jobs:
     steps:
       - checkout
 
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: jinda-{{ checksum "~/jinda/test/dummy/Gemfile.lock" }}
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: jinda-{{ checksum "~/jinda/test/dummy/Gemfile.lock" }}
+        paths:
+          - vendor/bundle
 
       - ruby/install-deps
 
