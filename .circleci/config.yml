@@ -30,9 +30,6 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run:
-          name: Database setup
-          command: bundle exec rails jinda:seed
       # Run rspec in parallel
       - ruby/rspec-test
       - ruby/rubocop-check
