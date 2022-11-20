@@ -6,12 +6,13 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
   ruby: circleci/ruby@1.4.0
-  working_directory: ~/jinda/test/dummy
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
+    working_directory: ~/jinda/test/dummy
+
     docker:
       - image: cimg/ruby:3.1.0
       - image: mongo
@@ -32,6 +33,7 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
+      - store_test_results:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
