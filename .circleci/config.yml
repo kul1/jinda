@@ -19,11 +19,7 @@ jobs:
           BUNDLE_RETRY: "3"
           RAILS_ENV: test
     executor: ruby/default
-    steps:
-      - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
+    
     test:
     parallelism: 3
     environment:
@@ -32,6 +28,10 @@ jobs:
       RAILS_ENV: test
     steps:
       - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
