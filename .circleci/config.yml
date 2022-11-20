@@ -36,8 +36,9 @@ jobs:
       # Run the test
       - run: mkdir ~/jinda/test/dummy/rspec
       - run: echo ~/Gemfile
+      - run: echo working_directory
       - run:
-          command: rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          command: ~/jinda/test/dummy/rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
           when: always
       - store_test_results:
           path: ~/jinda/test/dummy/rspec
