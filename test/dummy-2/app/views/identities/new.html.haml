@@ -1,0 +1,45 @@
+.container
+  .signup-form
+    - @title= 'Sign Up'
+    = form_tag "/auth/identity/register", {'data-ajax'=>'false'} do
+      %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign Up
+      %p.hint-text Sign Up with your social media account or Username
+      .social-btn.text-center
+        %a.btn.btn-primary.btn-lg{:href => "/auth/facebook"}
+          %i.fa.fa-facebook
+          Facebook
+        %a.btn.btn-info.btn-lg{:href => "#"}
+          %i.fa.fa-twitter
+          Twitter
+        %a.btn.btn-danger.btn-lg{:href => "/auth/google_oauth2"}
+          %i.fa.fa-google
+          Google
+      .or-seperator
+        %b or
+      .sign_in
+      .label-warning
+        = flash[:alert]
+        - if @identity && @identity.errors.any?
+          .error_messages
+            %h3
+              = pluralize(@identity.errors.count, "error")
+              prohibited this account from being saved:
+            %ul
+              - @identity.errors.full_messages.each do |msg|
+                %li= msg
+      .form-group.form-control
+        = label_tag :code, 'Username'
+        = text_field_tag :code, @identity.try(:code)
+      .form-group.form-control
+        = label_tag :email
+        = text_field_tag :email, @identity.try(:email)
+      .form-group.form-control
+        = label_tag :password, 'Password'
+        = password_field_tag :password
+      .form-group.form-control
+        = label_tag :password_confirmation, 'Confirm password'
+        = password_field_tag :password_confirmation
+      %button.btn.btn-success.btn-block.actions{:type => "submit"}
+        %i.fas.fa-sign-up-alt
+        Sign Up
+
