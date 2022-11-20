@@ -34,7 +34,8 @@ jobs:
           name: Which bundler?
           command: bundle -v
       # Run the test
-      - run: mkdir ~/jinda/test/dummyrspec
+      - run: mkdir ~/jinda/test/dummy/rspec
+      - run: echo ~/Gemfile
       - run:
           command: rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
           when: always
