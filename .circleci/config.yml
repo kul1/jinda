@@ -1,59 +1,41 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  ruby: circleci/ruby@1.1.0
-  node: circleci/node@2
+  ruby: circleci/ruby@1.4.0
 
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/jinda/test/dummy
     docker:
-      - image: cimg/ruby:2.7-node
-      - image: mongo
-    steps:
-      - checkout
-      - ruby/install-deps
-      # Store bundle cache
-  test:
-    parallelism: 3
-    docker:
-      - image: cimg/ruby:2.7-node
+      - image: cimg/ruby:3.1.0
       - image: mongo
         environment:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"
           RAILS_ENV: test
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+    test:
+    parallelism: 3
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       RAILS_ENV: test
     steps:
       - checkout
-
-      # Restore Cached Dependencies
-      - type: cache-restore
-        name: Restore bundle cache
-        key: jinda-{{ checksum "test/dummy/Gemfile.lock" }}
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-
-      # Cache Dependencies
-      - type: cache-save
-        name: Store bundle cache
-        key: jinda-{{ checksum "test/dummy/Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      - ruby/install-deps
-
-
-
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  version: 2
-  build_and_test:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      - test:
-          requires:
-            - build
-
