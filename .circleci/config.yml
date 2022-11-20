@@ -19,6 +19,8 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
+      # Run the tests
+      - run: bundle exec rake
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
