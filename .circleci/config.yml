@@ -11,6 +11,8 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
+    working_directory: ~/jinda/test/dummy
+
     docker:
       - image: cimg/ruby:3.1.0
       - image: mongo
@@ -32,6 +34,10 @@ jobs:
           name: Which bundler?
           command: bundle -v
       # Run the test
+      - run: mkdir ~/rspec
+      - run:
+          command: rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          when: always
       - store_test_results:
           path: ~/rspec
 # Invoke jobs via workflows
