@@ -32,7 +32,7 @@ jobs:
 
       - type: cache-restore
         name: Restore bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
+        key: jinda {{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
@@ -40,7 +40,7 @@ jobs:
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
+        key: jinda {{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
       - ruby/install-deps
