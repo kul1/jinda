@@ -9,7 +9,7 @@ jobs:
     working_directory: ~/jinda/test/dummy
     docker:
       - image: cimg/ruby:2.7-node
-      - image: circleci/mongo
+      - image: mongo
     steps:
       - checkout
       - ruby/install-deps
@@ -18,7 +18,7 @@ jobs:
     parallelism: 3
     docker:
       - image: cimg/ruby:2.7-node
-      - image: circleci/mongo
+      - image: mongo
         environment:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"
