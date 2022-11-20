@@ -32,10 +32,6 @@ jobs:
           name: Which bundler?
           command: bundle -v
       # Run the test
-      - run: mkdir ~/rspec
-      - run:
-          command: rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-          when: always
       - store_test_results:
           path: ~/rspec
 # Invoke jobs via workflows
