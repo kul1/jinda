@@ -46,9 +46,7 @@ jobs:
 
       - ruby/install-deps
 
-      # Run rspec in parallel
-      - ruby/rspec-test
-      - ruby/rubocop-check
+
 
 workflows:
   version: 2
