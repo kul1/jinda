@@ -32,7 +32,6 @@ jobs:
           name: Which bundler?
           command: bundle -v
       # Run the test
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: mkdir ~/rspec
       - run:
           command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
