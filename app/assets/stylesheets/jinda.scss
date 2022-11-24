@@ -1,0 +1,253 @@
+// jinda.scss from theme jinda_adminlte template directory
+#tooltip {
+  position: absolute;
+  border: 1px solid #333;
+  background: #f7f5d1;
+  padding: 2px 5px;
+  color: #333;
+  display: none;
+}
+#notice {
+  color: #f90609;
+  background-color: #ebd1d1;
+  font-weight: bolder;
+  padding-left: 10px;
+}
+.step {
+  /*display: table-row;*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.steps_more {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background: url(images/button_blue.png) no-repeat;
+  display: table-cell;
+  text-align: center;
+}
+.step_now {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background: url(images/button_red.png) no-repeat;
+  display: table-cell;
+  text-align: center;
+}
+.steps_done {
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  width: 80px;
+  height: 80px;
+  background: url(images/button_black.png) no-repeat;
+  display: table-cell;
+  text-align: center;
+}
+.sign_in {
+  width: 100%;
+  max-width: 410px;
+  padding: 15px;
+  margin: auto;
+  display: block;
+}
+.row-description {
+  font-size: 12px;
+}
+
+.right-date {
+  font-size: 10px;
+  float: right;
+}
+.row-body {
+  font-size: 12px;
+}
+#logreg-forms {
+  width: 412px;
+  margin: 10vh auto;
+  background-color: #f3f3f3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.module-table {
+  display: grid;
+}
+
+.module-table textarea {
+  height: 200px;
+}
+
+body {
+  background: #dfe7e9;
+  font-family: "Roboto", sans-serif;
+}
+.form-control {
+  font-size: 12px;
+  transition: all 0.4s;
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: #5cb85c;
+}
+.form-control,
+.btn {
+  border-radius: 10px;
+  outline: none !important;
+}
+.form-group input {
+  border-width: 0px;
+}
+.signup-form {
+  width: 480px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.signup-form form {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+}
+.signup-form a {
+  color: #5cb85c;
+}
+.signup-form h2 {
+  text-align: center;
+  font-size: 34px;
+  margin: 10px 0 15px;
+}
+.signup-form .hint-text {
+  color: #999;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+.signup-form .btn {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+.signup-btn {
+  text-align: center;
+  border-color: #5cb85c;
+  transition: all 0.4s;
+}
+.signup-btn:hover {
+  background: #5cb85c;
+  opacity: 0.8;
+}
+.or-seperator {
+  margin: 50px 0 15px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+.or-seperator b {
+  padding: 0 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+.social-btn .btn {
+  color: #fff;
+  margin: 10px 0 0 15px;
+  font-size: 15px;
+  border-radius: 50px;
+  font-weight: normal;
+  border: none;
+  transition: all 0.4s;
+}
+.social-btn .btn:first-child {
+  margin-left: 0;
+}
+.social-btn .btn:hover {
+  opacity: 0.8;
+}
+.social-btn .btn-primary {
+  background: #507cc0;
+}
+.social-btn .btn-info {
+  background: #64ccf1;
+}
+.social-btn .btn-danger {
+  background: #df4930;
+}
+.social-btn .btn i {
+  float: left;
+  margin: 3px 10px;
+  font-size: 20px;
+}
+.container {
+  margin: 5px;
+}
+
+/* Fixed Jinda_adminLTE .main-header .logo */
+.main-header .logo {
+  height: 51px;
+}
+
+/* Fixed Jinda_adminLTE treemenu, Sign_in*/
+
+@media (min-width: 768px) {
+  .sidebar-mini.sidebar-collapse .main-sidebar {
+    width: 40px !important;
+  }
+  .container {
+    width: 580px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+.sidebar-menu {
+  text-align: left;
+}
+
+.inner ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.form-group.form-control input {
+  background: transparent;
+  padding: 5px;
+}
+
+.form-group.form-control input[type="text"]:focus {
+  background-color: transparent;
+}
+
+.display-addcomment {
+  float: left;
+  width: 450px;
+}
+
+.img-circle {
+  max-width: 45px;
+}
+.comment-user-image {
+  max-width: 45px;
+}

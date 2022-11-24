@@ -1,0 +1,32 @@
+<%
+    doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
+  %>
+<%= fields_for doc do |f| %>
+  <div class="form-group">
+    <%= f.label :category, "Category" %>
+    <%= f.select :category, [["Book", "book"], ["Letter", "letter"], ["Brochure", "brochure"]] %>
+  </div>
+  <div class="form-group">
+    <%= f.label :issue_on, "Dated" %>
+    <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
+  </div>
+  <div class="form-group">
+    <%= f.label :dscan, "Attached document" %>
+  </div>
+  <div class="form-group">
+    <%= f.file_field :dscan %>
+  </div>
+<% end %>
+<div class="form-group">
+  <%= label_tag :description, "Description" %>
+  <%= text_field_tag :description %>
+</div>
+<div class="form-group">
+  <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
+  <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
+</div>
+<div class="form-group">
+  <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
+  <%= label_tag :keywords, "Search Keywords" %>
+  <%= text_field_tag :keywords %>
+</div>

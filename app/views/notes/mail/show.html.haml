@@ -1,0 +1,13 @@
+- title @note.title
+- description @note.body
+
+- @title= 'Show Note'
+- doc = Note.find_by :id => $xvars["select_note"]["id"]
+= fields_for doc do |f|
+  = f.label :title, "Title"
+  = f.text_field :title
+  %br/
+  = f.label :body, "Body Content"
+  = f.cktext_area :body, :cols=>50, :rows=>6
+  
+= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'notes:xedit', note_id: @note.id}, data: { confirm: "Please Confirm" }

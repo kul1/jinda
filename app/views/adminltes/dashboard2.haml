@@ -1,0 +1,656 @@
+%section.content
+  / Info boxes
+  .row
+    .col-md-3.col-sm-6.col-xs-12
+      .info-box
+        %span.info-box-icon.bg-aqua
+          %i.ion.ion-ios-gear-outline
+        .info-box-content
+          %span.info-box-text CPU Traffic
+          %span.info-box-number
+            90
+            %small %
+        / /.info-box-content
+      / /.info-box
+    / /.col
+    .col-md-3.col-sm-6.col-xs-12
+      .info-box
+        %span.info-box-icon.bg-red
+          %i.fa.fa-google-plus
+        .info-box-content
+          %span.info-box-text Likes
+          %span.info-box-number 41,410
+        / /.info-box-content
+      / /.info-box
+    / /.col
+    / fix for small devices only
+    .clearfix.visible-sm-block
+    .col-md-3.col-sm-6.col-xs-12
+      .info-box
+        %span.info-box-icon.bg-green
+          %i.ion.ion-ios-cart-outline
+        .info-box-content
+          %span.info-box-text Sales
+          %span.info-box-number 760
+        / /.info-box-content
+      / /.info-box
+    / /.col
+    .col-md-3.col-sm-6.col-xs-12
+      .info-box
+        %span.info-box-icon.bg-yellow
+          %i.ion.ion-ios-people-outline
+        .info-box-content
+          %span.info-box-text New Members
+          %span.info-box-number 2,000
+        / /.info-box-content
+      / /.info-box
+    / /.col
+  / /.row
+  .row
+    .col-md-12
+      .box
+        .box-header.with-border
+          %h3.box-title Monthly Recap Report
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+            .btn-group
+              %button.btn.btn-box-tool.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-wrench
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  %a{:href => "#"} Action
+                %li
+                  %a{:href => "#"} Another action
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider
+                %li
+                  %a{:href => "#"} Separated link
+            %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+              %i.fa.fa-times
+        / /.box-header
+        .box-body
+          .row
+            .col-md-8
+              %p.text-center
+                %strong Sales: 1 Jan, 2014 - 30 Jul, 2014
+              .chart
+                / Sales Chart Canvas
+                %canvas#salesChart{:style => "height: 180px;"}
+              / /.chart-responsive
+            / /.col
+            .col-md-4
+              %p.text-center
+                %strong Goal Completion
+              .progress-group
+                %span.progress-text Add Products to Cart
+                %span.progress-number
+                  %b> 160
+                  \/200
+                .progress.sm
+                  .progress-bar.progress-bar-aqua{:style => "width: 80%"}
+              / /.progress-group
+              .progress-group
+                %span.progress-text Complete Purchase
+                %span.progress-number
+                  %b> 310
+                  \/400
+                .progress.sm
+                  .progress-bar.progress-bar-red{:style => "width: 80%"}
+              / /.progress-group
+              .progress-group
+                %span.progress-text Visit Premium Page
+                %span.progress-number
+                  %b> 480
+                  \/800
+                .progress.sm
+                  .progress-bar.progress-bar-green{:style => "width: 80%"}
+              / /.progress-group
+              .progress-group
+                %span.progress-text Send Inquiries
+                %span.progress-number
+                  %b> 250
+                  \/500
+                .progress.sm
+                  .progress-bar.progress-bar-yellow{:style => "width: 80%"}
+              / /.progress-group
+            / /.col
+          / /.row
+        / ./box-body
+        .box-footer
+          .row
+            .col-sm-3.col-xs-6
+              .description-block.border-right
+                %span.description-percentage.text-green
+                  %i.fa.fa-caret-up
+                  17%
+                %h5.description-header $35,210.43
+                %span.description-text TOTAL REVENUE
+              / /.description-block
+            / /.col
+            .col-sm-3.col-xs-6
+              .description-block.border-right
+                %span.description-percentage.text-yellow
+                  %i.fa.fa-caret-left
+                  0%
+                %h5.description-header $10,390.90
+                %span.description-text TOTAL COST
+              / /.description-block
+            / /.col
+            .col-sm-3.col-xs-6
+              .description-block.border-right
+                %span.description-percentage.text-green
+                  %i.fa.fa-caret-up
+                  20%
+                %h5.description-header $24,813.53
+                %span.description-text TOTAL PROFIT
+              / /.description-block
+            / /.col
+            .col-sm-3.col-xs-6
+              .description-block
+                %span.description-percentage.text-red
+                  %i.fa.fa-caret-down
+                  18%
+                %h5.description-header 1200
+                %span.description-text GOAL COMPLETIONS
+              / /.description-block
+          / /.row
+        / /.box-footer
+      / /.box
+    / /.col
+  / /.row
+  / Main row
+  .row
+    / Left col
+    .col-md-8
+      / MAP & BOX PANE
+      .box.box-success
+        .box-header.with-border
+          %h3.box-title Visitors Report
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+            %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+              %i.fa.fa-times
+        / /.box-header
+        .box-body.no-padding
+          .row
+            .col-md-9.col-sm-8
+              .pad
+                / Map will be created here
+                #world-map-markers{:style => "height: 325px;"}
+            / /.col
+            .col-md-3.col-sm-4
+              .pad.box-pane-right.bg-green{:style => "min-height: 280px"}
+                .description-block.margin-bottom
+                  .sparkbar.pad{"data-color" => "#fff"} 90,70,90,70,75,80,70
+                  %h5.description-header 8390
+                  %span.description-text Visits
+                / /.description-block
+                .description-block.margin-bottom
+                  .sparkbar.pad{"data-color" => "#fff"} 90,50,90,70,61,83,63
+                  %h5.description-header 30%
+                  %span.description-text Referrals
+                / /.description-block
+                .description-block
+                  .sparkbar.pad{"data-color" => "#fff"} 90,50,90,70,61,83,63
+                  %h5.description-header 70%
+                  %span.description-text Organic
+                / /.description-block
+            / /.col
+          / /.row
+        / /.box-body
+      / /.box
+      .row
+        .col-md-6
+          / DIRECT CHAT
+          .box.box-warning.direct-chat.direct-chat-warning
+            .box-header.with-border
+              %h3.box-title Direct Chat
+              .box-tools.pull-right
+                %span.badge.bg-yellow{"data-toggle" => "tooltip", :title => "3 New Messages"} 3
+                %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+                  %i.fa.fa-minus
+                %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "chat-pane-toggle", :title => "Contacts", :type => "button"}
+                  %i.fa.fa-comments
+                %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+                  %i.fa.fa-times
+            / /.box-header
+            .box-body
+              / Conversations are loaded here
+              .direct-chat-messages
+                / Message. Default to the left
+                .direct-chat-msg
+                  .direct-chat-info.clearfix
+                    %span.direct-chat-name.pull-left Alexander Pierce
+                    %span.direct-chat-timestamp.pull-right 23 Jan 2:00 pm
+                  / /.direct-chat-info
+                  %img.direct-chat-img{:alt => "message user image", :src => asset_url("dist/img/user1-128x128.jpg")}/
+                  / /.direct-chat-img
+                  .direct-chat-text
+                    Is this template really for free? That's unbelievable!
+                  / /.direct-chat-text
+                / /.direct-chat-msg
+                / Message to the right
+                .direct-chat-msg.right
+                  .direct-chat-info.clearfix
+                    %span.direct-chat-name.pull-right Sarah Bullock
+                    %span.direct-chat-timestamp.pull-left 23 Jan 2:05 pm
+                  / /.direct-chat-info
+                  %img.direct-chat-img{:alt => "message user image", :src => asset_url("dist/img/user3-128x128.jpg")}/
+                  / /.direct-chat-img
+                  .direct-chat-text
+                    You better believe it!
+                  / /.direct-chat-text
+                / /.direct-chat-msg
+                / Message. Default to the left
+                .direct-chat-msg
+                  .direct-chat-info.clearfix
+                    %span.direct-chat-name.pull-left Alexander Pierce
+                    %span.direct-chat-timestamp.pull-right 23 Jan 5:37 pm
+                  / /.direct-chat-info
+                  %img.direct-chat-img{:alt => "message user image", :src => asset_url("dist/img/user1-128x128.jpg")}/
+                  / /.direct-chat-img
+                  .direct-chat-text
+                    Working with AdminLTE on a great new app! Wanna join?
+                  / /.direct-chat-text
+                / /.direct-chat-msg
+                / Message to the right
+                .direct-chat-msg.right
+                  .direct-chat-info.clearfix
+                    %span.direct-chat-name.pull-right Sarah Bullock
+                    %span.direct-chat-timestamp.pull-left 23 Jan 6:10 pm
+                  / /.direct-chat-info
+                  %img.direct-chat-img{:alt => "message user image", :src => asset_url("dist/img/user3-128x128.jpg")}/
+                  / /.direct-chat-img
+                  .direct-chat-text
+                    I would love to.
+                  / /.direct-chat-text
+                / /.direct-chat-msg
+              / /.direct-chat-messages
+              / Contacts are loaded here
+              .direct-chat-contacts
+                %ul.contacts-list
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user1-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          Count Dracula
+                          %small.contacts-list-date.pull-right 2/28/2015
+                        %span.contacts-list-msg How have you been? I was...
+                      / /.contacts-list-info
+                  / End Contact Item
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user7-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          Sarah Doe
+                          %small.contacts-list-date.pull-right 2/23/2015
+                        %span.contacts-list-msg I will be waiting for...
+                      / /.contacts-list-info
+                  / End Contact Item
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user3-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          Nadia Jolie
+                          %small.contacts-list-date.pull-right 2/20/2015
+                        %span.contacts-list-msg I'll call you back at...
+                      / /.contacts-list-info
+                  / End Contact Item
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user5-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          Nora S. Vans
+                          %small.contacts-list-date.pull-right 2/10/2015
+                        %span.contacts-list-msg Where is your new...
+                      / /.contacts-list-info
+                  / End Contact Item
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user6-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          John K.
+                          %small.contacts-list-date.pull-right 1/27/2015
+                        %span.contacts-list-msg Can I take a look at...
+                      / /.contacts-list-info
+                  / End Contact Item
+                  %li
+                    %a{:href => "#"}
+                      %img.contacts-list-img{:alt => "User Image", :src => asset_url("dist/img/user8-128x128.jpg")}/
+                      .contacts-list-info
+                        %span.contacts-list-name
+                          Kenneth M.
+                          %small.contacts-list-date.pull-right 1/4/2015
+                        %span.contacts-list-msg Never mind I found...
+                      / /.contacts-list-info
+                  / End Contact Item
+                / /.contatcts-list
+              / /.direct-chat-pane
+            / /.box-body
+            .box-footer
+              %form{:action => "#", :method => "post"}
+                .input-group
+                  %input.form-control{:name => "message", :placeholder => "Type Message ...", :type => "text"}/
+                  %span.input-group-btn
+                    %button.btn.btn-warning.btn-flat{:type => "button"} Send
+            / /.box-footer
+          / /.direct-chat
+        / /.col
+        .col-md-6
+          / USERS LIST
+          .box.box-danger
+            .box-header.with-border
+              %h3.box-title Latest Members
+              .box-tools.pull-right
+                %span.label.label-danger 8 New Members
+                %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+                  %i.fa.fa-minus
+                %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+                  %i.fa.fa-times
+            / /.box-header
+            .box-body.no-padding
+              %ul.users-list.clearfix
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user1-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Alexander Pierce
+                  %span.users-list-date Today
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user8-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Norman
+                  %span.users-list-date Yesterday
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user7-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Jane
+                  %span.users-list-date 12 Jan
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user6-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} John
+                  %span.users-list-date 12 Jan
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user2-160x160.jpg")}/
+                  %a.users-list-name{:href => "#"} Alexander
+                  %span.users-list-date 13 Jan
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user5-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Sarah
+                  %span.users-list-date 14 Jan
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user4-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Nora
+                  %span.users-list-date 15 Jan
+                %li
+                  %img{:alt => "User Image", :src => asset_url("dist/img/user3-128x128.jpg")}/
+                  %a.users-list-name{:href => "#"} Nadia
+                  %span.users-list-date 15 Jan
+              / /.users-list
+            / /.box-body
+            .box-footer.text-center
+              %a.uppercase{:href => "javascript:void(0)"} View All Users
+            / /.box-footer
+          / /.box
+        / /.col
+      / /.row
+      / TABLE: LATEST ORDERS
+      .box.box-info
+        .box-header.with-border
+          %h3.box-title Latest Orders
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+            %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+              %i.fa.fa-times
+        / /.box-header
+        .box-body
+          .table-responsive
+            %table.table.no-margin
+              %thead
+                %tr
+                  %th Order ID
+                  %th Item
+                  %th Status
+                  %th Popularity
+              %tbody
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR9842
+                  %td Call of Duty IV
+                  %td
+                    %span.label.label-success Shipped
+                  %td
+                    .sparkbar{"data-color" => "#00a65a", "data-height" => "20"} 90,80,90,-70,61,-83,63
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR1848
+                  %td Samsung Smart TV
+                  %td
+                    %span.label.label-warning Pending
+                  %td
+                    .sparkbar{"data-color" => "#f39c12", "data-height" => "20"} 90,80,-90,70,61,-83,68
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR7429
+                  %td iPhone 6 Plus
+                  %td
+                    %span.label.label-danger Delivered
+                  %td
+                    .sparkbar{"data-color" => "#f56954", "data-height" => "20"} 90,-80,90,70,-61,83,63
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR7429
+                  %td Samsung Smart TV
+                  %td
+                    %span.label.label-info Processing
+                  %td
+                    .sparkbar{"data-color" => "#00c0ef", "data-height" => "20"} 90,80,-90,70,-61,83,63
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR1848
+                  %td Samsung Smart TV
+                  %td
+                    %span.label.label-warning Pending
+                  %td
+                    .sparkbar{"data-color" => "#f39c12", "data-height" => "20"} 90,80,-90,70,61,-83,68
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR7429
+                  %td iPhone 6 Plus
+                  %td
+                    %span.label.label-danger Delivered
+                  %td
+                    .sparkbar{"data-color" => "#f56954", "data-height" => "20"} 90,-80,90,70,-61,83,63
+                %tr
+                  %td
+                    %a{:href => "pages/examples/invoice.html"} OR9842
+                  %td Call of Duty IV
+                  %td
+                    %span.label.label-success Shipped
+                  %td
+                    .sparkbar{"data-color" => "#00a65a", "data-height" => "20"} 90,80,90,-70,61,-83,63
+          / /.table-responsive
+        / /.box-body
+        .box-footer.clearfix
+          %a.btn.btn-sm.btn-info.btn-flat.pull-left{:href => "javascript:void(0)"} Place New Order
+          %a.btn.btn-sm.btn-default.btn-flat.pull-right{:href => "javascript:void(0)"} View All Orders
+        / /.box-footer
+      / /.box
+    / /.col
+    .col-md-4
+      / Info Boxes Style 2
+      .info-box.bg-yellow
+        %span.info-box-icon
+          %i.ion.ion-ios-pricetag-outline
+        .info-box-content
+          %span.info-box-text Inventory
+          %span.info-box-number 5,200
+          .progress
+            .progress-bar{:style => "width: 50%"}
+          %span.progress-description
+            50% Increase in 30 Days
+        / /.info-box-content
+      / /.info-box
+      .info-box.bg-green
+        %span.info-box-icon
+          %i.ion.ion-ios-heart-outline
+        .info-box-content
+          %span.info-box-text Mentions
+          %span.info-box-number 92,050
+          .progress
+            .progress-bar{:style => "width: 20%"}
+          %span.progress-description
+            20% Increase in 30 Days
+        / /.info-box-content
+      / /.info-box
+      .info-box.bg-red
+        %span.info-box-icon
+          %i.ion.ion-ios-cloud-download-outline
+        .info-box-content
+          %span.info-box-text Downloads
+          %span.info-box-number 114,381
+          .progress
+            .progress-bar{:style => "width: 70%"}
+          %span.progress-description
+            70% Increase in 30 Days
+        / /.info-box-content
+      / /.info-box
+      .info-box.bg-aqua
+        %span.info-box-icon
+          %i.ion-ios-chatbubble-outline
+        .info-box-content
+          %span.info-box-text Direct Messages
+          %span.info-box-number 163,921
+          .progress
+            .progress-bar{:style => "width: 40%"}
+          %span.progress-description
+            40% Increase in 30 Days
+        / /.info-box-content
+      / /.info-box
+      .box.box-default
+        .box-header.with-border
+          %h3.box-title Browser Usage
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+            %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+              %i.fa.fa-times
+        / /.box-header
+        .box-body
+          .row
+            .col-md-8
+              .chart-responsive
+                %canvas#pieChart{:height => "150"}
+              / ./chart-responsive
+            / /.col
+            .col-md-4
+              %ul.chart-legend.clearfix
+                %li
+                  %i.fa.fa-circle-o.text-red
+                  Chrome
+                %li
+                  %i.fa.fa-circle-o.text-green
+                  IE
+                %li
+                  %i.fa.fa-circle-o.text-yellow
+                  FireFox
+                %li
+                  %i.fa.fa-circle-o.text-aqua
+                  Safari
+                %li
+                  %i.fa.fa-circle-o.text-light-blue
+                  Opera
+                %li
+                  %i.fa.fa-circle-o.text-gray
+                  Navigator
+            / /.col
+          / /.row
+        / /.box-body
+        .box-footer.no-padding
+          %ul.nav.nav-pills.nav-stacked
+            %li
+              %a{:href => "#"}
+                United States of America
+                %span.pull-right.text-red
+                  %i.fa.fa-angle-down
+                  12%
+            %li
+              %a{:href => "#"}
+                India
+                %span.pull-right.text-green
+                  %i.fa.fa-angle-up
+                  4%
+            %li
+              %a{:href => "#"}
+                China
+                %span.pull-right.text-yellow
+                  %i.fa.fa-angle-left
+                  0%
+        / /.footer
+      / /.box
+      / PRODUCT LIST
+      .box.box-primary
+        .box-header.with-border
+          %h3.box-title Recently Added Products
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+            %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+              %i.fa.fa-times
+        / /.box-header
+        .box-body
+          %ul.products-list.product-list-in-box
+            %li.item
+              .product-img
+                %img{:alt => "Product Image", :src => asset_url("dist/img/default-50x50.gif")}/
+              .product-info
+                %a.product-title{:href => "javascript:void(0)"}
+                  Samsung TV
+                  %span.label.label-warning.pull-right $1800
+                %span.product-description
+                  Samsung 32" 1080p 60Hz LED Smart HDTV.
+            / /.item
+            %li.item
+              .product-img
+                %img{:alt => "Product Image", :src => asset_url("dist/img/default-50x50.gif")}/
+              .product-info
+                %a.product-title{:href => "javascript:void(0)"}
+                  Bicycle
+                  %span.label.label-info.pull-right $700
+                %span.product-description
+                  26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+            / /.item
+            %li.item
+              .product-img
+                %img{:alt => "Product Image", :src => asset_url("dist/img/default-50x50.gif")}/
+              .product-info
+                %a.product-title{:href => "javascript:void(0)"}
+                  Xbox One
+                  %span.label.label-danger.pull-right $350
+                %span.product-description
+                  Xbox One Console Bundle with Halo Master Chief Collection.
+            / /.item
+            %li.item
+              .product-img
+                %img{:alt => "Product Image", :src => asset_url("dist/img/default-50x50.gif")}/
+              .product-info
+                %a.product-title{:href => "javascript:void(0)"}
+                  PlayStation 4
+                  %span.label.label-success.pull-right $399
+                %span.product-description
+                  PlayStation 4 500GB Console (PS4)
+            / /.item
+        / /.box-body
+        .box-footer.text-center
+          %a.uppercase{:href => "javascript:void(0)"} View All Products
+        / /.box-footer
+      / /.box
+    / /.col
+  / /.row
+/ /.content
+/ /.content-wrapper

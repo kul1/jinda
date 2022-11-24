@@ -1,0 +1,42 @@
+- head = login? ? current_ma_user.code : DEFAULT_HEADER
+%li.active  
+ 
+  %a{:href =>"/jinda","data-panel" => "main"}
+    %i.fa.fa-circle-o
+    Home
+
+= render 'layouts/lte/menu_mm'  
+%li.treeview
+  %a{:href => "#"}
+    Multilevel from menu
+    %i.fa.fa-angle-left.pull-right
+  %ul.treeview-menu
+    %li
+      %a{:href => "#"} Link in level 1
+    %li
+      %a{:href => "#"} Link in level 1
+- if login?
+  %li
+    %a{:href=>"/jinda/pending", "data-panel" => "main"} Pending Tasks
+  %li
+    %a{"data-panel" => "main", :href => logout_path, "data-ajax"=>"false"} Sign Out
+- else
+  %li
+    %a{:href =>new_session_path,"data-panel" => "main"}
+      %i.fa.fa-circle-o
+      %span
+      Sign In
+  %li
+    %a{:href =>new_identity_path, "data-panel" => "main"}
+      %i.fa.fa-circle-o
+      %span
+        Sign Up 
+%li
+  = link_to "Refresh", "#", :onclick=>"window.location.replace('/')"
+  
+
+
+ 
+
+
+      

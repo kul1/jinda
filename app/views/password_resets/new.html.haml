@@ -1,0 +1,11 @@
+.container
+	.signup-form
+		.sign_in
+			= form_tag password_resets_path, :method => :post do
+				.form-group.form-control
+					= label_tag :email
+					= text_field_tag :email, params[:email]
+				%button.btn.btn-success.btn-block.actions{:type => "submit"}
+					%i.fas.fa-sign-in-alt
+					Reset Password
+

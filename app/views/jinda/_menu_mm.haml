@@ -1,0 +1,44 @@
+- process_services
+- Jinda::Module.all.asc(:seq).each do |m|
+  - unless m.role.blank?
+    - next unless login?
+    - next unless current_ma_user.role
+    -# next unless current_ma_user.role.upcase.split(',').include?(m.role.upcase)
+    -# ####################### Remove w space in role ###################
+    - next unless current_ma_user.role.upcase.split(",").map!(&:strip).include?(m.role.upcase)
+
+  %li
+    -# ########################### Main Display Menu ####################
+    = m.name
+    -# ##################################################################
+    -# Code to display current login user role and required role for menu
+    -# ##################################################################
+    
+    -# if defined?(current_ma_user.role) && !current_ma_user.role.blank?
+      =# current_ma_user.role
+    -# if m.role?
+      =# m.role.upcase
+
+    -# ##################################################################
+      
+    %ul
+      - m.services.asc(:seq).each do |s|
+        - next unless s.list
+        - xml= REXML::Document.new(s.xml).root
+        - unless s.rule.blank?
+          - next if (!eval(s.rule))
+        - unless s.role.blank?
+          - next unless login?
+          - next unless current_ma_user.role
+          - next unless current_ma_user.role.upcase.split(",").map!(&:strip).include?(s.role.upcase)
+        - if s.code.downcase=="link"
+          - name, url = s.name.split(":", 2)
+          - url.strip!
+        - else
+          - name= s.name; url= "/jinda/init?s=#{s.module_code}:#{s.code}"
+        - if s.confirm
+          %li
+            %a{"data-panel"=>"main", :onclick=>"if (confirm('Please Confirm')) {location.hash='#{url}'};"}= name
+        - else
+          %li
+            %a{"data-panel"=>"main", :href=> url}= name

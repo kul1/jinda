@@ -1,0 +1,20 @@
+<%
+    doc = Note.find_by :id => $xvars["select_note"]["id"]
+ %>
+
+<% email = $xvars["select_note"]["email"]  %>
+<div class=field(data-role=fieldcontain)>
+  <label class = ui-input-text for="email">Mail to:</label>
+  <b>
+    <%=  email %>
+  </b>  
+
+</div>
+<div class=fieldcontain>
+  <%= fields_for doc do |f| %>
+    <%= f.label :title, "Subject" %>
+    <%= f.text_field :title %>
+    <%= f.label :body, "Content" %>
+    <%= f.text_area :body, :cols=>50, :rows=>6 %>
+  <% end %>
+</div>

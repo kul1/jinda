@@ -1,0 +1,21 @@
+<%
+    doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
+%>
+<%= fields_for doc do |f| %>
+  <%= f.label :content_type, "Content type" %>
+  <%= f.select :content_type, [["pdf file", "pdf"], ["png file", "png"], ["html file", "html"]] %>
+  <!--div>
+    </div-->
+    <%= f.label :issue_on, "Dated" %>
+    <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
+
+    <%= f.label :dscan, "Attached document" %>
+    <%= f.file_field :dscan %>
+    <%= f.label :filename, "File Name" %>
+  <% end %>
+  <%= label_tag :x, "x field" %>
+  <%= text_field_tag :x %>
+  <div>
+    <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
+    <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
+  </div>

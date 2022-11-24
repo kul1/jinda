@@ -1,0 +1,58 @@
+- title @show[:article][:title]
+- description @show[:article][:text]
+- keywords @show[:article][:keywords]
+.container
+  %div.row::before 
+    %div.col-md-12
+      .row-description
+        %h2.display-3.mt-5.pt-5
+          = @show[:article][:title]
+          = link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
+        %div.font-weight-light
+          by
+          %img.img-circle{:alt => "User Image", src: @show[:user][:image] }/
+        %div.font-weight-light
+          = @show[:user][:code]
+        %div.font-weight-light
+          = @show[:article][:created_at]
+        %hr
+          = @show[:article][:text]
+        %h4.row-body
+          = @show[:article][:body].html_safe
+          %hr
+          - @show[:comments].each do |comment|
+            %div#article-comment.ui-corner-all
+              .col-md-12
+                %div.small-box.bg-white.text-info
+                  %div.inner
+                    %div.font-weight-light
+                      - user_image = get_user_image(comment.user_id)
+                      %img.comment-user-image{:alt => "User Image", src: user_image}/
+
+                    %div.font-weight-light
+                      Author:    
+                      %b= comment.name if comment.name
+                    %div.right-date
+                      12/12/2021
+                    %div#comment-body
+                      %i= comment.body
+
+        - if login?
+          %hr
+            %h4.col-md-12
+              Add a comment:
+              = form_with(model: [@show[:article], Comment.new], local: true) do |f|
+                .form-group 
+                  = f.hidden_field :article_id, :value => @show[:article][:id]
+                .form-group 
+                  = f.label :body, "Comment"
+                .form-group 
+                  = f.text_area :body, rows: 5, class: "form-control"
+                .form-group 
+                  = f.hidden_field :user_id, :value => current_ma_user.id
+                .form-group 
+                  = f.hidden_field :name, :value => current_ma_user.code
+                .form-group 
+                  = f.hidden_field :image, :value => current_ma_user.image
+                .form-group 
+                  = f.submit "Submit",  class: "btn btn-default btn-success"

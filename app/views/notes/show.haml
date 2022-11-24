@@ -1,0 +1,10 @@
+- @title= 'Show Note'
+- doc = Note.find_by :id => @note.id
+
+%h3.ui-bar.ui-bar-a.ui-corner-all Title: #{@note.title}
+      
+.ui-body.ui-body-a.ui-corner-all
+            
+  %p #{@note.body}
+
+  = link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'notes:xedit', note_id: @note.id}, data: { confirm: "Please Confirm" }

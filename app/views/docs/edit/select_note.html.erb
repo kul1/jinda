@@ -1,0 +1,14 @@
+
+<%
+  if current_ma_user.role.upcase.split(',').include?("A")
+    note= Note.all.desc(:created_at)
+  else
+    note= Note.where(user: current_ma_user).desc(:created_at)
+  end
+%>
+<div class="field" data-role="fieldcontain">
+  <%= label_tag :title, 'Select Note' %>
+  <br>
+  <br>
+  <%= select_tag :id, options_from_collection_for_select(note, :id, :title), "notee-menu"=>"false" %>
+</div>

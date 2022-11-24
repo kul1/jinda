@@ -1,0 +1,27 @@
+- head = login? ? current_ma_user.code : DEFAULT_HEADER
+%div{"data-context" => "a#default", "data-hash" => "crumbs", "data-id" => "menu", "data-role" => "panel"}
+  #main{"data-role" => "page"}
+    %div{"data-role" => "header", "data-theme" => "b", "data-backbtn"=>"false"}
+      %h1= head
+    %div{"data-role" => "content", "data-id" => "menu_mm"}
+      %form.ui-filterable
+      %ul{"data-role" => "listview", "data-theme" => "g", "data-filter" => "true"}
+        %li
+          %a{"data-panel" => "main", "data-id" => "home", :href => "/jinda"} Home
+        = render :partial => "jinda/menu_mm"
+        - if login?
+          %li
+            %a{:href=>"/jinda/pending", "data-panel" => "main"} Pending Tasks
+          %li
+            %a{"data-panel" => "main", :href => logout_path, "data-ajax"=>"false"} Sign Out
+        - else
+          %li
+            %a{:href=>new_session_path, "data-panel" => "main"} Sign In
+          %li
+            %a{:href=>new_identity_path, "data-panel" => "main"} Sign Up
+        %li
+          = link_to "Refresh", "#", :onclick=>"window.location.replace('/')"
+        - if !login?    
+          .login-box
+            = link_to image_tag( 'facebook-continue-button.png'), '/auth/facebook', rel: "external", class: "facebook-connect.social-button" 
+            = link_to image_tag( 'google-continue-button.png'), '/auth/google_oauth2', rel: "external", class: "google-connect.social-button"

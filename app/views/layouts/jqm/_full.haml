@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    = render :partial => "layouts/head"
+  %body
+    = render :partial => "jinda/menu"
+    %div{"data-id" => "main", "data-role" => "panel", "data-backbtn"=>"false"}
+      - if @cache
+        - cache = {}
+      - else
+        - cache = {"data-cache"=>"never"}
+      - if @backbtn
+        - backbtn= {"data-backbtn"=>"true"}
+      - else
+        - backbtn= {"data-backbtn"=>"false"}
+      %div{{"data-role" => "page"}.merge(cache) }
+        %div{{"data-role" => "header"}.merge(backbtn)}
+          %h1= @title || DEFAULT_TITLE
+        %div{"data-role" => "content"}
+          = yield
+      = render :partial => "jinda/static"
+/ :javascript
+/   $(document).on("pagehide", 'div', function(e,ui) {
+/     var page = $(e.target);
+/     if(page.attr('data-cache') == 'never') {
+/       page.remove();
+/     }
+/   });
+/   $( document ).on( "pagechange", function(){
+/     $.get("/jinda/ajax_notice", function(r) {$(r).appendTo('head').remove()});
+/   });
+
+/= raw handle_ma_notice

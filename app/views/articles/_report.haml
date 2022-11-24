@@ -1,0 +1,35 @@
+.box.box-info
+  .box-header.with-border
+    .box-tools.pull-right
+      %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+        %i.fa.fa-minus
+      %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+        %i.fa.fa-times
+  / /.box-header
+  .box-body
+    .table-responsive
+      %table.table.no-margin
+        %thead
+          %tr
+            - unless current_ma_user.nil?
+              - if current_ma_user.role.include?"A"
+                %th Author
+            %th Title
+            %th Description
+            %th Created
+            %th Updated
+            %th Delete
+            %th Edit  
+          - report.each do |article|
+            - user = User.find(article.user_id)
+            %tr
+              -# if current_ma_user.role.include?"A"
+              - unless current_ma_user.nil?
+                - if current_ma_user.role.include?"A"
+                  %td= user.code
+              %td= link_to article.title, :controller=>"articles", :action=>"show", :article_id => article.id
+              %td= article.text.html_safe
+              %td= article.created_at.strftime('%m/%d/%Y')
+              %td= article.updated_at.strftime('%m/%d/%Y')
+              %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), {controller: "articles", action: "destroy",  article_id: article.id}, data: { confirm: "Please Confirm" }
+              %td(align='center')= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'articles:xedit_article', article_id: article.id}, data: { confirm: "Please Confirm" }

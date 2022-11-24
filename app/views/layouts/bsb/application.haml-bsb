@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %meta{:content => "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
+    %title Standup App2
+    / Favicon
+    %link{:href => "favicon.ico", :rel => "icon", :type => "image/x-icon"}/
+    = csrf_meta_tags
+
+    %title Jinda Title | AdminLTE
+
+    %link{:href => "https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet", :type => "text/css"}/
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "application", 'data-turbolinks-track': 'reload'
+
+
+  %body.theme-red
+    .page-loader-wrapper
+    .loader
+      .preloader
+        .spinner-layer.pl-red
+          .circle-clipper.left
+            .circle
+          .circle-clipper.right
+            .circle
+      %p Please wait...
+    / Overlay For Sidebars
+    .overlay
+    .search-bar
+      .search-icon
+        %i.material-icons search
+      %input{:placeholder => "START TYPING...", :type => "text"}/
+      .close-search
+        %i.material-icons close
+    = render "layouts/jqm/header"
+    = render "layouts/jqm/sidebar"
+    .content-header
+      %h1= @title || DEFAULT_TITLE
+      = yield
+
+
+
