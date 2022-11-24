@@ -1,0 +1,51 @@
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+		= csrf_meta_tags
+		/%link{:href => "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic", :rel => "stylesheet"}/
+		%title Jinda AdminLTE 2 | Starter
+		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag "application", 'data-turbolinks-track': 'reload'
+	/
+		BODY TAG OPTIONS:
+		\=================
+		Apply one or more of the following classes to get the
+		desired effect
+		|---------------------------------------------------------|
+		| SKINS         | skin-blue                               |
+		|               | skin-black                              |
+		|               | skin-purple                             |
+		|               | skin-yellow                             |
+		|               | skin-red                                |
+		|               | skin-green                              |
+		|---------------------------------------------------------|
+		|LAYOUT OPTIONS | fixed                                   |
+		|               | layout-boxed                            |
+		|               | layout-top-nav                          |
+		|               | sidebar-collapse                        |
+		|               | sidebar-mini                            |
+		|---------------------------------------------------------|
+
+	%body.hold-transition.skin-yellow.sidebar-mini
+		.wrapper
+			= render "layouts/lte/header"
+			= render "layouts/lte/sidebar"
+			.content-wrapper
+				%h3.box-title
+					= @page_title
+				= render 'layouts/lte/flash'
+				.label-warning
+					#flashes
+						- if flash[:notice]
+							%p#flash_notice.messages.notice= flash[:notice]
+							= javascript_tag "$('#flash_notice').effect('highlight',{},1000);"
+						- if flash[:error] || flash[:errors]
+							%p#flash_errors.messages.errors= flash[:error] || flash[:errors]
+							= javascript_tag "$('#flash_errors').effect('highlight',{},1000);"
+						- flash[:error] = flash[:errors] = flash[:notice] = nil
+				= yield
+			= render 'layouts/lte/footer'
+			.control-sidebar-bg
+		/ REQUIRED JS SCRIPTS
+		/ jQuery 3
+

@@ -1,0 +1,12 @@
+<%
+  if current_ma_user.role.upcase.split(',').include?("A")
+    article = Article.all.desc(:created_at)
+  else
+    article = Article.where(user: current_ma_user).desc(:created_at)
+  end
+%>
+<div class="field" data-role="fieldcontain">
+  <%= label_tag :title, 'Article title' %>
+  <%= select_tag :title, options_from_collection_for_select(article, :id, :title), "data-native-menu"=>"false" %>
+</div>
+

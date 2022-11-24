@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="follow, all" />
+  <meta name="language" content="en, th" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1">
+<title>
+    <% if content_for?(:title) %>
+      <%= content_for(:title) %>
+    <% else %>
+      Jinda | Tools for  | Ruby on Rails
+    <% end %>
+</title>
+
+<% if content_for :meta_description %>
+  <meta name="description" content="<%= content_for :meta_description %>" />
+<% else %>
+  <meta name="description" content="Jinda Tools to create visual programming using mindmap" />
+<% end %>
+
+<meta name="keywords" content="Jinda, Rails, ruby" />

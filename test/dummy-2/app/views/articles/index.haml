@@ -1,0 +1,5 @@
+- @title= "All Articles"
+%p
+- @page_title  = 'All Articlces'
+= render :partial => 'report', locals: { report: @articles}
+= paginate @articles

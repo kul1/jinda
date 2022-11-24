@@ -1,0 +1,35 @@
+.container
+  .signup-form
+    = form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do
+      %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign in
+      %p.hint-text Sign in with your social media account or Username
+      .social-btn.text-center
+        %a.btn.btn-primary.btn-lg{:href => "/auth/facebook"}
+          %i.fa.fa-facebook
+          Facebook
+        %a.btn.btn-info.btn-lg{:href => "#"}
+          %i.fa.fa-twitter
+          Twitter
+        %a.btn.btn-danger.btn-lg{:href => "/auth/google_oauth2"}
+          %i.fa.fa-google
+          Google
+      .or-seperator
+        %b or
+      .sign_in
+      .label-warning
+        = flash[:alert]
+      .form-group.form-control
+        = label_tag :auth_key, "User name"
+        = text_field_tag :auth_key
+      .form-group.form-control
+        = label_tag :password, "Password"
+        = password_field_tag :password
+      .form-group
+        = label_tag :remember_me
+        = check_box_tag :remember_me, 1, params.permit[:remember_me]
+      %button.btn.btn-success.btn-block.actions{:type => "submit"}
+        %i.fas.fa-sign-in-alt
+        Sign in
+      = link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'}
+      %hr/
+
