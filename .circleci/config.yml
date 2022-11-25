@@ -32,7 +32,11 @@ jobs:
       - checkout
       - run:
           name: Which bundler?
+          command: bundle -v
+      - run:
+          name: bundle exec install 
           command: bundle exec install
+
       # run tests!
       - run:
           name: Run rspec
