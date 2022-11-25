@@ -35,7 +35,7 @@ jobs:
           command: |
             gem install bundler -v 2.0.2
             bundle install --jobs=4 --retry=3 --path vendor/bundle      
-      -ruby/install-deps
+     
       - run:
           name: Run tests
           command: bundle exec rake
