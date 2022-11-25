@@ -26,6 +26,8 @@ jobs:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       RAILS_ENV: test
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+
     steps:
       - checkout
       - run:
