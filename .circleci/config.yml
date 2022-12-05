@@ -38,7 +38,7 @@ jobs:
      
       - run:
           name: Run tests
-          command: bundle exec install
+          command: /usr/bin/install
       - run:
           name: Which bundler?
           command: bundle -v
