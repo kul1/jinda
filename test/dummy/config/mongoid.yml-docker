@@ -4,12 +4,12 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      # uri: mongodb://user:password@mongodb.domain.com:27017/shop263603_development
+      # uri: mongodb://user:password@mongodb.domain.com:27017/jinda_development
 
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: shop263603_development
+      database: jinda_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -173,7 +173,7 @@ production:
 test:
   clients:
     default:
-      database: shop263603_test
+      database: jinda_test
       hosts:
         - localhost:27017
       options:
