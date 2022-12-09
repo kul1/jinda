@@ -52,7 +52,7 @@ end
 # gem "jinda_adminlte" , path: "../../../jinda_adminlte"
 gem 'jinda'
 gem "jinda_adminlte"
-gem "bson"
+gem "bson", "~> 4.14.1"
 gem "maruku", "~> 0.7.3"
 gem "bcrypt"
 gem "rouge"
@@ -77,7 +77,7 @@ gem "dotenv-rails"
 gem "cloudinary", "1.13.2"
 gem "kaminari", "1.2.0"
 gem "jquery-rails", "4.3.5"
-gem "mongoid"
+gem "mongoid", "8.0.2"
 gem "rexml", "~> 3.2.4"
 
 group :development, :test do
