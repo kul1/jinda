@@ -19,45 +19,18 @@ jobs:
           BUNDLE_RETRY: "3"
           RAILS_ENV: test
     executor: ruby/default
-       
+    
     test:
     parallelism: 3
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       RAILS_ENV: test
-      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
-
     steps:
       - checkout
       - run:
-          name: install dependencies
-          command: |
-            gem install bundler -v 2.0.2
-            bundle install --jobs=4 --retry=3 --path vendor/bundle      
-     
-      - run:
-          name: Run tests
-          command: /usr/bin/install
-      - run:
           name: Which bundler?
           command: bundle -v
-
-      # run tests!
-      - run:
-          name: Run rspec
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
-
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
-
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
