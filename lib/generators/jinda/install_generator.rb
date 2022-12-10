@@ -9,7 +9,7 @@ module Jinda
         # define required gems: jinda_gem, jinda_dev_gem
         jinda_gem = 
           [
-            ["bson", "4.4.2"],
+            ["bson", "4.14.1"],
             ["maruku", "~> 0.7.3"],
             ["bcrypt"],
             ["rouge"],
@@ -35,7 +35,7 @@ module Jinda
             ["cloudinary", "1.13.2"],
             ["kaminari", "1.2.0"],
             ["jquery-rails", "4.3.5"],
-            ["mongoid"],
+            ["mongoid", "8.0.2"],
             ["rexml", "~> 3.2.4"]
 
         ]
