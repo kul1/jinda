@@ -201,7 +201,7 @@ IMAGE_LOCATION = "upload"
           "Rails.application.config.assets.precompile += %w( sarabun.css )" +
             "\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
         end
-
+      def jinda_gem
         jinda_gem = 
           [
             ["bson", "4.4.2"],
@@ -233,14 +233,18 @@ IMAGE_LOCATION = "upload"
             ["mongoid"],
             ["rexml", "~> 3.2.4"]
         ]
+      end
       
+      def jinda_custom
         jinda_custom = 
           [
             ["mongoid-paperclip", require: "mongoid_paperclip"],
             ["kaminari-mongoid", "1.0.1"],
             ["nokogiri", "~> 1.11.0"]
           ]
+      end
 
+      def jinda_dev_gem
         jinda_dev_gem =
           [
             ["shoulda"],

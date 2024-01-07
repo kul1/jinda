@@ -67,13 +67,12 @@ module Jinda
 
       def app_setup
         backup_existing_files
+        report_backup_files
         move_files_from_jinda_org
         create_directories
       end
-
       def backup_existing_files
-        file_operations = {
-          'db' => 'seeds.rb',
+        file_operations = { 'db' => 'seeds.rb',
           'app/views/layouts' => 'application.html.erb',
           'app/controllers' => 'application_controller.rb',
           'app/helpers' => 'application_helper.rb',
@@ -82,12 +81,16 @@ module Jinda
           'config/initializers' => ['omniauth.rb', 'mongoid.rb'],
           'app/assets/config' => 'manifest.js'
         }
-      
+
+        # Create the 'jinda_org' directory if it doesn't already exist
+        FileUtils.mkdir_p('jinda_org') unless File.directory?('jinda_org')
+
         file_operations.each do |dir, files|
           [files].flatten.each do |file|
             inside(dir) do
               if File.file?(file)
-                FileUtils.mv file, "#{file}.bak"
+                # Move the file to 'jinda_org' directory
+                FileUtils.mv file, "../jinda_org/#{file}"
               else
                 say "no #{file}", :blue
               end
@@ -95,7 +98,7 @@ module Jinda
           end
         end
       end
-      
+
       def move_files_from_jinda_org
         files = %w[
           admins_controller.rb articles_controller.rb comments_controller.rb
@@ -201,7 +204,9 @@ IMAGE_LOCATION = "upload"
           "Rails.application.config.assets.precompile += %w( sarabun.css )" +
             "\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
         end
+      end
 
+      def jinda_gem
         jinda_gem = 
           [
             ["bson", "4.4.2"],
@@ -233,14 +238,18 @@ IMAGE_LOCATION = "upload"
             ["mongoid"],
             ["rexml", "~> 3.2.4"]
         ]
+      end
       
+      def jinda_custom
         jinda_custom = 
           [
             ["mongoid-paperclip", require: "mongoid_paperclip"],
             ["kaminari-mongoid", "1.0.1"],
             ["nokogiri", "~> 1.11.0"]
           ]
+      end
 
+      def jinda_dev_gem
         jinda_dev_gem =
           [
             ["shoulda"],
@@ -261,7 +270,6 @@ IMAGE_LOCATION = "upload"
             ["faker"]
           ]
       end
-
     end
   end
 end
