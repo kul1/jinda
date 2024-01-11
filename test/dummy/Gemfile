@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "2.7.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.0.8"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -48,8 +48,9 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-gem 'jinda', path: '../../../jinda'
-gem 'jinda_adminlte' , path: '../../../jinda_adminlte'
+
+gem "jinda", path: "/Users/kul/mygem/jinda"
+gem "jinda_adminlte", path: "/Users/kul/mygem/jinda_adminlte"
 gem "bson", "4.4.2"
 gem "maruku", "~> 0.7.3"
 gem "bcrypt"
@@ -97,4 +98,3 @@ group :development, :test do
 end
 gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem "kaminari-mongoid", "1.0.1"
-gem 'rspec_junit_formatter'
