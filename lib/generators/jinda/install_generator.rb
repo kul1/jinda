@@ -9,7 +9,7 @@ module Jinda
         # define required gems: jinda_gem, jinda_dev_gem
         jinda_gem = 
           [
-            ["bson", "4.4.2"],
+            ["bson", "4.15"],
             ["maruku", "~> 0.7.3"],
             ["bcrypt"],
             ["rouge"],
@@ -18,7 +18,7 @@ module Jinda
             ["font-awesome-sass", "~> 5.12.0"],
             ["meta-tags"],
             ["jquery-turbolinks", "2.1.0"],
-            ["mongo", "2.11.3"],
+            ["mongo", "~> 2.19", ">= 2.19.3"],
             ["turbolinks_render"],
             ["haml-rails", "~> 2.0.1"],
             ["haml", "~> 5.1", ">= 5.1.2"],

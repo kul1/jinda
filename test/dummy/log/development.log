@@ -1,773 +1,214 @@
-MONGODB | EVENT: #<TopologyOpening topology=Unknown[]>
 MONGODB | Topology type 'unknown' initializing.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[] new=Unknown[mongodb:27017]>
-MONGODB | Topology type 'Unknown' changed to type 'Unknown'.
-MONGODB | EVENT: #<ServerOpening address=mongodb:27017 topology=Unknown[mongodb:27017]>
-MONGODB | Server mongodb:27017 initializing.
-MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[mongodb:27017] servers=[#<Server address=mongodb:27017 UNKNOWN>]>
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-The criteria cache has been deprecated and will be removed in Mongoid 8. Please enable the Mongoid QueryCache to have caching functionality.
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | EVENT: #<TopologyOpening topology=Unknown[]>
-MONGODB | Topology type 'unknown' initializing.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[] new=Unknown[mongodb:27017]>
-MONGODB | Topology type 'Unknown' changed to type 'Unknown'.
-MONGODB | EVENT: #<ServerOpening address=mongodb:27017 topology=Unknown[mongodb:27017]>
-MONGODB | Server mongodb:27017 initializing.
-MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[mongodb:27017] servers=[#<Server address=mongodb:27017 UNKNOWN>]>
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-The criteria cache has been deprecated and will be removed in Mongoid 8. Please enable the Mongoid QueryCache to have caching functionality.
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | Error running ismaster on mongodb:27017: SocketError: getaddrinfo: nodename nor servname provided, or not known:
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `getaddrinfo'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:202:in `create_resolver'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/address.rb:162:in `socket'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:165:in `connect!'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/connectable.rb:82:in `ensure_connected'
-/Users/kul/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/mongo-2.11.3/lib/mongo/server/monitor/connection.rb:142:in `ismaster'
-MONGODB | EVENT: #<TopologyOpening topology=Unknown[]>
-MONGODB | Topology type 'unknown' initializing.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[] new=Unknown[localhost:27017]>
-MONGODB | Topology type 'Unknown' changed to type 'Unknown'.
-MONGODB | EVENT: #<ServerOpening address=localhost:27017 topology=Unknown[localhost:27017]>
+MONGODB | There was a change in the members of the 'Unknown' topology.
 MONGODB | Server localhost:27017 initializing.
 MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
-MONGODB | EVENT: #<ServerDescriptionChanged address=localhost:27017 topology=Single[localhost:27017] prev=#<Mongo::Server:Description:0x71760 config={} average_round_trip_time=> new=#<Mongo::Server:Description:0x71740 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:24.338 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>14, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.010144>>
 MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[localhost:27017] new=Single[localhost:27017]>
 MONGODB | Topology type 'Unknown' changed to type 'Single'.
-The criteria cache has been deprecated and will be removed in Mongoid 8. Please enable the Mongoid QueryCache to have caching functionality.
-MONGODB | EVENT: #<ServerDescriptionChanged address=localhost:27017 topology=Single[localhost:27017] prev=#<Mongo::Server:Description:0x71740 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:24.338 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>14, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.010144> new=#<Mongo::Server:Description:0x71840 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:24.345 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>15, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.009192400000000002>>
-MONGODB | Server description for localhost:27017 changed from 'standalone' to 'standalone'.
-MONGODB | EVENT: #<TopologyChanged prev=Single[localhost:27017] new=Single[localhost:27017]>
-MONGODB | Topology type 'Single' changed to type 'Single'.
-MONGODB | [7] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"admin"}, "projection"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x71900 type=uuid data=0x077318b60dd94b66...>}}
-MONGODB | [7] localhost:27017 | dummy_development.find | SUCCEEDED | 0.013s
-MONGODB | [8] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"tester"}, "projection"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x71900 type=uuid data=0x077318b60dd94b66...>}}
-MONGODB | [8] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [9] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"admin"}, "projection"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x71900 type=uuid data=0x077318b60dd94b66...>}}
-MONGODB | [9] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [10] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"tester"}, "projection"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x71900 type=uuid data=0x077318b60dd94b66...>}}
-MONGODB | [10] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-Started GET "/" for ::1 at 2024-01-11 16:51:42 -0600
+MONGODB | localhost:27017 req:6 conn:1:1 sconn:47 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"admin"}, "limit"=>1, "projection"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x19940 type=uuid data=0x6d68a08b13084161...>}}
+MONGODB | localhost:27017 req:6 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:7 conn:1:1 sconn:47 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"tester"}, "limit"=>1, "projection"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x19940 type=uuid data=0x6d68a08b13084161...>}}
+MONGODB | localhost:27017 req:7 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:8 conn:1:1 sconn:47 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"admin"}, "limit"=>1, "projection"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x19940 type=uuid data=0x6d68a08b13084161...>}}
+MONGODB | localhost:27017 req:8 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:9 conn:1:1 sconn:47 | dummy_development.find | STARTED | {"find"=>"identities", "filter"=>{"code"=>"tester"}, "limit"=>1, "projection"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x19940 type=uuid data=0x6d68a08b13084161...>}}
+MONGODB | localhost:27017 req:9 | dummy_development.find | SUCCEEDED | 0.002s
+Started GET "/" for ::1 at 2024-01-11 19:25:47 -0600
 Processing by JindaController#index as HTML
   Rendering layout layouts/application.haml
   Rendering jinda/index.html.haml within layouts/application
-  Rendered jinda/index.html.haml within layouts/application (Duration: 12.5ms | Allocations: 29948)
-  Rendered layouts/_head.html.erb (Duration: 492.8ms | Allocations: 415147)
-MONGODB | EVENT: #<TopologyOpening topology=Unknown[]>
+  Rendered jinda/index.html.haml within layouts/application (Duration: 8.8ms | Allocations: 15145)
 MONGODB | Topology type 'unknown' initializing.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[] new=Unknown[localhost:27017]>
-MONGODB | Topology type 'Unknown' changed to type 'Unknown'.
-MONGODB | EVENT: #<ServerOpening address=localhost:27017 topology=Unknown[localhost:27017]>
+MONGODB | There was a change in the members of the 'Unknown' topology.
 MONGODB | Server localhost:27017 initializing.
 MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
-MONGODB | EVENT: #<ServerDescriptionChanged address=localhost:27017 topology=Single[localhost:27017] prev=#<Mongo::Server:Description:0x87340 config={} average_round_trip_time=> new=#<Mongo::Server:Description:0x87320 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:44.098 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>17, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.009721>>
 MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
-MONGODB | EVENT: #<TopologyChanged prev=Unknown[localhost:27017] new=Single[localhost:27017]>
 MONGODB | Topology type 'Unknown' changed to type 'Single'.
-The criteria cache has been deprecated and will be removed in Mongoid 8. Please enable the Mongoid QueryCache to have caching functionality.
-MONGODB | EVENT: #<ServerDescriptionChanged address=localhost:27017 topology=Single[localhost:27017] prev=#<Mongo::Server:Description:0x87320 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:44.098 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>17, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.009721> new=#<Mongo::Server:Description:0x87420 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:44.105 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>20, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.0084948>>
-MONGODB | Server description for localhost:27017 changed from 'standalone' to 'standalone'.
-MONGODB | EVENT: #<TopologyChanged prev=Single[localhost:27017] new=Single[localhost:27017]>
-MONGODB | Topology type 'Single' changed to type 'Single'.
-MONGODB | [7] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [7] localhost:27017 | dummy_development.find | SUCCEEDED | 0.027s
-MONGODB | [8] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"jobs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [8] localhost:27017 | dummy_development.find | SUCCEEDED | 0.016s
-MONGODB | [9] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"All Jobs: /jobs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [9] localhost:27017 | dummy_development.find | SUCCEEDED | 0.012s
-MONGODB | [10] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"My jobs: /jobs/my"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [10] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [11] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"My forms: /jobs/forms"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [11] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [12] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"new_job"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [12] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [13] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"edit_job"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [13] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [14] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"create_form"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [14] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [15] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"import_job"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [15] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [16] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"xedit_job"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [16] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [17] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [17] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [18] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [18] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [19] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [19] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [20] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [20] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [21] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [21] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [22] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [22] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [23] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [23] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [24] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [24] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [25] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [25] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [26] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [26] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [27] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [27] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [28] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [28] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [29] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [29] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [30] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [30] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [31] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [31] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [32] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [32] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [33] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [33] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [34] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [34] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [35] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [35] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [36] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [36] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [37] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [37] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [38] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [38] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [39] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [39] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [40] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [40] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [41] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [41] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [42] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [42] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [43] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [43] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [44] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [44] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [45] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [45] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [46] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [46] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [47] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [47] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [48] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [48] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [49] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [49] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [50] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [50] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [51] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [51] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [52] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [52] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [53] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [53] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [54] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [54] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [55] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [55] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [56] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [56] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [57] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [57] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [58] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [58] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [59] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [59] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [60] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [60] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [61] localhost:27017 #1 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["659c6e71bee0426479d390ef", "659c6e71bee0426479d390f8", "659c6e71bee0426479d390fd", "659c6e71bee0426479d39102", "659c6e71bee0426479d39105", "659c6e71bee0426479d3910a", "6...
-MONGODB | [61] localhost:27017 | dummy_development.delete | SUCCEEDED | 0.001s
-MONGODB | [62] localhost:27017 #1 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["659c6e71bee0426479d390f0", "659c6e71bee0426479d390f1", "659c6e71bee0426479d390f2", "659c6e71bee0426479d390f3", "659c6e71bee0426479d390f4", "659c6e71bee0426479d390f5", "...
-MONGODB | [62] localhost:27017 | dummy_development.delete | SUCCEEDED | 0.001s
-MONGODB | [63] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [63] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [64] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390ef')}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [64] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [65] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [65] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [66] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [66] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [67] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [67] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [68] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [68] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [69] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [69] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [70] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [70] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [71] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [71] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [72] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39105')}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [72] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [73] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [73] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [74] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [74] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [75] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3910a')}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [75] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [76] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [76] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [77] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [77] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [78] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [78] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [79] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [79] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [80] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [80] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [81] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39111')}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [81] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [82] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [82] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [83] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [83] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [84] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [84] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [85] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [85] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [86] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [86] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [87] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [87] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [88] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911f')}, "sort"=>{"seq"=>1}, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [88] localhost:27017 | dummy_development.find | SUCCEEDED | 0.002s
-MONGODB | [89] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [89] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [90] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [90] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [91] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [91] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-  Rendered jinda/_menu_mm.haml (Duration: 235.8ms | Allocations: 718837)
-MONGODB | [92] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [92] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-MONGODB | [93] localhost:27017 #1 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"QpF-fQM7_n3mGtWWxvk0CA"}, "sort"=>{"_id"=>1}, "limit"=>1, "lsid"=>{"id"=><BSON::Binary:0x87480 type=uuid data=0x2dc0b0463f394018...>}}
-MONGODB | [93] localhost:27017 | dummy_development.find | SUCCEEDED | 0.001s
-  Rendered jinda/_menu.haml (Duration: 298.5ms | Allocations: 789113)
-  Rendered jinda/_static.haml (Duration: 3.1ms | Allocations: 15120)
-  Rendered layouts/jqm/_full.haml (Duration: 798.4ms | Allocations: 1228892)
-  Rendered layout layouts/application.haml (Duration: 812.2ms | Allocations: 1261324)
-Completed 200 OK in 1459ms (Views: 815.2ms | MongoDB: 0.1ms | Allocations: 2534207)
+MONGODB | localhost:27017 req:6 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"pGHyWK4KLdiKgjvpZ6BChQ"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:6 | dummy_development.find | SUCCEEDED | 0.004s
+  Rendered layouts/lte/_header.haml (Duration: 31.1ms | Allocations: 53702)
+MONGODB | localhost:27017 req:7 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"jobs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:7 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:8 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"All Jobs: /jobs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:8 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:9 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"My jobs: /jobs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:9 | dummy_development.find | SUCCEEDED | 0.006s
+MONGODB | localhost:27017 req:10 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"link", "name"=>"My forms: /jobs/forms"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:10 | dummy_development.find | SUCCEEDED | 0.008s
+MONGODB | localhost:27017 req:11 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"new_job"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:11 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:12 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"edit_job"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:12 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:13 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"create_form"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:13 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:14 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"import_job"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:14 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:15 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"jobs", "code"=>"xedit_job"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:15 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:16 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:16 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:17 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:17 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:18 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21....
+MONGODB | localhost:27017 req:18 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:19 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:19 | dummy_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:20 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:20 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:21 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:21 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:22 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:22 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:23 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...
+MONGODB | localhost:27017 req:23 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:24 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:24 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:25 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:25 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:26 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:26 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:27 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21.....
+MONGODB | localhost:27017 req:27 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:28 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...
+MONGODB | localhost:27017 req:28 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:29 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:29 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:30 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:30 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:31 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:31 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:32 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:32 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:33 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:33 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:34 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:34 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:35 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:35 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:36 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:36 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:37 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:37 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:38 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:38 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:39 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:39 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:40 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:40 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:41 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:41 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:42 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>...
+MONGODB | localhost:27017 req:42 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:43 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21......
+MONGODB | localhost:27017 req:43 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:44 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:44 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:45 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:45 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:46 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:46 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:47 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:47 | dummy_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:48 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:48 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:49 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:49 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:50 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:50 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:51 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:51 | dummy_development.find | SUCCEEDED | 0.012s
+MONGODB | localhost:27017 req:52 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:52 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:53 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:53 | dummy_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:54 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:54 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:55 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:55 | dummy_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:56 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4...
+MONGODB | localhost:27017 req:56 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:57 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:57 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:58 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:58 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:59 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:59 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:60 conn:1:1 sconn:50 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["659c6e71bee0426479d390ef", "659c6e71bee0426479d390f8", "659c6e71bee0426479d390fd", "659c6e71bee0426479d39102", "659c6e71bee0426479d39105", "659c6e71bee0426479d3910a", "6...
+MONGODB | localhost:27017 req:60 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:61 conn:1:1 sconn:50 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["659c6e71bee0426479d390f0", "659c6e71bee0426479d390f1", "659c6e71bee0426479d390f2", "659c6e71bee0426479d390f3", "659c6e71bee0426479d390f4", "659c6e71bee0426479d390f5", "...
+MONGODB | localhost:27017 req:61 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:62 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:62 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:63 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390ef')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:63 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:64 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390f8')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:64 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:65 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390fd')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:65 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:66 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39102')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:66 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:67 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39105')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:67 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:68 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3910a')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:68 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:69 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39111')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:69 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:70 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39117')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:70 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:71 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911a')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:71 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:72 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911d')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:72 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:73 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911f')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:73 | dummy_development.find | SUCCEEDED | 0.002s
+  Rendered layouts/lte/_menu_mm.haml (Duration: 356.2ms | Allocations: 591672)
+  Rendered layouts/lte/_menu.haml (Duration: 359.6ms | Allocations: 602810)
+  Rendered layouts/lte/_sidebar.haml (Duration: 370.4ms | Allocations: 640628)
+  Rendered layouts/lte/_flash.haml (Duration: 1.9ms | Allocations: 3948)
+  Rendered layouts/lte/_footer.haml (Duration: 1.3ms | Allocations: 3213)
+  Rendered layout layouts/application.haml (Duration: 622.4ms | Allocations: 870174)
+Completed 200 OK in 1321ms (Views: 410.7ms | MongoDB: 214.5ms | Allocations: 1843935)
 
 
-MONGODB | EVENT: #<ServerDescriptionChanged address=localhost:27017 topology=Single[localhost:27017] prev=#<Mongo::Server:Description:0x87420 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:44.105 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>20, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.0084948> new=#<Mongo::Server:Description:0x94600 config={"ismaster"=>true, "topologyVersion"=>{"processId"=>BSON::ObjectId('65a06ad180dd78cbe270a40c'), "counter"=>0}, "maxBsonObjectSize"=>16777216, "maxMessageSizeBytes"=>48000000, "maxWriteBatchSize"=>100000, "localTime"=>2024-01-11 22:51:54.103 UTC, "logicalSessionTimeoutMinutes"=>30, "connectionId"=>17, "minWireVersion"=>0, "maxWireVersion"=>17, "readOnly"=>false, "ok"=>1.0} average_round_trip_time=0.007361840000000001>>
+Started GET "/jinda" for ::1 at 2024-01-11 19:25:50 -0600
+Processing by JindaController#index as HTML
+  Rendering layout layouts/application.haml
+  Rendering jinda/index.html.haml within layouts/application
+  Rendered jinda/index.html.haml within layouts/application (Duration: 4.4ms | Allocations: 1923)
+MONGODB | localhost:27017 req:74 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"pGHyWK4KLdiKgjvpZ6BChQ"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:74 | dummy_development.find | SUCCEEDED | 0.002s
+  Rendered layouts/lte/_header.haml (Duration: 5.1ms | Allocations: 4358)
+MONGODB | localhost:27017 req:75 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:75 | dummy_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:76 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390ef')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:76 | dummy_development.find | SUCCEEDED | 0.008s
+MONGODB | localhost:27017 req:77 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390f8')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:77 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:78 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d390fd')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:78 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:79 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39102')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:79 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:80 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39105')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:80 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:81 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3910a')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:81 | dummy_development.find | SUCCEEDED | 0.004s
+MONGODB | localhost:27017 req:82 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39111')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:82 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:83 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d39117')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:83 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:84 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911a')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:84 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:85 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911d')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:85 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:86 conn:1:1 sconn:50 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('659c6e71bee0426479d3911f')}, "sort"=>{"seq"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x35460 type=uuid data=0x15540796061c4f21...>}}
+MONGODB | localhost:27017 req:86 | dummy_development.find | SUCCEEDED | 0.002s
+  Rendered layouts/lte/_menu_mm.haml (Duration: 96.4ms | Allocations: 159901)
+  Rendered layouts/lte/_menu.haml (Duration: 96.6ms | Allocations: 160047)
+  Rendered layouts/lte/_sidebar.haml (Duration: 96.8ms | Allocations: 160185)
+  Rendered layouts/lte/_flash.haml (Duration: 0.1ms | Allocations: 56)
+  Rendered layouts/lte/_footer.haml (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/application.haml (Duration: 121.6ms | Allocations: 178029)
+Completed 200 OK in 122ms (Views: 78.4ms | MongoDB: 43.6ms | Allocations: 178370)
+
+
 MONGODB | Server description for localhost:27017 changed from 'standalone' to 'standalone'.
-MONGODB | EVENT: #<TopologyChanged prev=Single[localhost:27017] new=Single[localhost:27017]>
-MONGODB | Topology type 'Single' changed to type 'Single'.
+MONGODB | There was a change in the members of the 'Single' topology.
