@@ -18,6 +18,7 @@ module Jinda
                 # FileUtils.cp "dot.rspec",".rspec"
                 empty_directory "upload" # create upload directory just in case
             end
+
             desc "Set up omniauth config"
             def setup_omniauth
                 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -39,6 +40,18 @@ module Jinda
                       OmniAuth::FailureEndpoint.new(env).redirect_to_failure
                     }
                     
+                  }
+                end
+            end
+
+            desc "Set up devise config"
+            def setup_devise
+                initializer "deevise.rb" do
+                  %q{
+					# config/initializers/devise.rb
+                    Devise.setup do |config|
+                      config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+                    end
                   }
                 end
             end
@@ -73,6 +86,7 @@ module Jinda
             end
 
             def finish
+                puts "      configured devise.\n"
                 puts "      configured omniauth.\n"
                 puts "      configured Mongoid.\n"
                 puts "\n"
@@ -92,7 +106,7 @@ module Jinda
                 puts "-----------------------------------------\n"
                 puts "rails g jinda:minitest\n"
                 puts "-----------------------------------------\n"
-                puts "      To login with facebook"
+                puts "      To login with Google"
                 puts "-----------------------------------------\n"
                 puts "Please config. in .env or restore from .env-bak \n"
                 puts "-----------------------------------------\n"

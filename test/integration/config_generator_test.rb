@@ -13,7 +13,6 @@ class ConfigGeneratorTest < Rails::Generators::TestCase
 
     run_generator
     refute File.exist?("#{destination_root}/.env")
-    binding.pry
     assert File.exist?("#{destination_root}/.env-bak")
   end
 
