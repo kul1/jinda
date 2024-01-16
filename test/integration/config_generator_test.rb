@@ -1,6 +1,5 @@
 require 'test_helper'
 require 'generators/jinda/config/config_generator'
-require 'pry'
 
 class ConfigGeneratorTest < Rails::Generators::TestCase
   tests Jinda::Generators::ConfigGenerator
