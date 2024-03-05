@@ -1,16 +1,10 @@
 .container
   .signup-form
     = form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do
-      %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign in
+      %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign In
       %p.hint-text Sign in with your social media account or Username
       .social-btn.text-center
-        %a.btn.btn-primary.btn-lg{:href => "/auth/facebook"}
-          %i.fa.fa-facebook
-          Facebook
-        %a.btn.btn-info.btn-lg{:href => "#"}
-          %i.fa.fa-twitter
-          Twitter
-        %a.btn.btn-danger.btn-lg{:href => "/auth/google_oauth2"}
+        %a.btn.btn-danger.btn-lg{:href => "/auth/google_oauth2/callback"}
           %i.fa.fa-google
           Google
       .or-seperator
@@ -27,9 +21,10 @@
       .form-group
         = label_tag :remember_me
         = check_box_tag :remember_me, 1, params.permit[:remember_me]
+      %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
       %button.btn.btn-success.btn-block.actions{:type => "submit"}
         %i.fas.fa-sign-in-alt
-        Sign in
+        Sign In
       = link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'}
       %hr/
 
