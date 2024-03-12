@@ -4,16 +4,17 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      # uri: mongodb://user:password@mongodb.domain.com:27017/dummy_development
+      # uri: mongodb://user:password@mongodb.domain.com:27017/jinda_development
 
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: dummy_development
+      database: jinda_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - localhost:27017
+        # - localhost:27017
+        - mongodb
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -57,7 +58,7 @@ development:
         # connect: :direct
 
         # Changes the default time in seconds the server monitors refresh their status
-        # via hello commands. (default: 10)
+        # via ismaster commands. (default: 10)
         # heartbeat_frequency: 10
 
         # The time in seconds for selecting servers for a near read preference. (default: 0.015)
@@ -80,13 +81,8 @@ development:
         # (default: 10)
         # connect_timeout: 10
 
-        # How long to wait for a response for each operation sent to the
-        # server. This timeout should be set to a value larger than the
-        # processing time for the longest operation that will be executed
-        # by the application. Note that this is a client-side timeout;
-        # the server may continue executing an operation after the client
-        # aborts it with the SocketTimeout exception.
-        # (default: nil, meaning no timeout)
+        # The timeout to wait to execute operations on a socket before raising an error.
+        # (default: 5)
         # socket_timeout: 5
 
         # The name of the replica set to connect to. Servers provided as seeds that do
@@ -119,44 +115,12 @@ development:
 
   # Configure Mongoid specific options. (optional)
   options:
-    # Application name that is printed to the mongodb logs upon establishing
-    # a connection in server versions >= 3.4. Note that the name cannot
-    # exceed 128 bytes. It is also used as the database name if the
-    # database name is not explicitly defined. (default: nil)
-    # app_name: MyApplicationName
-
-production:
-  clients:
-    default:
-      uri: <%= ENV['MONGODB_URI'] %>
-  options:
-    raise_not_found_error: false
-    belongs_to_required_by_default: false
-
-    
-    # Mark belongs_to associations as required by default, so that saving a
-    # model with a missing belongs_to association will trigger a validation
-    # error. (default: true)
-    # belongs_to_required_by_default: true
-    belongs_to_required_by_default: false
-    
-    # Raise an exception when a field is redefined. (default: false)
-    # duplicate_fields_exception: false
-    
-    # Include the root model name in json serialization. (default: false)
+    # Includes the root model name in json serialization. (default: false)
     # include_root_in_json: false
 
     # Include the _type field in serialization. (default: false)
     # include_type_for_serialization: false
 
-    # Whether to join nested persistence contexts for atomic operations
-    # to parent contexts by default. (default: false)
-    # join_contexts: false
-
-    # Set the Mongoid and Ruby driver log levels when Mongoid is not using
-    # Ruby on Rails logger instance. (default: :info)
-    # log_level: :info
-    
     # Preload all models in development, needed when models use
     # inheritance. (default: false)
     # preload_models: false
@@ -170,24 +134,46 @@ production:
     # existing method. (default: false)
     # scope_overwrite_exception: false
 
-    # Use ActiveSupport's time zone in time operations instead of
-    # the Ruby default time zone. See the time zone section below for
-    # further information. (default: true)
+    # Raise an error when defining a field with the same name as an
+    # existing method. (default: false)
+    # duplicate_fields_exception: false
+
+    # Use Active Support's time zone in conversions. (default: true)
     # use_activesupport_time_zone: true
 
-    # Return stored times as UTC. See the time zone section below for
-    # further information. Most applications should not use this option.
-    # (default: false)
+    # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 
-    # (Deprecated) In MongoDB 4.0 and earlier, set whether to create
-    # indexes in the background by default. (default: false)
-    # background_indexing: false
+    # Set the Mongoid and Ruby driver log levels when not in a Rails
+    # environment. The Mongoid logger will be set to the Rails logger
+    # otherwise.(default: :info)
+    # log_level: :info
 
+    # Control whether `belongs_to` association is required. By default
+    # `belongs_to` will trigger a validation error if the association
+    # is not present. (default: true)
+    # belongs_to_required_by_default: true
+    belongs_to_required_by_default: false
+
+    # Application name that is printed to the mongodb logs upon establishing a
+    # connection in server versions >= 3.4. Note that the name cannot exceed 128 bytes.
+    # app_name: MyApplicationName
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+  options:
+    raise_not_found_error: false
+    belongs_to_required_by_default: false
+
+
+    # Use background indexes by default if `background` option not specified. (default: false)
+    # background_indexing: false
 test:
   clients:
     default:
-      database: dummy_test
+      database: jinda_test
       hosts:
         - localhost:27017
       options:
