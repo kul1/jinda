@@ -1,12 +1,12 @@
 # https://docs.docker.com/compose/rails/
-FROM ruby:2.6.8
+FROM ruby:3.1.2
 RUN apt-get update -qq 
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 # Fix from here
-RUN  gem install bundler:2.2.27
+RUN  gem install bundler:2.4.10
 # Fix end here
 RUN bundle install
 COPY . /myapp

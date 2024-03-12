@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.from_omniauth(auth)
     session[:user_id] = user.id
-    if params.permit[:remember_me]
+    if params[:remember_me]
       cookies.permanent[:auth_token] = user.auth_token
     else
       cookies[:auth_token] = user.auth_token
