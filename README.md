@@ -37,8 +37,8 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 
 These versions works for sure but others may do.
 
-- Ruby 3.0.0
-- Rails 6.1.3
+- Ruby 3.1.2
+- Rails 7.0.0
 - MongoDB 6
 - Freemind 1.0.1
 
@@ -79,7 +79,7 @@ arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-l
 Supposed we want to create ecommerce web site, first create a Rails
 app without ActiveRecord
 
-    $ rails new YOURAPP -BOTJ
+    $ rails _7.0.0_ new YOURAPP -BOTJ
 
 ## Add jinda to your Gemfile:
 
@@ -95,7 +95,7 @@ depend on your operating system, you may need to uncomment
 
 install gems
 
-    $ bundle
+    $ bundle install
 
 generate jinda application
 
@@ -103,7 +103,7 @@ generate jinda application
 
 Then run bundle again to install additional gems added by jinda
 
-    $ bundle
+    $ bundle install
 
 configure mongoid, omniauth
 
@@ -113,7 +113,18 @@ configure mongoid, omniauth
 
     $ rails jinda:seed
 
+    # Option: to use jinda_adminlte theme require add Gemfile with:
+    ```
+       gem 'jinda_adminlte'
+
+    ```
+       $ rails g jinda_adminlte:install
+
 now the application is ready, start it as any Rails application
+Please include your .env for social login, here sample 
+# https://console.cloud.google.com
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 
     $ rails server
 
