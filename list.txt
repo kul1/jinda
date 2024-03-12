@@ -1,0 +1,17 @@
+CHANGELOG.md
+Gemfile.lock
+Guardfile
+LICENSE.txt
+README.md
+Rakefile
+app
+bin
+cofig.yml
+config
+docker
+gem_spec.rb
+jinda.gemspec
+lib
+list.txt
+spec
+test

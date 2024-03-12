@@ -1,3 +1,8 @@
+## v0.8.0
+# fix jinda/test/dummy
+# fix social login 
+# upgraded for ruby 3.1.2 and Rails 7.0
+
 ## v0.7.7.2
 # config with Jenkins
 
