@@ -13,7 +13,7 @@ RSpec.feature "Userlogins", type: :feature do
 
   scenario "Google User Sign In" do
     visit "/auth/google_oauth2"
-    expect(page).to have_text("My Articles")
+    expect(page).to have_text("Sign Out")
   end
 
 

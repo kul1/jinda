@@ -248,8 +248,7 @@ IMAGE_LOCATION = "upload"
         end
         inject_into_file 'config/initializers/assets.rb', :after => '# Precompile additional assets.
         ' do        
-          "Rails.application.config.assets.precompile += %w( sarabun.css )" +
-            "\nRails.application.config.assets.precompile += %w( disable_enter_key.js )\n"
+          "Rails.application.config.assets.precompile += ['*.js', '*.css', '*.css.erb']\n"
         end
       end
 
