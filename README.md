@@ -21,8 +21,7 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 
 # [Jinda](https://github.com/kul1/jinda)
 
-
-![Screen Shot 2019-09-07 at 1 00 03 PM](https://user-images.githubusercontent.com/3953832/64478408-f5feb500-d175-11e9-9d07-8b41f3c47924.png)
+![Screenshot 2024-03-11 at 9 16 07 PM] (https://github.com/kul1/jinda/assets/3953832/5002c9be-4caa-4c0b-84be-e614f8c44a65.png)
 
 ## Additional Extension themes also available at
 
@@ -82,52 +81,55 @@ app without ActiveRecord
     $ rails _7.0.0_ new YOURAPP -BOTJ
 
 ## Add jinda to your Gemfile:
-
+ ```
     gem 'jinda'
-
+ ```
 For Development (most updated)
-
+ ```
     gem 'jinda', github:'kul1/jinda'
-
+ ```
 depend on your operating system, you may need to uncomment
-
+ ```
     gem 'therubyracer', :platforms => :ruby
-
+ ```
 install gems
-
+ ```
     $ bundle install
-
+ ```
 generate jinda application
-
+ ```
     $ rails generate jinda:install
-
+ ```
 Then run bundle again to install additional gems added by jinda
-
+ ```
     $ bundle install
-
+ ```
 configure mongoid, omniauth
-
+ ```
     $ rails generate jinda:config
-
+ ```
     Please make sure mongod is running then create admin user
-
+ ```
     $ rails jinda:seed
-
+ ```
     # Option: to use jinda_adminlte theme require add Gemfile with:
-    ```
+ ```
        gem 'jinda_adminlte'
-
-    ```
+ ```   
+    Then
+ ```
        $ rails g jinda_adminlte:install
-
+ ```
 now the application is ready, start it as any Rails application
 Please include your .env for social login, here sample 
-# https://console.cloud.google.com
+ ```
 GOOGLE_CLIENT_ID=
+
 GOOGLE_CLIENT_SECRET=
-
-    $ rails server
-
+ ```
+ ```
+ $ rails server
+ ```
 go to http://localhost:3000, click _Sign In_ on the left menu, and enter user name `admin` and password `secret`
 
 ![login](https://user-images.githubusercontent.com/3953832/41832924-d868f8f0-7813-11e8-93bb-19c0357cf604.png)
