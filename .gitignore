@@ -15,4 +15,5 @@
 .DS_Store
 **/.env
 **/.env-bak
+**/development.log
 
