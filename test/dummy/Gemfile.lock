@@ -1,12 +1,12 @@
 PATH
   remote: ../../../jinda_adminlte
   specs:
-    jinda_adminlte (0.7.5.1)
+    jinda_adminlte (0.8.0)
 
 PATH
   remote: ../..
   specs:
-    jinda (0.7.7.2)
+    jinda (0.8.0)
       rexml (~> 3.2)
 
 GEM

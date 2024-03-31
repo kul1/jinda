@@ -98,3 +98,4 @@ group :development, :test do
 end
 gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem "kaminari-mongoid", "1.0.1"
+gem "rexml", "~> 3.2.4"
