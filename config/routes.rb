@@ -5,10 +5,6 @@ Rails.application.routes.draw do
   jinda_methods += ['run_redirect', 'run_direct_to','run_if']
   jinda_methods += ['error_logs', 'notice_logs', 'cancel', 'run_output', 'end_output']
   jinda_methods.each do |aktion| get "/jinda/#{aktion}" => "jinda##{aktion}" end
-#   post '/jinda/init' => 'jinda#init'
-#   post '/jinda/pending' => 'jinda#index'
-#   post '/jinda/end_form' => 'jinda#end_form'
-#   post '/jinda/end_output' => 'jinda#end_output'
   
   # Define the actions array
   jinda_actions = ['init', 'pending', 'end_form', 'end_output']
@@ -23,15 +19,6 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
   get '/logout' => 'sessions#destroy', :as => 'logout'
 
-  # get '/articles/my' => 'articles#my'
-  # get '/articles/my/destroy' => 'articles#destroy'
-  # get '/articles/show' => 'articles/show'
-  # get '/articles/edit' => 'articles/edit'
-  # get '/docs/my' => 'docs/my'
-  # get '/notes/my' => 'notes/my'
-  # get '/docs/my/destroy' => 'docs#destroy'
-  # get '/notes/my/destroy/:id' => 'notes#destroy'
-  # get '/notes/destroy/:id' => 'notes#destroy'
 
   # Define the actions array
   actions = ['my', 'destroy', 'show', 'edit']
@@ -65,3 +52,5 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+# Define Routes constant
+Routes = Rails.application.routes
