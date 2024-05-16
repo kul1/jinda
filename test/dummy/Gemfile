@@ -76,7 +76,7 @@ gem "cloudinary", "1.13.2"
 gem "kaminari", "1.2.0"
 gem "jquery-rails", "4.3.5"
 gem "mongoid"
-gem "rexml", "~> 3.2.4"
+gem "rexml", "~> 3.2.7"
 
 group :development, :test do
   gem "shoulda"
@@ -98,4 +98,4 @@ group :development, :test do
 end
 gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem "kaminari-mongoid", "1.0.1"
-gem "rexml", "~> 3.2.4"
+gem "rexml", "~> 3.2.7"
