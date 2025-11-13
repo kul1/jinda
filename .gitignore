@@ -17,3 +17,11 @@
 **/.env-bak
 **/development.log
 
+
+# Analysis artifacts - keep local only
+/figures/
+/prepared/
+*.png
+*.pdf
+*_analysis.py
+generate_*.rb
