@@ -35,6 +35,8 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 
 ## Prerequisites
 
+**Jinda 0.8.0+ is compatible with Ruby 3.1+ and Rails 7.0+**
+
 These versions works for sure but others may do.
 
 - Ruby 3.1.2

@@ -44,7 +44,7 @@ module Jinda
           [
             ["mongoid-paperclip", require: "mongoid_paperclip"],
             ["kaminari-mongoid", "1.0.1"],
-            ["nokogiri", "~> 1.11.0"]
+            ["nokogiri", "~> 1.13.0"]
           ]
 
         jinda_dev_gem =
@@ -252,6 +252,12 @@ IMAGE_LOCATION = "upload"
         end
       end
 
+      def setup_boot_rb
+        # Add logger require for Ruby 3.1+ compatibility
+        inject_into_file 'config/boot.rb', after: 'require "bundler/setup"' do
+          "\nrequire \"logger\"  # Required for Ruby 3.1+ with Rails 7"
+        end
+      end
       def finish
         say "\n"
         say "Jinda gem ready for next configuration install.\n"
