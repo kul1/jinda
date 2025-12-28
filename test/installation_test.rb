@@ -56,10 +56,11 @@ class JindaInstallationTest < Minitest::Test
     assert_predicate status, :success?, "Rails not found: #{stderr}"
 
     # Check MongoDB (Docker or local)
-    stdout, = Open3.capture3('docker ps | grep mongo || echo "no_docker"')
-    skip unless stdout.include?("no_docker")
+    stdout, = Open3.capture3("docker ps | grep mongo || echo 'no_docker'")
 
-    skip "MongoDB container not running - start with: docker run -d -p #{MONGODB_PORT}:27017 mongo"
+    if stdout.include?("no_docker")
+      skip "MongoDB container not running - start with: docker run -d -p #{MONGODB_PORT}:27017 mongo"
+    end
   end
 
   def test_02_create_rails_app
