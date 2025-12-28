@@ -6,6 +6,7 @@ require 'open3'
 require 'timeout'
 
 # Test suite for Jinda gem installation process
+# rubocop:disable Style/ClassVars, Metrics/AbcSize
 class JindaInstallationTest < Minitest::Test
   # Make tests run in order - these tests are order-dependent by design
   # as they test a sequential installation workflow
@@ -18,7 +19,7 @@ class JindaInstallationTest < Minitest::Test
   JINDA_GEM_PATH = File.expand_path('..', __dir__)
   TEST_DIR = File.expand_path('~/tmp/jinda_tests')
   MONGODB_PORT = ENV.fetch('MONGODB_PORT', '27888')
-  TEST_APP_NAME = "jinda_test_#{Time.now.to_i}"
+  TEST_APP_NAME = "jinda_test_#{Time.now.to_i}".freeze
 
   # Class variable to maintain test app path across all tests
   @@test_app_path = nil
@@ -246,3 +247,4 @@ class JindaInstallationTest < Minitest::Test
     end
   end
 end
+# rubocop:enable Style/ClassVars, Metrics/AbcSize
