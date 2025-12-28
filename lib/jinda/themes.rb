@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ############################### Themes ###################################
 #
 # Check login user information from User model: name(code), image for Themes
@@ -46,7 +48,8 @@ def set_global
   $ip = request.env['REMOTE_ADDR']
 end
 
-def authorize? # use in pending tasks
+# use in pending tasks
+def authorize?
   @runseq = @xmain.runseqs.find @xmain.current_runseq
   return false unless @runseq
 
@@ -65,7 +68,8 @@ def authorize? # use in pending tasks
   true
 end
 
-def authorize_init? # use when initialize new transaction
+# use when initialize new transaction
+def authorize_init?
   # check module role
   mrole = @service.module.role
   return false if mrole && !current_ma_user
@@ -146,11 +150,12 @@ def code_div(s)
 end
 
 def ajax?(s)
-  s.match?('file_field') ? false : true
+  !s.match?('file_field')
 end
 
-def step(s, total) # square text
-  s = s == 0 ? 1 : s.to_i
+# square text
+def step(s, total)
+  s = s.zero? ? 1 : s.to_i
   total = total.to_i
   out = "<div class='step'>"
   (s - 1).times { |ss| out += "<span class='steps_done'>#{ss + 1}</span>" }
@@ -158,7 +163,7 @@ def step(s, total) # square text
   out += s.to_s
   out += '</span>'
   out += %()
-  for i in s + 1..total
+  ((s + 1)..total).each do |i|
     out += "<span class='steps_more'>#{i}</span>"
   end
   out += '</div>'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'active_support/core_ext'
 
@@ -16,7 +18,6 @@ module Jinda
     require_relative 'themes'
     require_relative 'gen_xmain'
     require_relative 'gen_models'
-    require_relative 'date_helpers'
     require_relative 'rake_views'
     require_relative 'gen_runseq'
     require_relative 'gen_services'

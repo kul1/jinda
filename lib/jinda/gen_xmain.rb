@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # #######################################################################]
 # Each Service at one moment will create one xmain
 # #######################################################################]
@@ -6,7 +8,7 @@ def create_xmain(service)
   custom_controller = "#{c}Controller"
   params['return'] = request.env['HTTP_REFERER']
   Jinda::Xmain.create service: service,
-                      start: Time.now,
+                      start: Time.zone.now,
                       name: service.name,
                       ip: get_ip,
                       status: 'I', # init
@@ -28,7 +30,7 @@ def clear_xmains
 end
 
 def ajax_notice
-  if notice = Jinda::Notice.recent(current_ma_user, request.env['REMOTE_ADDR'])
+  if (notice = Jinda::Notice.recent(current_ma_user, request.env['REMOTE_ADDR']))
     notice.update_attribute :unread, false
     js = "notice('#{notice.message}');"
   else

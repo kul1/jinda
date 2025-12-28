@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry'
 require 'rails'
 require 'active_support/core_ext/regexp'

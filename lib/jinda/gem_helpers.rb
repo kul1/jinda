@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This GemHelpers is to make helper able to be test in gem (not in rails)
 module Jinda
   module GemHelpers

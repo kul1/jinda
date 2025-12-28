@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
@@ -19,6 +21,6 @@ end
 # Default task runs both rubocop and tests
 task default: %i[rubocop test]
 
-task :console do
+task console: :environment do
   exec 'irb -r jinda -I ./lib'
 end

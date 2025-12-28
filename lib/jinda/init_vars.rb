@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 def init_vars_by_runseq(runseq_id)
   @runseq = Jinda::Runseq.find runseq_id
   @xmain = @runseq.xmain
   @xvars = @xmain.xvars
   # @xvars[:current_step]= @runseq.rstep
-  @runseq.start ||= Time.now
+  @runseq.start ||= Time.zone.now
   @runseq.status = 'R' # running
   @runseq.save
 end
@@ -18,7 +20,7 @@ def init_vars(xmain)
   session[:xmain_id] = @xmain.id
   session[:runseq_id] = @runseq.id
   unless params[:action] == 'run_call'
-    @runseq.start ||= Time.now
+    @runseq.start ||= Time.zone.now
     @runseq.status = 'R' # running
     @runseq.save
   end
@@ -33,7 +35,7 @@ def init_vars_by_runseq(runseq_id)
   @xmain = @runseq.xmain
   @xvars = @xmain.xvars
   # @xvars[:current_step]= @runseq.rstep
-  @runseq.start ||= Time.now
+  @runseq.start ||= Time.zone.now
   @runseq.status = 'R' # running
   @runseq.save
 end

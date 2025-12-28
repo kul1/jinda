@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # ##########################################################################
 #                         Load index.mm from Rails
 # ##########################################################################
 def get_app
   # MM was defined in Rails: config/initializer/jinda.rb
-  f = MM || "#{Rails.root.join('app/jinda/index.mm')}"
+  f = MM || Rails.root.join('app/jinda/index.mm').to_s
   dir = File.dirname(f)
   t = REXML::Document.new(File.read(MM).delete("\n")).root
   recheck = true

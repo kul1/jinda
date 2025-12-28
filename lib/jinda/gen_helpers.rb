@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ########################################################################
 #                  Methods to be overrided by gemhelp                  #
 #                            for Rspec Test
@@ -7,7 +9,7 @@ def gen_view_file_exist?(dir)
 end
 
 def gen_view_mkdir(dir, t)
-  FileUtils.mkdir_p(dir) unless File.exist?(dir)
+  FileUtils.mkdir_p(dir)
   t << "create directory #{dir}"
 end
 
@@ -19,7 +21,7 @@ end
 ########################################################################
 
 def controller_exists?(modul)
-  File.exist? "#{Rails.root.join("app/controllers/#{modul}_controller.rb")}"
+  File.exist? Rails.root.join("app/controllers/#{modul}_controller.rb").to_s
 end
 
 def dup_hash(a)
@@ -77,7 +79,7 @@ def listed(node)
     icons << nn.attributes['BUILTIN']
   end
 
-  !icons.include?('button_cancel')
+  icons.exclude?('button_cancel')
 end
 
 def ma_secured?(node)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # #######################################################################]
 #  Each xmain  will create many run_seq as many as steps and form_steps
 # #######################################################################]

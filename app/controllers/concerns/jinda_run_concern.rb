@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JindaRunConcern
   extend ActiveSupport::Concern
 
@@ -87,7 +89,7 @@ module JindaRunConcern
   # not for run_form
   def run_do
     init_vars(params[:id])
-    @runseq.start ||= Time.now
+    @runseq.start ||= Time.zone.now
     @runseq.status = 'R' # running
     $runseq_id = @runseq.id
     $user_id = current_ma_user.try(:id)
@@ -101,7 +103,7 @@ module JindaRunConcern
     @xvars[@runseq.code.to_sym] = result.to_s
     @xvars['current_step'] = @runseq.rstep
     @runseq.status = 'F' # finish
-    @runseq.stop = Time.now
+    @runseq.stop = Time.zone.now
     @runseq.save
     end_action
   rescue StandardError => e
@@ -110,7 +112,7 @@ module JindaRunConcern
     @xmain.xvars = $xvars
     @xmain.save
     @runseq.status = 'F' # finish
-    @runseq.stop = Time.now
+    @runseq.stop = Time.zone.now
     @runseq.save
     refresh_to '/', alert: "Sorry opeation error at  #{@xmain.id} #{@xvars['error']}"
   end
@@ -130,13 +132,13 @@ module JindaRunConcern
     if service && @runseq.code.present?
       f = "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
       @ui = File.read(f)
-      if Jinda::Doc.where(runseq_id: @runseq.id).exists?
+      if Jinda::Doc.exists?(runseq_id: @runseq.id)
         @doc = Jinda::Doc.where(runseq_id: @runseq.id).first
-        @doc.update_attributes data_text: render_to_string(inline: @ui, layout: 'utf8'),
-                               xmain: @xmain, runseq: @runseq, user: current_ma_user,
-                               ip: get_ip, service: service, ma_display: ma_display,
-                               ma_secured: @xmain.service.ma_secured,
-                               filename: "#{@runseq.code}.html.erb"
+        @doc.update data_text: render_to_string(inline: @ui, layout: 'utf8'),
+                    xmain: @xmain, runseq: @runseq, user: current_ma_user,
+                    ip: get_ip, service: service, ma_display: ma_display,
+                    ma_secured: @xmain.service.ma_secured,
+                    filename: "#{@runseq.code}.html.erb"
       else
         @doc = Jinda::Doc.create name: @runseq.name,
                                  content_type: 'output', data_text: render_to_string(inline: @ui, layout: 'utf8'),
@@ -177,13 +179,13 @@ module JindaRunConcern
     if service && @runseq.code.present?
       f = "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
       @ui = File.read(f)
-      if Jinda::Doc.where(runseq_id: @runseq.id).exists?
+      if Jinda::Doc.exists?(runseq_id: @runseq.id)
         @doc = Jinda::Doc.where(runseq_id: @runseq.id).first
-        @doc.update_attributes data_text: render_to_string(inline: @ui, layout: 'utf8'),
-                               xmain: @xmain, runseq: @runseq, user: current_ma_user,
-                               ip: get_ip, service: service, ma_display: ma_display,
-                               ma_secured: @xmain.service.ma_secured,
-                               filename: "#{@runseq.code}.html.erb"
+        @doc.update data_text: render_to_string(inline: @ui, layout: 'utf8'),
+                    xmain: @xmain, runseq: @runseq, user: current_ma_user,
+                    ip: get_ip, service: service, ma_display: ma_display,
+                    ma_secured: @xmain.service.ma_secured,
+                    filename: "#{@runseq.code}.html.erb"
       else
         @doc = Jinda::Doc.create name: @runseq.name,
                                  content_type: 'output', data_text: render_to_string(inline: @ui, layout: 'utf8'),
@@ -223,13 +225,13 @@ module JindaRunConcern
     if service && @runseq.code.present?
       f = "app/views/#{service.module.code}/#{service.code}/#{@runseq.code}.html.erb"
       @ui = File.read(f)
-      if Jinda::Doc.where(runseq_id: @runseq.id).exists?
+      if Jinda::Doc.exists?(runseq_id: @runseq.id)
         @doc = Jinda::Doc.where(runseq_id: @runseq.id).first
-        @doc.update_attributes data_text: render_to_string(inline: @ui, layout: 'utf8'),
-                               xmain: @xmain, runseq: @runseq, user: current_ma_user,
-                               ip: get_ip, service: service, ma_display: ma_display,
-                               ma_secured: @xmain.service.ma_secured,
-                               filename: "#{@runseq.code}.html.erb"
+        @doc.update data_text: render_to_string(inline: @ui, layout: 'utf8'),
+                    xmain: @xmain, runseq: @runseq, user: current_ma_user,
+                    ip: get_ip, service: service, ma_display: ma_display,
+                    ma_secured: @xmain.service.ma_secured,
+                    filename: "#{@runseq.code}.html.erb"
       else
         @doc = Jinda::Doc.create name: @runseq.name,
                                  content_type: 'output', data_text: render_to_string(inline: @ui, layout: 'utf8'),
@@ -273,7 +275,7 @@ module JindaRunConcern
     mail_to = get_option('to')
     recipients = render_to_string(inline: mail_to) if mail_to
     mail_subject = get_option('subject')
-    subject = render_to_string(inline: mail_subject) || "#{@runseq.name}"
+    subject = render_to_string(inline: mail_subject) || @runseq.name.to_s
     JindaMailer.gmail(@doc.data_text, recipients, subject).deliver unless DONT_SEND_MAIL
     end_action
   end
@@ -317,7 +319,7 @@ module JindaRunConcern
         # https://stackoverflow.com/questions/34949505/rails-5-unable-to-retrieve-hash-values-from-parameter
         # v = v.to_unsafe_h unless v.class == String
         # v = params.require[k] unless v.class == String
-        v.to_s unless v.class == String
+        v.to_s unless v.instance_of?(String)
         # Create @xvars[@runseq.code]
         eval '@xvars[@runseq.code][k] = v'
       end
@@ -329,7 +331,7 @@ module JindaRunConcern
     @xmain.xvars = $xvars
     @xmain.save
     @runseq.status = 'F' # finish
-    @runseq.stop = Time.now
+    @runseq.stop = Time.zone.now
     @runseq.save
     ma_log 'Error:end_form '
     refresh_to '/', alert: "Sorry opeation error at  #{@xmain.id} #{@xvars['error']}"
@@ -343,13 +345,13 @@ module JindaRunConcern
     @xmain.save!
     @runseq.status = 'F'
     @runseq.user = current_ma_user
-    @runseq.stop = Time.now
+    @runseq.stop = Time.zone.now
     @runseq.save
     next_runseq ||= @xmain.runseqs.where(rstep: @runseq.rstep + 1).first
     if @end_job || !next_runseq # job finish
       @xmain.xvars = @xvars
       @xmain.status = 'F' unless @xmain.status == 'E' # finish
-      @xmain.stop = Time.now
+      @xmain.stop = Time.zone.now
       @xmain.save
       if @xvars['p']['return']
         redirect_to @xvars['p']['return'] and return

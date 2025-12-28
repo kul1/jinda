@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Add method to ruby class String
 # ###############################
 class String

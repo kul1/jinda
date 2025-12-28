@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'jinda'
 require 'jinda/helpers'
 include Jinda::Helpers
@@ -27,7 +29,7 @@ namespace :jinda do
       password = h[:password].to_s
       role = h[:role].to_s
       image = h[:image]
-      next if Identity.where(code: code).exists?
+      next if Identity.exists?(code: code)
 
       identity = Identity.create code: code, email: email, password: password,
                                  password_confirmation: password

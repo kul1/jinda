@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def process_controllers
   process_services
   modules = Jinda::Module.all

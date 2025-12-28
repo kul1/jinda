@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def freemind2action(s)
   case s.downcase
     # when 'bookmark' # Excellent

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Jinda
   module Generators
     class ConfigGenerator < Rails::Generators::Base
       def self.source_root
-        File.dirname(__FILE__) + '/templates'
+        "#{File.dirname(__FILE__)}/templates"
       end
       desc 'Backup Files'
       def backup_files
@@ -56,12 +58,12 @@ module Jinda
           "\n    belongs_to_required_by_default: false"
         end
         inject_into_file 'config/mongoid.yml', after: '  # app_name: MyApplicationName' do
-          "\n\nproduction:" +
-            "\n  clients:" +
-            "\n    default:" +
-            "\n      uri: <%= ENV['MONGODB_URI'] %>" +
-            "\n  options:" +
-            "\n    raise_not_found_error: false" +
+          "\n\nproduction:" \
+            "\n  clients:" \
+            "\n    default:" \
+            "\n      uri: <%= ENV['MONGODB_URI'] %>" \
+            "\n  options:" \
+            "\n    raise_not_found_error: false" \
             "\n    belongs_to_required_by_default: false\n"
         end
       end
@@ -69,10 +71,10 @@ module Jinda
       desc 'Setup Dockerfile'
       def setup_docker
         puts '      Setup Docker files'
-        FileUtils.cp source_paths[0] + '/' + 'Dockerfile', 'Dockerfile'
-        FileUtils.cp source_paths[0] + '/' + 'docker-compose.yml', 'docker-compose.yml'
-        FileUtils.cp source_paths[0] + '/' + 'docker-compose-mongodb.yml', 'docker-compose-mongodb.yml'
-        FileUtils.cp source_paths[0] + '/' + 'entrypoint.sh', 'entrypoint.sh'
+        FileUtils.cp "#{source_paths[0]}/Dockerfile", 'Dockerfile'
+        FileUtils.cp "#{source_paths[0]}/docker-compose.yml", 'docker-compose.yml'
+        FileUtils.cp "#{source_paths[0]}/docker-compose-mongodb.yml", 'docker-compose-mongodb.yml'
+        FileUtils.cp "#{source_paths[0]}/entrypoint.sh", 'entrypoint.sh'
       end
 
       def finish

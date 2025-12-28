@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Jinda
   module Generators
     class InstallGenerator < Rails::Generators::Base
       desc 'Install jinda component to existing Rails app '
       def self.source_root
-        File.dirname(__FILE__) + '/templates'
+        "#{File.dirname(__FILE__)}/templates"
       end
 
       def setup_gems
@@ -376,7 +378,7 @@ IMAGE_LOCATION = "upload"
         end
 
         inject_into_file 'config/environment.rb', after: 'initialize!' do
-          "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" +
+          "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" \
             "\nclass Hash\n  remove_method :read\nrescue\nend"
         end
         inject_into_file 'config/environments/development.rb',
