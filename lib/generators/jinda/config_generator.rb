@@ -34,6 +34,9 @@ module Jinda
                       provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], skip_jwt: true
                     end
 
+                    # Allow both POST and GET requests for OmniAuth (Rails 7 compatibility)
+                    OmniAuth.config.allowed_request_methods = [:post, :get]
+
                     # https://stackoverflow.com/questions/11461084/handle-omniautherror-invalid-credentials-for-identity-login
                     OmniAuth.config.on_failure = Proc.new { |env|
                       OmniAuth::FailureEndpoint.new(env).redirect_to_failure
@@ -69,6 +72,7 @@ module Jinda
               puts "      Setup Docker files"
               FileUtils.cp source_paths[0]+"/"+"Dockerfile", "Dockerfile"
               FileUtils.cp source_paths[0]+"/"+"docker-compose.yml", "docker-compose.yml"
+              FileUtils.cp source_paths[0]+"/"+"docker-compose-mongodb.yml", "docker-compose-mongodb.yml"
               FileUtils.cp source_paths[0]+"/"+"entrypoint.sh", "entrypoint.sh"
             end
 
@@ -79,6 +83,11 @@ module Jinda
                 puts "      To set user/password as admin/secret run:\n"
                 puts "-----------------------------------------\n"
                 puts "rails jinda:seed\n"
+                puts "-----------------------------------------\n"
+                puts "      Docker options:"
+                puts "-----------------------------------------\n"
+                puts "Full stack: docker compose up -d\n"
+                puts "MongoDB only: docker compose -f docker-compose-mongodb.yml up -d\n"
                 puts "-----------------------------------------\n"
                 puts "      To test with rspec  run:"
                 puts "-----------------------------------------\n"

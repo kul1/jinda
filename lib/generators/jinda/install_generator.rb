@@ -6,10 +6,19 @@ module Jinda
         File.dirname(__FILE__) + "/templates"
       end
       def setup_gems
+        # Helper method to check if gem already in Gemfile
+        def gem_in_gemfile?(gem_name)
+          gemfile_path = File.join(destination_root, 'Gemfile')
+          return false unless File.exist?(gemfile_path)
+          gemfile_content = File.read(gemfile_path)
+          # Match gem declaration with various formats
+          gemfile_content.match?(/^\s*gem\s+['"]#{Regexp.escape(gem_name)}['"]/)
+        end
+
         # define required gems: jinda_gem, jinda_dev_gem
         jinda_gem = 
           [
-            ["bson", "4.15"],
+            ["bson", "~> 4.15"],
             ["maruku", "~> 0.7.3"],
             ["bcrypt"],
             ["rouge"],
@@ -18,33 +27,31 @@ module Jinda
             ["font-awesome-sass", "~> 5.12.0"],
             ["meta-tags"],
             ["jquery-turbolinks", "2.1.0"],
-            ["mongo", "~> 2.19", ">= 2.19.3"],
+            ["mongo", "~> 2.19"],
             ["turbolinks_render"],
             ["haml-rails", "~> 2.0.1"],
-            ["haml", "~> 5.1", ">= 5.1.2"],
+            ["haml", "~> 5.1"],
             ["mail"],
             ["prawn"],
             ["redcarpet"],
-            ["oauth2", "1.4.4"],
-            ["omniauth", "1.9.1"],
-            ["omniauth-oauth2", "1.6.0"],
-            ["omniauth-identity", "~> 1.1.1"],
-            ["omniauth-facebook", "6.0.0"],
-            ["omniauth-google-oauth2", "0.8.0"],
+            ["oauth2", "~> 2.0"],
+            ["omniauth", "~> 2.0"],
+            ["omniauth-oauth2", "~> 1.8"],
+            ["omniauth-identity", "~> 3.1"],
+            ["omniauth-facebook", "10.0.0"],
+            ["omniauth-google-oauth2", "~> 1.1"],
             ["dotenv-rails"],
-            ["cloudinary", "1.13.2"],
-            ["kaminari", "1.2.0"],
-            ["jquery-rails", "4.3.5"],
+            ["cloudinary", "~> 1.13"],
+            ["kaminari", "~> 1.2"],
+            ["jquery-rails", "~> 4.3"],
             ["mongoid"],
-            ["rexml", "~> 3.2.4"]
-
-        ]
+            ["rexml", "~> 3.2"]
+          ]
 
         jinda_custom = 
           [
-            ["mongoid-paperclip", require: "mongoid_paperclip"],
-            ["kaminari-mongoid", "1.0.1"],
-            ["nokogiri", "~> 1.13.0"]
+            ["mongoid-paperclip", {require: "mongoid_paperclip"}],
+            ["kaminari-mongoid", "~> 1.0"]
           ]
 
         jinda_dev_gem =
@@ -64,73 +71,61 @@ module Jinda
             ["selenium-webdriver"],
             ["rb-fsevent"],
             ["valid_attribute"],
-            ["faker"]
+            ["faker"],
+            ["rubocop"],
+            ["rubocop-rails"],
+            ["rubocop-performance"],
+            ["rubocop-minitest"]
           ]
 
-        # Check each jinda_gem and create new array if found one otherwise just create.
-        # Open Gemfile add gem if not exist
+        # Add regular gems (skip if already in Gemfile)
         jinda_gem.each do |g|
-          unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
-            if g.count == 2
-                gem g[0], g[1]
-            else
-              gem g[0]
-            end
+          gem_name = g[0]
+          next if gem_in_gemfile?(gem_name)
+          
+          if g.count == 2
+            gem gem_name, g[1]
+            say "     Adding #{gem_name} #{g[1]} to Gemfile", :green
           else
-            if g.count == 2
-              xgem_0 = %x(gem list -e #{g[0]})
-              unless xgem_0.include?(("#{g[1]}").gsub(/[~> ]/, ''))
-                say "    Found existing #{xgem_0} in Gemfile or System, Please edit Gemfile", :red
-                gem g[0], g[1]
-              else  
-                say "     Checking #{g[0]} found Ver. #{g[1]} already exist in Gemfile", :green
-              end 
-            end
-            say "     SKIP adding #{g[0]} in Gemfile", :yellow
+            gem gem_name
+            say "     Adding #{gem_name} to Gemfile", :green
           end
         end
 
-        # create list of gem in sub-group dev and test
-        jinda_dev_new  = Array.new
-        jinda_dev_gem.each do |g|
-          unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
-            jinda_dev_new << g
-          else
-            say "     #{g[0]} already exist in Gemfile", :yellow
-          end
-        end
-        unless jinda_dev_new.count == 0
-          gem_group :development, :test do
-            jinda_dev_new.each do |n|
-              if n.count == 1
-                gem n[0]
-              else
-                gem n[0], n[1]
-              end
-            end
-          end
-        end
-
-        # create list of custom gem
-        jinda_custom_new = Array.new
+        # Add custom gems with special options (skip if already in Gemfile)
         jinda_custom.each do |g|
-          unless (%x(gem list -e --no-versions #{g[0]})) == "#{g[0]}\n"
-            jinda_custom_new << g
+          gem_name = g[0]
+          next if gem_in_gemfile?(gem_name)
+          
+          if g.count == 2 && g[1].is_a?(Hash)
+            gem gem_name, g[1]
+            say "     Adding #{gem_name} with options to Gemfile", :green
+          elsif g.count == 2
+            gem gem_name, g[1]
+            say "     Adding #{gem_name} #{g[1]} to Gemfile", :green
           else
-            say "     #{g[0]} already exist in Gemfile", :yellow
+            gem gem_name
+            say "     Adding #{gem_name} to Gemfile", :green
           end
         end
-        unless jinda_custom_new.count == 0
-            jinda_custom_new.each do |c|
-            say "     Checking if #{c[0]} already exist in Gemfile", :yellow
-              if c.count == 1
-                gem c[0]
+
+        # Add development/test gems (skip if already in Gemfile)
+        jinda_dev_new = jinda_dev_gem.reject { |g| gem_in_gemfile?(g[0]) }
+        
+        unless jinda_dev_new.empty?
+          gem_group :development, :test do
+            jinda_dev_new.each do |g|
+              gem_name = g[0]
+              if g.count == 2
+                gem gem_name, g[1]
+                say "     Adding #{gem_name} #{g[1]} to development/test group", :green
               else
-                gem c[0], c[1]
+                gem gem_name
+                say "     Adding #{gem_name} to development/test group", :green
               end
             end
+          end
         end
-        
       end
       def setup_app
         # inside("public") { run "FileUtils.mv index.html index.html.bak" }
@@ -148,6 +143,9 @@ module Jinda
         directory "db"
         directory "config"
         directory "dot"
+        directory "bin"
+        # Make lint_modified executable
+        inside("bin") { run "chmod +x lint_modified" }
         # 
         # CHECK IF EXISTING CODE THEN REQUIRED MANUAL MIGRATION
         # If no javascripts.js or css (New application), then can use javascript.js or css from org files.
