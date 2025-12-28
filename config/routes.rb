@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # start jiinda method routes
-  jinda_methods = %w[pending status search doc doc_print logs ajax_notice]
+  jinda_methods  = %w[pending status search doc doc_print logs ajax_notice]
   jinda_methods += %w[init run run_mail document run_do run_form end_form]
   jinda_methods += %w[run_redirect run_direct_to run_if]
   jinda_methods += %w[error_logs notice_logs cancel run_output end_output]
@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   end
 
   # end jinda method routes
-  post '/auth/:provider/callback' => 'sessions#create'
-  get '/auth/:provider/callback' => 'sessions#create'
-  get '/auth/failure' => 'sessions#failure'
-  get '/logout' => 'sessions#destroy', :as => 'logout'
+  post "/auth/:provider/callback" => "sessions#create"
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/auth/failure" => "sessions#failure"
+  get "/logout" => "sessions#destroy", :as => "logout"
 
   # Define the actions array
   actions = %w[my destroy show edit]
@@ -47,11 +47,11 @@ Rails.application.routes.draw do
   resources :sessions
   resources :password_resets
   resources :jinda, only: %i[index new]
-  get '/jinda/document/:id' => 'jinda#document'
+  get "/jinda/document/:id" => "jinda#document"
   # root :to => 'jinda#index'
   # api
-  get '/api/v1/notes/my' => 'api/v1/notes#my'
-  post '/api/v1/notes' => 'api/v1/notes#create', as: 'api_v1_notes'
+  get "/api/v1/notes/my" => "api/v1/notes#my"
+  post "/api/v1/notes" => "api/v1/notes#create", as: "api_v1_notes"
   namespace :api do
     namespace :v1 do
       resources :notes, only: [:index]

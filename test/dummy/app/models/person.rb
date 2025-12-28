@@ -1,8 +1,8 @@
-# encoding: utf-8
 class Person
   include Mongoid::Document
   # jinda begin
   include Mongoid::Timestamps
+
   field :fname, :type => String
   field :lname, :type => String
   field :sex, :type => Integer

@@ -25,7 +25,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -35,7 +35,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -49,53 +49,53 @@ group :development do
   # gem "spring"
 end
 
-gem "jinda"
-gem "jinda_adminlte"
-gem "bson", "4.15"
-gem "maruku", "~> 0.7.3"
 gem "bcrypt"
-gem "rouge"
-gem "normalize-rails"
+gem "bson", "4.15"
+gem "cloudinary", "1.13.2"
+gem "dotenv-rails"
 gem "font-awesome-rails"
 gem "font-awesome-sass", "~> 5.12.0"
-gem "meta-tags"
-gem "jquery-turbolinks", "2.1.0"
-gem "mongo"
-gem "turbolinks_render"
 gem "haml-rails", "~> 2.0.1"
-gem "prawn"
-gem "redcarpet"
+gem "jinda"
+gem "jinda_adminlte"
+gem "jquery-rails", "4.3.5"
+gem "jquery-turbolinks", "2.1.0"
+gem "kaminari", "1.2.0"
+gem "maruku", "~> 0.7.3"
+gem "meta-tags"
+gem "mongo"
+gem "mongoid"
+gem "normalize-rails"
 gem "oauth2", "1.4.4"
 gem "omniauth", "1.9.1"
-gem "omniauth-oauth2", "1.6.0"
-gem "omniauth-identity", "~> 1.1.1"
 gem "omniauth-facebook", "6.0.0"
 gem "omniauth-google-oauth2", "0.8.0"
-gem "dotenv-rails"
-gem "cloudinary", "1.13.2"
-gem "kaminari", "1.2.0"
-gem "jquery-rails", "4.3.5"
-gem "mongoid"
+gem "omniauth-identity", "~> 1.1.1"
+gem "omniauth-oauth2", "1.6.0"
+gem "prawn"
+gem "redcarpet"
 gem "rexml", "~> 3.2.4"
+gem "rouge"
+gem "turbolinks_render"
 
 group :development, :test do
-  gem "shoulda"
-  gem "rspec"
-  gem "rspec-rails"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "pry-byebug"
-  gem "factory_bot_rails"
-  gem "database_cleaner-mongoid"
-  gem "guard"
-  gem "guard-rspec"
-  gem "guard-minitest"
   gem "capybara"
-  gem "selenium-webdriver"
-  gem "rb-fsevent"
-  gem "valid_attribute"
+  gem "database_cleaner-mongoid"
+  gem "factory_bot_rails"
   gem "faker"
+  gem "guard"
+  gem "guard-minitest"
+  gem "guard-rspec"
+  gem "pry-byebug"
+  gem "rb-fsevent"
+  gem "rspec"
+  gem "rspec-rails"
+  gem "selenium-webdriver"
+  gem "shoulda"
+  gem "valid_attribute"
 end
-gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem "kaminari-mongoid", "1.0.1"
+gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem "rexml", "~> 3.2.4"

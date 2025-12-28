@@ -7,15 +7,15 @@
 # ##########################################################################
 def get_login_user_info
   if current_ma_user.present?
-    $user_image = (current_ma_user.image == '' ? asset_url('user.png', width: '48') : current_ma_user.image)
-    $user_name = current_ma_user.code
+    $user_image = (current_ma_user.image == "" ? asset_url("user.png", width: "48") : current_ma_user.image)
+    $user_name  = current_ma_user.code
     $user_email = current_ma_user.email
-    $user_id = current_ma_user.try(:id)
+    $user_id    = current_ma_user.try(:id)
   else
-    $user_image = asset_url('user.png', width: '48')
-    $user_name = 'Guest User'
-    $user_email = 'guest@sample.com'
-    $user_id = ''
+    $user_image = asset_url("user.png", width: "48")
+    $user_name  = "Guest User"
+    $user_email = "guest@sample.com"
+    $user_id    = ""
   end
   [$user_image, $user_name, $user_email, $user_id]
 end
@@ -23,17 +23,17 @@ end
 # search image from User in Article/View/Show
 def get_user_image(user_id)
   user_image = User.find(user_id).image
-  (user_image == '' ? asset_url('user.png', width: '48') : user_image)
+  (user_image == "" ? asset_url("user.png", width: "48") : user_image)
 end
 
 def name2code(s)
   # rather not ignore # symbol cause it could be comment
-  code, = s.split(':')
-  code.downcase.strip.tr(' ', '_').gsub(%r{[^#_/a-zA-Z0-9]}, '')
+  code, = s.split(":")
+  code.downcase.strip.tr(" ", "_").gsub(%r{[^#_/a-zA-Z0-9]}, "")
 end
 
 def name2camel(s)
-  s.tr(' ', '_').camelcase
+  s.tr(" ", "_").camelcase
 end
 
 def true_action?(s)
@@ -41,11 +41,11 @@ def true_action?(s)
 end
 
 def set_global
-  $xmain = @xmain
+  $xmain  = @xmain
   $runseq = @runseq
-  $user = current_ma_user
-  $xvars = @xmain.xvars
-  $ip = request.env['REMOTE_ADDR']
+  $user   = current_ma_user
+  $xvars  = @xmain.xvars
+  $ip     = request.env["REMOTE_ADDR"]
 end
 
 # use in pending tasks
@@ -63,7 +63,7 @@ def authorize?
   unless @runseq.role.empty?
     return false unless @user.role
 
-    return @user.role.upcase.split(',').include?(@runseq.role.upcase)
+    return @user.role.upcase.split(",").include?(@runseq.role.upcase)
   end
   true
 end
@@ -76,12 +76,12 @@ def authorize_init?
   return false if mrole && !current_ma_user.has_role(mrole)
 
   # check step 1 role
-  xml = @service.xml
-  step1 = REXML::Document.new(xml).root.elements['node']
-  role = get_option_xml('role', step1) || ''
+  xml   = @service.xml
+  step1 = REXML::Document.new(xml).root.elements["node"]
+  role  = get_option_xml("role", step1) || ""
   #    rule= get_option_xml("rule", step1) || true
-  get_option_xml('rule', step1) || true
-  return true if role == ''
+  get_option_xml("rule", step1) || true
+  return true if role == ""
   return role.blank? unless current_ma_user
 
   return false unless current_ma_user.role
@@ -93,11 +93,11 @@ def ma_log(message)
   #  Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
   #    :unread=> true, :ip=> ($ip || request.env["REMOTE_ADDR"])
   if session[:user_id]
-    Jinda::Notice.create message: ERB::Util.html_escape(message.tr('`', "'")),
-                         user_id: $user.id, unread: true, ip: request.env['REMOTE_ADDR']
+    Jinda::Notice.create message: ERB::Util.html_escape(message.tr("`", "'")),
+                         user_id: $user.id, unread: true, ip: request.env["REMOTE_ADDR"]
   else
-    Jinda::Notice.create message: ERB::Util.html_escape(message.tr('`', "'")),
-                         unread: true, ip: request.env['REMOTE_ADDR']
+    Jinda::Notice.create message: ERB::Util.html_escape(message.tr("`", "'")),
+                         unread: true, ip: request.env["REMOTE_ADDR"]
   end
 end
 
@@ -121,28 +121,28 @@ end
 
 def status_icon(status)
   case status
-  when 'R'
-    image_tag 'user.png'
-  when 'F'
-    image_tag 'tick.png'
-  when 'I'
-    image_tag 'control_play.png'
-  when 'E'
-    image_tag 'logout.png'
-  when 'X'
-    image_tag 'cross.png'
+  when "R"
+    image_tag "user.png"
+  when "F"
+    image_tag "tick.png"
+  when "I"
+    image_tag "control_play.png"
+  when "E"
+    image_tag "logout.png"
+  when "X"
+    image_tag "cross.png"
   else
-    image_tag 'cancel.png'
+    image_tag "cancel.png"
   end
 end
 
 def role_name(code)
   role = Jinda::Role.where(code: code).first
-  role ? role.name : ''
+  role ? role.name : ""
 end
 
 def uncomment(s)
-  s.sub(/^#\s/, '')
+  s.sub(/^#\s/, "")
 end
 
 def code_div(s)
@@ -150,23 +150,23 @@ def code_div(s)
 end
 
 def ajax?(s)
-  !s.match?('file_field')
+  !s.match?("file_field")
 end
 
 # square text
 def step(s, total)
-  s = s.zero? ? 1 : s.to_i
-  total = total.to_i
-  out = "<div class='step'>"
+  s                         = s.zero? ? 1 : s.to_i
+  total                     = total.to_i
+  out                       = "<div class='step'>"
   (s - 1).times { |ss| out += "<span class='steps_done'>#{ss + 1}</span>" }
-  out += %(<span class='step_now' >)
-  out += s.to_s
-  out += '</span>'
-  out += %()
+  out                      += %(<span class='step_now' >)
+  out                      += s.to_s
+  out                      += "</span>"
+  out                      += %()
   ((s + 1)..total).each do |i|
     out += "<span class='steps_more'>#{i}</span>"
   end
-  out += '</div>'
+  out                      += "</div>"
   out.html_safe
 end
 

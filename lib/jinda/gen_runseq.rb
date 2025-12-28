@@ -26,50 +26,50 @@
 # #######################################################################]
 
 def create_runseq(xmain)
-  @xvars = xmain.xvars
-  default_role = get_default_role
-  xml = xmain.service.xml
-  root = REXML::Document.new(xml).root
-  i = 0
-  j = 0 # i= step, j= form_step
-  root.elements.each('node') do |activity|
-    text = activity.attributes['TEXT']
+  @xvars                     = xmain.xvars
+  default_role               = get_default_role
+  xml                        = xmain.service.xml
+  root                       = REXML::Document.new(xml).root
+  i                          = 0
+  j                          = 0 # i= step, j= form_step
+  root.elements.each("node") do |activity|
+    text = activity.attributes["TEXT"]
     next if ma_comment?(text)
     next if /^rule:\s*/.match?(text)
 
-    action = freemind2action(activity.elements['icon'].attributes['BUILTIN']) if activity.elements['icon']
+    action = freemind2action(activity.elements["icon"].attributes["BUILTIN"]) if activity.elements["icon"]
     return false unless action
 
-    i += 1
-    output_ma_display = false
-    if action == ('output' || 'list' || 'folder')
-      ma_display = get_option_xml('display', activity)
+    i                   += 1
+    output_ma_display    = false
+    if action == ("output" || "list" || "folder")
+      ma_display        = get_option_xml("display", activity)
       output_ma_display = if ma_display && !affirm(ma_display)
                             false
                           else
                             true
                           end
     end
-    j += 1 if action == 'form' || output_ma_display
-    @xvars['referer'] = activity.attributes['TEXT'] if action == 'redirect'
-    if action != 'if' && text.present?
-      scode, name = text.split(':', 2)
-      name ||= scode
+    j                   += 1 if action == "form" || output_ma_display
+    @xvars["referer"]    = activity.attributes["TEXT"] if action == "redirect"
+    if action != "if" && text.present?
+      scode, name = text.split(":", 2)
+      name      ||= scode
       name.strip!
-      code = name2code(scode)
+      code        = name2code(scode)
     else
       code = text
       name = text
     end
-    role = get_option_xml('role', activity) || default_role
-    rule = get_option_xml('rule', activity) || 'true'
-    runseq = Jinda::Runseq.create xmain: xmain.id,
-                                  name: name, action: action,
-                                  code: code, role: role.upcase, rule: rule,
-                                  rstep: i, form_step: j, status: 'I',
-                                  xml: activity.to_s
+    role                 = get_option_xml("role", activity) || default_role
+    rule                 = get_option_xml("rule", activity) || "true"
+    runseq               = Jinda::Runseq.create xmain: xmain.id,
+                                                name: name, action: action,
+                                                code: code, role: role.upcase, rule: rule,
+                                                rstep: i, form_step: j, status: "I",
+                                                xml: activity.to_s
     xmain.current_runseq = runseq.id if i == 1
   end
-  @xvars['total_steps'] = i
-  @xvars['total_form_steps'] = j
+  @xvars["total_steps"]      = i
+  @xvars["total_form_steps"] = j
 end

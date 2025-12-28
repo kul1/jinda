@@ -203,7 +203,9 @@ class JindaInstallationTest < Minitest::Test
       assert server_started, "Rails server did not start within 30 seconds"
 
       # Test HTTP response
+      # rubocop:disable Style/FormatStringToken
       stdout,   = Open3.capture3("curl -s -o /dev/null -w '%{http_code}' http://localhost:3000")
+      # rubocop:enable Style/FormatStringToken
       http_code = stdout.strip
 
       assert_includes %w[200 302 404], http_code,

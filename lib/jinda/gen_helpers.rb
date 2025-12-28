@@ -41,7 +41,7 @@ end
 
 def own_xmain?
   if $xmain
-    current_ma_user.id == $xvars['user_id']
+    current_ma_user.id == $xvars["user_id"]
   else
     # if eval on first step would return true so user can start service
     true
@@ -52,22 +52,22 @@ end
 def get_option_xml(opt, xml)
   return unless xml
 
-  url = ''
-  xml.each_element('node') do |n|
-    text = n.attributes['TEXT']
+  url = ""
+  xml.each_element("node") do |n|
+    text = n.attributes["TEXT"]
     # check if opt match from beginning of text
-    url = text if /^#{opt}/.match?(text)
+    url  = text if /^#{opt}/.match?(text)
   end
   return nil if url.blank?
 
-  _, h = url.split(':', 2)
-  opt = h ? h.strip : true
+  _, h = url.split(":", 2)
+  opt  = h ? h.strip : true
 end
 
 def m_icon(node)
   mcons = []
-  node.each_element('icon') do |mn|
-    mcons << mn.attributes['BUILTIN']
+  node.each_element("icon") do |mn|
+    mcons << mn.attributes["BUILTIN"]
   end
   mcons[0].to_s
 end
@@ -75,59 +75,59 @@ end
 # Option to unlisted in the menu_mm if icon 'button_cancel'
 def listed(node)
   icons = []
-  node.each_element('icon') do |nn|
-    icons << nn.attributes['BUILTIN']
+  node.each_element("icon") do |nn|
+    icons << nn.attributes["BUILTIN"]
   end
 
-  icons.exclude?('button_cancel')
+  icons.exclude?("button_cancel")
 end
 
 def ma_secured?(node)
   icons = []
-  node.each_element('icon') do |nn|
-    icons << nn.attributes['BUILTIN']
+  node.each_element("icon") do |nn|
+    icons << nn.attributes["BUILTIN"]
   end
-  icons.include?('password')
+  icons.include?("password")
 end
 
 def ma_menu?
   icons = []
-  node.each_element('icon') do |mn|
-    icons << mn.attributes['BUILTIN']
+  node.each_element("icon") do |mn|
+    icons << mn.attributes["BUILTIN"]
   end
-  icons.include?('menu')
+  icons.include?("menu")
 end
 
 def freemind2action(s)
   case s.downcase
     # when 'bookmark' # Excellent
     #  'call'
-  when 'bookmark' # Excellent
-    'do'
-  when 'attach' # Look here
-    'form'
-  when 'edit' # Refine
-    'pdf'
-  when 'wizard' # Magic
-    'ws'
-  when 'help' # Question
-    'if'
-  when 'forward' # Forward
+  when "bookmark" # Excellent
+    "do"
+  when "attach" # Look here
+    "form"
+  when "edit" # Refine
+    "pdf"
+  when "wizard" # Magic
+    "ws"
+  when "help" # Question
+    "if"
+  when "forward" # Forward
     # 'redirect'
-    'direct_to'
-  when 'kaddressbook' # Phone
-    'invoke' # invoke new service along the way
-  when 'idea' # output
-    'output'
-  when 'list' # List
-    'list'
-  when 'folder' # Folder
-    'folder'
-  when 'mail'
-    'mail'
+    "direct_to"
+  when "kaddressbook" # Phone
+    "invoke" # invoke new service along the way
+  when "idea" # output
+    "output"
+  when "list" # List
+    "list"
+  when "folder" # Folder
+    "folder"
+  when "mail"
+    "mail"
   # when 'xmag' # Tobe discussed
-  when 'To be discusssed'
-    'search'
+  when "To be discusssed"
+    "search"
   end
 end
 

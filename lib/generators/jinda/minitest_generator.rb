@@ -7,24 +7,24 @@ module Jinda
         "#{File.dirname(__FILE__)}/templates"
       end
 
-      desc 'config minitest'
+      desc "config minitest"
       def gen_minitest
         # copy test directory with jinda test for minitest
-        directory 'test'
-        run 'guard init minitest'
+        directory "test"
+        run "guard init minitest"
       end
 
-      desc 'Finish guard init minitest'
+      desc "Finish guard init minitest"
       def finish
-        puts "      Finish guard init minitest.\n"
-        puts "      Finish copy test directory for minitest\n"
-        puts "      Finish copy jinda test for minitest\n"
-        puts "-----------------------------------------\n"
-        puts "      Please remove spec directory if exist\n"
-        puts "      To start guard run:\n"
-        puts "-----------------------------------------\n"
-        puts "guard \n"
-        puts "-----------------------------------------\n"
+        Rails.logger.debug "      Finish guard init minitest.\n"
+        Rails.logger.debug "      Finish copy test directory for minitest\n"
+        Rails.logger.debug "      Finish copy jinda test for minitest\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      Please remove spec directory if exist\n"
+        Rails.logger.debug "      To start guard run:\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "guard \n"
+        Rails.logger.debug "-----------------------------------------\n"
       end
     end
   end

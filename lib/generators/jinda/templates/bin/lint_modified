@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require "timeout"
 
-modified = `git status --porcelain`.lines.map { |l| l.split.last }.compact.uniq
-files = modified.select { |p| p.end_with?(".rb") }
+modified = `git status --porcelain`.lines.filter_map { |l| l.split.last }.uniq
+files    = modified.select { |p| p.end_with?(".rb") }
 
 if files.empty?
   puts "No modified Ruby files."
