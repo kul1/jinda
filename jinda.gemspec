@@ -18,17 +18,21 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
   
-  # Updated for Ruby 3.1+ and Rails 7.0+
-  spec.required_ruby_version = '>= 3.1.0'
+  # Updated for Ruby 3.3+ and Rails 7.1+
+  spec.required_ruby_version = '>= 3.3.0'
   
   # Development dependencies
   spec.add_development_dependency 'mongoid', '~> 7.5'
   spec.add_development_dependency 'mongoid-rspec', '~> 2.1.0'
+  spec.add_development_dependency 'rubocop', '>= 1.60'
+  spec.add_development_dependency 'rubocop-rails'
+  spec.add_development_dependency 'rubocop-performance'
+  spec.add_development_dependency 'rubocop-minitest'
   
-  # Runtime dependencies - Updated for Rails 7
-  spec.add_runtime_dependency 'rails', '~> 7.0.0'
+  # Runtime dependencies - Updated for Rails 7.1
+  spec.add_runtime_dependency 'rails', '~> 7.1.0'
   spec.add_runtime_dependency 'rexml', '~> 3.2'
-  spec.add_runtime_dependency 'nokogiri', '~> 1.13.0'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.16'
   spec.add_runtime_dependency 'bson', '~> 4.15'
   spec.add_runtime_dependency 'psych', '~> 5.0'
 end
