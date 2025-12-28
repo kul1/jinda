@@ -2,18 +2,18 @@ module Jinda
   module Generators
     class MinitestGenerator < Rails::Generators::Base
       def self.source_root
-        File.dirname(__FILE__) + "/templates"
+        File.dirname(__FILE__) + '/templates'
       end
 
-      desc "config minitest"
+      desc 'config minitest'
       def gen_minitest
-        #copy test directory with jinda test for minitest
-        directory "test"
-        run "guard init minitest"
+        # copy test directory with jinda test for minitest
+        directory 'test'
+        run 'guard init minitest'
       end
 
-      desc "Finish guard init minitest"
-      def finish 
+      desc 'Finish guard init minitest'
+      def finish
         puts "      Finish guard init minitest.\n"
         puts "      Finish copy test directory for minitest\n"
         puts "      Finish copy jinda test for minitest\n"
@@ -23,8 +23,7 @@ module Jinda
         puts "-----------------------------------------\n"
         puts "guard \n"
         puts "-----------------------------------------\n"
-      end      
+      end
     end
   end
 end
-

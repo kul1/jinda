@@ -1,11 +1,11 @@
-# -*- encoding : utf-8 -*-
 require 'active_support'
 require 'active_support/core_ext'
 
 module Jinda
   module Helpers
-    require "rexml/document"
+    require 'rexml/document'
     include REXML
+
     require_relative 'date_helpers'
     require_relative 'gen_helpers'
     require_relative 'gen_class'
@@ -24,4 +24,3 @@ module Jinda
     require_relative 'get_app'
   end
 end
-

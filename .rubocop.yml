@@ -1,0 +1,71 @@
+plugins:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.3
+  TargetRailsVersion: 7.1
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'test/dummy/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'lib/generators/jinda/templates/**/*'
+
+# Style preferences
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Layout preferences
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'test/**/*'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# Metrics
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'Rakefile'
+    - '**/*.rake'
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - 'test/**/*'
+
+# Rails specific
+Rails/Output:
+  Exclude:
+    - 'lib/generators/**/*'
+
+Rails/Exit:
+  Enabled: false
+
+# Performance
+Performance/Casecmp:
+  Enabled: true
+
+# Minitest
+Minitest/MultipleAssertions:
+  Max: 10
