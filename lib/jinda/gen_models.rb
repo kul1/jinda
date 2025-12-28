@@ -14,9 +14,9 @@ def process_models
   #       node @CREATED=1493418915637 @ID=ID_429078131 @MODIFIED=1493418930081 @TEXT=comment
 
   models = @app.elements["//node[@TEXT='models']"] || REXML::Document.new
-  models.each_element('node') do |model|
+  models.each_element("node") do |model|
     # t << "= "+model.attributes["TEXT"]
-    model_name = model.attributes['TEXT']
+    model_name = model.attributes["TEXT"]
     next if model_name.comment?
 
     model_code = name2code(model_name)
@@ -25,11 +25,11 @@ def process_models
     system("rails generate model #{model_code}") unless File.exist?(model_file)
     doc = File.read(model_file)
 
-    doc = add_utf8(doc)
+    doc       = add_utf8(doc)
     attr_hash = make_fields(model)
-    doc = add_jinda(doc, attr_hash)
+    doc       = add_jinda(doc, attr_hash)
     # t << "modified:   #{model_file}"
-    File.open(model_file, 'w') do |f|
+    File.open(model_file, "w") do |f|
       f.puts doc
     end
   end
@@ -40,7 +40,7 @@ end
 def add_jinda(doc, attr_hash)
   if /#{@btext}/.match?(doc)
     s1, _, s3 = doc.partition(/  #{@btext}.*#{@etext}\n/m)
-    s2 = ''
+    s2        = ""
   else
     s1, s2, s3 = doc.partition("include Mongoid::Document\n")
   end
@@ -57,7 +57,7 @@ def add_jinda(doc, attr_hash)
       # Fixed: Capitalize only first char
       # doc += "  field :#{a[:code]}, :type => #{a[:type].capitalize}\n"
       a[:type][0] = a[:type][0].capitalize
-      doc += "  field :#{a[:code]}, :type => #{a[:type]}\n"
+      doc        += "  field :#{a[:code]}, :type => #{a[:type]}\n"
     end
   end
   doc += "  #{@etext}\n"
@@ -74,15 +74,15 @@ end
 
 # inspect all nodes that has attached file (2 cases) and replace relative path with absolute path
 def make_folders_absolute(f, tt)
-  tt.elements.each('//node') do |nn|
-    nn.attributes['LINK'] = File.expand_path(File.dirname(f)) + "/#{nn.attributes['LINK']}" if nn.attributes['LINK']
+  tt.elements.each("//node") do |nn|
+    nn.attributes["LINK"] = File.expand_path(File.dirname(f)) + "/#{nn.attributes['LINK']}" if nn.attributes["LINK"]
   end
 end
 
 def name2code(s)
   # rather not ignore # symbol cause it could be comment
-  code, = s.split(':')
-  code.downcase.strip.tr(' ', '_').gsub(%r{[^#_/a-zA-Z0-9]}, '')
+  code, = s.split(":")
+  code.downcase.strip.tr(" ", "_").gsub(%r{[^#_/a-zA-Z0-9]}, "")
 end
 
 def model_exists?(model)
@@ -91,35 +91,35 @@ end
 
 def make_fields(n)
   # s= field string used by generate model cli (old style jinda)
-  s = ''
+  s = ""
   # h= hash :code, :type, :edit, :text
   h = []
-  n.each_element('node') do |nn|
-    text = nn.attributes['TEXT']
-    icon = nn.elements['icon']
-    edit = icon && icon.attribute('BUILTIN').value == 'edit'
+  n.each_element("node") do |nn|
+    text = nn.attributes["TEXT"]
+    icon = nn.elements["icon"]
+    edit = icon && icon.attribute("BUILTIN").value == "edit"
     next if text.comment? && !edit
 
     # sometimes freemind puts all fields inside a blank node
     if text.empty?
-      nn.each_element('node') do |nnn|
-        icon = nnn.elements['icon']
-        edit1 = icon && icon.attribute('BUILTIN').value == 'edit'
-        text1 = nnn.attributes['TEXT']
+      nn.each_element("node") do |nnn|
+        icon  = nnn.elements["icon"]
+        edit1 = icon && icon.attribute("BUILTIN").value == "edit"
+        text1 = nnn.attributes["TEXT"]
         next if /\#.*/.match?(text1)
 
         k, v = text1.split(/:\s*/, 2)
-        v ||= 'string'
-        v = 'float' if /double/i.match?(v)
+        v  ||= "string"
+        v    = "float" if /double/i.match?(v)
         s << " #{name2code(k.strip)}:#{v.strip} "
-        h << { code: name2code(k.strip), type: v.strip, edit: edit1, text: text1 }
+        h << {code: name2code(k.strip), type: v.strip, edit: edit1, text: text1}
       end
     else
       k, v = text.split(/:\s*/, 2)
-      v ||= 'string'
-      v = 'float' if /double/i.match?(v)
+      v  ||= "string"
+      v    = "float" if /double/i.match?(v)
       s << " #{name2code(k.strip)}:#{v.strip} "
-      h << { code: name2code(k.strip), type: v.strip, edit: edit, text: text }
+      h << {code: name2code(k.strip), type: v.strip, edit: edit, text: text}
     end
   end
   # f

@@ -20,7 +20,6 @@ Bundler.require(*Rails.groups)
 
 module Dummy
   class Application < Rails::Application
-
     # Jinda default
     config.generators do |g|
       g.orm             :mongoid
@@ -43,7 +42,7 @@ module Dummy
     #   :enable_starttls_auto => true  }
     # config.action_mailer.raise_delivery_errors = true
     # config.action_mailer.perform_deliveries = true
-            
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

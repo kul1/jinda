@@ -6,24 +6,24 @@ module Jinda
       def self.source_root
         "#{File.dirname(__FILE__)}/templates"
       end
-      desc 'Backup Files'
+      desc "Backup Files"
       def backup_files
         # inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv "omniauth.rb",  "omniauth.rb.bak") : (puts "new omniauth.rb created")}
         # inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv "mongoid.rb", "omniauth.rb.bak") : (puts "new mongoid.rb created")}
-        File.file?('.env') ? (FileUtils.mv '.env', '.env-bak') : (puts 'backup .env')
+        File.file?(".env") ? (FileUtils.mv ".env", ".env-bak") : (Rails.logger.debug "backup .env")
       end
-      desc 'gen_image_store'
+      desc "gen_image_store"
       def gen_image_store
         # FileUtils.cp "cloudinary.yml","config/cloudinary.yml"
         # FileUtils.cp "dot.env",".env"
         # FileUtils.cp "dot.rspec",".rspec"
-        empty_directory 'upload' # create upload directory just in case
+        empty_directory "upload" # create upload directory just in case
       end
-      desc 'Set up omniauth config'
+      desc "Set up omniauth config"
       def setup_omniauth
         # gem 'bcrypt-ruby', '~> 3.0.0'
         # gem 'omniauth-identity'
-        initializer 'omniauth.rb' do
+        initializer "omniauth.rb" do
           "
                     Rails.application.config.middleware.use OmniAuth::Builder do
                       provider :identity,
@@ -47,17 +47,17 @@ module Jinda
         end
       end
 
-      desc 'Set up mongoid config'
+      desc "Set up mongoid config"
       def setup_mongoid
-        generate 'mongoid:config -f'
-        inject_into_file 'config/mongoid.yml', after: '  # raise_not_found_error: true' do
+        generate "mongoid:config -f"
+        inject_into_file "config/mongoid.yml", after: "  # raise_not_found_error: true" do
           "\n    raise_not_found_error: false"
         end
 
-        inject_into_file 'config/mongoid.yml', after: '  # belongs_to_required_by_default: true' do
+        inject_into_file "config/mongoid.yml", after: "  # belongs_to_required_by_default: true" do
           "\n    belongs_to_required_by_default: false"
         end
-        inject_into_file 'config/mongoid.yml', after: '  # app_name: MyApplicationName' do
+        inject_into_file "config/mongoid.yml", after: "  # app_name: MyApplicationName" do
           "\n\nproduction:" \
             "\n  clients:" \
             "\n    default:" \
@@ -68,44 +68,44 @@ module Jinda
         end
       end
 
-      desc 'Setup Dockerfile'
+      desc "Setup Dockerfile"
       def setup_docker
-        puts '      Setup Docker files'
-        FileUtils.cp "#{source_paths[0]}/Dockerfile", 'Dockerfile'
-        FileUtils.cp "#{source_paths[0]}/docker-compose.yml", 'docker-compose.yml'
-        FileUtils.cp "#{source_paths[0]}/docker-compose-mongodb.yml", 'docker-compose-mongodb.yml'
-        FileUtils.cp "#{source_paths[0]}/entrypoint.sh", 'entrypoint.sh'
+        Rails.logger.debug "      Setup Docker files"
+        FileUtils.cp "#{source_paths[0]}/Dockerfile", "Dockerfile"
+        FileUtils.cp "#{source_paths[0]}/docker-compose.yml", "docker-compose.yml"
+        FileUtils.cp "#{source_paths[0]}/docker-compose-mongodb.yml", "docker-compose-mongodb.yml"
+        FileUtils.cp "#{source_paths[0]}/entrypoint.sh", "entrypoint.sh"
       end
 
       def finish
-        puts "      configured omniauth.\n"
-        puts "      configured Mongoid.\n"
-        puts "\n"
-        puts "      To set user/password as admin/secret run:\n"
-        puts "-----------------------------------------\n"
-        puts "rails jinda:seed\n"
-        puts "-----------------------------------------\n"
-        puts '      Docker options:'
-        puts "-----------------------------------------\n"
-        puts "Full stack: docker compose up -d\n"
-        puts "MongoDB only: docker compose -f docker-compose-mongodb.yml up -d\n"
-        puts "-----------------------------------------\n"
-        puts '      To test with rspec  run:'
-        puts "-----------------------------------------\n"
-        puts "rspec\n"
-        puts "-----------------------------------------\n"
-        puts '      To config rspec run:'
-        puts "rails g jinda:rspec\n"
-        puts "run $chromediver for Capybara & Chrome\n"
-        puts "-----------------------------------------\n"
-        puts '      To config minitest run:'
-        puts "-----------------------------------------\n"
-        puts "rails g jinda:minitest\n"
-        puts "-----------------------------------------\n"
-        puts '      To login with facebook'
-        puts "-----------------------------------------\n"
-        puts "Please config. in .env or restore from .env-bak \n"
-        puts "-----------------------------------------\n"
+        Rails.logger.debug "      configured omniauth.\n"
+        Rails.logger.debug "      configured Mongoid.\n"
+        Rails.logger.debug "\n"
+        Rails.logger.debug "      To set user/password as admin/secret run:\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "rails jinda:seed\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      Docker options:"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "Full stack: docker compose up -d\n"
+        Rails.logger.debug "MongoDB only: docker compose -f docker-compose-mongodb.yml up -d\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      To test with rspec  run:"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "rspec\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      To config rspec run:"
+        Rails.logger.debug "rails g jinda:rspec\n"
+        Rails.logger.debug "run $chromediver for Capybara & Chrome\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      To config minitest run:"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "rails g jinda:minitest\n"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "      To login with facebook"
+        Rails.logger.debug "-----------------------------------------\n"
+        Rails.logger.debug "Please config. in .env or restore from .env-bak \n"
+        Rails.logger.debug "-----------------------------------------\n"
       end
     end
   end

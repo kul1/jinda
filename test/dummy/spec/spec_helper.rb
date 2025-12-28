@@ -1,36 +1,36 @@
 # https://www.natashatherobot.com/rails-test-omniauth-sessions-controller/
 # spec_helper.rb
-require 'rubygems'
-require 'capybara/rspec' 
-# Set up the mock  
-require 'support/omniauth_macros'
-require 'valid_attribute'
+require "rubygems"
+require "capybara/rspec"
+# Set up the mock
+require "support/omniauth_macros"
+require "valid_attribute"
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-	config.filter_run focus: true
+  config.filter_run focus: true
   config.run_all_when_everything_filtered = true
 
   # config.include SpecTestHelper, :type => :controller
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-    expectations.syntax = [:expect, :should]
+    expectations.syntax                                               = %i[expect should]
   end
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# https://github.com/DatabaseCleaner/database_cleaner #
-#  config.use_transactional_fixtures = false
-	# https://stackoverflow.com/questions/15148585/undefined-method-visit-when-using-rspec-and-capybara-in-rails
-	config.include Capybara::DSL
+  # https://github.com/DatabaseCleaner/database_cleaner #
+  #  config.use_transactional_fixtures = false
+  # https://stackoverflow.com/questions/15148585/undefined-method-visit-when-using-rspec-and-capybara-in-rails
+  config.include Capybara::DSL
 
-	# https://stackoverflow.com/questions/21445164/set-chrome-as-default-browser-for-rspec-capybara/30551595
-	Capybara.register_driver :chrome do |app|
-		  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-	end
-	Capybara.javascript_driver = :chrome
+  # https://stackoverflow.com/questions/21445164/set-chrome-as-default-browser-for-rspec-capybara/30551595
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+  Capybara.javascript_driver              = :chrome
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
@@ -45,11 +45,12 @@ RSpec.configure do |config|
         uncommitted transaction data setup over the spec's database connection.
       MSG
     end
+
     DatabaseCleaner.clean_with(:deletion)
   end
 
   config.before(:each, :js => true) do
-    #DatabaseCleaner.strategy = :transaction
+    # DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.strategy = :deletion
   end
 
@@ -75,6 +76,5 @@ RSpec.configure do |config|
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
-#  https://github.com/DatabaseCleaner/database_cleaner #
-
+  #  https://github.com/DatabaseCleaner/database_cleaner #
 end

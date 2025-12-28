@@ -1,4 +1,4 @@
-#request_spec_helper.rb
+# request_spec_helper.rb
 
 module RequestSpecHelper
   # Parse JSON response to ruby hash

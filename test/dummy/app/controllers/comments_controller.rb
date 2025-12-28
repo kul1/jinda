@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :load_commmentable
 
   def index
-    @comments = @commentable.comments 
+    @comments = @commentable.comments
   end
 
   def create
@@ -19,13 +19,13 @@ class CommentsController < ApplicationController
   # end
 
   def comment_params
-    resource = request.path.split('/')[1]                                
-    commentable_id = "#{resource.singularize.to_sym}_id" #:article_id
+    resource       = request.path.split("/")[1]
+    commentable_id = "#{resource.singularize.to_sym}_id" # :article_id
     params.require(:comment).permit(:body, :user_id, commentable_id.to_sym)
   end
 
-  def load_commmentable                                                        
-    resource, id = request.path.split('/')[1,2]                                
-    @commentable = resource.singularize.classify.constantize.find(id)          
-  end     
+  def load_commmentable
+    resource, id = request.path.split("/")[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+  end
 end

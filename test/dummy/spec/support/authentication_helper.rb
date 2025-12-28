@@ -8,13 +8,12 @@ module AuthenticationHelper
   def create_and_sign_in_user
     user = FactoryBot.create(:user)
     sign_in(user)
-    return user
-  end
-	# from Jinda::Helpers
-  def  current_ma_user 
-       @user ||= User.where(:auth_token => user.auth_token)
-       return @user
+    user
   end
 
+  # from Jinda::Helpers
+  def current_ma_user
+    @user ||= User.where(:auth_token => user.auth_token)
+    @user
+  end
 end
-
