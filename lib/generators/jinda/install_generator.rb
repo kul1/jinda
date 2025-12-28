@@ -1,88 +1,90 @@
 module Jinda
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      desc "Install jinda component to existing Rails app "
+      desc 'Install jinda component to existing Rails app '
       def self.source_root
-        File.dirname(__FILE__) + "/templates"
+        File.dirname(__FILE__) + '/templates'
       end
+
       def setup_gems
         # Helper method to check if gem already in Gemfile
         def gem_in_gemfile?(gem_name)
           gemfile_path = File.join(destination_root, 'Gemfile')
           return false unless File.exist?(gemfile_path)
+
           gemfile_content = File.read(gemfile_path)
           # Match gem declaration with various formats
           gemfile_content.match?(/^\s*gem\s+['"]#{Regexp.escape(gem_name)}['"]/)
         end
 
         # define required gems: jinda_gem, jinda_dev_gem
-        jinda_gem = 
+        jinda_gem =
           [
-            ["bson", "~> 4.15"],
-            ["maruku", "~> 0.7.3"],
-            ["bcrypt"],
-            ["rouge"],
-            ["normalize-rails"],
-            ["font-awesome-rails"],
-            ["font-awesome-sass", "~> 5.12.0"],
-            ["meta-tags"],
-            ["jquery-turbolinks", "2.1.0"],
-            ["mongo", "~> 2.19"],
-            ["turbolinks_render"],
-            ["haml-rails", "~> 2.0.1"],
-            ["haml", "~> 5.1"],
-            ["mail"],
-            ["prawn"],
-            ["redcarpet"],
-            ["oauth2", "~> 2.0"],
-            ["omniauth", "~> 2.0"],
-            ["omniauth-oauth2", "~> 1.8"],
-            ["omniauth-identity", "~> 3.1"],
-            ["omniauth-facebook", "10.0.0"],
-            ["omniauth-google-oauth2", "~> 1.1"],
-            ["dotenv-rails"],
-            ["cloudinary", "~> 1.13"],
-            ["kaminari", "~> 1.2"],
-            ["jquery-rails", "~> 4.3"],
-            ["mongoid"],
-            ["rexml", "~> 3.2"]
+            ['bson', '~> 4.15'],
+            ['maruku', '~> 0.7.3'],
+            ['bcrypt'],
+            ['rouge'],
+            ['normalize-rails'],
+            ['font-awesome-rails'],
+            ['font-awesome-sass', '~> 5.12.0'],
+            ['meta-tags'],
+            ['jquery-turbolinks', '2.1.0'],
+            ['mongo', '~> 2.19'],
+            ['turbolinks_render'],
+            ['haml-rails', '~> 2.0.1'],
+            ['haml', '~> 5.1'],
+            ['mail'],
+            ['prawn'],
+            ['redcarpet'],
+            ['oauth2', '~> 2.0'],
+            ['omniauth', '~> 2.0'],
+            ['omniauth-oauth2', '~> 1.8'],
+            ['omniauth-identity', '~> 3.1'],
+            ['omniauth-facebook', '10.0.0'],
+            ['omniauth-google-oauth2', '~> 1.1'],
+            ['dotenv-rails'],
+            ['cloudinary', '~> 1.13'],
+            ['kaminari', '~> 1.2'],
+            ['jquery-rails', '~> 4.3'],
+            ['mongoid'],
+            ['rexml', '~> 3.2']
           ]
 
-        jinda_custom = 
+        jinda_custom =
           [
-            ["mongoid-paperclip", {require: "mongoid_paperclip"}],
-            ["kaminari-mongoid", "~> 1.0"]
+            ['mongoid-paperclip', { require: 'mongoid_paperclip' }],
+            ['kaminari-mongoid', '~> 1.0']
           ]
 
         jinda_dev_gem =
           [
-            ["shoulda"],
-            ["rspec"],
-            ["rspec-rails"],
-            ["better_errors"],
-            ["binding_of_caller"],
-            ["pry-byebug"],
-            ["factory_bot_rails"],
-            ["database_cleaner-mongoid"],
-            ["guard"],
-            ["guard-rspec"],
-            ["guard-minitest"],
-            ["capybara"],
-            ["selenium-webdriver"],
-            ["rb-fsevent"],
-            ["valid_attribute"],
-            ["faker"],
-            ["rubocop"],
-            ["rubocop-rails"],
-            ["rubocop-performance"],
-            ["rubocop-minitest"]
+            ['shoulda'],
+            ['rspec'],
+            ['rspec-rails'],
+            ['better_errors'],
+            ['binding_of_caller'],
+            ['pry-byebug'],
+            ['factory_bot_rails'],
+            ['database_cleaner-mongoid'],
+            ['guard'],
+            ['guard-rspec'],
+            ['guard-minitest'],
+            ['capybara'],
+            ['selenium-webdriver'],
+            ['rb-fsevent'],
+            ['valid_attribute'],
+            ['faker'],
+            ['rubocop'],
+            ['rubocop-rails'],
+            ['rubocop-performance'],
+            ['rubocop-minitest']
           ]
 
         # Add regular gems (skip if already in Gemfile)
         jinda_gem.each do |g|
           gem_name = g[0]
           next if gem_in_gemfile?(gem_name)
-          
+
           if g.count == 2
             gem gem_name, g[1]
             say "     Adding #{gem_name} #{g[1]} to Gemfile", :green
@@ -96,7 +98,7 @@ module Jinda
         jinda_custom.each do |g|
           gem_name = g[0]
           next if gem_in_gemfile?(gem_name)
-          
+
           if g.count == 2 && g[1].is_a?(Hash)
             gem gem_name, g[1]
             say "     Adding #{gem_name} with options to Gemfile", :green
@@ -111,70 +113,210 @@ module Jinda
 
         # Add development/test gems (skip if already in Gemfile)
         jinda_dev_new = jinda_dev_gem.reject { |g| gem_in_gemfile?(g[0]) }
-        
-        unless jinda_dev_new.empty?
-          gem_group :development, :test do
-            jinda_dev_new.each do |g|
-              gem_name = g[0]
-              if g.count == 2
-                gem gem_name, g[1]
-                say "     Adding #{gem_name} #{g[1]} to development/test group", :green
-              else
-                gem gem_name
-                say "     Adding #{gem_name} to development/test group", :green
-              end
+
+        return if jinda_dev_new.empty?
+
+        gem_group :development, :test do
+          jinda_dev_new.each do |g|
+            gem_name = g[0]
+            if g.count == 2
+              gem gem_name, g[1]
+              say "     Adding #{gem_name} #{g[1]} to development/test group", :green
+            else
+              gem gem_name
+              say "     Adding #{gem_name} to development/test group", :green
             end
           end
         end
       end
+
       def setup_app
         # inside("public") { run "FileUtils.mv index.html index.html.bak" }
-        inside("db") {(File.file? "seeds.rb") ? (FileUtils.mv "seeds.rb", "seeds.rb.bak") : ( say "no seeds.rb", :green)}
-        inside("app/views/layouts") {(File.file? "application.html.erb") ? (FileUtils.mv 'application.html.erb', 'application.html.erb.bak') : ( say "no app/views/layout/ application.html.erb", :blue )}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? (FileUtils.mv 'application_controller.rb', 'application_controller.rb.bak' ) : ( say "no app/controller/application_controller.rb, :blue ")}
-        inside("app/helpers") {(File.file? "application_helper.rb") ? (FileUtils.mv 'application_helper.rb', 'application_helper.rb.bak') : ( say "no app/helpers/application_helper.rb", :blue)}
-        inside("app/assets/javascripts") {(File.file? 'application.js') ? (FileUtils.mv 'application.js', 'application.js.bak') : ( say "no application.js", :blue)}
-        inside("app/assets/stylesheets") {(File.file? "application.css") ? (FileUtils.mv 'application.css', 'application.css.bak') : ( say "no application.css", :blue)}
-        inside("config/initializers") {(File.file? "omniauth.rb") ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (say "no omniauth.rb", :blue)}
-        inside("config/initializers") {(File.file? "mongoid.rb") ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (say "no mongoid.rb")}
-        inside("app/assets/config") {(File.file? "manifest.js") ? (FileUtils.mv "manifest.js", "manifest.js-rails") : (puts "backup to manifest.js-rails")}
-        directory "app"
-        directory "spec"
-        directory "db"
-        directory "config"
-        directory "dot"
-        directory "bin"
+        inside('db') do
+          File.file?('seeds.rb') ? (FileUtils.mv 'seeds.rb', 'seeds.rb.bak') : (say 'no seeds.rb', :green)
+        end
+        inside('app/views/layouts') do
+          if File.file?('application.html.erb')
+            (FileUtils.mv 'application.html.erb',
+                          'application.html.erb.bak')
+          else
+            (say 'no app/views/layout/ application.html.erb',
+                 :blue)
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('application_controller.rb')
+            (FileUtils.mv 'application_controller.rb',
+                          'application_controller.rb.bak')
+          else
+            (say 'no app/controller/application_controller.rb, :blue ')
+          end
+        end
+        inside('app/helpers') do
+          if File.file?('application_helper.rb')
+            (FileUtils.mv 'application_helper.rb',
+                          'application_helper.rb.bak')
+          else
+            (say 'no app/helpers/application_helper.rb',
+                 :blue)
+          end
+        end
+        inside('app/assets/javascripts') do
+          if File.file?('application.js')
+            (FileUtils.mv 'application.js',
+                          'application.js.bak')
+          else
+            (say 'no application.js', :blue)
+          end
+        end
+        inside('app/assets/stylesheets') do
+          if File.file?('application.css')
+            (FileUtils.mv 'application.css',
+                          'application.css.bak')
+          else
+            (say 'no application.css', :blue)
+          end
+        end
+        inside('config/initializers') do
+          File.file?('omniauth.rb') ? (FileUtils.mv 'omniauth.rb', 'omniauth.rb.bak') : (say 'no omniauth.rb', :blue)
+        end
+        inside('config/initializers') do
+          File.file?('mongoid.rb') ? (FileUtils.mv 'mongoid.rb', 'mongoid.rb.bak') : (say 'no mongoid.rb')
+        end
+        inside('app/assets/config') do
+          if File.file?('manifest.js')
+            (FileUtils.mv 'manifest.js',
+                          'manifest.js-rails')
+          else
+            (puts 'backup to manifest.js-rails')
+          end
+        end
+        directory 'app'
+        directory 'spec'
+        directory 'db'
+        directory 'config'
+        directory 'dot'
+        directory 'bin'
         # Make lint_modified executable
-        inside("bin") { run "chmod +x lint_modified" }
-        # 
+        inside('bin') { run 'chmod +x lint_modified' }
+        #
         # CHECK IF EXISTING CODE THEN REQUIRED MANUAL MIGRATION
         # If no javascripts.js or css (New application), then can use javascript.js or css from org files.
         # inside("app/assets/javascripts") {(File.file? "application.js") ? ( say "Please include application-org.js in application.js", :red) : (FileUtils.mv 'application-org.js', 'application.js')}
         # inside("app/assets/stylesheets") {(File.file? "application.css") ? ( say "Please include application-org.css in application.css", :red) : (FileUtils.mv 'application-org.css', 'application.css')}
         # inside("app/assets/stylesheets") {(File.file? "application.css.scss") ? ( say "Please include application-org.css.scss in application.css.scss", :red) : (FileUtils.mv 'application-org.css.scss', 'application.css.scss')}
-        inside("app/controllers") {(File.file? "admins_controller.rb") ? ( say "   Please merge existing jinda_org/admins_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/admins_controller.rb', 'admins_controller.rb')}
-        inside("app/controllers") {(File.file? "articles_controller.rb") ? ( say "   Please merge existing jinda_org/articles_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/articles_controller.rb', 'articles_controller.rb')}
-        inside("app/controllers") {(File.file? "comments_controller.rb") ? ( say "   Please merge existing jinda_org/comments_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/comments_controller.rb', 'comments_controller.rb')}
-        inside("app/controllers") {(File.file? "docs_controller.rb") ? ( say "   Please merge existing jinda_org/docs_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/docs_controller.rb', 'docs_controller.rb')}
-        inside("app/controllers") {(File.file? "identities_controller.rb") ? ( say "   Please merge existing jinda_org/identities_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/identities_controller.rb', 'identities_controller.rb')}
-        inside("app/controllers") {(File.file? "application_controller.rb") ? ( say "   Pleas merge existing jinda_org/application_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/application_controller.rb', 'application_controller.rb')}
+        inside('app/controllers') do
+          if File.file?('admins_controller.rb')
+            (say '   Please merge existing jinda_org/admins_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/admins_controller.rb',
+                          'admins_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('articles_controller.rb')
+            (say '   Please merge existing jinda_org/articles_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/articles_controller.rb',
+                          'articles_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('comments_controller.rb')
+            (say '   Please merge existing jinda_org/comments_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/comments_controller.rb',
+                          'comments_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('docs_controller.rb')
+            (say '   Please merge existing jinda_org/docs_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/docs_controller.rb',
+                          'docs_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('identities_controller.rb')
+            (say '   Please merge existing jinda_org/identities_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/identities_controller.rb',
+                          'identities_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('application_controller.rb')
+            (say '   Pleas merge existing jinda_org/application_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/application_controller.rb',
+                          'application_controller.rb')
+          end
+        end
         ## Moved to Engine
         # inside("app/controllers") {(File.file? "jinda_controller.rb") ? ( say "   Please merge existing jinda_org/jinda_controller.rb after this installation", :red) : (FileUtils.mv 'jinda_org/jinda_controller.rb', 'jinda_controller.rb')}
-        inside("app/controllers") {(File.file? "password_resets_controller.rb") ? ( say "   Please merge existing jinda_org/password_resets_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/password_resets_controller.rb', 'password_resets_controller.rb')}
+        inside('app/controllers') do
+          if File.file?('password_resets_controller.rb')
+            (say '   Please merge existing jinda_org/password_resets_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/password_resets_controller.rb',
+                          'password_resets_controller.rb')
+          end
+        end
         # inside("app/controllers") {(File.file? "password_resets.rb") ? ( say "   Please merge existing jinda_org/password_resets.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/password_resets.rb', 'password_resets.rb')}
-        inside("app/controllers") {(File.file? "sessions_controller.rb") ? ( say "   Please merge existing jinda_org/sessions_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/sessions_controller.rb', 'sessions_controller.rb')}
-        inside("app/controllers") {(File.file? "users_controller.rb") ? ( say "   Please merge existing jinda_org/users_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/users_controller.rb', 'users_controller.rb')}
-        inside("app/controllers") {(File.file? "sitemap_controller.rb") ? ( say "   Please merge existing jinda_org/sitemap_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/sitemap_controller.rb', 'sitemap_controller.rb')}
-        inside("app/controllers") {(File.file? "notes_controller.rb") ? ( say "   Please merge existing jinda_org/notes_controller.rb after this installation", :yellow) : (FileUtils.mv 'jinda_org/notes_controller.rb', 'notes_controller.rb')}
+        inside('app/controllers') do
+          if File.file?('sessions_controller.rb')
+            (say '   Please merge existing jinda_org/sessions_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/sessions_controller.rb',
+                          'sessions_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('users_controller.rb')
+            (say '   Please merge existing jinda_org/users_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/users_controller.rb',
+                          'users_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('sitemap_controller.rb')
+            (say '   Please merge existing jinda_org/sitemap_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/sitemap_controller.rb',
+                          'sitemap_controller.rb')
+          end
+        end
+        inside('app/controllers') do
+          if File.file?('notes_controller.rb')
+            (say '   Please merge existing jinda_org/notes_controller.rb after this installation',
+                 :yellow)
+          else
+            (FileUtils.mv 'jinda_org/notes_controller.rb',
+                          'notes_controller.rb')
+          end
+        end
       end
+
       # routes created each line as reversed order in routes
       # Moved routes to Engine
       def setup_routes
-        route "root :to => 'jinda#index'"        
+        route "root :to => 'jinda#index'"
       end
 
       def setup_env
-        FileUtils.mv "README.md", "README.md.bak"
+        FileUtils.mv 'README.md', 'README.md.bak'
         create_file 'README.md', ''
         application do
           %q{
@@ -202,7 +344,7 @@ module Jinda
   # config.action_mailer.perform_deliveries = true
           }
         end
-        initializer "jinda.rb" do
+        initializer 'jinda.rb' do
           %q{# encoding: utf-8
 MM = "#{Rails.root}/app/jinda/index.mm"
 DEFAULT_TITLE = 'Jinda'
@@ -220,8 +362,8 @@ IMAGE_LOCATION = "upload"
         end
         # Move mongoid.rb to jinda:config
         # To avoid repeate install jinda:install crash
-        initializer "mongoid.rb" do
-          %q{# encoding: utf-8
+        initializer 'mongoid.rb' do
+          '# encoding: utf-8
   #
   # Mongoid 6 follows the new pattern of AR5 requiring a belongs_to relation to always require its parent
   # belongs_to` will now trigger a validation error by default if the association is not present.
@@ -230,22 +372,22 @@ IMAGE_LOCATION = "upload"
   # `config.active_record.belongs_to_required_by_default = true` in initializer.)
   #
   Mongoid::Config.belongs_to_required_by_default = false
-          }
+          '
         end
 
-        inject_into_file 'config/environment.rb', :after => "initialize!"  do
+        inject_into_file 'config/environment.rb', after: 'initialize!' do
           "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" +
             "\nclass Hash\n  remove_method :read\nrescue\nend"
         end
-        inject_into_file 'config/environments/development.rb', :after => 'config.action_mailer.raise_delivery_errors = false' do
-          "\n  config.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+        inject_into_file 'config/environments/development.rb',
+                         after: 'config.action_mailer.raise_delivery_errors = false' do
           "\n  config.assets.check_precompiled_asset = false"
         end
-        inject_into_file 'config/environments/production.rb', :after => 'config.assets.compile = false' do
+        inject_into_file 'config/environments/production.rb', after: 'config.assets.compile = false' do
           "\n  config.assets.compile = true"
         end
-        inject_into_file 'config/initializers/assets.rb', :after => '# Precompile additional assets.
-        ' do        
+        inject_into_file 'config/initializers/assets.rb', after: '# Precompile additional assets.
+        ' do
           "Rails.application.config.assets.precompile += ['*.js', '*.css', '*.css.erb']\n"
         end
       end
@@ -256,6 +398,7 @@ IMAGE_LOCATION = "upload"
           "\nrequire \"logger\"  # Required for Ruby 3.1+ with Rails 7"
         end
       end
+
       def finish
         say "\n"
         say "Jinda gem ready for next configuration install.\n"
@@ -264,7 +407,7 @@ IMAGE_LOCATION = "upload"
         say "bundle install\n"
         say "rails generate jinda:config\n"
         say "rake jinda:seed\n"
-        say 
+        say
         say "----------------------------------------\n"
       end
     end

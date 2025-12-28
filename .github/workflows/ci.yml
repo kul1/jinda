@@ -52,6 +52,10 @@ jobs:
         gem install bundler
         gem install minitest-reporters
         gem install rake
+        gem install rubocop
+        gem install rubocop-rails
+        gem install rubocop-performance
+        gem install rubocop-minitest
     
     - name: Display versions
       run: |
@@ -59,6 +63,11 @@ jobs:
         echo "Rails: $(rails -v)"
         echo "Bundler: $(bundle -v)"
         echo "Rake: $(rake --version)"
+        echo "RuboCop: $(rubocop --version)"
+    
+    - name: Run RuboCop
+      run: |
+        rubocop --config .rubocop.yml
     
     - name: Run installation tests
       env:
