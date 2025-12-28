@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'spec_helper'
 require_relative '../lib/jinda/gem_helpers'
 # require_relative  './factory.rb'
@@ -24,7 +26,7 @@ describe Jinda::GemHelpers do
   # By removed ctrs_controller.rb from template
   # Then test if only try to created output from gemhelpers
   xit 'process_controllers only new controller' do
-    expect(STDOUT).to receive(:puts).with('    Rails generate controller ctrs')
+    expect($stdout).to receive(:puts).with('    Rails generate controller ctrs')
     process_controllers
   end
 
@@ -32,7 +34,7 @@ describe Jinda::GemHelpers do
     result = gen_views
     result.each do |r|
       # expected_file = $gem_root + "/spec/temp/" + r
-      expected_file = 'spec/temp/' + r
+      expected_file = "spec/temp/#{r}"
       fexist = File.exist?(expected_file)
       expect(fexist).to be true
     end

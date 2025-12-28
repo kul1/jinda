@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JindaGeneralConcern
   extend ActiveSupport::Concern
 
@@ -21,7 +23,7 @@ module JindaGeneralConcern
   end
 
   def cancel
-    Jinda::Xmain.find(params[:id]).update_attributes status: 'X'
+    Jinda::Xmain.find(params[:id]).update status: 'X'
     redirect_to params[:return] || { action: 'pending' }
   end
 
@@ -42,11 +44,11 @@ module JindaGeneralConcern
       File.binwrite(filename, params.read)
       # File.open(filename,"wb") { |f| f.puts(params.read) }
       eval "@xvars[@runseq.code][key] = '#{url_for(action: 'document', id: doc.id, only_path: true)}' "
-      doc.update_attributes url: filename, basename: File.basename(filename), cloudinary: false
+      doc.update url: filename, basename: File.basename(filename), cloudinary: false
     else
       result = Cloudinary::Uploader.upload(params)
       eval %( @xvars[@runseq.code][key] = '#{result['url']}' )
-      doc.update_attributes url: result['url'], basename: File.basename(result['url']), cloudinary: true
+      doc.update url: result['url'], basename: File.basename(result['url']), cloudinary: true
     end
   end
 
@@ -70,16 +72,16 @@ module JindaGeneralConcern
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.binwrite(filename, params.read)
       eval "@xvars[@runseq.code][key][key1] = '#{url_for(action: 'document', id: doc.id, only_path: true)}' "
-      doc.update_attributes url: filename,
-                            basename: File.basename(filename),
-                            cloudinary: false,
-                            dscan: @xvars[@runseq.code][key][key1],
-                            user_id: @xvars['user_id']
+      doc.update url: filename,
+                 basename: File.basename(filename),
+                 cloudinary: false,
+                 dscan: @xvars[@runseq.code][key][key1],
+                 user_id: @xvars['user_id']
     else
       result = Cloudinary::Uploader.upload(params)
       eval %( @xvars[@runseq.code][key][key1] = '#{result['url']}' )
-      doc.update_attributes url: result['url'], basename: File.basename(result['url']), cloudinary: true,
-                            dscan: @xvars[@runseq.code][key][key1]
+      doc.update url: result['url'], basename: File.basename(result['url']), cloudinary: true,
+                 dscan: @xvars[@runseq.code][key][key1]
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JindaController < ApplicationController
   include JindaRunConcern
   include JindaGeneralConcern

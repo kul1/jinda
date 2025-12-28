@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'spec_helper'
 
 # include Jinda::GemHelpers
@@ -39,7 +41,7 @@ describe Jinda::GemHelpers do
     result = gen_views('spec/temp')
     $gem_dir = Dir.getwd
     result.each do |r|
-      expected_file = $gem_dir + '/' + r
+      expected_file = "#{$gem_dir}/#{r}"
       fexist = File.exist?(expected_file)
       expect(fexist).to be true
     end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module ActionView
   module Helpers
     module DateHelper
       def date_field_tag(method, options = {})
-        default = options[:default] || Date.today
+        default = options[:default] || Time.zone.today
         data_options = { 'mode' => 'calbox' }.merge(options)
         %(<input name='#{method}' id='#{method}' value='#{default.strftime('%F')}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>).html_safe
       end
@@ -14,25 +16,25 @@ module ActionView
       end
 
       def date_field(method, options = {})
-        default = options[:default] || object.send(method) || Date.today
+        default = options[:default] || object.send(method) || Time.zone.today
         data_options = { 'mode' => 'calbox' }.merge(options)
         out = %(<input name='#{object_name}[#{method}]' id='#{object_name}_#{method}' value='#{default.strftime('%F')}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>)
         out.html_safe
       end
 
       def time_field(method, options = {})
-        default = object.send(method) || Time.now
+        default = object.send(method) || Time.zone.now
         data_options = { 'mode' => 'timebox' }.merge(options)
         out = %(<input name='#{object_name}[#{method}]' id='#{object_name}_#{method}' value='#{default}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>)
         out.html_safe
       end
 
-      def date_select_thai(method, default = Time.now, disabled = false)
+      def date_select_thai(method, default = Time.zone.now, disabled = false)
         date_select method, default: default, use_month_names: THAI_MONTHS, order: %i[day month year],
                             disabled: disabled
       end
 
-      def datetime_select_thai(method, default = Time.now, disabled = false)
+      def datetime_select_thai(method, default = Time.zone.now, disabled = false)
         datetime_select method, default: default, use_month_names: THAI_MONTHS, order: %i[day month year],
                                 disabled: disabled
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def process_models
   # app= get_app
   # t= ["process models"]
@@ -18,14 +20,10 @@ def process_models
     next if model_name.comment?
 
     model_code = name2code(model_name)
-    model_file = "#{Rails.root.join("app/models/#{model_code}.rb")}"
+    model_file = Rails.root.join("app/models/#{model_code}.rb").to_s
 
-    if File.exist?(model_file)
-      doc = File.read(model_file)
-    else
-      system("rails generate model #{model_code}")
-      doc = File.read(model_file)
-    end
+    system("rails generate model #{model_code}") unless File.exist?(model_file)
+    doc = File.read(model_file)
 
     doc = add_utf8(doc)
     attr_hash = make_fields(model)
@@ -88,7 +86,7 @@ def name2code(s)
 end
 
 def model_exists?(model)
-  File.exist? "#{Rails.root.join("app/models/#{model}.rb")}"
+  File.exist? Rails.root.join("app/models/#{model}.rb").to_s
 end
 
 def make_fields(n)

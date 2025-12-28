@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 ########################################################################
 #                            Jinda Rake Task                           #
 ########################################################################
 
 def gen_views(prefix = '')
-  @prefix = prefix.empty? ? '' : (prefix + '/')
+  @prefix = prefix.empty? ? '' : "#{prefix}/"
   t = ['*** generate ui ***']
 
   # create array of files to be tested
   $afile = []
 
-  Jinda::Module.all.each do |m|
+  Jinda::Module.find_each do |m|
     m.services.each do |s|
       dir = @prefix + "app/views/#{s.module.code}"
       gen_view_mkdir(dir, t) unless gen_view_file_exist?(dir)
@@ -56,7 +58,7 @@ def gen_views(prefix = '')
       end
     end
   end
-  puts $afile.join("\n")
-  puts t.join("\n")
+  Rails.logger.debug $afile.join("\n")
+  Rails.logger.debug t.join("\n")
   $afile
 end

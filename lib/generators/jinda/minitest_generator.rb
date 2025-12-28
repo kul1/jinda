@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Jinda
   module Generators
     class MinitestGenerator < Rails::Generators::Base
       def self.source_root
-        File.dirname(__FILE__) + '/templates'
+        "#{File.dirname(__FILE__)}/templates"
       end
 
       desc 'config minitest'

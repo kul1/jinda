@@ -69,3 +69,25 @@ Performance/Casecmp:
 # Minitest
 Minitest/MultipleAssertions:
   Max: 10
+
+# Disable cops that don't make sense for this codebase
+Style/GlobalVars:
+  Enabled: false
+
+Security/Eval:
+  Enabled: false
+
+Style/EvalWithLocation:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 15

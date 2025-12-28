@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # start jiinda method routes
   jinda_methods = %w[pending status search doc doc_print logs ajax_notice]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def setup_gems
   #         # define required gems: jinda_gem, jinda_dev_gem
   jinda_gem =
@@ -63,7 +65,7 @@ def setup_gems
     if `gem list -e --no-versions #{g[0]}` == "#{g[0]}\n"
       if g.count == 2
         xgem_0 = `gem list -e #{g[0]}`
-        if xgem_0.include?("#{g[1]}".gsub(/[~> ]/, ''))
+        if xgem_0.include?(g[1].to_s.gsub(/[~> ]/, ''))
           # puts "     Checking #{g[0]} found Ver. #{g[1]} already exist in Gemfile", :green
           puts "     Checking #{g[0]} found Ver. #{g[1]} already exist in Gemfile"
         else
@@ -91,10 +93,10 @@ def setup_gems
       jinda_dev_new << g
     end
   end
-  unless jinda_dev_new.count == 0
+  unless jinda_dev_new.none?
     gem_group :development, :test do
       jinda_dev_new.each do |n|
-        if n.count == 1
+        if n.one?
           gem n[0]
         else
           gem n[0], n[1]
@@ -114,12 +116,12 @@ def setup_gems
       jinda_custom_new << g
     end
   end
-  return if jinda_custom_new.count == 0
+  return if jinda_custom_new.none?
 
   jinda_custom_new.each do |c|
     # puts "     Checking if #{c[0]} already exist in Gemfile", :yellow
     puts "     Checking if #{c[0]} already exist in Gemfile"
-    if c.count == 1
+    if c.one?
       gem c[0]
     else
       gem c[0], c[1]
