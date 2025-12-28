@@ -72,7 +72,7 @@ The CI workflow automatically detects versions from `jinda.gemspec`:
 RUBY_VERSION=$(grep 'required_ruby_version' jinda.gemspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
 
 # Read Rails version
-RAILS_VERSION=$(grep "add_runtime_dependency 'rails'" jinda.gemspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+RAILS_VERSION=$(grep "add_dependency 'rails'" jinda.gemspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
 ```
 
 **This means**: When you update `jinda.gemspec`, CI automatically uses new versions!

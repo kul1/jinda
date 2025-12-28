@@ -122,7 +122,7 @@ When you push to GitHub:
 ```ruby
 # In jinda.gemspec:
 spec.required_ruby_version = '>= 3.3.0'
-spec.add_runtime_dependency 'rails', '~> 7.1.0'
+spec.add_dependency 'rails', '~> 7.1.0'
 
 # CI automatically uses: Ruby 3.3.0, Rails 7.1.0
 ```
