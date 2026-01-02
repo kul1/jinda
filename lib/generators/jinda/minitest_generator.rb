@@ -7,14 +7,14 @@ module Jinda
         "#{File.dirname(__FILE__)}/templates"
       end
 
-      desc "config minitest"
+      desc 'config minitest'
       def gen_minitest
         # copy test directory with jinda test for minitest
-        directory "test"
-        run "guard init minitest"
+        directory 'test'
+        run 'guard init minitest'
       end
 
-      desc "Finish guard init minitest"
+      desc 'Finish guard init minitest'
       def finish
         Rails.logger.debug "      Finish guard init minitest.\n"
         Rails.logger.debug "      Finish copy test directory for minitest\n"

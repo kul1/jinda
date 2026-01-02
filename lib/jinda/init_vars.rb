@@ -6,7 +6,7 @@ def init_vars_by_runseq(runseq_id)
   @xvars          = @xmain.xvars
   # @xvars[:current_step]= @runseq.rstep
   @runseq.start ||= Time.zone.now
-  @runseq.status  = "R" # running
+  @runseq.status  = 'R' # running
   @runseq.save
 end
 
@@ -15,13 +15,13 @@ def init_vars(xmain)
   @xvars                 = @xmain.xvars
   @runseq                = @xmain.runseqs.find @xmain.current_runseq
   #    authorize?
-  @xvars["current_step"] = @runseq.rstep
-  @xvars["referrer"]     = request.referer
+  @xvars['current_step'] = @runseq.rstep
+  @xvars['referrer']     = request.referer
   session[:xmain_id]     = @xmain.id
   session[:runseq_id]    = @runseq.id
-  unless params[:action] == "run_call"
+  unless params[:action] == 'run_call'
     @runseq.start ||= Time.zone.now
-    @runseq.status  = "R" # running
+    @runseq.status  = 'R' # running
     @runseq.save
   end
   $xmain                 = @xmain
@@ -36,6 +36,6 @@ def init_vars_by_runseq(runseq_id)
   @xvars          = @xmain.xvars
   # @xvars[:current_step]= @runseq.rstep
   @runseq.start ||= Time.zone.now
-  @runseq.status  = "R" # running
+  @runseq.status  = 'R' # running
   @runseq.save
 end

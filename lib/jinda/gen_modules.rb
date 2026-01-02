@@ -11,7 +11,7 @@ def gen_module_controller
   # end
   #
   # MM was defined in Rails: config/initializer/jinda.rb
-  @prefix = "spec/temp/"
+  @prefix = 'spec/temp/'
   @tdir   = "#{@prefix}app/controllers/*_controller.rb"
   # dir_module_names = Dir.glob("#{@prefix}app/controllers/*_controller.rb").map { |path| (path.match(/(\w+)/); $1) }
   Dir.glob(@tdir).map do |path|

@@ -5,7 +5,7 @@ def b(s)
 end
 
 def link_to_blank(body, url_options = {}, html_options = {})
-  link_to(body, url_options, html_options.merge(target: "_blank"))
+  link_to(body, url_options, html_options.merge(target: '_blank'))
 end
 
 # old def code(s)
@@ -13,7 +13,7 @@ def code_text(s)
   "<pre style='background-color: #efffef;'><code class='ruby' lang='ruby'>#{s}</code></pre>".html_safe
 end
 
-def refresh_to(url = "/", option = {})
+def refresh_to(url = '/', option = {})
   ma_log option[:alert] if option[:alert]
   # skip #
   # Rails 5.2 not allow to use js inline call
@@ -39,17 +39,17 @@ end
 # Todo refactor code
 def get_option(opt, runseq = @runseq)
   xml = REXML::Document.new(runseq.xml).root
-  url = ""
+  url = ''
   # get option from second element of node using '//node'
-  xml.each_element("//node") do |n|
-    if n.attributes["TEXT"]
-      text = n.attributes["TEXT"]
+  xml.each_element('//node') do |n|
+    if n.attributes['TEXT']
+      text = n.attributes['TEXT']
       url  = text if /^#{opt}:\s*/.match?(text)
     end
   end
   return nil if url.blank?
 
-  _, h = url.split(":", 2)
+  _, h = url.split(':', 2)
   opt  = h ? h.strip : false
 end
 
@@ -58,12 +58,12 @@ def ma_comment?(s)
 end
 
 def get_ip
-  request.env["HTTP_X_FORWARDED_FOR"] || request.env["REMOTE_ADDR"]
+  request.env['HTTP_X_FORWARDED_FOR'] || request.env['REMOTE_ADDR']
 end
 
 def get_default_role
-  default_role = Jinda::Role.where(code: "default").first
-  default_role ? default_role.name.to_s : ""
+  default_role = Jinda::Role.where(code: 'default').first
+  default_role ? default_role.name.to_s : ''
 end
 
 def sign_in?

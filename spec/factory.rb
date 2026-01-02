@@ -30,6 +30,6 @@ module Jinda
     field :ma_secured, type: Boolean
     field :confirm, type: Boolean
 
-    belongs_to :module, class_name: "Jinda::Module"
+    belongs_to :module, class_name: 'Jinda::Module'
   end
 end

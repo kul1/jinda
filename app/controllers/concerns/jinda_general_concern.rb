@@ -3,15 +3,14 @@
 module JindaGeneralConcern
   extend ActiveSupport::Concern
 
-  def index
-  end
+  def index; end
 
   def logs
     @xmains = Jinda::Xmain.all.desc(:created_at).page(params[:page]).per(10)
   end
 
   def error_logs
-    @xmains = Jinda::Xmain.in(status: ["E"]).desc(:created_at).page(params[:page]).per(10)
+    @xmains = Jinda::Xmain.in(status: ['E']).desc(:created_at).page(params[:page]).per(10)
   end
 
   def notice_logs
@@ -19,26 +18,26 @@ module JindaGeneralConcern
   end
 
   def pending
-    @title  = "Pending Tasks"
+    @title  = 'Pending Tasks'
     @xmains = Jinda::Xmain.in(status: %w[R I]).asc(:created_at)
   end
 
   def cancel
-    Jinda::Xmain.find(params[:id]).update status: "X"
-    redirect_to params[:return] || {action: "pending"}
+    Jinda::Xmain.find(params[:id]).update status: 'X'
+    redirect_to params[:return] || { action: 'pending' }
   end
 
   # process images from first level
   def get_image(key, params)
     doc = Jinda::Doc.create(
-      name:         key.to_s,
-      xmain:        @xmain.id,
-      runseq:       @runseq.id,
-      filename:     params.original_filename,
-      content_type: params.content_type || "application/zip",
-      data_text:    "",
-      ma_display:   true,
-      ma_secured:   @xmain.service.ma_secured
+      name: key.to_s,
+      xmain: @xmain.id,
+      runseq: @runseq.id,
+      filename: params.original_filename,
+      content_type: params.content_type || 'application/zip',
+      data_text: '',
+      ma_display: true,
+      ma_secured: @xmain.service.ma_secured
     )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
@@ -49,7 +48,7 @@ module JindaGeneralConcern
     else
       result = Cloudinary::Uploader.upload(params)
       eval %( @xvars[@runseq.code][key] = '#{result['url']}' )
-      doc.update url: result["url"], basename: File.basename(result["url"]), cloudinary: true
+      doc.update url: result['url'], basename: File.basename(result['url']), cloudinary: true
     end
   end
 
@@ -61,33 +60,33 @@ module JindaGeneralConcern
       xmain: @xmain.id,
       runseq: @runseq.id,
       filename: params.original_filename,
-      content_type: params.content_type || "application/zip",
-      data_text: "",
-      dscan: "",
-      description: "",
-      keywords: "",
-      category: "",
+      content_type: params.content_type || 'application/zip',
+      data_text: '',
+      dscan: '',
+      description: '',
+      keywords: '',
+      category: '',
       ma_display: true, ma_secured: @xmain.service.ma_secured
     )
     if defined?(IMAGE_LOCATION)
       filename = "#{IMAGE_LOCATION}/f#{Param.gen(:asset_id)}"
       File.binwrite(filename, params.read)
       eval "@xvars[@runseq.code][key][key1] = '#{url_for(action: 'document', id: doc.id, only_path: true)}' "
-      doc.update url:        filename,
-                 basename:   File.basename(filename),
+      doc.update url: filename,
+                 basename: File.basename(filename),
                  cloudinary: false,
-                 dscan:      @xvars[@runseq.code][key][key1],
-                 user_id:    @xvars["user_id"]
+                 dscan: @xvars[@runseq.code][key][key1],
+                 user_id: @xvars['user_id']
     else
       result = Cloudinary::Uploader.upload(params)
       eval %( @xvars[@runseq.code][key][key1] = '#{result['url']}' )
-      doc.update url: result["url"], basename: File.basename(result["url"]), cloudinary: true,
+      doc.update url: result['url'], basename: File.basename(result['url']), cloudinary: true,
                  dscan: @xvars[@runseq.code][key][key1]
     end
   end
 
   def doc_print
-    render file: "public/doc.html", layout: "layouts/print"
+    render file: 'public/doc.html', layout: 'layouts/print'
   end
 
   # generate documentation for application
@@ -95,28 +94,28 @@ module JindaGeneralConcern
   def document
     doc = Jinda::Doc.find params[:id]
     if doc.cloudinary
-      require "net/http"
-      require "uri"
+      require 'net/http'
+      require 'uri'
       uri  = URI.parse(doc.url)
       data = Net::HTTP.get_response(uri)
-      send_data(data.body, filename: doc.filename, type: doc.content_type, disposition: "inline")
+      send_data(data.body, filename: doc.filename, type: doc.content_type, disposition: 'inline')
     else
       data = read_binary(doc.url)
-      send_data(data, filename: doc.filename, type: doc.content_type, disposition: "inline")
+      send_data(data, filename: doc.filename, type: doc.content_type, disposition: 'inline')
     end
   end
 
   def doc
-    require "rdoc"
+    require 'rdoc'
     @app   = get_app
-    @intro = File.read("README.md")
+    @intro = File.read('README.md')
     @print = "<div align='right'><img src='/assets/printer.png'/> <a href='/jinda/doc_print' target='_blank'/>Print</a></div>"
-    doc    = render_to_string "doc.md", layout: false
+    doc    = render_to_string 'doc.md', layout: false
     html   = Maruku.new(doc).to_html
-    File.open("public/doc.html", "w") { |f| f.puts html }
+    File.open('public/doc.html', 'w') { |f| f.puts html }
     respond_to do |format|
       format.html do
-        render plain: @print + html, layout: "layouts/jqm/_page"
+        render plain: @print + html, layout: 'layouts/jqm/_page'
         # render :text=> Maruku.new(doc).to_html, :layout => false
         # format.html {
         #   h = RDoc::Markup::ToHtml.new
@@ -124,12 +123,12 @@ module JindaGeneralConcern
       end
       format.pdf do
         latex = Maruku.new(doc).to_latex
-        File.open("tmp/doc.md", "w") { |f| f.puts doc }
-        File.open("tmp/doc.tex", "w") { |f| f.puts latex }
+        File.open('tmp/doc.md', 'w') { |f| f.puts doc }
+        File.open('tmp/doc.tex', 'w') { |f| f.puts latex }
         # system('pdflatex tmp/doc.tex ')
         # send_file( 'tmp/doc.pdf', :type => ‘application/pdf’,
         # :disposition => ‘inline’, :filename => 'doc.pdf')
-        render plain: "done"
+        render plain: 'done'
       end
     end
   end
@@ -140,24 +139,23 @@ module JindaGeneralConcern
     @backbtn = true
     @xvars   = @xmain.xvars
     # flash.now[:notice]= "รายการ #{@xmain.id} ได้ถูกยกเลิกแล้ว" if @xmain.status=='X'
-    ma_log "Task #{@xmain.id} is cancelled" if @xmain.status == "X"
+    ma_log "Task #{@xmain.id} is cancelled" if @xmain.status == 'X'
     # flash.now[:notice]= "transaction #{@xmain.id} was cancelled" if @xmain.status=='X'
   rescue StandardError
-    refresh_to "/", alert: "Could not find task number <b> #{params[:xid]} </b>"
+    refresh_to '/', alert: "Could not find task number <b> #{params[:xid]} </b>"
   end
 
-  def help
-  end
+  def help; end
 
   def search
-    @q       = params[:q] || params[:ma_search][:q] || ""
+    @q       = params[:q] || params[:ma_search][:q] || ''
     @title   = "Search Result #{@q}"
     @backbtn = true
     @cache   = true
     if @q.blank?
-      redirect_to "/"
+      redirect_to '/'
     else
-      GmaSearch.create q: @q, ip: request.env["REMOTE_ADDR"]
+      GmaSearch.create q: @q, ip: request.env['REMOTE_ADDR']
       do_search
     end
   end
@@ -167,7 +165,7 @@ module JindaGeneralConcern
     flash[:notice] =
       "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     ma_log "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
-    redirect_to "/"
+    redirect_to '/'
   end
 
   def err500
@@ -175,6 +173,6 @@ module JindaGeneralConcern
     flash[:notice] =
       "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
     ma_log "We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly."
-    redirect_to "/"
+    redirect_to '/'
   end
 end
