@@ -6,6 +6,25 @@ require "open3"
 require "timeout"
 
 # Test suite for Jinda gem installation process
+#
+# Usage:
+#   Test with local gem:
+#     ruby test/installation_test.rb
+#
+#   Test with remote git repository (default branch):
+#     JINDA_GEM_SOURCE=git ruby test/installation_test.rb
+#
+#   Test with remote git repository (specific branch):
+#     JINDA_GEM_SOURCE=git JINDA_GIT_BRANCH=main ruby test/installation_test.rb
+#
+#   Test with custom git URL:
+#     JINDA_GEM_SOURCE=git JINDA_GIT_URL=https://github.com/user/fork.git ruby test/installation_test.rb
+#
+#   Skip cleanup after tests (for debugging):
+#     SKIP_CLEANUP=true ruby test/installation_test.rb
+#
+#   Use custom MongoDB port:
+#     MONGODB_PORT=27888 ruby test/installation_test.rb
 # rubocop:disable Style/ClassVars
 class JindaInstallationTest < Minitest::Test
   # Make tests run in order - these tests are order-dependent by design
@@ -20,6 +39,16 @@ class JindaInstallationTest < Minitest::Test
   TEST_DIR       = File.expand_path("~/tmp/jinda_tests")
   MONGODB_PORT   = ENV.fetch("MONGODB_PORT", "27888")
   TEST_APP_NAME  = "jinda_test_#{Time.now.to_i}".freeze
+  
+  # Gem source configuration
+  # Set JINDA_GEM_SOURCE env var to:
+  # - 'local' (default): use local path
+  # - 'git': use git repository with optional branch/tag
+  # Set JINDA_GIT_URL env var for custom git URL (default: https://github.com/kul1/jinda.git)
+  # Set JINDA_GIT_BRANCH env var for specific branch/tag (optional)
+  JINDA_GEM_SOURCE = ENV.fetch("JINDA_GEM_SOURCE", "local")
+  JINDA_GIT_URL    = ENV.fetch("JINDA_GIT_URL", "https://github.com/kul1/jinda.git")
+  JINDA_GIT_BRANCH = ENV.fetch("JINDA_GIT_BRANCH", nil)
 
   # Class variable to maintain test app path across all tests
   @@test_app_path = nil
@@ -45,6 +74,19 @@ class JindaInstallationTest < Minitest::Test
   end
 
   def test_01_prerequisites
+    # Display test configuration
+    puts "\n=== Jinda Installation Test Configuration ==="
+    puts "Gem source: #{JINDA_GEM_SOURCE}"
+    if JINDA_GEM_SOURCE == "git"
+      puts "Git URL: #{JINDA_GIT_URL}"
+      puts "Git branch: #{JINDA_GIT_BRANCH || 'default'}" if JINDA_GIT_BRANCH
+    else
+      puts "Local path: #{JINDA_GEM_PATH}"
+    end
+    puts "Test directory: #{TEST_DIR}"
+    puts "MongoDB port: #{MONGODB_PORT}"
+    puts "==========================================\n\n"
+
     # Check Ruby version
     ruby_version = RUBY_VERSION
 
@@ -82,7 +124,16 @@ class JindaInstallationTest < Minitest::Test
 
     gemfile_path = File.join(@test_app_path, "Gemfile")
     File.open(gemfile_path, "a") do |f|
-      f.puts "gem 'jinda', path: '#{JINDA_GEM_PATH}'"
+      case JINDA_GEM_SOURCE
+      when "git"
+        if JINDA_GIT_BRANCH
+          f.puts "gem 'jinda', git: '#{JINDA_GIT_URL}', branch: '#{JINDA_GIT_BRANCH}'"
+        else
+          f.puts "gem 'jinda', git: '#{JINDA_GIT_URL}'"
+        end
+      else # 'local' or default
+        f.puts "gem 'jinda', path: '#{JINDA_GEM_PATH}'"
+      end
     end
 
     gemfile_content = File.read(gemfile_path)
