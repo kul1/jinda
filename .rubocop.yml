@@ -91,3 +91,52 @@ Metrics/CyclomaticComplexity:
 
 Metrics/PerceivedComplexity:
   Max: 15
+
+# Generator gem specific settings
+Metrics/AbcSize:
+  Max: 60
+  Exclude:
+    - 'lib/generators/**/*'
+
+Metrics/BlockNesting:
+  Max: 4
+
+# Generators often need nested method definitions
+Lint/NestedMethodDefinition:
+  Exclude:
+    - 'lib/generators/**/*'
+
+# Generators may use mixin at top level
+Style/MixinUsage:
+  Exclude:
+    - 'lib/tasks/**/*'
+    - 'gem_spec.rb'
+
+# Rails generators use I18n differently
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# Gemspec dependencies are intentional
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+# Generators may need constants in blocks
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'gem_spec.rb'
+    - 'test/**/*'
+    - 'spec/**/*'
+
+# Allow using update_attribute in generators and controllers
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# Security checks should be warnings, not errors for generated code
+Security/Open:
+  Enabled: false
+
+# Output safety - generators create templates
+Rails/OutputSafety:
+  Exclude:
+    - 'lib/generators/**/*'
+    - 'app/controllers/concerns/**/*'

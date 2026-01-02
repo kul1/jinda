@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "jinda/version"
-require "jinda/railtie"
+require 'jinda/version'
+require 'jinda/railtie'
 
 module Jinda
   class Engine < ::Rails::Engine

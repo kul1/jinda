@@ -5,7 +5,7 @@ module ActionView
     module DateHelper
       def date_field_tag(method, options = {})
         default      = options[:default] || Time.zone.today
-        data_options = {"mode" => "calbox"}.merge(options)
+        data_options = { 'mode' => 'calbox' }.merge(options)
         %(<input name='#{method}' id='#{method}' value='#{default.strftime('%F')}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>).html_safe
       end
     end
@@ -17,14 +17,14 @@ module ActionView
 
       def date_field(method, options = {})
         default      = options[:default] || object.send(method) || Time.zone.today
-        data_options = {"mode" => "calbox"}.merge(options)
+        data_options = { 'mode' => 'calbox' }.merge(options)
         out          = %(<input name='#{object_name}[#{method}]' id='#{object_name}_#{method}' value='#{default.strftime('%F')}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>)
         out.html_safe
       end
 
       def time_field(method, options = {})
         default      = object.send(method) || Time.zone.now
-        data_options = {"mode" => "timebox"}.merge(options)
+        data_options = { 'mode' => 'timebox' }.merge(options)
         out          = %(<input name='#{object_name}[#{method}]' id='#{object_name}_#{method}' value='#{default}' type='date' data-role='datebox' data-options='#{data_options.to_json}'>)
         out.html_safe
       end
@@ -41,8 +41,8 @@ module ActionView
 
       def point(o = {})
         o[:zoom]   = 11 unless o[:zoom]
-        o[:width]  = "100%" unless o[:width]
-        o[:height] = "300px" unless o[:height]
+        o[:width]  = '100%' unless o[:width]
+        o[:height] = '300px' unless o[:height]
         o[:lat]    = 13.91819 unless o[:lat]
         o[:lng]    = 100.48889 unless o[:lng]
 

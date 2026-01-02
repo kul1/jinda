@@ -8,26 +8,26 @@ class JindaController < ApplicationController
   # Its only one service
 
   def init
-    module_code, code = params[:s].split(":")
+    module_code, code = params[:s].split(':')
     @service          = Jinda::Service.where(module_code: module_code, code: code).first
     if @service && authorize_init?
       xmain  = create_xmain(@service)
       result = create_runseq(xmain)
       unless result
-        message        = "Node missing action icon: cannot find action for xmain #{xmain.id}, the node required action(icon) in freemind eg: form, list, method"
+        message = "Node missing action icon: cannot find action for xmain #{xmain.id}, the node required action(icon) in freemind eg: form, list, method"
         ma_log(message)
         flash[:notice] = message
-        redirect_to "pending" and return
+        redirect_to 'pending' and return
       end
       xmain.update_attribute(:xvars, @xvars)
       xmain.runseqs.last.update_attribute(:end, true)
       # Above line cause error update_attribute in heroku shown in logs and it was proposed to fixed in github:'kul1/g241502'
       # Main action run with :id
-      redirect_to action: "run", id: xmain.id
+      redirect_to action: 'run', id: xmain.id
 
     else
-      refresh_to "/", alert: "Error: cannot process"
-      error_run_xmain = "Error_run_xmain"
+      refresh_to '/', alert: 'Error: cannot process'
+      error_run_xmain = 'Error_run_xmain'
       ma_log(error_run_xmain)
     end
   end
