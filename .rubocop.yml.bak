@@ -1,0 +1,183 @@
+plugins:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.3
+  TargetRailsVersion: 7.1
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'test/dummy/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    # Exclude ALL generator implementation files from ALL cops
+    # Templates have their own .rubocop.yml with strict checks
+    - 'lib/generators/**/*_generator.rb'
+    - 'lib/generators/**/installer/**/*'
+
+# Style preferences
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false  # Too many legacy issues
+
+Style/FrozenStringLiteralComment:
+  Enabled: false  # Not critical for gem code
+
+Style/HashSyntax:
+  Enabled: false  # Mixed old/new syntax
+
+# Layout preferences
+Layout/LineLength:
+  Enabled: false  # Many long configuration strings
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+Layout/SpaceAfterColon:
+  Enabled: false
+
+# Metrics
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'Rakefile'
+    - '**/*.rake'
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - 'test/**/*'
+
+# Rails specific
+Rails/Output:
+  Enabled: false
+
+Rails/Exit:
+  Enabled: false
+
+Rails/WhereExists:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/EmptyElse:
+  Enabled: false
+
+Lint/DuplicateMethods:
+  Enabled: false
+
+Naming/PredicateMethod:
+  Enabled: false
+
+Naming/PredicatePrefix:
+  Enabled: false
+
+# Performance
+Performance/Casecmp:
+  Enabled: true
+
+# Minitest
+Minitest/MultipleAssertions:
+  Max: 10
+
+# Disable cops that don't make sense for this codebase
+Style/GlobalVars:
+  Enabled: false
+
+Security/Eval:
+  Enabled: false
+
+Style/EvalWithLocation:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+# Generators often need nested method definitions
+Lint/NestedMethodDefinition:
+  Exclude:
+    - 'lib/generators/**/*'
+
+# Generators may use mixin at top level
+Style/MixinUsage:
+  Exclude:
+    - 'lib/tasks/**/*'
+    - 'gem_spec.rb'
+
+# Rails generators use I18n differently
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# Gemspec dependencies are intentional
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+# Generators may need constants in blocks
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'gem_spec.rb'
+    - 'test/**/*'
+    - 'spec/**/*'
+
+# Allow using update_attribute in generators and controllers
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# Security checks should be warnings, not errors for generated code
+Security/Open:
+  Enabled: false
+
+# Output safety - generators create templates
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/RenderInline:
+  Enabled: false
+
+Style/HashLikeCase:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+
+Lint/EmptyClass:
+  Enabled: false
