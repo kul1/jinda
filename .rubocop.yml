@@ -14,7 +14,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/**/*'
     - 'bin/**/*'
-    - 'lib/generators/jinda/templates/**/*'
+    # Exclude ALL generator implementation files from ALL cops
+    # Templates have their own .rubocop.yml with strict checks
+    - 'lib/generators/**/*_generator.rb'
+    - 'lib/generators/**/installer/**/*'
 
 # Style preferences
 Style/Documentation:
