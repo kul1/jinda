@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class NotesController < ApplicationController
@@ -14,18 +16,17 @@ module Api
         render json: @notes
       end
 
-      def show
-      end
+      def show; end
 
       def edit
         @note       = Note.find(params[:id])
-        @page_title = "Edit Note"
+        @page_title = 'Edit Note'
       end
 
       def create
         @note = Note.new(
-          title:   params[:title],
-          body:    params[:body],
+          title: params[:title],
+          body: params[:body],
           user_id: params[:user]
         )
 
@@ -37,32 +38,32 @@ module Api
         # $xvars["select_note"] and $xvars["edit_note"]
         # These are variables.
         # They contain everything that we get their forms select_note and edit_note
-        note_id = $xvars["select_note"] ? $xvars["select_note"]["id"] : $xvars["p"]["note_id"]
+        note_id = $xvars['select_note'] ? $xvars['select_note']['id'] : $xvars['p']['note_id']
         @note   = Note.find(note_id)
-        @note.update(title: $xvars["edit_note"]["title"],
-                     body:  $xvars["edit_note"]["body"])
+        @note.update(title: $xvars['edit_note']['title'],
+                     body: $xvars['edit_note']['body'])
         redirect_to @note
       end
 
       def delete
         # called by freemind
         # Tobe called from other controller:jinda
-        @note_id = $xvars["select_note"] ? $xvars["select_note"]["id"] : $xvars["p"]["note_id"]
+        @note_id = $xvars['select_note'] ? $xvars['select_note']['id'] : $xvars['p']['note_id']
         @note    = Note.find(@note_id)
         @note.destroy
       end
 
       def destroy
         # called by rails menu my
-        @note.destroy if current_ma_user.role.upcase.split(",").include?("A") || current_ma_user == @note.user
-        redirect_to :action=>"my"
+        @note.destroy if current_ma_user.role.upcase.split(',').include?('A') || current_ma_user == @note.user
+        redirect_to action: 'my'
       end
 
       def mail
         NoteMailer.gmail(
-          $xvars["display_mail"]["body"],
-          $xvars["select_note"]["email"],
-          $xvars["display_mail"]["title"],
+          $xvars['display_mail']['body'],
+          $xvars['select_note']['email'],
+          $xvars['display_mail']['title'],
           xload_current_ma_user.email
         )
       end
@@ -71,7 +72,7 @@ module Api
 
       # Tobe called from other controller:jinda
       def xload_current_ma_user
-        @current_ma_user = User.find($xvars["user_id"])
+        @current_ma_user = User.find($xvars['user_id'])
       end
 
       def load_note

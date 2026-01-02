@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def title(blog_title)
     content_for(:title) { blog_title }
@@ -7,9 +9,9 @@ module ApplicationHelper
     content_for(:meta_description) { blog_text }
   end
 
-  require "redcarpet"
-  require "rouge"
-  require "rouge/plugins/redcarpet"
+  require 'redcarpet'
+  require 'rouge'
+  require 'rouge/plugins/redcarpet'
 
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)
@@ -18,13 +20,13 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    coderayified     = CodeRayify.new(:filter_html => true,
-                                      :hard_wrap   => true)
+    coderayified     = CodeRayify.new(filter_html: true,
+                                      hard_wrap: true)
     options          = {
-      :fenced_code_blocks => true,
-      :no_intra_emphasis  => true,
-      :autolink           => true,
-      :lax_html_blocks    => true
+      fenced_code_blocks: true,
+      no_intra_emphasis: true,
+      autolink: true,
+      lax_html_blocks: true
     }
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown_to_html.render(text).html_safe

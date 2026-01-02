@@ -1,0 +1,93 @@
+# RuboCop configuration for generated Rails application templates
+# These files will be copied into the generated Rails app and should follow
+# standard Rails conventions
+
+inherit_from: ../../../../.rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 3.3
+  TargetRailsVersion: 7.1
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+
+# Re-enable checks that were disabled for generator code
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    # Models typically don't need class documentation
+    - 'app/models/**/*'
+    # Controllers can skip documentation
+    - 'app/controllers/**/*'
+
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+    - 'config/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'config/environments/**/*'
+    - 'spec/**/*'
+    - 'test/**/*'
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/ModuleLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'config/**/*'
+
+# Standard Rails patterns
+Rails/Output:
+  Enabled: true
+
+Rails/Exit:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: true
+  Exclude:
+    # Sometimes update_attribute is necessary
+    - 'spec/**/*'
+    - 'test/**/*'
+
+# Security checks should be enforced in generated apps
+Security/Eval:
+  Enabled: true
+
+Security/Open:
+  Enabled: true
+
+# Style preferences for generated Rails apps
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/GlobalVars:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+
+# Rails-specific
+Rails/I18nLocaleTexts:
+  Enabled: true
+  Exclude:
+    # Flash messages are often inline
+    - 'app/controllers/**/*'

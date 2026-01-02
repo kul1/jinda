@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   before_action :load_articles, except: [:destroy]
   before_action :load_my_articles, only: [:my]
@@ -17,24 +19,24 @@ class ArticlesController < ApplicationController
     @comments    = @commentable.comments.desc(:created_at).page(params[:page]).per(10)
     @user        = User.find(@article.user_id)
     @show        = {}
-    @show        = {:article => @article, :comments => @comments, :user => @user}
-    prepare_meta_tags(title:       @article.title,
+    @show        = { article: @article, comments: @comments, user: @user }
+    prepare_meta_tags(title: @article.title,
                       description: @article.text,
-                      keywords:    @article.keywords)
+                      keywords: @article.keywords)
   end
 
   def edit
-    @page_title       = "Edit Article"
+    @page_title = 'Edit Article'
   end
 
   def create
     # Use Jinda $xvars
     @article = Article.new(
-      title:    $xvars["form_article"]["title"],
-      text:     $xvars["form_article"]["text"],
-      keywords: $xvars["form_article"]["keywords"],
-      body:     $xvars["form_article"]["body"],
-      user_id:  $xvars["user_id"]
+      title: $xvars['form_article']['title'],
+      text: $xvars['form_article']['text'],
+      keywords: $xvars['form_article']['keywords'],
+      body: $xvars['form_article']['body'],
+      user_id: $xvars['user_id']
     )
     @article.save!
   end
@@ -42,22 +44,22 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.update(
-      title:    params["article"]["title"],
-      text:     params["article"]["text"],
-      keywords: params["article"]["keywords"],
-      body:     params["article"]["body"]
+      title: params['article']['title'],
+      text: params['article']['text'],
+      keywords: params['article']['keywords'],
+      body: params['article']['body']
     )
-    redirect_to :action=> "show", :article_id => @article.id
+    redirect_to action: 'show', article_id: @article.id
   end
 
   def j_update
     # Use Jinda $xvars
-    @article_id = $xvars["select_article"] ? $xvars["select_article"]["title"] : $xvars["p"]["article_id"]
-    @article    = Article.find_by :id => @article_id
-    @article.update(title:    $xvars["edit_article"]["article"]["title"],
-                    text:     $xvars["edit_article"]["article"]["text"],
-                    keywords: $xvars["edit_article"]["article"]["keywords"],
-                    body:     $xvars["edit_article"]["article"]["body"])
+    @article_id = $xvars['select_article'] ? $xvars['select_article']['title'] : $xvars['p']['article_id']
+    @article    = Article.find_by id: @article_id
+    @article.update(title: $xvars['edit_article']['article']['title'],
+                    text: $xvars['edit_article']['article']['text'],
+                    keywords: $xvars['edit_article']['article']['keywords'],
+                    body: $xvars['edit_article']['article']['body'])
   end
 
   def destroy
@@ -66,14 +68,14 @@ class ArticlesController < ApplicationController
 
     @article.destroy if current_admin? || current_ma_user == @article.user
 
-    (current_admin? ? "index" : "my")
-    redirect_to :action=> (current_admin? ? "index" : "my")
+    (current_admin? ? 'index' : 'my')
+    redirect_to action: (current_admin? ? 'index' : 'my')
   end
 
   private
 
   def current_admin?
-    return true if current_ma_user.role.upcase.split(",").include?("A")
+    return true if current_ma_user.role.upcase.split(',').include?('A')
 
     false
   end

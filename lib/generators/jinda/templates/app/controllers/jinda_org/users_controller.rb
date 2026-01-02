@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
-    @today  = Date.today
+    @today  = Time.zone.today
     @xmains = current_ma_user.xmains.in(status: %w[R I]).asc(:created_at)
   end
 
   # jinda methods
   def update_user
     # can't use session, current_ma_user inside jinda methods
-    $user.update_attribute :email, $xvars["enter_user"]["user"]["email"]
-    $user.update_attribute :image, $xvars["enter_user"]["user"]["image"]
+    $user.update_attribute :email, $xvars['enter_user']['user']['email']
+    $user.update_attribute :image, $xvars['enter_user']['user']['image']
   end
 
   def change_password
     # check if old password correct
-    identity = Identity.find_by :code=> $user.code
-    if identity.authenticate($xvars["enter"]["epass"])
-      identity.password              = $xvars["enter"]["npass"]
-      identity.password_confirmation = $xvars["enter"]["npass_confirm"]
+    identity = Identity.find_by code: $user.code
+    if identity.authenticate($xvars['enter']['epass'])
+      identity.password              = $xvars['enter']['npass']
+      identity.password_confirmation = $xvars['enter']['npass_confirm']
       identity.save
-      ma_log "Password changed"
+      ma_log 'Password changed'
     else
-      ma_log "Unauthorized access"
+      ma_log 'Unauthorized access'
     end
   end
 

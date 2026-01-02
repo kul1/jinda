@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthenticationHelper
   # controller return 1. Session 2. Cookies ==> user.id
   def sign_in(user)
@@ -13,7 +15,7 @@ module AuthenticationHelper
 
   # from Jinda::Helpers
   def current_ma_user
-    @user ||= User.where(:auth_token => user.auth_token)
+    @user ||= User.where(auth_token: user.auth_token)
     @user
   end
 end

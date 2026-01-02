@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # https://www.natashatherobot.com/rails-test-omniauth-sessions-controller/
 # spec_helper.rb
-require "rubygems"
-require "capybara/rspec"
+require 'rubygems'
+require 'capybara/rspec'
 # Set up the mock
-require "support/omniauth_macros"
-require "valid_attribute"
+require 'support/omniauth_macros'
+require 'valid_attribute'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -28,9 +30,9 @@ RSpec.configure do |config|
 
   # https://stackoverflow.com/questions/21445164/set-chrome-as-default-browser-for-rspec-capybara/30551595
   Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
-  Capybara.javascript_driver              = :chrome
+  Capybara.javascript_driver = :chrome
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
@@ -49,7 +51,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:deletion)
   end
 
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
     # DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.strategy = :deletion
   end

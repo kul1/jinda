@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class Identity
   include Mongoid::Document
   include OmniAuth::Identity::Models::Mongoid
 
-  auth_key "code"
+  auth_key 'code'
 
-  field :code, :type => String
-  field :email, :type => String
-  field :password_digest, :type => String
-  field :auth_token, :type => String
-  field :image, :type => String
+  field :code, type: String
+  field :email, type: String
+  field :password_digest, type: String
+  field :auth_token, type: String
+  field :image, type: String
 
   validates :code, presence: true
   validates :code, uniqueness: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :comment_params, only: [:create]
   before_action :load_commmentable
@@ -9,7 +11,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comment_params
     @comment.save!
-    redirect_to [@commentable], notice: "Comment created"
+    redirect_to [@commentable], notice: 'Comment created'
   end
 
   private
@@ -19,13 +21,13 @@ class CommentsController < ApplicationController
   # end
 
   def comment_params
-    resource       = request.path.split("/")[1]
+    resource       = request.path.split('/')[1]
     commentable_id = "#{resource.singularize.to_sym}_id" # :article_id
     params.require(:comment).permit(:body, :user_id, commentable_id.to_sym)
   end
 
   def load_commmentable
-    resource, id = request.path.split("/")[1, 2]
+    resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
   end
 end
