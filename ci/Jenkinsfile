@@ -1,0 +1,183 @@
+pipeline {
+    agent any
+    
+    environment {
+        RUBY_VERSION = '3.3.0'
+        RAILS_VERSION = '7.1.0'
+        MONGODB_PORT = '27017'
+        SKIP_CLEANUP = 'false'
+        GEM_HOME = "${WORKSPACE}/.gem"
+        GEM_PATH = "${WORKSPACE}/.gem"
+        PATH = "${GEM_HOME}/bin:${PATH}"
+    }
+    
+    options {
+        // Keep last 30 builds
+        buildDiscarder(logRotator(numToKeepStr: '30'))
+        // Timeout after 1 hour
+        timeout(time: 1, unit: 'HOURS')
+        // Timestamps in console output
+        timestamps()
+    }
+    
+    stages {
+        stage('Setup') {
+            steps {
+                echo "=== Setting up environment ==="
+                sh '''
+                    ruby --version
+                    gem --version
+                    bundler --version || gem install bundler
+                '''
+            }
+        }
+        
+        stage('Checkout') {
+            steps {
+                echo "=== Checking out code ==="
+                checkout scm
+                sh 'git log -1 --pretty=format:"%h - %an, %ar : %s"'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo "=== Installing gem dependencies ==="
+                sh '''
+                    gem install bundler
+                    gem install minitest-reporters
+                    gem install rake
+                    gem install rubocop
+                    gem install rubocop-rails
+                    gem install rubocop-performance
+                    gem install rubocop-minitest
+                '''
+            }
+        }
+        
+        stage('RuboCop - Root') {
+            steps {
+                echo "=== Running RuboCop on root project ==="
+                sh '''
+                    rubocop --config ${WORKSPACE}/.rubocop.yml --format progress --format json --out ${WORKSPACE}/rubocop-root.json || true
+                '''
+            }
+        }
+        
+        stage('RuboCop - Generators') {
+            steps {
+                echo "=== Running RuboCop on generators ==="
+                sh '''
+                    cd ${WORKSPACE}/lib/generators/jinda
+                    rubocop --config .rubocop.yml *.rb --format progress --format json --out ${WORKSPACE}/rubocop-generators.json || true
+                '''
+            }
+        }
+        
+        stage('RuboCop - Templates') {
+            steps {
+                echo "=== Running RuboCop on templates ==="
+                sh '''
+                    cd ${WORKSPACE}/lib/generators/jinda/templates
+                    rubocop --config .rubocop.yml --format progress --format json --out ${WORKSPACE}/rubocop-templates.json || true
+                '''
+            }
+        }
+        
+        stage('Start MongoDB') {
+            steps {
+                echo "=== Starting MongoDB for tests ==="
+                script {
+                    // Check if MongoDB is already running
+                    def mongoRunning = sh(
+                        script: 'docker ps | grep mongo || echo "not_running"',
+                        returnStdout: true
+                    ).trim()
+                    
+                    if (mongoRunning.contains('not_running')) {
+                        sh '''
+                            docker run -d --name jinda_mongodb_jenkins \
+                                -p ${MONGODB_PORT}:27017 \
+                                mongo:latest
+                            
+                            # Wait for MongoDB to be ready
+                            sleep 10
+                        '''
+                    } else {
+                        echo "MongoDB already running"
+                    }
+                }
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                echo "=== Running installation tests ==="
+                sh '''
+                    cd ${WORKSPACE}
+                    MONGODB_PORT=${MONGODB_PORT} ruby test/installation_test.rb || true
+                '''
+            }
+        }
+        
+        stage('Build Gem') {
+            steps {
+                echo "=== Building gem package ==="
+                sh '''
+                    cd ${WORKSPACE}
+                    gem build jinda.gemspec
+                    ls -lh jinda-*.gem
+                '''
+            }
+        }
+        
+        stage('Validate Gem') {
+            steps {
+                echo "=== Validating gem package ==="
+                sh '''
+                    cd ${WORKSPACE}
+                    gem specification jinda-*.gem --ruby
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo "=== Cleaning up ==="
+            
+            // Archive RuboCop results
+            archiveArtifacts artifacts: 'rubocop-*.json', allowEmptyArchive: true
+            
+            // Archive built gem
+            archiveArtifacts artifacts: 'jinda-*.gem', allowEmptyArchive: true
+            
+            // Stop and remove MongoDB container
+            sh '''
+                docker stop jinda_mongodb_jenkins || true
+                docker rm jinda_mongodb_jenkins || true
+            '''
+            
+            // Clean up test artifacts if SKIP_CLEANUP is false
+            sh '''
+                if [ "$SKIP_CLEANUP" = "false" ]; then
+                    rm -rf ~/tmp/jinda_tests || true
+                fi
+            '''
+        }
+        
+        success {
+            echo "✅ Build succeeded!"
+            // You can add notifications here (Slack, email, etc.)
+        }
+        
+        failure {
+            echo "❌ Build failed!"
+            // You can add failure notifications here
+        }
+        
+        unstable {
+            echo "⚠️  Build is unstable"
+        }
+    }
+}
