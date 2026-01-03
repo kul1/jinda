@@ -1,0 +1,62 @@
+name: RuboCop
+
+on:
+  push:
+    branches: [ main, develop, 'jinda-*' ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Read Ruby version from gemspec
+      id: ruby-version
+      run: |
+        RUBY_VERSION=$(grep 'required_ruby_version' jinda.gemspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+        echo "version=$RUBY_VERSION" >> $GITHUB_OUTPUT
+        echo "Ruby version from gemspec: $RUBY_VERSION"
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ steps.ruby-version.outputs.version }}
+        bundler-cache: false
+    
+    - name: Install RuboCop dependencies
+      run: |
+        gem install rubocop
+        gem install rubocop-rails
+        gem install rubocop-performance
+        gem install rubocop-minitest
+    
+    - name: Display RuboCop version
+      run: rubocop --version
+    
+    - name: Run RuboCop on Root
+      run: |
+        echo "=== Running RuboCop on root project ==="
+        rubocop --config .rubocop.yml --format progress --format json --out rubocop-root.json
+    
+    - name: Run RuboCop on Generators
+      run: |
+        echo "=== Running RuboCop on generators ==="
+        cd lib/generators/jinda
+        rubocop --config .rubocop.yml *.rb --format progress --format json --out ../../../rubocop-generators.json
+    
+    - name: Run RuboCop on Templates
+      run: |
+        echo "=== Running RuboCop on templates ==="
+        cd lib/generators/jinda/templates
+        rubocop --config .rubocop.yml --format progress --format json --out ../../../../rubocop-templates.json
+    
+    - name: Upload RuboCop results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: rubocop-results
+        path: rubocop-*.json
+        retention-days: 30
