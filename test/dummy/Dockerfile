@@ -1,12 +1,14 @@
 # https://docs.docker.com/compose/rails/
-FROM ruby:3.1.2
+FROM ruby:3.3.0
 RUN apt-get update -qq 
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
+COPY vendor /myapp/vendor
 # Fix from here
-RUN  gem install bundler:2.4.10
+RUN gem install bundler:2.4.10
+RUN mkdir -p /jinda
 # Fix end here
 RUN bundle install
 COPY . /myapp

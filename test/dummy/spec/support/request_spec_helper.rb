@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # request_spec_helper.rb
 
 module RequestSpecHelper

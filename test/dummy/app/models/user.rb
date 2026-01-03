@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 class User
   include Mongoid::Document
 
   # https://docs.mongodb.com/mongoid/master/tutorials/mongoid-indexes/
-  index({code: 1}, {unique: true, name: "code_index"})
+  index({ code: 1 }, { unique: true, name: 'code_index' })
   before_create { generate_token(:auth_token) }
-  field :provider, :type => String
-  field :uid, :type => String
-  field :code, :type => String
-  field :email, :type => String
-  field :role, :type => String
-  field :user, :type => String
-  field :auth_token, :type => String
-  field :password_reset_token, :type => String
-  field :password_reset_sent_at, :type => DateTime
-  field :image, :type => String
+  field :provider, type: String
+  field :uid, type: String
+  field :code, type: String
+  field :email, type: String
+  field :role, type: String
+  field :user, type: String
+  field :auth_token, type: String
+  field :password_reset_token, type: String
+  field :password_reset_sent_at, type: DateTime
+  field :image, type: String
 
-  belongs_to :identity, :polymorphic => true, :optional => true
-  has_many :xmains, :class_name => "Jinda::Xmain"
+  belongs_to :identity, polymorphic: true, optional: true
+  has_many :xmains, class_name: 'Jinda::Xmain'
   validates :code,
-            presence:   true,
+            presence: true,
             uniqueness: true
 
   ## Add to create forgot password
@@ -29,7 +31,7 @@ class User
   end
 
   def has_role(role1)
-    role.upcase.split(",").include?(role1.upcase)
+    role.upcase.split(',').include?(role1.upcase)
   end
 
   def self.from_omniauth(auth)
@@ -37,7 +39,7 @@ class User
     # where(auth.slice(:uid, :provider, :email)).first_or_create do |user|
     where(uid: auth.uid, provider: auth.provider, email: auth.info.email).first_or_create do |user|
       case auth.provider
-      when "identity"
+      when 'identity'
         identity   = Identity.find auth.uid
         user.code  = identity.code
         user.email = identity.email
@@ -46,14 +48,14 @@ class User
         user.uid      = auth.uid
         user.provider = auth.provider
         user.code     = auth.info.name
-        user.role     = "M"
+        user.role     = 'M'
         user.image    = auth.info.image
       end
     end
   end
 
   def ma_secured?
-    role.upcase.split(",").include?(ma_secured_ROLE)
+    role.upcase.split(',').include?(ma_secured_ROLE)
   end
 
   def send_password_reset
