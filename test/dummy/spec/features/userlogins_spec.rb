@@ -1,18 +1,20 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.feature "Userlogins", type: :feature do
-  scenario "Admin User Sign In" do
-    skip visit "/sessions/new"
+require 'rails_helper'
 
-    fill_in "User name", :with => "admin"
-    fill_in "Password", :with => "secret1"
-    click_button "Sign In"
+RSpec.feature 'Userlogins', type: :feature do
+  scenario 'Admin User Sign In' do
+    skip visit '/sessions/new'
 
-    xexpect(page).to have_text("My Articles")
+    fill_in 'User name', with: 'admin'
+    fill_in 'Password', with: 'secret1'
+    click_button 'Sign In'
+
+    xexpect(page).to have_text('My Articles')
   end
 
-  scenario "Google User Sign In" do
-    visit "/auth/google_oauth2"
-    expect(page).to have_text("Sign Out")
+  scenario 'Google User Sign In' do
+    visit '/auth/google_oauth2'
+    expect(page).to have_text('Sign Out')
   end
 end

@@ -24,7 +24,7 @@ require 'timeout'
 #     SKIP_CLEANUP=true ruby test/installation_test.rb
 #
 #   Use custom MongoDB port:
-#     MONGODB_PORT=27888 ruby test/installation_test.rb
+#     MONGODB_PORT=27017 ruby test/installation_test.rb
 # rubocop:disable Style/ClassVars
 class JindaInstallationTest < Minitest::Test
   # Make tests run in order - these tests are order-dependent by design
@@ -36,8 +36,8 @@ class JindaInstallationTest < Minitest::Test
   end
 
   JINDA_GEM_PATH = File.expand_path('..', __dir__)
-  TEST_DIR       = File.expand_path('~/tmp/jinda_tests')
-  MONGODB_PORT   = ENV.fetch('MONGODB_PORT', '27888')
+  TEST_DIR       = ENV.fetch('TEST_DIR', File.join(Dir.pwd, 'tmp', 'jinda_tests'))
+  MONGODB_PORT   = ENV.fetch('MONGODB_PORT', '27017')
   TEST_APP_NAME  = "jinda_test_#{Time.now.to_i}".freeze
 
   # Gem source configuration
@@ -100,9 +100,7 @@ class JindaInstallationTest < Minitest::Test
     # Check MongoDB (Docker or local)
     stdout, = Open3.capture3("docker ps | grep mongo || echo 'no_docker'")
 
-    skip unless stdout.include?('no_docker')
-
-    skip "MongoDB container not running - start with: docker run -d -p #{MONGODB_PORT}:27017 mongo"
+    skip "MongoDB container not running - start with: docker run -d -p #{MONGODB_PORT}:27017 mongo" if stdout.include?('no_docker')
   end
 
   def test_02_create_rails_app

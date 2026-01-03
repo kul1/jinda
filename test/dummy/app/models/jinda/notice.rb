@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module Jinda
   class Notice
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    field :message, :type => String
-    field :unread, :type => Boolean
-    field :ip, :type => String
-    belongs_to :user, :class_name => "User"
+    field :message, type: String
+    field :unread, type: Boolean
+    field :ip, type: String
+    belongs_to :user, class_name: 'User'
 
     def self.recent(_user_id, ip)
       where(unread: true, ip: ip).last
