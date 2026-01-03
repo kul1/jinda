@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 require 'rake/testtask'
-require 'rubocop/rake_task'
-
-# RuboCop task
-RuboCop::RakeTask.new(:rubocop) do |task|
-  task.options       = ['--config', '.rubocop.yml']
-  task.fail_on_error = true
+begin
+  require 'rubocop/rake_task'
+  # RuboCop task
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    task.options       = ['--config', '.rubocop.yml']
+    task.fail_on_error = true
+  end
+rescue LoadError
+  task :rubocop do
+    puts 'RuboCop not installed. Skipping rubocop task.'
+  end
 end
 
 # Installation test task (runs first)
