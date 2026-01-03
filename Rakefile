@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
 require 'rake/testtask'
+
+# RuboCop task (optional - only loads if gem is available)
+# This makes the Rakefile work in CI environments where RuboCop may not be installed yet
 begin
   require 'rubocop/rake_task'
-  # RuboCop task
   RuboCop::RakeTask.new(:rubocop) do |task|
     task.options       = ['--config', '.rubocop.yml']
     task.fail_on_error = true
   end
+  RUBOCOP_AVAILABLE = true
 rescue LoadError
-  task :rubocop do
-    puts 'RuboCop not installed. Skipping rubocop task.'
-  end
+  # RuboCop not available - will be skipped in default task
+  RUBOCOP_AVAILABLE = false
 end
 
 # Installation test task (runs first)
@@ -44,8 +46,14 @@ Rake::TestTask.new(:test) do |t|
   t.warning    = false
 end
 
-# Default task runs both rubocop and installation tests
-task default: %i[rubocop test]
+# Default task - only includes rubocop if available
+# In CI, separate workflows handle RuboCop and tests independently
+if defined?(RUBOCOP_AVAILABLE) && RUBOCOP_AVAILABLE
+  task default: %i[rubocop test]
+else
+  # RuboCop not installed - just run tests
+  task default: :test
+end
 
 task console: :environment do
   exec 'irb -r jinda -I ./lib'
