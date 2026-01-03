@@ -89,7 +89,7 @@ class JindaIntegrationTest < Minitest::Test
       
       # Clean up PID file
       pid_file = File.join(@@test_app_path, 'tmp/pids/server.pid')
-      File.delete(pid_file) if File.exist?(pid_file)
+      FileUtils.rm_f(pid_file)
     elsif ENV['KEEP_SERVER'] == 'true'
       puts "\n=== Server kept running at #{TEST_PORT} (PID: #{@@server_pid}) ==="
       puts "To stop: kill #{@@server_pid}"
@@ -102,7 +102,7 @@ class JindaIntegrationTest < Minitest::Test
       
       # Clean up old PID file if exists
       pid_file = 'tmp/pids/server.pid'
-      File.delete(pid_file) if File.exist?(pid_file)
+      FileUtils.rm_f(pid_file)
 
       # Start server in background
       @@server_pid = spawn(
