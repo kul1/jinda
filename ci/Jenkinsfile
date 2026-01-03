@@ -136,7 +136,7 @@ pipeline {
                 echo "=== Validating gem package ==="
                 sh '''
                     cd ${WORKSPACE}
-                    gem specification jinda-*.gem --ruby
+                    gem specification jinda-*.gem
                 '''
             }
         }

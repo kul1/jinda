@@ -74,7 +74,7 @@ jobs:
     
     - name: Validate gem package
       run: |
-        gem specification jinda-*.gem --ruby
+        gem specification jinda-*.gem
     
     - name: Upload gem artifact
       if: success()
