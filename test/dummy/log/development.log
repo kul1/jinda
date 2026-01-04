@@ -821,3 +821,15 @@ MONGODB | localhost:27017 req:3406 | dummy0_development.find | SUCCEEDED | 0.001
 Completed 200 OK in 64ms (Views: 44.9ms | MongoDB: 19.1ms | Allocations: 210002)
 
 
+Started GET "/" for ::1 at 2026-01-03 20:08:03 -0600
+
+LoadError - cannot load such file -- /Users/kul/mygem/jinda/test/dummy0/config/routes.rb:
+
+Started GET "/" for ::1 at 2026-01-03 20:08:04 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-01-03 20:08:05 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
