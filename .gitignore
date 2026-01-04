@@ -21,6 +21,7 @@
 /figures/
 /prepared/
 *.png
+!doc/**/*.png
 *.pdf
 *_analysis.py
 generate_*.rb
