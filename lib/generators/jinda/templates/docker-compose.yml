@@ -1,18 +1,13 @@
 services:
-  web:
-    build: .
-    env_file: .env
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/myapp
-      - /Users/kul/mygem/jinda:/Users/kul/mygem/jinda
-      - /Users/kul/mygem/jinda_adminlte:/Users/kul/mygem/jinda_adminlte
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongodb
-
   mongodb:
-    image: mongo
+    image: mongo:latest
+    container_name: jinda_mongodb
     ports:
-      - "27888:27017"
+      - "27071:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=jinda_development
+
+volumes:
+  mongodb_data:

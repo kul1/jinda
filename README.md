@@ -1,6 +1,6 @@
 # Jinda
 
-Jinda is a gem to create Rails Workflow & Application Generator using Freemind
+Jinda is a gem to create Rails Workflow & Application Generator using Freemind and coming with AI
 
 Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 
@@ -17,6 +17,7 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 - Sample app: Articles, API Note, Document
 - Support themes: Jinda_adminlte, Jinda_adminBSB
 - Support HTML, HAML, SCSS
+- AI
   <br />
 
 # [Jinda](https://github.com/kul1/jinda)
