@@ -1,4 +1,0 @@
-- if request.accept=="text/html, */*; q=0.01"
-  = render "layouts/jqm/page"
-- else
-  = render "layouts/jqm/full"

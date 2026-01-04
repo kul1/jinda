@@ -7,8 +7,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 COPY vendor /myapp/vendor
 # Fix from here
-RUN gem install bundler:2.4.10
-RUN mkdir -p /jinda
+RUN  gem install bundler:2.4.10
 # Fix end here
 RUN bundle install
 COPY . /myapp

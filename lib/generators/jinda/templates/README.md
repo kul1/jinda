@@ -2,7 +2,7 @@
 Rails Application Generator using Freemind
 
 * [jinda](https://github.com/kul1/jinda)
-  - ![jinda-screen](https://user-images.githubusercontent.com/3953832/41832753-0143339a-7813-11e8-9ef9-c1601443c604.png)
+  - ![jinda-screen](doc/images/intro_old.png)
 
 ## Additional Extension themes also available at 
 * [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
@@ -15,8 +15,8 @@ Rails Application Generator using Freemind
 
 These versions works for sure but others may do.
 
-* Ruby 2.7.0
-* Rails 6.0.3
+* Ruby 3.3.0
+* Rails 7.1.6
 * MongoDB 6 
     - Username:
     - Password:
