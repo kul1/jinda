@@ -14,7 +14,7 @@ jobs:
       mongodb:
         image: mongo:latest
         ports:
-          - 27888:27017
+          - 27017:27017
         options: >-
           --health-cmd "mongosh --eval 'db.runCommand({ ping: 1 })'"
           --health-interval 10s
@@ -62,7 +62,7 @@ jobs:
     
     - name: Run installation tests
       env:
-        MONGODB_PORT: 27888
+        MONGODB_PORT: 27017
         SKIP_CLEANUP: false
       run: |
         rake test
