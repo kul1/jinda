@@ -170,8 +170,6 @@ class JenkinsStageTest < Minitest::Test
     content = File.read(JENKINSFILE_PATH)
 
     # Check error handling in post blocks and cleanup
-    post_content = content[/post \{.*?\}/m]
-
     assert_includes content, 'always {',
                     'Should have always block for cleanup'
     assert_includes content, '|| true',
