@@ -75,12 +75,6 @@ arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-l
 
 ### Sample Jinda in Docker
 
-
-<br>
-[![Watch install video](docs/images/jinda_install.png)](https://www.youtube.com/watch?v=XUXv7Yrskjk)
-
-### Sample Jinda in Docker
-
 - https://github.com/kul1/jinda-docker
 
 Supposed we want to create ecommerce web site, first create a Rails
