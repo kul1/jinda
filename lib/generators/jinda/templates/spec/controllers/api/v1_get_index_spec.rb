@@ -5,7 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Notes API', type: :request do
   # let(:notes) { create_list(:note,1)}
   # let!(:notes) {Note.create(title: "dddd", body: "body")}
-  let!(:note) { FactoryBot.create_list(:note, 9) }
+  let!(:admin_user) { User.create(code: 'admin', email: 'admin@example.com', role: 'Admin') }
+  let!(:note) { FactoryBot.create_list(:note, 9, user: admin_user) }
   let(:note_id) { notes.first.id }
 
   describe 'GET /api/v1/notes' do

@@ -45,8 +45,8 @@ group :development do
   # gem "spring"
 end
 
-gem "jinda", path: "../../../jinda"
-gem "jinda_adminlte", path: "../../../jinda_adminlte"
+gem "jinda", path: "~/mygem/jinda"
+gem "jinda_adminlte", path: "~/mygem/jinda_adminlte"
 gem "bson", "~> 4.15"
 gem "maruku", "~> 0.7.3"
 gem "bcrypt"

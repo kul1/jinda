@@ -3,22 +3,24 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  let!(:admin_user) { User.create(code: 'admin', email: 'admin@example.com', role: 'Admin') }
+
   describe 'Required only  title (Maximum 30)' do
     it 'valid with  both title and body' do
       before_count = Note.count
-      Note.create(title: 'dddd', body: 'body')
+      Note.create(title: 'dddd', body: 'body', user: admin_user)
       expect(Note.count).not_to eq(before_count)
     end
 
     it 'valid with  only title' do
       before_count = Note.count
-      Note.create(title: 'Title')
+      Note.create(title: 'Title', user: admin_user)
       expect(Note.count).not_to eq(before_count)
     end
 
     it 'invalid with  only body' do
       before_count = Note.count
-      Note.new(body: 'body')
+      Note.new(body: 'body', user: admin_user)
       expect(Note.count).to eq(before_count)
     end
 
@@ -26,14 +28,14 @@ RSpec.describe Note, type: :model do
       before_count = Note.count
       title_max    = 'x' * 30
       body_max     = 'y' * 1001
-      Note.create(title: title_max, body: body_max)
+      Note.create(title: title_max, body: body_max, user: admin_user)
       expect(Note.count).to eq(before_count)
     end
   end
 
   describe 'title data  blank' do
     it 'auto fill from body' do
-      note = Note.create(title: '', body: 'Body content')
+      note = Note.create(title: '', body: 'Body content', user: admin_user)
       note.title.should == 'Body content'
     end
   end

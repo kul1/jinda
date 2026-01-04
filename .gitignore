@@ -25,3 +25,6 @@
 *.pdf
 *_analysis.py
 generate_*.rb
+
+# Warp AI rules - personal development use only
+WARP.md

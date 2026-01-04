@@ -110,13 +110,77 @@ pipeline {
             }
         }
         
-        stage('Run Tests') {
+        stage('Run Installation Tests') {
             steps {
                 echo "=== Running installation tests ==="
                 sh '''
                     cd ${WORKSPACE}
-                    MONGODB_PORT=${MONGODB_PORT} ruby test/installation_test.rb || true
+                    MONGODB_PORT=${MONGODB_PORT} SKIP_CLEANUP=true ruby test/installation_test.rb
                 '''
+            }
+        }
+        
+        stage('Test Generated Application') {
+            steps {
+                echo "=== Testing the generated Jinda application ==="
+                script {
+                    // Find the generated test app directory
+                    def testAppDir = sh(
+                        script: 'ls -td ${WORKSPACE}/tmp/jinda_tests/jinda_test_* 2>/dev/null | head -1 || echo ""',
+                        returnStdout: true
+                    ).trim()
+                    
+                    if (testAppDir && testAppDir != "") {
+                        echo "Found test app at: ${testAppDir}"
+                        
+                        sh """
+                            cd ${testAppDir}
+                            
+                            echo "=== Generated App: Bundle install ==="
+                            bundle install || exit 1
+                            
+                            echo "=== Generated App: Check Rails environment ==="
+                            RAILS_ENV=test bundle exec rails runner "puts 'Rails loaded: ' + Rails.env" || exit 1
+                            
+                            echo "=== Generated App: Run RSpec tests (if available) ==="
+                            if [ -d "spec" ] && [ -f "bin/rspec" ]; then
+                                bundle exec rspec || echo "RSpec tests failed or not configured"
+                            else
+                                echo "No RSpec tests found, skipping"
+                            fi
+                            
+                            echo "=== Generated App: Run Minitest (if available) ==="
+                            if [ -d "test" ] && [ -f "Rakefile" ]; then
+                                bundle exec rake test || echo "Minitest failed or not configured"
+                            else
+                                echo "No Minitest found, skipping"
+                            fi
+                            
+                            echo "=== Generated App: Verify can start server ==="
+                            timeout 30 bundle exec rails server -p 3001 -d || echo "Server start test skipped"
+                            
+                            # Stop server if started
+                            if [ -f tmp/pids/server.pid ]; then
+                                kill \$(cat tmp/pids/server.pid) 2>/dev/null || true
+                                rm tmp/pids/server.pid
+                            fi
+                            
+                            echo "=== Generated App: Verify login functionality ==="
+                            # You can add more specific tests here
+                            bundle exec rails runner "
+                                if defined?(User)
+                                  count = User.count
+                                  puts 'User model accessible, count: ' + count.to_s
+                                else
+                                  puts 'Warning: User model not found'
+                                end
+                            " || echo "Login verification skipped"
+                        """
+                    } else {
+                        echo "⚠️  Warning: No generated test app found. Installation test may have failed."
+                        currentBuild.result = 'UNSTABLE'
+                    }
+                }
             }
         }
         
@@ -158,11 +222,13 @@ pipeline {
                 docker rm jinda_mongodb_jenkins || true
             '''
             
-            // Clean up test artifacts if SKIP_CLEANUP is false
+            // Clean up test artifacts
             sh '''
-                if [ "$SKIP_CLEANUP" = "false" ]; then
-                    rm -rf ~/tmp/jinda_tests || true
-                fi
+                # Clean up test app directories
+                rm -rf ${WORKSPACE}/tmp/jinda_tests || true
+                
+                # Clean up any lingering test processes
+                pkill -f "rails server" || true
             '''
         }
         

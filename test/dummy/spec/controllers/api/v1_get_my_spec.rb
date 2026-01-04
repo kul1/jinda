@@ -3,8 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Notes API', type: :request do
-  let!(:note) { FactoryBot.create_list(:note, 9) }
-  before { get api_v1_notes_my_path }
+  let!(:admin_user) { User.create(code: 'admin', email: 'admin@example.com', role: 'Admin') }
+  let!(:note) { FactoryBot.create_list(:note, 9, user: admin_user) }
+  before do
+    allow_any_instance_of(Api::V1::NotesController).to receive(:current_ma_user).and_return(admin_user)
+    get api_v1_notes_my_path
+  end
 
   it 'returns all notes' do
     expect(json.size).to eq(9)
