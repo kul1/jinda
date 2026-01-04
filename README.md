@@ -71,7 +71,10 @@ arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-l
 
 ### Screen shot install Jinda
 
-[![YouTube](docs/images/yt_logo.png)](https://www.youtube.com/watch?v=XUXv7Yrskjk)
+[Watch install video on YouTube](https://www.youtube.com/watch?v=XUXv7Yrskjk)
+
+### Sample Jinda in Docker
+
 
 <br>
 [![Watch install video](docs/images/jinda_install.png)](https://www.youtube.com/watch?v=XUXv7Yrskjk)
