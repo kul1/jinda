@@ -16,8 +16,10 @@
 **/.env-bak
 **/development.log
 
-# Test dummy app - for local development only
-test/dummy/
+# Test dummy app - keep test/dummy tracked to see generator changes
+# But ignore other dummy test directories
+dummy*
+!test/dummy/
 
 
 # Analysis artifacts - keep local only
