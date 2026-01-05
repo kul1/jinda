@@ -16,6 +16,9 @@
 **/.env-bak
 **/development.log
 
+# Test dummy app - for local development only
+test/dummy/
+
 
 # Analysis artifacts - keep local only
 /figures/
