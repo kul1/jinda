@@ -17,8 +17,7 @@
 **/development.log
 
 # Test dummy app - for local development only
-test/dummy*
-dummy*
+test/dummy/
 
 
 # Analysis artifacts - keep local only

@@ -1,0 +1,10 @@
+<%- @title= 'Edit Note' %>
+<%
+  doc = Note.find_by :id => $xvars["select_note"]["id"]
+%>
+<%= fields_for doc do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title, required: true %><Br>
+  <%= f.label :body, "Body Content" %>
+  <%= f.text_area :body, :cols=>50, :rows=>6 ,required: true %>
+<% end %>

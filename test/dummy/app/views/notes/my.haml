@@ -1,0 +1,21 @@
+- @title= "My Notes"
+%P
+- @page_title  = 'My Notes'
+= paginate @notes
+%table{:class=>"module-table", :data-mode => "reflow", :data-role => "table"}
+  %tr
+    %th Title
+    %th Body 
+    %th Created
+    %th Updated
+    %th Delete
+    %th Edit  
+  - @notes.each do |note|
+    %tr
+      %td= link_to note.title, :controller=>"notes", :action=>"show", :id=>note.id
+      %td= note.body
+      %td= note.created_at.strftime('%m/%d/%Y')
+      %td= note.updated_at.strftime('%m/%d/%Y')
+      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), "#", :onclick=>"if (confirm('Please Confirm')) {location.hash='/notes/destroy/#{note.id}';}"
+      %td(align='center')= link_to image_tag('pencil.png', style:'border:none; float:none;'), {controller: "jinda", action: "init", s: 'notes:xedit', note_id: note.id}, data: { confirm: "Please Confirm" }
+
