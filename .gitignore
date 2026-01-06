@@ -31,5 +31,5 @@ dummy*
 *_analysis.py
 generate_*.rb
 
-# Warp AI rules - personal development use only
-WARP.md
+# AI agent rules - personal development use only
+AGENTS.md
