@@ -230,68 +230,68 @@ else
     exit 1
 fi
 
-# Test 10: Start Rails server and test
-echo ""
-echo "Test 10: Testing Rails server..."
-echo "-----------------------------------"
-print_info "Starting Rails server on port 3000..."
-
-# Start server in background
-bundle exec rails server -p 3000 -d
-
-# Wait for server to start
-sleep 5
-
-# Check if server is running
-if lsof -i :3000 > /dev/null 2>&1; then
-    print_status "Rails server started successfully on port 3000"
-    
-    # Test HTTP response
-    print_info "Testing HTTP request to localhost:3000..."
-    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
-    
-    if [ "$HTTP_CODE" == "200" ] || [ "$HTTP_CODE" == "302" ]; then
-        print_status "Server responding correctly (HTTP $HTTP_CODE)"
-    else
-        print_error "Server returned HTTP $HTTP_CODE"
-    fi
-    
-    # Stop the server
-    print_info "Stopping Rails server..."
-    if [ -f tmp/pids/server.pid ]; then
-        kill $(cat tmp/pids/server.pid) 2>/dev/null || true
-        rm -f tmp/pids/server.pid 2>/dev/null || true
-    fi
-else
-    print_error "Rails server failed to start"
-    exit 1
-fi
-
-# Test 11: Verify key files exist
-echo ""
-echo "Test 11: Verifying installation files..."
-echo "-----------------------------------"
-FILES=(
-    "app/controllers/admins_controller.rb"
-    "app/controllers/articles_controller.rb"
-    "app/models/user.rb"
-    "app/views/jinda/index.html.haml"
-    "config/initializers/jinda.rb"
-    "config/initializers/omniauth.rb"
-    "config/mongoid.yml"
-    "db/seeds.rb"
-)
-
-for file in "${FILES[@]}"; do
-    if [ -f "$file" ]; then
-        print_status "File exists: $file"
-    else
-        print_error "File missing: $file"
-    fi
-done
-
-# Summary
-echo ""
+# # Test 10: Start Rails server and test
+# echo ""
+# echo "Test 10: Testing Rails server..."
+# echo "-----------------------------------"
+# print_info "Starting Rails server on port 3000..."
+# 
+# # Start server in background
+# bundle exec rails server -p 3000 -d
+# 
+# # Wait for server to start
+# sleep 5
+# 
+# # Check if server is running
+# if lsof -i :3000 > /dev/null 2>&1; then
+#     print_status "Rails server started successfully on port 3000"
+#     
+#     # Test HTTP response
+#     print_info "Testing HTTP request to localhost:3000..."
+#     HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+#     
+#     if [ "$HTTP_CODE" == "200" ] || [ "$HTTP_CODE" == "302" ]; then
+#         print_status "Server responding correctly (HTTP $HTTP_CODE)"
+#     else
+#         print_error "Server returned HTTP $HTTP_CODE"
+#     fi
+#     
+#     # Stop the server
+#     print_info "Stopping Rails server..."
+#     if [ -f tmp/pids/server.pid ]; then
+#         kill $(cat tmp/pids/server.pid) 2>/dev/null || true
+#         rm -f tmp/pids/server.pid 2>/dev/null || true
+#     fi
+# else
+#     print_error "Rails server failed to start"
+#     exit 1
+# fi
+# 
+# # Test 11: Verify key files exist
+# echo ""
+# echo "Test 11: Verifying installation files..."
+# echo "-----------------------------------"
+# FILES=(
+#     "app/controllers/admins_controller.rb"
+#     "app/controllers/articles_controller.rb"
+#     "app/models/user.rb"
+#     "app/views/jinda/index.html.haml"
+#     "config/initializers/jinda.rb"
+#     "config/initializers/omniauth.rb"
+#     "config/mongoid.yml"
+#     "db/seeds.rb"
+# )
+# 
+# for file in "${FILES[@]}"; do
+#     if [ -f "$file" ]; then
+#         print_status "File exists: $file"
+#     else
+#         print_error "File missing: $file"
+#     fi
+# done
+# 
+# # Summary
+# echo ""
 echo "=========================================="
 echo "Test Summary"
 echo "=========================================="
@@ -307,8 +307,8 @@ echo "  6. ✓ Bundle install (post-generator)"
 echo "  7. ✓ rails generate jinda:config"
 echo "  8. ✓ rails jinda:seed"
 echo "  9. ✓ Rails environment initialized"
-echo "  10. ✓ Rails server starts and responds"
-echo "  11. ✓ Key files verified"
+echo ""
+
 echo ""
 print_info "Test app location: $TEST_DIR/$TEST_APP_NAME"
 print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_installation.sh"

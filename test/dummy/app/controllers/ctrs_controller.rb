@@ -1,0 +1,2 @@
+class CtrsController < ApplicationController
+end

@@ -4,8 +4,9 @@
     %div{"data-role" => "header", "data-theme" => "b", "data-backbtn"=>"false"}
       %h1= head
     %div{"data-role" => "content", "data-id" => "menu_mm"}
-      %form.ui-filterable
-      %ul{"data-role" => "listview", "data-theme" => "g", "data-filter" => "true"}
+      %form.ui-filterable{:action => "#", :method => "get"}
+        %input#menu-filter-input{"data-type" => "search", :placeholder => "Search menu...", :name => "menu_filter", :autocomplete => "off"}
+      %ul{"data-role" => "listview", "data-theme" => "g", "data-filter" => "true", "data-filter-reveal" => "true", "data-input" => "#menu-filter-input"}
         %li
           %a{"data-panel" => "main", "data-id" => "home", :href => "/jinda"} Home
         = render :partial => "jinda/menu_mm"

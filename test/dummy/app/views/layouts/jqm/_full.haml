@@ -31,3 +31,22 @@
 /   });
 
 /= raw handle_ma_notice
+:javascript
+  (function() {
+    function fixFormAttributes() {
+      var elements = document.querySelectorAll('input, select, textarea, button');
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        if (!el.id) {
+          el.id = 'gen-id-' + Math.random().toString(36).substr(2, 9);
+        }
+        if (!el.name && (el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA')) {
+          el.name = el.id;
+        }
+      }
+    }
+    window.addEventListener('load', fixFormAttributes);
+    // Also run on JQM page transitions if possible
+    document.addEventListener('pagecreate', fixFormAttributes);
+    document.addEventListener('pageshow', fixFormAttributes);
+  })();
