@@ -111,14 +111,14 @@ def make_fields(n)
         k, v = text1.split(/:\s*/, 2)
         v  ||= 'string'
         v    = 'float' if /double/i.match?(v)
-        s << " #{name2code(k.strip)}:#{v.strip} "
+        s += " #{name2code(k.strip)}:#{v.strip} "
         h << { code: name2code(k.strip), type: v.strip, edit: edit1, text: text1 }
       end
     else
       k, v = text.split(/:\s*/, 2)
       v  ||= 'string'
       v    = 'float' if /double/i.match?(v)
-      s << " #{name2code(k.strip)}:#{v.strip} "
+      s += " #{name2code(k.strip)}:#{v.strip} "
       h << { code: name2code(k.strip), type: v.strip, edit: edit, text: text }
     end
   end

@@ -1,7 +1,7 @@
 .container
   .signup-form
     - @title= 'Sign Up'
-    = form_tag "/auth/identity/register", {'data-ajax'=>'false'} do
+    = form_tag "/auth/identity/register", {'data-ajax'=>'false', :id => 'signup_form'} do
       %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign Up
       .sign_in
       .label-warning
@@ -26,7 +26,7 @@
       .form-group.form-control
         = label_tag :password_confirmation, 'Confirm password'
         = password_field_tag :password_confirmation
-      %button.btn.btn-success.btn-block.actions{:type => "submit"}
+      %button.btn.btn-success.btn-block.actions{:type => "submit", :id => "sign_up_button", :name => "commit"}
         %i.fas.fa-sign-up-alt
         Sign Up
 
