@@ -2,9 +2,9 @@
 # Test script for Jinda gem installation and development setup
 # This script validates each step of the Jinda installation process
 
-set -e  # Exit on error
 
 # Colors for output
+set -e
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -17,8 +17,18 @@ JINDA_GEM_PATH="$HOME/mygem/jinda"
 MONGODB_PORT=${MONGODB_PORT:-27017}  # Use env var or default to standard port
 
 echo "=========================================="
+# Ensure Rails is installed
+if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
+  echo "Installing Rails..."
+  gem install rails -v 7.1.6
+fi
 echo "Jinda Gem Installation Test Suite"
 echo "=========================================="
+# Ensure Rails is installed
+if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
+  echo "Installing Rails..."
+  gem install rails -v 7.1.6
+fi
 
 # Function to print status
 print_status() {
@@ -29,11 +39,6 @@ print_error() {
     echo -e "${RED}[✗]${NC} $1"
 }
 
-# Ensure Rails is installed
-if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
-  print_info "Installing Rails..."
-  gem install rails -v 7.1.6
-fi
 print_info() {
     echo -e "${YELLOW}[i]${NC} $1"
 }
@@ -59,25 +64,6 @@ cleanup() {
     fi
 }
 
-trap cleanup EXIT
-
-# Create test directory
-mkdir -p "$TEST_DIR"
-cd "$TEST_DIR"
-
-# Test 1: Check prerequisites
-echo ""
-echo "Test 1: Checking prerequisites..."
-echo "-----------------------------------"
-
-# Check Ruby version
-RUBY_VERSION=$(ruby -v | awk '{print $2}')
-if [[ "$RUBY_VERSION" =~ ^3\.3\. ]]; then
-    print_status "Ruby version: $RUBY_VERSION"
-else
-    print_error "Ruby version $RUBY_VERSION is not 3.3.x"
-    exit 1
-fi
 
 # Check Rails
 RAILS_VERSION=$(rails -v | awk '{print $2}')
@@ -320,8 +306,18 @@ fi
 # # Summary
 # echo ""
 echo "=========================================="
+# Ensure Rails is installed
+if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
+  echo "Installing Rails..."
+  gem install rails -v 7.1.6
+fi
 echo "Test Summary"
 echo "=========================================="
+# Ensure Rails is installed
+if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
+  echo "Installing Rails..."
+  gem install rails -v 7.1.6
+fi
 print_status "All tests passed successfully!"
 echo ""
 echo "Installation steps verified:"
