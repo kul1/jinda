@@ -9360,3 +9360,620 @@ MONGODB | localhost:27017 req:1036 | dummy_development.find | SUCCEEDED | 0.001s
 Completed 200 OK in 96ms (Views: 55.0ms | MongoDB: 41.2ms | Allocations: 419951)
 
 
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:6 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:6 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:7 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:7 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:8 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a....
+MONGODB | localhost:27017 req:8 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:9 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:9 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:10 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:10 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:11 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:11 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:12 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:12 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:13 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...
+MONGODB | localhost:27017 req:13 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:14 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:14 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:15 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:15 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:16 conn:1:1 sconn:9 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>3}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:16 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:17 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"Mindmap Editor: /mindmap_editor/edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060...
+MONGODB | localhost:27017 req:17 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:18 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:18 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:19 conn:1:1 sconn:9 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>5}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:19 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:20 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:20 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:21 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a.....
+MONGODB | localhost:27017 req:21 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:22 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...
+MONGODB | localhost:27017 req:22 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:23 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:23 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:24 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:24 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:25 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:25 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:26 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:26 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:27 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:27 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:28 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:28 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:29 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:29 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:30 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:30 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:31 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:31 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:32 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:32 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:33 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:33 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:34 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:34 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:35 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:35 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:36 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>...
+MONGODB | localhost:27017 req:36 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:37 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a......
+MONGODB | localhost:27017 req:37 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:38 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:38 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:39 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:39 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:40 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:40 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:41 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:41 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:42 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:42 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:43 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:43 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:44 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:44 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:45 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:45 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:46 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:46 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:47 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:47 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:48 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:48 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:49 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:49 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:50 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34...
+MONGODB | localhost:27017 req:50 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:51 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:51 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:52 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:52 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:53 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:53 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:54 conn:1:1 sconn:9 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695feadcdb97097ebcd4a36f", "695feadcdb97097ebcd4a370", "695feadcdb97097ebcd4a371", "695feadcdb97097ebcd4a372", "695feadcdb97097ebcd4a373", "695feadcdb97097ebcd4a374", "6...
+MONGODB | localhost:27017 req:54 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:55 conn:1:1 sconn:9 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695fe905db970964d7899c79", "695fe905db970964d7899c7a", "695fe905db970964d7899c7b", "695fe905db970964d7899c7c", "695fe905db970964d7899c7e", "695fe905db970964d7899c7f", "...
+MONGODB | localhost:27017 req:55 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:56 conn:1:1 sconn:9 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x0c0620060bb34d9a...>}}
+MONGODB | localhost:27017 req:56 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:6 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:6 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:7 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:7 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:8 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457....
+MONGODB | localhost:27017 req:8 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:9 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:9 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:10 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:10 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:11 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:11 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:12 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:12 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:13 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:13 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:14 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:14 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:15 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:15 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:16 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>3}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:16 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:17 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"Mindmap Editor: /mindmap_editor/edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e36...
+MONGODB | localhost:27017 req:17 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:18 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:18 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:19 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>5}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:19 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:20 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:20 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:21 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457.....
+MONGODB | localhost:27017 req:21 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:22 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:22 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:23 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:23 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:24 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:24 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:25 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:25 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:26 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:26 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:27 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:27 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:28 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:28 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:29 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:29 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:30 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:30 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:31 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:31 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:32 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:32 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:33 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:33 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:34 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:34 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:35 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:35 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:36 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>...
+MONGODB | localhost:27017 req:36 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:37 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457......
+MONGODB | localhost:27017 req:37 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:38 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:38 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:39 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:39 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:40 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:40 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:41 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:41 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:42 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:42 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:43 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:43 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:44 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:44 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:45 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:45 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:46 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:46 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:47 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:47 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:48 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:48 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:49 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:49 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:50 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624...
+MONGODB | localhost:27017 req:50 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:51 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:51 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:52 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:52 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:53 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:53 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:54 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695feadcdb97097ebcd4a36f", "695feadcdb97097ebcd4a370", "695feadcdb97097ebcd4a371", "695feadcdb97097ebcd4a372", "695feadcdb97097ebcd4a373", "695feadcdb97097ebcd4a374", "6...
+MONGODB | localhost:27017 req:54 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:55 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695fe905db970964d7899c79", "695fe905db970964d7899c7a", "695fe905db970964d7899c7b", "695fe905db970964d7899c7c", "695fe905db970964d7899c7e", "695fe905db970964d7899c7f", "...
+MONGODB | localhost:27017 req:55 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:56 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:56 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:57 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:57 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:58 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a36f')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:58 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:59 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a370')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:59 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:60 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a371')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:60 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:61 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a372')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:61 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:62 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a373')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:62 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:63 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a374')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:63 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:64 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a375')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:64 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:65 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a376')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:65 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:66 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a377')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:66 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:67 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a378')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:67 | dummy_development.find | SUCCEEDED | 0.001s
+app/views/users/index.haml
+app/views/users/index.haml
+app/views/users/user/enter_user.html.erb
+app/views/users/pwd/enter.html.erb
+app/views/admins/edit_role/select_user.html.erb
+app/views/admins/edit_role/edit_role.html.erb
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/devs/index.haml
+app/views/devs/index.haml
+app/views/docs/index.haml
+app/views/docs/doc_new/doc_form.html.erb
+app/views/docs/doc_edit/doc_select.html.erb
+app/views/docs/doc_edit/doc_edit.html.erb
+app/views/docs/doc_xedit/doc_edit.html.erb
+app/views/notes/index.haml
+app/views/notes/new/new_note.html.erb
+app/views/notes/edit/select_note.html.erb
+app/views/notes/edit/edit_note.html.erb
+app/views/notes/delete/select_note.html.erb
+app/views/notes/mail/select_note.html.erb
+app/views/notes/mail/display_mail.html.erb
+app/views/notes/xedit/edit_note.html.erb
+app/views/articles/index.haml
+app/views/articles/index.haml
+app/views/articles/new_article/form_article.html.erb
+app/views/articles/edit_article/select_article.html.erb
+app/views/articles/edit_article/edit_article.html.erb
+app/views/articles/xedit_article/edit_article.html.erb
+app/views/ctrs/vfolder1/viewfile1.html.erb
+app/views/ctrs/vfolder1/viewfile2.html.erb
+app/views/ctrs/vfolder2/viewfile2.html.erb
+app/views/api/v1/notes/index.haml
+app/views/api/v1/notes/new/new_note.html.erb
+app/views/api/v1/notes/edit/edit_note.html.erb
+app/views/api/v1/notes/delete/select_note.html.erb
+*** generate ui ***
+create file app/views/admins/index.haml
+create file app/views/devs/index.haml
+create directory app/views/comments
+create directory app/views/comments/new_comment
+create directory app/views/comments/comments
+create directory app/views/sitemap/sitemap
+create directory app/views/api/v1/notes
+create file app/views/api/v1/notes/index.haml
+create directory app/views/api/v1/notes/new
+create file app/views/api/v1/notes/new/new_note.html.erb
+create directory app/views/api/v1/notes/edit
+create file app/views/api/v1/notes/edit/edit_note.html.erb
+create directory app/views/api/v1/notes/delete
+create file app/views/api/v1/notes/delete/select_note.html.erb
+MONGODB | localhost:27017 req:68 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:68 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:69 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:69 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:70 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457....
+MONGODB | localhost:27017 req:70 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:71 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:71 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:72 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:72 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:73 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:73 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:74 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:74 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:75 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:75 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:76 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:76 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:77 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:77 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:78 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>3}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:78 | dummy_development.update | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:79 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"Mindmap Editor: /mindmap_editor/edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e36...
+MONGODB | localhost:27017 req:79 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:80 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:80 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:81 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>5}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:81 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:82 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:82 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:83 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457.....
+MONGODB | localhost:27017 req:83 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:84 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:84 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:85 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:85 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:86 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:86 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:87 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:87 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:88 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:88 | dummy_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:89 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:89 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:90 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:90 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:91 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:91 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:92 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:92 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:93 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:93 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:94 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:94 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:95 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:95 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:96 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:96 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:97 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:97 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:98 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>...
+MONGODB | localhost:27017 req:98 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:99 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457......
+MONGODB | localhost:27017 req:99 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:100 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:100 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:101 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:101 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:102 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:102 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:103 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:103 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:104 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:104 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:105 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:105 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:106 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:106 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:107 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:107 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:108 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:108 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:109 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:109 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:110 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:110 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:111 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:111 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:112 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624...
+MONGODB | localhost:27017 req:112 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:113 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:113 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:114 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:114 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:115 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:115 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:116 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695feadcdb97097ebcd4a36f", "695feadcdb97097ebcd4a370", "695feadcdb97097ebcd4a371", "695feadcdb97097ebcd4a372", "695feadcdb97097ebcd4a373", "695feadcdb97097ebcd4a374", "6...
+MONGODB | localhost:27017 req:116 | dummy_development.delete | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:117 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695fe905db970964d7899c79", "695fe905db970964d7899c7a", "695fe905db970964d7899c7b", "695fe905db970964d7899c7c", "695fe905db970964d7899c7e", "695fe905db970964d7899c7f", "...
+MONGODB | localhost:27017 req:117 | dummy_development.delete | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:118 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:118 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:119 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:119 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:120 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a36f')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:120 | dummy_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:121 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a370')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:121 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:122 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a371')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:122 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:123 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a372')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:123 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:124 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a373')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:124 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:125 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a374')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:125 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:126 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a375')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:126 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:127 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a376')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:127 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:128 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a377')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:128 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:129 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a378')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:129 | dummy_development.find | SUCCEEDED | 0.001s
+app/views/users/index.haml
+app/views/users/index.haml
+app/views/users/user/enter_user.html.erb
+app/views/users/pwd/enter.html.erb
+app/views/admins/edit_role/select_user.html.erb
+app/views/admins/edit_role/edit_role.html.erb
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/devs/index.haml
+app/views/devs/index.haml
+app/views/docs/index.haml
+app/views/docs/doc_new/doc_form.html.erb
+app/views/docs/doc_edit/doc_select.html.erb
+app/views/docs/doc_edit/doc_edit.html.erb
+app/views/docs/doc_xedit/doc_edit.html.erb
+app/views/notes/index.haml
+app/views/notes/new/new_note.html.erb
+app/views/notes/edit/select_note.html.erb
+app/views/notes/edit/edit_note.html.erb
+app/views/notes/delete/select_note.html.erb
+app/views/notes/mail/select_note.html.erb
+app/views/notes/mail/display_mail.html.erb
+app/views/notes/xedit/edit_note.html.erb
+app/views/articles/index.haml
+app/views/articles/index.haml
+app/views/articles/new_article/form_article.html.erb
+app/views/articles/edit_article/select_article.html.erb
+app/views/articles/edit_article/edit_article.html.erb
+app/views/articles/xedit_article/edit_article.html.erb
+app/views/ctrs/vfolder1/viewfile1.html.erb
+app/views/ctrs/vfolder1/viewfile2.html.erb
+app/views/ctrs/vfolder2/viewfile2.html.erb
+app/views/api/v1/notes/index.haml
+app/views/api/v1/notes/new/new_note.html.erb
+app/views/api/v1/notes/edit/edit_note.html.erb
+app/views/api/v1/notes/delete/select_note.html.erb
+*** generate ui ***
+MONGODB | localhost:27017 req:130 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:130 | dummy_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:131 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"info: /users"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:131 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:132 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457....
+MONGODB | localhost:27017 req:132 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:133 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"user"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:133 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:134 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"users", "code"=>"pwd"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:134 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:135 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"admins"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:135 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:136 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"edit_role"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:136 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:137 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"pending tasks: /jinda/pending"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:137 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:138 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"logs: /jinda/logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:138 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:139 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:139 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:140 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>3}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:140 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:141 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"Mindmap Editor: /mindmap_editor/edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e36...
+MONGODB | localhost:27017 req:141 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:142 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"admins", "code"=>"link", "name"=>"docs: /jinda/doc"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:142 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:143 conn:1:1 sconn:12 | dummy_development.update | STARTED | {"update"=>"jinda_services", "ordered"=>true, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('695fe905db970964d7899c81')}, "u"=>{"$set"=>{"seq"=>5}}}], "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:143 | dummy_development.update | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:144 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"devs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:144 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:145 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"error_logs: /jinda/error_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457.....
+MONGODB | localhost:27017 req:145 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:146 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"devs", "code"=>"link", "name"=>"notice_logs: /jinda/notice_logs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...
+MONGODB | localhost:27017 req:146 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:147 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"docs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:147 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:148 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"link", "name"=>"My Document: /docs/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:148 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:149 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:149 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:150 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:150 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:151 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"docs", "code"=>"doc_xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:151 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:152 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:152 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:153 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"link", "name"=>"My Notes: /notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:153 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:154 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:154 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:155 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:155 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:156 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:156 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:157 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"mail"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:157 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:158 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"notes", "code"=>"xedit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:158 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:159 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:159 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:160 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"All Articles: /articles"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>...
+MONGODB | localhost:27017 req:160 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:161 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"link", "name"=>"My article: /articles/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457......
+MONGODB | localhost:27017 req:161 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:162 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"new_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:162 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:163 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"edit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:163 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:164 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"articles", "code"=>"xedit_article"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:164 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:165 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:165 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:166 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"new_comment"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:166 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:167 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"comments", "code"=>"comments"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:167 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:168 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"ctrs"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:168 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:169 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder1"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:169 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:170 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"ctrs", "code"=>"vfolder2"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:170 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:171 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:171 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:172 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"sitemap", "code"=>"sitemap"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:172 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:173 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{"code"=>"api/v1/notes"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:173 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:174 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"link", "name"=>"My Notes: /api/v1/notes/my"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624...
+MONGODB | localhost:27017 req:174 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:175 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"new"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:175 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:176 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"edit"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:176 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:177 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_code"=>"api/v1/notes", "code"=>"delete"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:177 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:178 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_modules", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695feadcdb97097ebcd4a36f", "695feadcdb97097ebcd4a370", "695feadcdb97097ebcd4a371", "695feadcdb97097ebcd4a372", "695feadcdb97097ebcd4a373", "695feadcdb97097ebcd4a374", "6...
+MONGODB | localhost:27017 req:178 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:179 conn:1:1 sconn:12 | dummy_development.delete | STARTED | {"delete"=>"jinda_services", "ordered"=>true, "deletes"=>[{"q"=>{"uid"=>{"$nin"=>["695fe905db970964d7899c79", "695fe905db970964d7899c7a", "695fe905db970964d7899c7b", "695fe905db970964d7899c7c", "695fe905db970964d7899c7e", "695fe905db970964d7899c7f", "...
+MONGODB | localhost:27017 req:179 | dummy_development.delete | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:180 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:180 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:181 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:181 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:182 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a36f')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:182 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:183 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a370')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:183 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:184 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a371')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:184 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:185 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a372')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:185 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:186 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a373')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:186 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:187 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a374')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:187 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:188 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a375')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:188 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:189 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a376')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:189 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:190 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a377')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:190 | dummy_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:191 conn:1:1 sconn:12 | dummy_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('695feadcdb97097ebcd4a378')}, "$db"=>"dummy_development", "lsid"=>{"id"=><BSON::Binary:0x29440 type=uuid data=0x2e2de4e363624457...>}}
+MONGODB | localhost:27017 req:191 | dummy_development.find | SUCCEEDED | 0.001s
+app/views/users/index.haml
+app/views/users/index.haml
+app/views/users/user/enter_user.html.erb
+app/views/users/pwd/enter.html.erb
+app/views/admins/edit_role/select_user.html.erb
+app/views/admins/edit_role/edit_role.html.erb
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/admins/index.haml
+app/views/devs/index.haml
+app/views/devs/index.haml
+app/views/docs/index.haml
+app/views/docs/doc_new/doc_form.html.erb
+app/views/docs/doc_edit/doc_select.html.erb
+app/views/docs/doc_edit/doc_edit.html.erb
+app/views/docs/doc_xedit/doc_edit.html.erb
+app/views/notes/index.haml
+app/views/notes/new/new_note.html.erb
+app/views/notes/edit/select_note.html.erb
+app/views/notes/edit/edit_note.html.erb
+app/views/notes/delete/select_note.html.erb
+app/views/notes/mail/select_note.html.erb
+app/views/notes/mail/display_mail.html.erb
+app/views/notes/xedit/edit_note.html.erb
+app/views/articles/index.haml
+app/views/articles/index.haml
+app/views/articles/new_article/form_article.html.erb
+app/views/articles/edit_article/select_article.html.erb
+app/views/articles/edit_article/edit_article.html.erb
+app/views/articles/xedit_article/edit_article.html.erb
+app/views/ctrs/vfolder1/viewfile1.html.erb
+app/views/ctrs/vfolder1/viewfile2.html.erb
+app/views/ctrs/vfolder2/viewfile2.html.erb
+app/views/api/v1/notes/index.haml
+app/views/api/v1/notes/new/new_note.html.erb
+app/views/api/v1/notes/edit/edit_note.html.erb
+app/views/api/v1/notes/delete/select_note.html.erb
+*** generate ui ***
