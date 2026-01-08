@@ -418,7 +418,7 @@ require 'jinda/mindmap_converter'
         say "bundle install\n"
         say "rails generate jinda:config\n"
         say "rails jinda:seed\n"
-        say "rails jinda:update"        say
+        say "rails jinda:update\n"
         say "----------------------------------------\n"
       end
     end
