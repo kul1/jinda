@@ -200,70 +200,25 @@ print_status "MongoDB configuration updated"
 # Test 8: Run jinda:seed
 echo ""
 echo "Test 8: Running rails jinda:seed..."
-# Test 10: Run jinda:update
-echo ""
-echo "Test 10: Running rails jinda:update..."
-if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
-    rails jinda:update > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        print_status "Second jinda:update completed successfully"
-    else
-        print_error "Second jinda:update failed"
-    fi
-fiecho "-----------------------------------"
-rails jinda:update
-if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
-    rails jinda:update > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        print_status "Second jinda:update completed successfully"
-    else
-        print_error "Second jinda:update failed"
-    fi
-fiif [ $? -eq 0 ]; then
-    print_status "jinda:update completed successfully"
-else
-    print_error "jinda:update failed"
-    exit 1
-fi
-echo "-----------------------------------"
 rails jinda:seed
 # Test 10: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
-if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
-    rails jinda:update > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        print_status "Second jinda:update completed successfully"
-    else
-        print_error "Second jinda:update failed"
-    fi
-fiecho "-----------------------------------"
+echo "-----------------------------------"
 rails jinda:update
 if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
+    print_status "First jinda:update completed successfully"
+    # Run second update
     rails jinda:update > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         print_status "Second jinda:update completed successfully"
     else
         print_error "Second jinda:update failed"
     fi
-fiif [ $? -eq 0 ]; then
-    print_status "jinda:update completed successfully"
 else
-    print_error "jinda:update failed"
+    print_error "First jinda:update failed"
     exit 1
 fi
-if [ $? -eq 0 ]; then
-    print_status "jinda:seed completed successfully"
-else
-    print_error "jinda:seed failed"
-    exit 1
-fi
-
-# Test 10: Check if app can initialize
 echo ""
 echo "Test 10: Testing Rails environment initialization..."
 echo "-----------------------------------"
@@ -364,50 +319,18 @@ echo "  8. ✓ rails jinda:seed"
 # Test 10: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
-if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
-    rails jinda:update > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        print_status "Second jinda:update completed successfully"
-    else
-        print_error "Second jinda:update failed"
-    fi
-fiecho "-----------------------------------"
+echo "-----------------------------------"
 rails jinda:update
 if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
+    print_status "First jinda:update completed successfully"
+    # Run second update
     rails jinda:update > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         print_status "Second jinda:update completed successfully"
     else
         print_error "Second jinda:update failed"
     fi
-fiif [ $? -eq 0 ]; then
-    print_status "jinda:update completed successfully"
 else
-    print_error "jinda:update failed"
+    print_error "First jinda:update failed"
     exit 1
 fi
-echo "  9. ✓ rails jinda:update
-if [ $? -eq 0 ]; then
-    print_status "Running jinda:update again to ensure menu generation..."
-    rails jinda:update > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        print_status "Second jinda:update completed successfully"
-    else
-        print_error "Second jinda:update failed"
-    fi
-fi  10. ✓ Rails environment initialized"
-echo ""
-
-echo ""
-print_info "Test app location: $TEST_DIR/$TEST_APP_NAME"
-print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_installation.sh"
-echo ""
-echo ""
-print_info "To test the mindmap editor:"
-print_info "  cd $TEST_DIR/$TEST_APP_NAME"
-print_info "  rails server"
-print_info "  Visit http://localhost:3000, login as admin/secret"
-print_info "  The Mindmap Editor should be in the Admin menu"
-print_status "Jinda gem installation test completed successfully!"
