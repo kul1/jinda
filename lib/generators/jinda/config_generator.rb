@@ -25,6 +25,8 @@ module Jinda
         # gem 'omniauth-identity'
         initializer "omniauth.rb" do
           "
+                    require 'omniauth'
+                    require 'omniauth'
                     Rails.application.config.middleware.use OmniAuth::Builder do
                       provider :identity,
                                :fields => [:code, :email],
