@@ -203,9 +203,25 @@ echo "Test 8: Running rails jinda:seed..."
 # Test 10: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
-echo "-----------------------------------"
+if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiecho "-----------------------------------"
 rails jinda:update
 if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiif [ $? -eq 0 ]; then
     print_status "jinda:update completed successfully"
 else
     print_error "jinda:update failed"
@@ -216,9 +232,25 @@ rails jinda:seed
 # Test 10: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
-echo "-----------------------------------"
+if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiecho "-----------------------------------"
 rails jinda:update
 if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiif [ $? -eq 0 ]; then
     print_status "jinda:update completed successfully"
 else
     print_error "jinda:update failed"
@@ -332,16 +364,40 @@ echo "  8. ✓ rails jinda:seed"
 # Test 10: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
-echo "-----------------------------------"
+if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiecho "-----------------------------------"
 rails jinda:update
 if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fiif [ $? -eq 0 ]; then
     print_status "jinda:update completed successfully"
 else
     print_error "jinda:update failed"
     exit 1
 fi
 echo "  9. ✓ rails jinda:update
-  10. ✓ Rails environment initialized"
+if [ $? -eq 0 ]; then
+    print_status "Running jinda:update again to ensure menu generation..."
+    rails jinda:update > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_status "Second jinda:update completed successfully"
+    else
+        print_error "Second jinda:update failed"
+    fi
+fi  10. ✓ Rails environment initialized"
 echo ""
 
 echo ""
