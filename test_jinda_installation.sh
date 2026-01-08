@@ -29,6 +29,11 @@ print_error() {
     echo -e "${RED}[✗]${NC} $1"
 }
 
+# Ensure Rails is installed
+if ! command -v rails > /dev/null 2>&1 || ! rails -v > /dev/null 2>&1; then
+  print_info "Installing Rails..."
+  gem install rails -v 7.1.6
+fi
 print_info() {
     echo -e "${YELLOW}[i]${NC} $1"
 }
