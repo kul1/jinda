@@ -1,16 +1,16 @@
+# encoding: utf-8
 # frozen_string_literal: true
 
 class Person
   include Mongoid::Document
   # jinda begin
   include Mongoid::Timestamps
-
-  field :fname, type: String
-  field :lname, type: String
-  field :sex, type: Integer
+  field :fname, :type => String
+  field :lname, :type => String
+  field :sex, :type => Integer
   belongs_to :address
-  field :dob, type: Date
-  field :phone, type: String
-  field :photo, type: String
+  field :dob, :type => Date
+  field :phone, :type => String
+  field :photo, :type => String
   # jinda end
 end
