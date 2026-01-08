@@ -11,7 +11,7 @@ def gen_views(prefix = "")
   # create array of files to be tested
   $afile = []
 
-  Jinda::Module.find_each do |m|
+  Jinda::Module.all.each do |m|
     m.services.each do |s|
       dir = @prefix + "app/views/#{s.module.code}"
       gen_view_mkdir(dir, t) unless gen_view_file_exist?(dir)
