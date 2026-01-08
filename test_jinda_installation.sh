@@ -5,14 +5,14 @@
 
 # Colors for output
 set -e
-RED='\033[0;31m'
+ORIGINAL_DIR=$(pwd)RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Configuration
 TEST_APP_NAME="jinda_test_app_$(date +%s)"
-TEST_DIR="$HOME/tmp"
+TEST_DIR="."
 JINDA_GEM_PATH="$HOME/mygem/jinda"
 MONGODB_PORT=${MONGODB_PORT:-27017}  # Use env var or default to standard port
 
@@ -47,7 +47,7 @@ print_info() {
 cleanup() {
     if [ "$SKIP_CLEANUP" != "true" ]; then
         print_info "Cleaning up test directory..."
-        cd "$HOME"
+        cd "$ORIGINAL_DIR"
         rm -rf "$TEST_DIR/$TEST_APP_NAME"
         
         # Stop and remove MongoDB container if we created it
