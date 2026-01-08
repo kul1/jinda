@@ -340,7 +340,7 @@ print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_insta
 echo ""
 echo ""
 print_info "To test the mindmap editor:"
-print_info "  cd $ORIGINAL_DIR/$TEST_APP_NAME"
+print_info "  cd ./$TEST_APP_NAME"
 print_info "  rails server"
 print_info "  Visit http://localhost:3000, login as admin/secret"
 print_info "  The Mindmap Editor should be in the Admin menu"
