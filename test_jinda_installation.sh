@@ -209,8 +209,30 @@ print_status "MongoDB configuration updated"
 # Test 8: Run jinda:seed
 echo ""
 echo "Test 8: Running rails jinda:seed..."
+# Test 10: Run jinda:update
+echo ""
+echo "Test 10: Running rails jinda:update..."
+echo "-----------------------------------"
+rails jinda:update
+if [ $? -eq 0 ]; then
+    print_status "jinda:update completed successfully"
+else
+    print_error "jinda:update failed"
+    exit 1
+fi
 echo "-----------------------------------"
 rails jinda:seed
+# Test 10: Run jinda:update
+echo ""
+echo "Test 10: Running rails jinda:update..."
+echo "-----------------------------------"
+rails jinda:update
+if [ $? -eq 0 ]; then
+    print_status "jinda:update completed successfully"
+else
+    print_error "jinda:update failed"
+    exit 1
+fi
 if [ $? -eq 0 ]; then
     print_status "jinda:seed completed successfully"
 else
@@ -218,9 +240,9 @@ else
     exit 1
 fi
 
-# Test 9: Check if app can initialize
+# Test 10: Check if app can initialize
 echo ""
-echo "Test 9: Testing Rails environment initialization..."
+echo "Test 10: Testing Rails environment initialization..."
 echo "-----------------------------------"
 bundle exec rails runner "puts 'Rails environment loaded successfully'"
 if [ $? -eq 0 ]; then
@@ -306,7 +328,19 @@ echo "  5. ✓ rails generate jinda:install"
 echo "  6. ✓ Bundle install (post-generator)"
 echo "  7. ✓ rails generate jinda:config"
 echo "  8. ✓ rails jinda:seed"
-echo "  9. ✓ Rails environment initialized"
+# Test 10: Run jinda:update
+echo ""
+echo "Test 10: Running rails jinda:update..."
+echo "-----------------------------------"
+rails jinda:update
+if [ $? -eq 0 ]; then
+    print_status "jinda:update completed successfully"
+else
+    print_error "jinda:update failed"
+    exit 1
+fi
+echo "  9. ✓ rails jinda:update
+  10. ✓ Rails environment initialized"
 echo ""
 
 echo ""
