@@ -12,7 +12,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 TEST_APP_NAME="jinda_test_app_$(date +%s)"
-TEST_DIR="$HOME/tmp/jinda_tests"
+TEST_DIR="$HOME/tmp"
 JINDA_GEM_PATH="$HOME/mygem/jinda"
 MONGODB_PORT=${MONGODB_PORT:-27017}  # Use env var or default to standard port
 
@@ -348,4 +348,9 @@ echo ""
 print_info "Test app location: $TEST_DIR/$TEST_APP_NAME"
 print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_installation.sh"
 echo ""
-print_status "Jinda gem installation test completed successfully!"
+echo ""
+print_info "To test the mindmap editor:"
+print_info "  cd $TEST_DIR/$TEST_APP_NAME"
+print_info "  rails server"
+print_info "  Visit http://localhost:3000, login as admin/secret"
+print_info "  The Mindmap Editor should be in the Admin menu"\print_status "Jinda gem installation test completed successfully!"
