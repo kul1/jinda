@@ -201,7 +201,7 @@ print_status "MongoDB configuration updated"
 echo ""
 echo "Test 8: Running rails jinda:seed..."
 rails jinda:seed
-# Test 10: Run jinda:update
+# Test 9: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
 echo "-----------------------------------"
@@ -316,7 +316,7 @@ echo "  5. ✓ rails generate jinda:install"
 echo "  6. ✓ Bundle install (post-generator)"
 echo "  7. ✓ rails generate jinda:config"
 echo "  8. ✓ rails jinda:seed"
-# Test 10: Run jinda:update
+# Test 9: Run jinda:update
 echo ""
 echo "Test 10: Running rails jinda:update..."
 echo "-----------------------------------"
@@ -344,4 +344,4 @@ print_info "  cd ./$TEST_APP_NAME"
 print_info "  rails server"
 print_info "  Visit http://localhost:3000, login as admin/secret"
 print_info "  The Mindmap Editor should be in the Admin menu"
-print_status "Jinda gem installation test completed successfully!"
+print_info "Note: If the mindmap editor does not appear, run 'rails jinda:update' again after starting the server"print_status "Jinda gem installation test completed successfully!"
