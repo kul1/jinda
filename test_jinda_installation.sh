@@ -5,7 +5,7 @@
 
 # Colors for output
 set -e
-ORIGINAL_DIR=$(pwd)RED='\033[0;31m'
+ORIGINAL_DIR=$ORIGINAL_DIRORIGINAL_DIR=$ORIGINAL_DIRRED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
@@ -335,12 +335,12 @@ else
     exit 1
 fi
 print_info "Test app location: $TEST_DIR/$TEST_APP_NAME"
-print_info "Full path: $(pwd)/$TEST_APP_NAME"
+print_info "Full path: $ORIGINAL_DIR/$TEST_APP_NAME"
 print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_installation.sh"
 echo ""
 echo ""
 print_info "To test the mindmap editor:"
-print_info "  cd $(pwd)/$TEST_APP_NAME"
+print_info "  cd $ORIGINAL_DIR/$TEST_APP_NAME"
 print_info "  rails server"
 print_info "  Visit http://localhost:3000, login as admin/secret"
 print_info "  The Mindmap Editor should be in the Admin menu"
