@@ -33,3 +33,5 @@ generate_*.rb
 
 # AI agent rules - personal development use only
 AGENTS.md
+# Generated test apps
+jinda_test_app_*

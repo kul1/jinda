@@ -18,7 +18,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Dummy
+module JindaTestApp1767939390
   class Application < Rails::Application
 
     # Jinda default

@@ -1,6 +1,6 @@
 .container
   .signup-form
-    = form_tag "/auth/identity/callback", {'data-ajax'=>'false', :id => 'session_form'} do
+    = form_tag "/auth/identity/callback", {'data-ajax'=>'false'} do
       %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign in
       .sign_in
       .label-warning
@@ -14,7 +14,7 @@
       .form-group
         = label_tag :remember_me
         = check_box_tag :remember_me, 1, params.permit[:remember_me]
-      %button.btn.btn-success.btn-block.actions{:type => "submit", :id => "sign_in_button", :name => "commit"}
+      %button.btn.btn-success.btn-block.actions{:type => "submit"}
         %i.fas.fa-sign-in-alt
         Sign in
       = link_to 'Forgotten password?', new_password_reset_path, data: {icon: 'info', mini: 'true', role: 'button'}
