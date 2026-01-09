@@ -1,0 +1,13 @@
+#search{"data-role" => "page"}
+  %div{"data-role" => "header", "data-backbtn" => "false"}
+    %h1 Search
+  %div{"data-role" => "content"}
+    - form_tag({:controller=>"jinda", :action=>"search"}, :method => "get" ) do
+      = text_field_tag :q, "", :type=>"search", :required=>true, :placeholder=>"key word", :onkeypress=>"$('input').unbind('keypress');"
+      = submit_tag "Search", "data-inline"=>"true"
+    - form_tag({:controller=>"jinda", :action=>"status"}, :method => "get" ) do
+      = text_field_tag :id, nil, :required=>true, :placeholder=>"task number", :onkeypress=>"$('input').unbind('keypress');"
+      = submit_tag "Status", "data-inline"=>"true"
+    = link_to "Pending Tasks", "#", :onclick=>"location.hash='/jinda/pending'", "data-role"=>"button"
+    = link_to "Refresh", "#", :onclick=>"window.location.replace('/')", "data-role"=>"button"
+    = link_to "About", "#", :onclick=>"location.hash='#about'", "data-role"=>"button"

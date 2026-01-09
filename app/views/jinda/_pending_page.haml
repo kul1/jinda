@@ -1,0 +1,24 @@
+- @xmains= xmains
+%table{:id=>"pending-table", :width=>"100%"}
+  %tr{:style=>"color:white; background-color:#97BF60;"}
+    %th id
+    %th task
+    %th step
+    %th starter
+    %th begin
+    %th cancel
+  - @xmains.each do |xmain|
+    - @xmain= xmain
+    - next unless xmain.current_runseq
+    - @runseq= Jinda::Runseq.find(xmain.current_runseq)
+    - next unless @runseq
+    - next unless %w(form output pdf).include?(@runseq.action)
+    - next if @xmain.runseqs.first==@xmain.current_runseq && @xmain.user!=current_ma_user
+    - next unless authorize?
+    %tr
+      %td= link_to xmain.xid, :controller=>"jinda", :action=>"run", :id=>xmain.id
+      %td= link_to xmain.name, :controller=>"jinda", :action=>"run", :id=>xmain.id
+      %td= @runseq.name
+      %td{:align=>'center'}= xmain.user.try :code
+      %td= xmain.start.strftime("%c")
+      %td(align='center')= link_to image_tag('delete.png', style:'border:none; float:none;'), "#", :onclick=>"if (confirm('Please Confirm')) {location.hash='/jinda/cancel/#{xmain.id}';}"
