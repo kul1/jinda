@@ -2464,3 +2464,107 @@ Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-
   
 ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
   
+Started GET "/" for ::1 at 2026-01-09 00:43:45 -0600
+Processing by JindaController#index as HTML
+  Rendering layout layouts/application.haml
+  Rendering jinda/index.html.haml within layouts/application
+  Rendered jinda/index.html.haml within layouts/application (Duration: 3.9ms | Allocations: 15328)
+  Rendered layouts/_head.html.erb (Duration: 14.9ms | Allocations: 32601)
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'standalone'.
+MONGODB | Topology type 'Unknown' changed to type 'Single'.
+MONGODB | localhost:27017 req:6 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"FHr5x7H0XzhorDkU4fYceQ"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:6 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:7 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:7 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:8 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b940f')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:8 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:9 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9414')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:9 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:10 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b941a')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:10 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.003s
+MONGODB | localhost:27017 req:11 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b941d')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:11 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:12 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9422')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:12 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:13 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9429')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:13 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:14 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b942f')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:14 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:15 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9432')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:15 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:16 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9435')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:16 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+MONGODB | localhost:27017 req:17 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9437')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:17 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.000s
+  Rendered jinda/_menu_mm.haml (Duration: 47.9ms | Allocations: 134252)
+  Rendered jinda/_menu.haml (Duration: 71.8ms | Allocations: 169700)
+  Rendered jinda/_static.haml (Duration: 1.9ms | Allocations: 6837)
+  Rendered layouts/jqm/_full.haml (Duration: 90.7ms | Allocations: 218919)
+  Rendered layout layouts/application.haml (Duration: 95.3ms | Allocations: 236799)
+Completed 200 OK in 178ms (Views: 86.2ms | MongoDB: 10.4ms | Allocations: 520924)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-01-09 00:43:46 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/mindmap_editor/edit" for ::1 at 2026-01-09 00:43:50 -0600
+Processing by MindmapEditorController#edit as HTML
+MONGODB | localhost:27017 req:18 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"FHr5x7H0XzhorDkU4fYceQ"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:18 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+  Rendering layout layouts/application.haml
+  Rendering mindmap_editor/edit.html.haml within layouts/application
+  Rendered mindmap_editor/edit.html.haml within layouts/application (Duration: 15.7ms | Allocations: 13558)
+  Rendered layouts/jqm/_page.haml (Duration: 8.0ms | Allocations: 7310)
+  Rendered layout layouts/application.haml (Duration: 24.5ms | Allocations: 21111)
+Completed 200 OK in 81ms (Views: 25.4ms | MongoDB: 1.2ms | Allocations: 132332)
+
+
+Started GET "/mindmap_editor/edit" for ::1 at 2026-01-09 00:43:52 -0600
+Processing by MindmapEditorController#edit as HTML
+MONGODB | localhost:27017 req:19 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"users", "filter"=>{"auth_token"=>"FHr5x7H0XzhorDkU4fYceQ"}, "limit"=>1, "sort"=>{"_id"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:19 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.003s
+  Rendering layout layouts/application.haml
+  Rendering mindmap_editor/edit.html.haml within layouts/application
+  Rendered mindmap_editor/edit.html.haml within layouts/application (Duration: 0.7ms | Allocations: 540)
+  Rendered layouts/_head.html.erb (Duration: 10.5ms | Allocations: 25944)
+MONGODB | localhost:27017 req:20 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_modules", "filter"=>{}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:20 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.002s
+MONGODB | localhost:27017 req:21 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b940f')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:21 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.005s
+MONGODB | localhost:27017 req:22 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9414')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:22 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:23 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b941a')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:23 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:24 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b941d')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:24 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:25 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9422')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:25 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:26 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9429')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:26 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:27 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b942f')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:27 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:28 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9432')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:28 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:29 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9435')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:29 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+MONGODB | localhost:27017 req:30 conn:1:1 sconn:407 | jinda_test_app1767939390_development.find | STARTED | {"find"=>"jinda_services", "filter"=>{"module_id"=>BSON::ObjectId('69609d54db9709a53e9b9437')}, "sort"=>{"seq"=>1}, "$db"=>"jinda_test_app1767939390_development", "lsid"=>{"id"=><BSON::Binary:0x48700 type=uuid data=0x18f67f700cf94c8c...>}}
+MONGODB | localhost:27017 req:30 | jinda_test_app1767939390_development.find | SUCCEEDED | 0.001s
+  Rendered jinda/_menu_mm.haml (Duration: 32.3ms | Allocations: 105964)
+  Rendered jinda/_menu.haml (Duration: 32.4ms | Allocations: 106094)
+  Rendered jinda/_static.haml (Duration: 0.5ms | Allocations: 608)
+  Rendered layouts/jqm/_full.haml (Duration: 43.7ms | Allocations: 132896)
+  Rendered layout layouts/application.haml (Duration: 44.5ms | Allocations: 133611)
+Completed 200 OK in 78ms (Views: 30.9ms | MongoDB: 16.7ms | Allocations: 244395)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-01-09 00:43:52 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+MONGODB | Server description for localhost:27017 changed from 'standalone' to 'standalone'.
+MONGODB | There was a change in the members of the 'Single' topology.
