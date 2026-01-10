@@ -1,19 +1,15 @@
-
-<%
-        if current_ma_user.role.upcase.split(',').include?("A")
-            note= Note.all.desc(:created_at)
-else
+&lt;%
+  if current_ma_user.role.upcase.split(&#39;,&#39;).include?(&quot;A&quot;)
+    note= Note.all.desc(:created_at)
+  else
     note= Note.where(user: current_ma_user).desc(:created_at)
-end
-%>
-<div class="field" data-role="fieldcontain">
-    <%= label_tag :email %>
-    <br>
-    <br>
-    <%= text_field_tag :email, @identity.try(:email) %>
-</div>
-<div class="field" data-role="fieldcontain">
-    <%= label_tag :title, 'Select Note' , :class => "ui_input_text" %>
-    <br>
-    <br>
-    <%= select_tag :id, options_from_collection_for_select(note, :id, :title), "notee-menu"=>"false" %>
+  end
+%&gt;
+&lt;div class=&quot;mb-3&quot;&gt;
+  &lt;%= label_tag :email, nil, class: &quot;form-label&quot; %&gt;
+  &lt;%= text_field_tag :email, @identity.try(:email), class: &quot;form-control&quot; %&gt;
+&lt;/div&gt;
+&lt;div class=&quot;mb-3&quot;&gt;
+  &lt;%= label_tag :title, &#39;Select Note&#39;, class: &quot;form-label&quot; %&gt;
+  &lt;%= select_tag :id, options_from_collection_for_select(note, :id, :title), class: &quot;form-select&quot;, &quot;notee-menu&quot;=&gt;&quot;false&quot; %&gt;
+&lt;/div&gt;

@@ -1,34 +1,35 @@
 
-<%- @title= 'Template for Document' %>
-<%
-    doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
-  %>
 
-<h1>
-  <%= @title %>
-</h1>
+&lt;%- @title= &#39;Template for Document&#39; %&gt;
+&lt;%
+    doc = Jinda::Doc.new :issue_on=&gt; Date.today, :process_at =&gt; Time.now
+  %&gt;
 
-<div class = "module-table">
-  <%= fields_for doc do |f| %>
-    <%= f.label :category, "Category" %>
-    <%= f.select :category, [["Book", "book"], ["Letter", "letter"], ["Brochure", "brochure"]] %>
-    <%= f.label :issue_on, "Dated" %>
-    <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
+&lt;h1&gt;
+  &lt;%= @title %&gt;
+&lt;/h1&gt;
 
-    <%= f.label :dscan, "Attached document" %>
-    <%= f.file_field :dscan %>
-  <% end %>
-  <div>
-    <%= label_tag :description, "Description" %>
-    <%= text_field_tag :description %>
-  </div>
-  <div>
-    <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
-    <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
-  </div>
-  <div>
-    <%= label_tag :keywords, "Search Keywords" %>
-    <%= text_field_tag :keywords %>
-  </div>
-</div>
+&lt;div class = &quot;row g-3&quot;&gt;
+  &lt;%= fields_for doc do |f| %&gt;
+    &lt;%= f.label :category, &quot;Category&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.select :category, [[&quot;Book&quot;, &quot;book&quot;], [&quot;Letter&quot;, &quot;letter&quot;], [&quot;Brochure&quot;, &quot;brochure&quot;]], {}, class: &quot;form-select&quot; %&gt;
+    &lt;%= f.label :issue_on, &quot;Dated&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.date_field :issue_on, class: &quot;form-control&quot;, &quot;blackDays&quot;=&gt;[0,6] %&gt;
+
+    &lt;%= f.label :dscan, &quot;Attached document&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.file_field :dscan, class: &quot;form-control&quot; %&gt;
+  &lt;% end %&gt;
+  &lt;div class=&quot;mb-3&quot;&gt;
+    &lt;%= label_tag :description, &quot;Description&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= text_field_tag :description, class: &quot;form-control&quot; %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mb-3&quot;&gt;
+    &lt;%= label_tag :ma_display, &quot;Display&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= select_tag :ma_display, options_for_select([[&quot;Yes&quot;, &#39;y&#39;], [&quot;No&quot;, &#39;n&#39;]],&#39;y&#39;), class: &quot;form-select&quot; %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mb-3&quot;&gt;
+    &lt;%= label_tag :keywords, &quot;Search Keywords&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= text_field_tag :keywords, class: &quot;form-control&quot; %&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 

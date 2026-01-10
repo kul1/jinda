@@ -37,8 +37,8 @@
       %input{:placeholder => "START TYPING...", :type => "text"}/
       .close-search
         %i.material-icons close
-    = render "layouts/jqm/header"
-    = render "layouts/jqm/sidebar"
+    
+    
     .content-header
       %h1= @title || DEFAULT_TITLE
       = yield

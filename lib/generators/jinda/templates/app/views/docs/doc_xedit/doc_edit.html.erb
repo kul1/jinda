@@ -1,21 +1,21 @@
-<%
-    doc = Jinda::Doc.new :issue_on=> Date.today, :process_at => Time.now
-%>
-<%= fields_for doc do |f| %>
-  <%= f.label :content_type, "Content type" %>
-  <%= f.select :content_type, [["pdf file", "pdf"], ["png file", "png"], ["html file", "html"]] %>
-  <!--div>
-    </div-->
-    <%= f.label :issue_on, "Dated" %>
-    <%= f.date_field :issue_on, "blackDays"=>[0,6] %>
+&lt;%
+  doc = Jinda::Doc.new :issue_on=&gt; Date.today, :process_at =&gt; Time.now
+%&gt;
+&lt;%= fields_for doc do |f| %&gt;
+  &lt;%= f.label :content_type, &quot;Content type&quot;, class: &quot;form-label&quot; %&gt;
+  &lt;%= f.select :content_type, [[&quot;pdf file&quot;, &quot;pdf&quot;], [&quot;png file&quot;, &quot;png&quot;], [&quot;html file&quot;, &quot;html&quot;]], {}, class: &quot;form-select&quot; %&gt;
+  &lt;!--div&gt;
+    &lt;/div--&gt;
+    &lt;%= f.label :issue_on, &quot;Dated&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.date_field :issue_on, class: &quot;form-control&quot;, &quot;blackDays&quot;=&gt;[0,6] %&gt;
 
-    <%= f.label :dscan, "Attached document" %>
-    <%= f.file_field :dscan %>
-    <%= f.label :filename, "File Name" %>
-  <% end %>
-  <%= label_tag :x, "x field" %>
-  <%= text_field_tag :x %>
-  <div>
-    <%= label_tag :ma_display, "Display", :class=>"ui-input-text" %>
-    <%= select_tag :ma_display, options_for_select([['Yes', 'y'], ['No', 'n']],'y'), 'data-role'=>"slider" %>
-  </div>
+    &lt;%= f.label :dscan, &quot;Attached document&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.file_field :dscan, class: &quot;form-control&quot; %&gt;
+    &lt;%= f.label :filename, &quot;File Name&quot;, class: &quot;form-label&quot; %&gt;
+  &lt;% end %&gt;
+  &lt;%= label_tag :x, &quot;x field&quot;, class: &quot;form-label&quot; %&gt;
+  &lt;%= text_field_tag :x, class: &quot;form-control&quot; %&gt;
+  &lt;div class=&quot;mb-3&quot;&gt;
+    &lt;%= label_tag :ma_display, &quot;Display&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= select_tag :ma_display, options_for_select([[&quot;Yes&quot;, &#39;y&#39;], [&quot;No&quot;, &#39;n&#39;]],&#39;y&#39;), class: &quot;form-select&quot; %&gt;
+  &lt;/div&gt;

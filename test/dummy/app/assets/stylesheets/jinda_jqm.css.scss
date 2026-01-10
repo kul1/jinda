@@ -1,32 +1,29 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require normalize-rails
- */
+.sidebar-collapse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  z-index: 1030;
+  transition: width 0.3s ease;
+}
 
-@import "jquery.mobile-1.2.1";
-@import "jquery.mobile.splitview";
-@import "jquery.mobile.grids.collapsible";
-@import "jquery.mobile.datebox.css";
-@import "sarabun";
-@import "jinda";
-@import "kul-4.2";
-@import "articles";
-@import "app.scss";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "social";
+.sidebar-collapse.show {
+  width: 250px;
+}
 
+.ms-sidebar {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
 
-
-
-
-
-
+@media (max-width: 768px) {
+  .sidebar-collapse {
+    width: 0;
+  }
+  .ms-sidebar {
+    margin-left: 0;
+  }
+}

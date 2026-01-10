@@ -1,11 +1,11 @@
 - head = login? ? current_ma_user.code : DEFAULT_HEADER
-%div{"data-context" => "a#default", "data-hash" => "crumbs", "data-id" => "menu", "data-role" => "panel"}
-  #main{"data-role" => "page"}
-    %div{"data-role" => "header", "data-theme" => "b", "data-backbtn"=>"false"}
+%div{id: "menu"}
+  #main
+    %div{class: "header"}
       %h1= head
-    %div{"data-role" => "content", "data-id" => "menu_mm"}
-      %form.ui-filterable
-      %ul{"data-role" => "listview", "data-theme" => "g", "data-filter" => "true"}
+    %div{id: "menu_mm"}
+      %form
+      %ul{class: "list-group"}
         %li
           %a{"data-panel" => "main", "data-id" => "home", :href => "/jinda"} Home
         = render :partial => "jinda/menu_mm"

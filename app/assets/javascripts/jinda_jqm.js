@@ -12,11 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile.splitview
-//= require jquery.mobile-1.2.1
-//= require jquery.mobile.datebox
-//= require iscroll-wrapper
-//= require iscroll
+
 //= require jinda
 //  require turbolinks
 //  require disable_enter_key.js

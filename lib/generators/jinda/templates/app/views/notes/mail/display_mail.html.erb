@@ -1,20 +1,20 @@
-<%
-    doc = Note.find_by :id => $xvars["select_note"]["id"]
- %>
+&lt;%
+  doc = Note.find_by :id =&gt; $xvars[&quot;select_note&quot;][&quot;id&quot;]
+ %&gt;
 
-<% email = $xvars["select_note"]["email"]  %>
-<div class=field(data-role=fieldcontain)>
-  <label class = ui-input-text for="email">Mail to:</label>
-  <b>
-    <%=  email %>
-  </b>  
+&lt;% email = $xvars[&quot;select_note&quot;][&quot;email&quot;]  %&gt;
+&lt;div class=&quot;mb-3&quot;&gt;
+  &lt;label class=&quot;form-label&quot; for=&quot;email&quot;&gt;Mail to:&lt;/label&gt;
+  &lt;b&gt;
+    &lt;%=  email %&gt;
+  &lt;/b&gt;  
 
-</div>
-<div class=fieldcontain>
-  <%= fields_for doc do |f| %>
-    <%= f.label :title, "Subject" %>
-    <%= f.text_field :title %>
-    <%= f.label :body, "Content" %>
-    <%= f.text_area :body, :cols=>50, :rows=>6 %>
-  <% end %>
-</div>
+&lt;/div&gt;
+&lt;div class=&quot;mb-3&quot;&gt;
+  &lt;%= fields_for doc do |f| %&gt;
+    &lt;%= f.label :title, &quot;Subject&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.text_field :title, class: &quot;form-control&quot; %&gt;
+    &lt;%= f.label :body, &quot;Content&quot;, class: &quot;form-label&quot; %&gt;
+    &lt;%= f.text_area :body, class: &quot;form-control&quot;, rows: 6 %&gt;
+  &lt;% end %&gt;
+&lt;/div&gt;

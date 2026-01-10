@@ -3,31 +3,41 @@
   %head
     = render :partial => "layouts/head"
   %body
-    = render :partial => "jinda/menu"
-    %div{"data-id" => "main", "data-role" => "panel", "data-backbtn"=>"false"}
-      - if @cache
-        - cache = {}
-      - else
-        - cache = {"data-cache"=>"never"}
-      - if @backbtn
-        - backbtn= {"data-backbtn"=>"true"}
-      - else
-        - backbtn= {"data-backbtn"=>"false"}
-      %div{{"data-role" => "page"}.merge(cache) }
-        %div{{"data-role" => "header"}.merge(backbtn)}
-          %h1= @title || DEFAULT_TITLE
-        %div{"data-role" => "content"}
-          = yield
-      = render :partial => "jinda/static"
-/ :javascript
-/   $(document).on("pagehide", 'div', function(e,ui) {
-/     var page = $(e.target);
-/     if(page.attr('data-cache') == 'never') {
-/       page.remove();
-/     }
-/   });
-/   $( document ).on( "pagechange", function(){
-/     $.get("/jinda/ajax_notice", function(r) {$(r).appendTo('head').remove()});
-/   });
-
-/= raw handle_ma_notice
+    %nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      .container-fluid
+        %a.navbar-brand{:href => "/"}= @title || DEFAULT_TITLE
+        %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "offcanvas", "data-bs-target" => "#sidebarMenu", :aria => {"controls" => "sidebarMenu", "expanded" => "false", "label" => "Toggle navigation"}}
+          %span.navbar-toggler-icon
+    .offcanvas.offcanvas-start{"data-bs-backdrop" => "static", :id => "sidebarMenu", "aria-labelledby" => "staticBackdropLabel"}
+      .offcanvas-header.p-0
+        %h5.offcanvas-title.d-none
+        %button.btn-close{"type" => "button", "data-bs-dismiss" => "offcanvas", :aria => {"label" => "Close"}}
+      .offcanvas-body
+        %h5.my-3= login? ? current_ma_user.code : DEFAULT_HEADER
+        %ul.navbar-nav{:style => "flex-direction: column; "}
+          %li.nav-item
+            %a.nav-link{:href => "/jinda"} Home
+          = render :partial => "jinda/menu_mm"
+          - if login?
+            %li.nav-item
+              %a.nav-link{:href=>"/jinda/pending"} Pending Tasks
+            %li.nav-item
+              %a.nav-link{:href => logout_path} Sign Out
+          - else
+            %li.nav-item
+              %a.nav-link{:href=>new_session_path} Sign In
+            %li.nav-item
+              %a.nav-link{:href=>new_identity_path} Sign Up
+          %li.nav-item
+            = link_to "Refresh", "#", :class => "nav-link", :onclick=>"window.location.replace('/')"
+          - if !login?    
+            .login-box.mt-3
+              = link_to image_tag( 'facebook-continue-button.png'), '/auth/facebook', rel: "external", class: "btn btn-primary d-block mb-2" 
+              = link_to image_tag( 'google-continue-button.png'), '/auth/google_oauth2', rel: "external", class: "btn btn-danger d-block"
+    %main.py-3
+      .container-fluid
+        %div.row
+          .col-md-9.ms-sm-auto.px-md-4
+            = yield
+    = render :partial => "jinda/static"
+    = raw handle_ma_notice

@@ -225,3 +225,13 @@ run following command:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Bootstrap 5 Migration
+
+Jinda has been updated to use Bootstrap 5 for the layouts and components.
+
+- All view templates and layouts are now compatible with Bootstrap 5.
+- jQuery Mobile JS and CSS have been removed.
+- To use, ensure Bootstrap 5 is installed via your preferred method (e.g., importmap, yarn, or CDN).
+- Test the application for forms, menus, and responsiveness.
+- For full functionality, run tests and update any custom CSS if needed.

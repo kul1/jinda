@@ -1,16 +1,17 @@
 - if @cache
   - cache = {}
 - else
-  - cache = {"data-cache"=>"never"}
+  - cache = {}
 - if @backbtn
-  - backbtn= {"data-backbtn"=>"true"}
+  - backbtn= {}
 - else
-  - backbtn= {"data-backbtn"=>"false"}
-%div{{"data-role" => "page"}.merge(cache) }
-  %div{{"data-role" => "header"}.merge(backbtn)}
-    %h1= @title || DEFAULT_TITLE
-  %div{"data-role" => "content"}
-    = yield
+  - backbtn= {}
+%main.py-3
+  .container-fluid
+    %div.row
+      .col-md-9.ms-sm-auto.px-md-4
+        %h1.mb-3= @title || DEFAULT_TITLE
+        = yield
 
 :javascript
-  document.title= "#{@title}";
+  document.title= &quot;#{@title}&quot;;
