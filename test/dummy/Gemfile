@@ -55,6 +55,7 @@ group :development do
 end
 
 gem 'jinda', path: '/Users/kul/mygem/jinda'
+gem 'jinda_adminlte', path: '/Users/kul/mygem/jinda_adminlte'
 gem "bson", "~> 4.15"
 gem "maruku", "~> 0.7.3"
 gem "bcrypt"
@@ -108,4 +109,3 @@ group :development, :test do
   gem "rubocop-performance"
   gem "rubocop-minitest"
 end
-gem "jinda_adminlte", path: "~/mygem/jinda_adminlte"

@@ -1,0 +1,37 @@
+!!! 5
+%html
+  %head
+    = render :partial => "layouts/head"
+  %body
+    / Header
+    = render :partial => "layouts/bootstrap/header"
+    
+    / Sidebar Menu (Desktop)
+    .d-none.d-md-block
+      = render :partial => "layouts/bootstrap/sidebar"
+    
+    / Offcanvas Menu (Mobile)
+    .offcanvas.offcanvas-start.offcanvas-jinda#jindaOffcanvas{"aria-labelledby" => "jindaOffcanvasLabel", "tabindex" => "-1"}
+      .offcanvas-header
+        %h5.offcanvas-title#jindaOffcanvasLabel= DEFAULT_HEADER
+        %button.btn-close.btn-close-white{"aria-label" => "Close", "data-bs-dismiss" => "offcanvas", "type" => "button"}
+      .offcanvas-body
+        = render :partial => "layouts/bootstrap/menu"
+    
+    / Main Content
+    - if @cache
+      - cache = {}
+    - else
+      - cache = {"data-cache"=>"never"}
+    - if @backbtn
+      - backbtn= {"data-backbtn"=>"true"}
+    - else
+      - backbtn= {"data-backbtn"=>"false"}
+    .jinda-content
+      .container-fluid
+        - if @title
+          %h2.mb-4= @title
+        = yield
+    
+    / Static pages (search, etc)
+    = render :partial => "jinda/static"

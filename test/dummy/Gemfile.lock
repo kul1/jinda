@@ -1,5 +1,5 @@
 PATH
-  remote: ../../../jinda_adminlte
+  remote: /Users/kul/mygem/jinda_adminlte
   specs:
     jinda_adminlte (0.9.0)
 

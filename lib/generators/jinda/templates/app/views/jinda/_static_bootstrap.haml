@@ -1,0 +1,23 @@
+.modal.fade#searchModal{"aria-hidden" => "true", "aria-labelledby" => "searchModalLabel", "tabindex" => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title#searchModalLabel Search
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", "type" => "button"}
+      .modal-body.jinda-static
+        / Search form
+        - form_tag({:controller=>"jinda", :action=>"search"}, :method => "get", :class => "mb-3" ) do
+          .mb-3
+            = text_field_tag :q, "", :type=>"search", :required=>true, :placeholder=>"key word", :class => "form-control"
+          = submit_tag "Search", :class => "btn btn-jinda-primary w-100"
+        
+        / Status form
+        - form_tag({:controller=>"jinda", :action=>"status"}, :method => "get", :class => "mb-3" ) do
+          .mb-3
+            = text_field_tag :id, nil, :required=>true, :placeholder=>"task number", :class => "form-control"
+          = submit_tag "Status", :class => "btn btn-jinda-primary w-100"
+        
+        / Action buttons
+        = link_to "Pending Tasks", "/jinda/pending", :class => "btn btn-jinda-primary w-100 mb-2"
+        = link_to "Refresh", "#", :onclick=>"window.location.replace('/')", :class => "btn btn-outline-secondary w-100 mb-2"
+        = link_to "About", "#about", :class => "btn btn-outline-secondary w-100"

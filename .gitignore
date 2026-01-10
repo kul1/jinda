@@ -34,3 +34,7 @@ generate_*.rb
 # AI agent rules - personal development use only
 AGENTS.md
 test/dummy/tmp/
+
+# from test_jinda_installation.sh
+jinda_test_app*
+

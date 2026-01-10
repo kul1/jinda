@@ -1,0 +1,34 @@
+/*
+ * This is a manifest file for Jinda Bootstrap theme
+ * Replaces jQuery Mobile with Bootstrap 5
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require normalize-rails
+ */
+
+// Import Bootstrap 5
+@import "bootstrap";
+
+// Import Font Awesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Import custom Jinda styles (keep existing styles)
+@import "sarabun";
+@import "jinda";
+@import "kul-4.2";
+@import "articles";
+@import "app.scss";
+@import "social";
+
+// Import custom Bootstrap theme for Jinda
+@import "jinda_bootstrap_theme";
+
+
+
+

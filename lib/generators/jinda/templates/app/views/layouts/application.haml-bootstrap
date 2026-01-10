@@ -1,0 +1,4 @@
+- if request.accept=="text/html, */*; q=0.01"
+  = render "layouts/bootstrap/page"
+- else
+  = render "layouts/bootstrap/full"

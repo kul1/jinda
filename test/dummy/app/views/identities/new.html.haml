@@ -3,6 +3,19 @@
     - @title= 'Sign Up'
     = form_tag "/auth/identity/register", {'data-ajax'=>'false'} do
       %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign Up
+      %p.hint-text Sign Up with your social media account or Username
+      .social-btn.text-center
+        %a.btn.btn-primary.btn-lg{:href => "/auth/facebook"}
+          %i.fa.fa-facebook
+          Facebook
+        %a.btn.btn-info.btn-lg{:href => "#"}
+          %i.fa.fa-twitter
+          Twitter
+        %a.btn.btn-danger.btn-lg{:href => "/auth/google_oauth2"}
+          %i.fa.fa-google
+          Google
+      .or-seperator
+        %b or
       .sign_in
       .label-warning
         = flash[:alert]
