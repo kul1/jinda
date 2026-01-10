@@ -5,7 +5,7 @@
 
 # Colors for output
 set -e
-ORIGINAL_DIR=$ORIGINAL_DIRORIGINAL_DIR=$ORIGINAL_DIRRED='\033[0;31m'
+ORIGINAL_DIR=$(pwd)ORIGINAL_DIR=$(pwd)RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
@@ -47,7 +47,7 @@ print_info() {
 cleanup() {
     if [ "$SKIP_CLEANUP" != "true" ]; then
         print_info "Cleaning up test directory..."
-        cd "$ORIGINAL_DIR"
+        cd "$(pwd)"
         rm -rf "$TEST_DIR/$TEST_APP_NAME"
         
         # Stop and remove MongoDB container if we created it
@@ -335,7 +335,7 @@ else
     exit 1
 fi
 print_info "Test app location: $TEST_DIR/$TEST_APP_NAME"
-print_info "Full path: $ORIGINAL_DIR/$TEST_APP_NAME"
+print_info "Full path: $(pwd)/$TEST_APP_NAME"
 print_info "To preserve test app, run with: SKIP_CLEANUP=true ./test_jinda_installation.sh"
 echo ""
 echo ""

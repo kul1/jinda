@@ -19,7 +19,7 @@
 # Test dummy app - keep test/dummy tracked to see generator changes
 # But ignore other dummy test directories
 dummy*
-!test/dummy/
+test/dummy/
 
 
 # Analysis artifacts - keep local only
@@ -33,3 +33,4 @@ generate_*.rb
 
 # AI agent rules - personal development use only
 AGENTS.md
+test/dummy/tmp/
