@@ -14,6 +14,7 @@ NC='\033[0m' # No Color
 TEST_APP_NAME="jinda_test_app_$(date +%s)"
 TEST_DIR="."
 JINDA_GEM_PATH="$HOME/mygem/jinda"
+JINDA_ADMIN_LTE_GEM_PATH="$HOME/mygem/jinda_adminlte"
 MONGODB_PORT=${MONGODB_PORT:-27017}  # Use env var or default to standard port
 
 echo "=========================================="
@@ -49,7 +50,7 @@ cleanup() {
         print_info "Cleaning up test directory..."
         cd "$(pwd)"
         rm -rf "$TEST_DIR/$TEST_APP_NAME"
-        
+
         # Stop and remove MongoDB container if we created it
         if [ -n "$NEW_MONGO_CONTAINER" ]; then
             print_info "Stopping test MongoDB container..."
@@ -68,6 +69,10 @@ cleanup() {
 # Check Rails
 RAILS_VERSION=$(rails -v | awk '{print $2}')
 print_status "Rails version: $RAILS_VERSION"
+
+# Capture current git branch from jinda gem
+CURRENT_BRANCH=$(cd "$JINDA_GEM_PATH" && git branch --show-current)
+print_status "Current jinda branch: $CURRENT_BRANCH"
 
 # Check MongoDB - find any running MongoDB container or start one
 print_info "Checking MongoDB setup..."
@@ -92,7 +97,7 @@ else
         docker run -d --name jinda_test_mongodb_${TEST_APP_NAME} \
             -p $MONGODB_PORT:27017 \
             mongo:latest > /dev/null 2>&1
-        
+
         if [ $? -eq 0 ]; then
             print_status "MongoDB container started on port $MONGODB_PORT"
             # Wait for MongoDB to be ready
@@ -116,6 +121,17 @@ rails new "$TEST_APP_NAME" --skip-test --skip-bundle --skip-active-record > /dev
 if [ $? -eq 0 ]; then
     cd "$TEST_APP_NAME"
     print_status "Rails app created: $TEST_APP_NAME"
+
+    # Switch to same branch as jinda gem
+    if [ -n "$CURRENT_BRANCH" ]; then
+        print_info "Switching to $CURRENT_BRANCH branch..."
+        git checkout -b "$CURRENT_BRANCH" > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            print_status "Switched to $CURRENT_BRANCH branch"
+        else
+            print_error "Failed to create $CURRENT_BRANCH branch"
+        fi
+    fi
 else
     print_error "Failed to create Rails app"
     exit 1
@@ -126,7 +142,8 @@ echo ""
 echo "Test 3: Adding Jinda gem to Gemfile..."
 echo "-----------------------------------"
 echo "gem 'jinda', path: '$JINDA_GEM_PATH'" >> Gemfile
-print_status "Jinda gem added to Gemfile"
+echo "gem 'jinda_adminlte', path: '$JINDA_ADMIN_LTE_GEM_PATH'" >> Gemfile
+print_status "Jinda & Jinda_adminlte gem added to Gemfile"
 
 # Test 4: Bundle install
 echo ""
@@ -235,27 +252,27 @@ fi
 # echo "Test 10: Testing Rails server..."
 # echo "-----------------------------------"
 # print_info "Starting Rails server on port 3000..."
-# 
+#
 # # Start server in background
 # bundle exec rails server -p 3000 -d
-# 
+#
 # # Wait for server to start
 # sleep 5
-# 
+#
 # # Check if server is running
 # if lsof -i :3000 > /dev/null 2>&1; then
 #     print_status "Rails server started successfully on port 3000"
-#     
+#
 #     # Test HTTP response
 #     print_info "Testing HTTP request to localhost:3000..."
 #     HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
-#     
+#
 #     if [ "$HTTP_CODE" == "200" ] || [ "$HTTP_CODE" == "302" ]; then
 #         print_status "Server responding correctly (HTTP $HTTP_CODE)"
 #     else
 #         print_error "Server returned HTTP $HTTP_CODE"
 #     fi
-#     
+#
 #     # Stop the server
 #     print_info "Stopping Rails server..."
 #     if [ -f tmp/pids/server.pid ]; then
@@ -266,7 +283,7 @@ fi
 #     print_error "Rails server failed to start"
 #     exit 1
 # fi
-# 
+#
 # # Test 11: Verify key files exist
 # echo ""
 # echo "Test 11: Verifying installation files..."
@@ -281,7 +298,7 @@ fi
 #     "config/mongoid.yml"
 #     "db/seeds.rb"
 # )
-# 
+#
 # for file in "${FILES[@]}"; do
 #     if [ -f "$file" ]; then
 #         print_status "File exists: $file"
@@ -289,7 +306,7 @@ fi
 #         print_error "File missing: $file"
 #     fi
 # done
-# 
+#
 # # Summary
 # echo ""
 echo "=========================================="
