@@ -2,7 +2,7 @@ name: RuboCop
 
 on:
   push:
-    branches: [ main, develop, 'jinda-*' ]
+    branches: [ main, develop, 'jinda-*', 'jinda_*' ]
   pull_request:
     branches: [ main, develop ]
 

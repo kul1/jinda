@@ -10,7 +10,7 @@
           = link_to image_tag('pencil.png', style:'border:none; float:right;', id: 'article_pen'), {controller: "articles", action: "edit", article_id: @article.id}, data: { confirm: "Please Confirm" }
         %div.font-weight-light
           by
-          %img.img-circle{:alt => "User Image", src: @show[:user][:image] }/
+          %i.img-circle{"aria-hidden" => "true", class: "fa fa-user", style: "font-size: 48px; color: #999;"}
         %div.font-weight-light
           = @show[:user][:code]
         %div.font-weight-light
@@ -27,7 +27,7 @@
                   %div.inner
                     %div.font-weight-light
                       - user_image = get_user_image(comment.user_id)
-                      %img.comment-user-image{:alt => "User Image", src: user_image}/
+                      %i.comment-user-image{"aria-hidden" => "true", class: "fa fa-user", style: "width: 45px; height: 45px; font-size: 24px; color: #bbb; text-align: center; line-height: 45px; background: #f4f4f4; border-radius: 50%; display: inline-block;"}
 
                     %div.font-weight-light
                       Author:    

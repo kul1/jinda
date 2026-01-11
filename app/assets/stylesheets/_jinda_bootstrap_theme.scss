@@ -1,0 +1,190 @@
+/* Jinda Bootstrap Theme - Maintains Original Jinda Look & Feel */
+
+/* ========== Variables ========== */
+$jinda-primary: #3388cc;
+$jinda-header-bg: #3388cc;
+$jinda-sidebar-bg: #f7f7f7;
+$jinda-sidebar-active: #ddd;
+
+/* ========== Layout ========== */
+body {
+  font-family: 'Sarabun', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== Header ========== */
+.jinda-header {
+  background-color: $jinda-header-bg;
+  color: white;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+}
+
+/* ========== Sidebar/Menu ========== */
+.jinda-sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: $jinda-sidebar-bg;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+  padding: 0;
+  
+  .nav {
+    flex-direction: column;
+  }
+  
+  .nav-link {
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 0;
+    
+    &:hover {
+      background-color: $jinda-sidebar-active;
+      color: #000;
+    }
+    
+    &.active {
+      background-color: $jinda-sidebar-active;
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  
+  // Nested menu items
+  .nav .nav {
+    padding-left: 20px;
+    
+    .nav-link {
+      padding: 8px 15px;
+      font-size: 0.9em;
+    }
+  }
+  
+  // Module headers
+  .module-header {
+    font-weight: bold;
+    padding: 15px 15px 5px 15px;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 0.85em;
+  }
+}
+
+/* ========== Main Content ========== */
+.jinda-content {
+  margin-top: 60px;
+  margin-left: 250px;
+  padding: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+/* ========== Buttons ========== */
+.btn-jinda-primary {
+  background-color: $jinda-primary;
+  border-color: $jinda-primary;
+  color: white;
+  
+  &:hover {
+    background-color: darken($jinda-primary, 10%);
+    border-color: darken($jinda-primary, 10%);
+  }
+}
+
+/* ========== Forms ========== */
+.jinda-form {
+  .form-label {
+    font-weight: 500;
+  }
+  
+  .form-control {
+    border-radius: 4px;
+  }
+}
+
+/* ========== Tables ========== */
+.jinda-table {
+  width: 100%;
+  
+  th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+  }
+}
+
+/* ========== Mobile Responsive ========== */
+@media (max-width: 768px) {
+  .jinda-sidebar {
+    left: -250px;
+    transition: left 0.3s ease;
+    
+    &.show {
+      left: 0;
+    }
+  }
+  
+  .jinda-content {
+    margin-left: 0;
+  }
+}
+
+/* ========== Offcanvas Menu (Mobile) ========== */
+.offcanvas-jinda {
+  width: 250px;
+  background-color: $jinda-sidebar-bg;
+  
+  .offcanvas-header {
+    background-color: $jinda-header-bg;
+    color: white;
+  }
+  
+  .offcanvas-body {
+    padding: 0;
+  }
+}
+
+/* ========== Search & Static Pages ========== */
+.jinda-static {
+  padding: 20px;
+  
+  .btn {
+    margin: 5px 0;
+    width: 100%;
+  }
+}
+
+/* ========== Social Login ========== */
+.login-box {
+  padding: 15px;
+  text-align: center;
+  
+  .social-button {
+    display: block;
+    margin: 10px auto;
+    max-width: 250px;
+  }
+}
