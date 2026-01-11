@@ -335,7 +335,7 @@ class JindaInstallationTest < Minitest::Test
 
       # Clean up logs if exist
       %w[server.out server.err].each do |log|
-        File.delete("log/#{log}") if File.exist?("log/#{log}")
+        FileUtils.rm_f("log/#{log}")
       end
     end
   rescue Timeout::Error
