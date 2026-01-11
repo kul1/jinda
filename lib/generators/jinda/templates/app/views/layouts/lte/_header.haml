@@ -1,0 +1,54 @@
+
+%header.main-header
+  / Logo
+  %a.logo{:href => root_path}
+    / mini logo for sidebar mini 50x50 pixels
+    %span.logo-mini
+      %b> J
+      LTE
+    / logo for regular state and mobile devices
+    %span.logo-lg
+      %b Jinda
+  / Header Navbar: style can be found in header.less
+  %nav.navbar.navbar-static-top
+    / Sidebar toggle button
+    %a.sidebar-toggle{"data-toggle" => "push-menu", :href => "#", :role => "button"}
+      %span.sr-only Toggle lte
+
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        / Removed messages, notifications, tasks icons for clean look
+        %li.dropdown.user.user-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", style: "display: flex; align-items: center; gap: 5px;"}
+            - get_login_user_info
+            %i.user-image{"aria-hidden" => "true", class: "fa fa-user", style: "vertical-align: middle; margin-right: 5px; line-height: 1; font-size: 18px; color: #bbb;"}
+            %span.hidden-xs #{$user_name}
+          %ul.dropdown-menu
+            %li.user-header
+              %i{"aria-hidden" => "true", class: "fa fa-user", style: "font-size: 48px; vertical-align: middle; color: #bbb;"}
+              %p
+                #{$user_name} - Developer
+                %small Member since Nov. 2012
+                
+            - if !login? 
+              %li.user-body
+                / Add Profile and Status here
+                %li
+                  .col-xs-4.text-center
+                    %a{:href => '/auth/facebook', "data-panel" => "main", rel: "external"}
+                      %i.fa.fa-facebook 
+                  .col-xs-4.text-center
+                    %a{:href => '/auth/google_oauth2', "data-panel" => "main", rel: "external"}
+                      %i.fa.fa-google
+            %li.user-footer
+              .pull-right
+              - if login?
+                %li
+                  %a.btn.btn-default.btn-flat{"data-panel" => "main", :href => logout_path, "data-ajax"=>"false"} Sign Out
+              - else
+                %li
+                  %a.btn.btn-default.btn-flat{:href =>new_session_path,"data-panel" => "main"}
+                    %i.fa.fa-circle-o
+                    %span
+                      Sign In
+    
