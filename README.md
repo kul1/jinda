@@ -23,7 +23,8 @@ Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
 # [Jinda](https://github.com/kul1/jinda)
 
 
-![Jinda Theme](doc/images/home.png)
+![Jinda Theme](doc/images/Home.png)
+
 ![Jinda Mindmap Editor](doc/images/map.png)
 
 ## Additional Extension themes also available at
