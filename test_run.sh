@@ -1,4 +1,9 @@
 #!/bin/bash
+# Ensure running with bash
+if [ -z "$BASH_VERSION" ]; then
+  echo "Error: This script requires bash. Please run with 'bash $0' instead of 'sh $0'."
+  exit 1
+fi
 # Test script for Jinda gem installation and development setup
 # This script validates each step of the Jinda installation process
 #
@@ -102,6 +107,14 @@ print_status "Current jinda branch: $CURRENT_BRANCH"
 # Check MongoDB setup
 print_info "Checking MongoDB setup..."
 
+# Check if Docker is accessible
+if ! docker ps > /dev/null 2>&1; then
+    print_error "Docker daemon is not running or not accessible."
+    echo "Please start Docker and ensure it's running, then rerun the script."
+    echo "Please ensure mongodb available port: 27017"
+    exit 1
+fi
+
 EXISTING_MONGO=$(docker ps --format '{{.Names}}' | grep mongo | head -1 || echo "")
 if [ -n "$EXISTING_MONGO" ]; then
     print_status "Using existing MongoDB container: $EXISTING_MONGO"
@@ -114,20 +127,28 @@ else
     if lsof -i :$MONGODB_PORT > /dev/null 2>&1; then
         print_status "MongoDB already running on port $MONGODB_PORT (non-Docker)"
     else
-        print_info "Starting new MongoDB container for testing..."
-        NEW_MONGO_CONTAINER="jinda_test_mongodb_${TEST_APP_NAME}"
-        docker run -d --name "$NEW_MONGO_CONTAINER" \
-            -p $MONGODB_PORT:27017 \
-            mongo:latest > /dev/null 2>&1
+    # Check if Docker is accessible before attempting to start container
+    if ! docker ps > /dev/null 2>&1; then
+        print_error "Docker daemon is not running or not accessible."
+        echo "Please start Docker and ensure it's running, then rerun the script."
+        echo "Please ensure mongodb available port: 27017"
+        exit 1
+    fi
 
-        if [ $? -eq 0 ]; then
-            print_status "MongoDB container started on port $MONGODB_PORT"
-            sleep 5  # Wait for ready
-        else
-            print_error "Failed to start MongoDB container"
-            print_info "Please ensure MongoDB is running on port $MONGODB_PORT"
-            exit 1
-        fi
+    print_info "Starting new MongoDB container for testing..."
+    NEW_MONGO_CONTAINER="jinda_test_mongodb_${TEST_APP_NAME}"
+    docker run -d --name "$NEW_MONGO_CONTAINER" \
+        -p $MONGODB_PORT:27017 \
+        mongo:latest > /dev/null 2>&1
+
+    if [ $? -eq 0 ]; then
+        print_status "MongoDB container started on port $MONGODB_PORT"
+        sleep 5  # Wait for ready
+    else
+        print_error "Failed to start MongoDB container"
+        echo "Please ensure mongodb available port: 27017"
+        exit 1
+    fi
     fi
 fi
 
