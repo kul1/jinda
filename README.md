@@ -1,4 +1,143 @@
-# Jinda Gem - Quick Start Guide: Building a Notes, Articles, or Documents App
+# Jinda
+
+Jinda is a gem to create Rails Workflow & Application Generator using Freemind and coming with AI
+
+Jinda is a tools for Ruby on Rails developer. (Required: basic Ruby on Rails )
+
+## Jinda use the following technologies:
+
+- JQuery Mobile and Bootstrap as Javascript front-end development framework
+- Rails Engine as Jinda core for router, helper
+- Workflow using Freemind design as XML to control Rails flow.
+- User authentication for login and role for each activity
+- Support Social authentication: Facebook, Google
+- Polymorphic Association in mongodb
+- Dynamic role for user and group
+- Rails concern & mixins for rails modules and class
+- Sample app: Articles, API Note, Document
+- Support themes: Jinda_adminlte, Jinda_adminBSB
+- Support HTML, HAML, SCSS
+- AI
+  <br />
+
+# [Jinda](https://github.com/kul1/jinda)
+
+
+![Jinda Theme](doc/images/Home.png)
+
+![Jinda Mindmap Editor](doc/images/map.png)
+
+## Additional Extension themes also available at
+
+- [jinda_adminlte](https://github.com/kul1/jinda_adminlte)
+
+  - ![j18-screen](https://user-images.githubusercontent.com/3953832/34298172-faa7e962-e6e1-11e7-93e2-19dfd4ab42af.png)
+
+- [jinda_adminbsb](https://github.com/kul1/jinda_adminbsb)
+  - ![jinda-bsb](https://user-images.githubusercontent.com/3953832/34320779-bb0980d2-e7c6-11e7-855c-fafc23487ba5.png)
+
+## Prerequisites
+
+**Jinda 0.8.0+ is compatible with Ruby 3.1+ and Rails 7.0+**
+
+These versions works for sure but others may do.
+
+- Ruby 3.1.2
+- Rails 7.0.0
+- MongoDB 6
+- Freemind 1.0.1
+
+## Note for Mac M1
+
+- Once finish configure: Ruby and Rails version
+- Need Pre-install Nokogiri as follow:
+
+```
+
+arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-libraries
+
+
+```
+## Note for Rails 7
+
+- depend on  mongoid dependencies: activemodel need to satify with Rails 7
+
+## Convention
+
+- database is MongoDB
+- images stored in upload directory, unset IMAGE_LOCATION in `initializer/jinda.rb` to use Cloudinary
+- mail use Gmail SMTP, config in `config/application.rb`
+- authentication use omniauth-identity
+
+## Sample Application
+
+### Screen shot install Jinda
+
+[Watch install video on YouTube](https://www.youtube.com/watch?v=XUXv7Yrskjk)
+
+### Sample Jinda in Docker
+
+- https://github.com/kul1/jinda-docker
+
+Supposed we want to create ecommerce web site, first create a Rails
+app without ActiveRecord
+
+    $ rails _7.0.0_ new YOURAPP -BOTJ
+
+## Add jinda to your Gemfile:
+ ```
+    gem 'jinda'
+ ```
+For Development (most updated)
+ ```
+    gem 'jinda', github:'kul1/jinda'
+ ```
+depend on your operating system, you may need to uncomment
+ ```
+    gem 'therubyracer', :platforms => :ruby
+ ```
+install gems
+ ```
+    $ bundle install
+ ```
+generate jinda application
+ ```
+    $ rails generate jinda:install
+ ```
+Then run bundle again to install additional gems added by jinda
+ ```
+    $ bundle install
+ ```
+configure mongoid, omniauth
+ ```
+    $ rails generate jinda:config
+ ```
+    Please make sure mongod is running then create admin user
+ ```
+    $ rails jinda:seed
+ ```
+    # Option: to use jinda_adminlte theme require add Gemfile with:
+ ```
+       gem 'jinda_adminlte'
+ ```   
+    Then
+ ```
+       $ rails g jinda_adminlte:install
+ ```
+now the application is ready, start it as any Rails application
+Please include your .env for social login, here sample 
+ ```
+GOOGLE_CLIENT_ID=
+
+GOOGLE_CLIENT_SECRET=
+ ```
+ ```
+ $ rails server
+ ```
+go to http://localhost:3000, click _Sign In_ on the left menu, and enter user name `admin` and password `secret`
+
+
+## Jinda Gem - Quick Start Guide: Building a Notes, Articles, or Documents App
 
 Jinda generates complete Rails applications from a Freemind mindmap file (`app/jinda/index.mm`). All generated code (models, controllers, views, etc.) originates from templates in the Jinda gem at `$HOME/mygem/jinda/lib/generators/jinda/templates/app`. During `rails generate jinda:install` and `rake jinda:update`, these templates are copied and populated based on your mindmap. Code between `# jinda begin` and `# jinda end` in generated files is overwritten on updates; add custom code outside these markers to preserve it.
 
