@@ -53,11 +53,12 @@ These versions works for sure but others may do.
 - Need Pre-install Nokogiri as follow:
 
 ```
-
+ 
 arch -x86_64 gem install nokogiri -v '1.10.10' --platform=ruby -- --use-system-libraries
-
-
+ 
+ 
 ```
+
 ## Note for Rails 7
 
 - depend on  mongoid dependencies: activemodel need to satify with Rails 7
@@ -86,44 +87,44 @@ app without ActiveRecord
 
 ## Add jinda to your Gemfile:
  ```
-    gem 'jinda'
- ```
+     gem 'jinda'
+  ```
 For Development (most updated)
  ```
-    gem 'jinda', github:'kul1/jinda'
- ```
+     gem 'jinda', github:'kul1/jinda'
+  ```
 depend on your operating system, you may need to uncomment
  ```
-    gem 'therubyracer', :platforms => :ruby
- ```
+     gem 'therubyracer', :platforms => :ruby
+  ```
 install gems
  ```
-    $ bundle install
- ```
+     $ bundle install
+  ```
 generate jinda application
  ```
-    $ rails generate jinda:install
- ```
+     $ rails generate jinda:install
+  ```
 Then run bundle again to install additional gems added by jinda
  ```
-    $ bundle install
- ```
+     $ bundle install
+  ```
 configure mongoid, omniauth
  ```
-    $ rails generate jinda:config
+     $ rails generate jinda:config
+  ```
+     Please make sure mongod is running then create admin user
  ```
-    Please make sure mongod is running then create admin user
+     $ rails jinda:seed
+  ```
+     # Option: to use jinda_adminlte theme require add Gemfile with:
  ```
-    $ rails jinda:seed
+        gem 'jinda_adminlte'
+  ```   
+     Then
  ```
-    # Option: to use jinda_adminlte theme require add Gemfile with:
- ```
-       gem 'jinda_adminlte'
- ```   
-    Then
- ```
-       $ rails g jinda_adminlte:install
- ```
+        $ rails g jinda_adminlte:install
+  ```
 now the application is ready, start it as any Rails application
 Please include your .env for social login, here sample 
  ```
@@ -132,10 +133,135 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
  ```
  ```
- $ rails server
- ```
+  $ rails server
+  ```
 go to http://localhost:3000, click _Sign In_ on the left menu, and enter user name `admin` and password `secret`
 
+![login](https://user-images.githubusercontent.com/3953832/41832924-d868f8f0-7813-11e8-93bb-19c0357cf604.png)
+
+Now open file `app/jinda/index.mm` using Freemind
+
+![index mm](https://user-images.githubusercontent.com/3953832/34680350-7906fbe8-f45e-11e7-8df5-969b4c735c6e.png)
+
+The 3 main branches are
+
+- models - this defines all the models to use in the application
+- services - this defines services which will be come the menu on the left of the screen. There will be 2 levels; the first sub branch is the main menu (modules) and the second sub branch is the sub menu (services)
+- roles - this defines role for all users
+
+### models
+
+Fiirst, we need to create some product so we click on models we'll see 2 models person and address. These are sample only. You can delete them or modify them however you want. We'll take a look at them first
+
+![models](https://user-images.githubusercontent.com/3953832/34681380-50b27dd6-f461-11e7-8472-3a14d76e0f16.png)
+
+The first sub branch (e.g. person) is the model name. According to Rails convention, this should be a singular word. The next sub branch are columns in the database. Let's take a look at each:
+
+- `fname` - this create a column (field) called fname which is a String by default
+- `sex: integer` - this create a column called sex, it is integer so must be explicity defined. The next sub branch (1: male) is disregarded by Jinda so we can put whatever we want. Here I just put some reminder.
+- `belongs_to :address` - here we have ![pen](https://cloud.githubusercontent.com/assets/3953832/25600038/3a4ffb66-2f0b-11e7-9f03-b875e550eefe.png)
+  icon. this means whatever text on this line will be added as is to the model Jinda generates. You use this to specify anything you want such as association, index, remarks in code, etc. according to mongoid gem. To draw the icon, rest mouse on the branch and hit &ltAlt-I&gt;.
+- `dob: date` - use any type that mongoid provides.
+- `photo` - for file field, just use String here. Jinda will receive the binary file and store in file system or cloudinary then generate a url link to it.
+
+In this example we just want a product model, so delete the person and address model and add a product branch like so
+
+![freemind1](https://user-images.githubusercontent.com/3953832/34680349-78f1eea6-f45e-11e7-8e43-50d9025bb449.png)
+
+Save the mind map then run:
+
+    rake jinda:update
+
+This will create file `app/models/product.rb`. In this file, note the comment lines `# jinda begin` and ` # jinda end`. Everything inside these comments will get overwritten when you change the models branch in the mind map so if you need to put anything inside here, use the mind map instead. You can add anything outside these comment lines which will be preserved when doing jinda:update.
+
+### services
+
+Next we'll add some product into the database, we'll first take a look at the services branch, which already has 3 sub branches; users, admins, and devs. Unlike models person and address branches, these branches are actively used by the system so I recommend that you leave them alone. Let's open the users branch
+
+![image](https://cloud.githubusercontent.com/assets/3953832/25599895/ecf46466-2f09-11e7-82aa-81ade6b9cd83.png)
+
+The text `users:User` on the sub branch has these implications:
+
+- `users` correspond to `app/controllers/users_controller.rb` which already exist when you do rails generate jinda:install. New branch will create new controller if not exist. In Jinda term, this will be called module.
+- `User` will create entry in main menu on the left of the screen. You don't see it in the screenshot above because it's controlled by the sub branch `role:m` which means this menu only available for login member. If you already signed in as admin, you should see it now.
+
+The next sub branches has the following:
+
+- `role: m` - means that this module (menu) is available only to user who has role m (if you open the role branch now will see that role m is member). All registered user has role m by default. User who is not log on would not be able to access this module.
+- `link:info: /users` - means that this is a link, the format is link: _submenu label_ : _url_ where submenu label is the text to show in the submenu and url is the link to go to, in this case, it woud go to http://localhost:3000/users which will perform index action of UsersController.
+- `user:edit` the branch that do not start with role:, rule:, nor link: will be a Jinda service. You will then specify the sequence of the execution as in this example there are 3 sub branches - enter_user, update_user, and rule:login? Let's take a look at them:
+
+- `enter_user:edit` - the first step is to display a form to input user information, this is accompanied by icon ![image](https://cloud.githubusercontent.com/assets/3953832/25599946/47c32cf6-2f0a-11e7-80a8-2c02c6294c9a.png)
+  which means user interface screen. and will correspond to a view file `app/views/users/user/enter_user.html.erb` where `/users` comes from the module name (the sub branch of services), `/user` comes from the service name (the sub branch of users), and `enter_user.html.erb` comes from the first part of this branch. The `edit` after the colon is just a description of this step. This branch also has sub branch `rule:login? && own_xmain?` which specify rule for this step that the user must be login and can continue this task if he is the one who started it. _task_ in here means each instance of service.
+- `update_user` - this icon ![image](https://cloud.githubusercontent.com/assets/3953832/25599976/87b69ad2-2f0a-11e7-9aba-1bd4e9546d3e.png) means to execute method update_user within `users_controller.rb`
+
+Armed with this knowledge, we are ready to add new product into our application like so:
+
+![add_enter](https://cloud.githubusercontent.com/assets/3953832/25600158/582d1fbe-2f0c-11e7-9bde-01a195a45b6c.png)
+
+To generate controller and views we save this mind map and run
+
+    rake jinda:update
+
+open file `app/views/products/add/enter.html.erb` you'll see some sample view already in there but commented. edit the file so it look like this
+
+
+Note that we do not specify form_tag and submit_tag, these will be supplied by Jinda.
+
+then open file `app/controllers/products_controller.rb` and add `create` method as follow. The method name has to be correspond to the bookmark branch.
+
+
+## Testing
+
+run following command:
+
+    rails generate jinda:rspec
+    guard init
+    guard
+
+![rspec](https://user-images.githubusercontent.com/3953832/34680352-7931d426-f45e-11e7-9f40-8b85b94c61bf.png)
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## Quick Test Run
+
+For developers, this section provides a streamlined way to clone, install, and test a Jinda-powered Rails app. It validates the gem's functionality and auto-starts a sample application for immediate exploration.
+
+### Prerequisites
+- Ensure MongoDB is running on the default port 27017. If not installed or running, use Docker for quick setup:
+  ```
+  docker run -d -p 27017:27017 --name mongodb_test mongo:latest
+  ```
+  (Stop with `docker stop mongodb_test` when done.)
+
+### Steps
+1. **Clone the Repository**: Download the Jinda gem source to your development directory (e.g., `~/mygem`):
+   ```
+   git clone https://github.com/kul1/jinda.git ~/mygem/jinda
+   ```
+
+2. **Navigate to the Directory**:
+   ```
+   cd ~/mygem/jinda
+   ```
+
+3. **Run the Test Script**: Execute the automated installer and server starter:
+   ```
+   bash test_run.sh
+   ```
+   - This creates a new Rails app (`jinda_test_app_XXXX`), installs Jinda, seeds the database (admin/secret user), and auto-starts the server on the first available port (starting from 3000, e.g., http://localhost:3000).
+   - Access the app in your browser, sign in with username `admin` and password `secret`, and explore the menu (e.g., Notes, Articles, Admin > Mindmap Editor).
+   - Press Ctrl+C to stop the server and return to the original directory (app preserved for reuse).
+
+For a cleanup-only run (tests without preserving the app): `bash test_run.sh -C`.
+
+This quick test confirms Jinda's installation and generates a functional app based on the default mindmap. Proceed to the guide below for customization.
 
 ## Jinda Gem - Quick Start Guide: Building a Notes, Articles, or Documents App
 
@@ -150,7 +276,7 @@ The mindmap has three main branches:
 - **services**: Defines left-side menu modules (main menu) and services (sub-menu workflows).
 - **roles**: Defines user roles (e.g., admin, member). Defaults suffice; leave intact unless customizing.
 
-## Models: Defining Your Data Structure
+### Models: Defining Your Data Structure
 
 The default **models** branch includes samples like `person`, `address`, `article`, `note`, `picture`, and `comment`. For a Notes app, use/modify `note`; for Articles, use `article`; for Documents, adapt `picture` or add `document`.
 
@@ -160,7 +286,7 @@ Under a model (singular, Rails convention), sub-branches define fields:
 - Raw code (e.g., `belongs_to :user`): Right-click branch > Insert > Icon > pen (edit icon) to add Mongoid associations, validations, indexes, etc.
 - File uploads (e.g., `file`): Use String; Jinda handles storage (filesystem/Cloudinary) and URL generation.
 
-Example: Default `note` model (for Notes app):
+**Example: Default `note` model (for Notes app):**
 
 ```
 models
@@ -199,7 +325,7 @@ For Documents: Modify `picture` (fields: `picture`, `description`, `belongs_to :
 
 Add custom code (e.g., scopes) outside markers.
 
-## Services: Building Menus and Workflows
+### Services: Building Menus and Workflows
 
 Defaults include `users`, `admins`, `devs` (leave intact for auth/admin). Ready services: `notes: Notes` (for Notes), `articles: Article` (for Articles), `docs: Document` (for Documents).
 
@@ -216,7 +342,7 @@ Sub-branches define access/steps:
   - Bookmark icon: Controller method (e.g., `create` → `def create`).
   - Forward icon: Redirect (e.g., to `/notes/my`).
 
-Example: Default `notes: Notes` service (for creating/editing notes):
+**Example: Default `notes: Notes` service (for creating/editing notes):**
 
 ```
 services
@@ -238,7 +364,7 @@ services
 
 ![services-notes](doc/images/services_notes.png)
 
-Example: Add an "articles" module (default `articles: Article` service, for creating/editing articles with comments):
+**Example: Add an "articles" module (default `articles: Article` service, for creating/editing articles with comments):**
 
 ```
 services
@@ -312,11 +438,11 @@ For full CRUD: Defaults include list (`/notes/my`), edit, delete. Add steps like
 
 Test: `rails s`, login (admin/secret), navigate to "Notes" > "new".
 
-## Roles: User Permissions
+### Roles: User Permissions
 
 Defaults: `m: member` (basic), `a: admin` (full), `d: developer`. Reference in services (e.g., `role: m`). Add roles like `editor: Editor` if needed.
 
-## Next Steps
+### Next Steps
 
 - Seed: `rails jinda:seed`.
 - MongoDB: `docker run -d -p 27017:27017 mongo`.
