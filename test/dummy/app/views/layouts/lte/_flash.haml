@@ -1,0 +1,9 @@
+.label-warning
+	#flashes
+		- if flash[:notice]
+			%p#flash_notice.messages.notice= flash[:notice]
+			= javascript_tag "$('#flash_notice').effect('highlight',{},1000);"
+		- if flash[:error] || flash[:errors]
+			%p#flash_errors.messages.errors= flash[:error] || flash[:errors]
+			= javascript_tag "$('#flash_errors').effect('highlight',{},1000);"
+		- flash[:error] = flash[:errors] = flash[:notice] = nil

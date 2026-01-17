@@ -18,9 +18,11 @@
 
 # Test dummy app - keep test/dummy tracked to see generator changes
 # But ignore other dummy test directories
-dummy*
-test/dummy/
-
+test/dummy-bk/
+test/dummy-bootstrap/
+test/dummy-old/
+# dummy*
+# test/dummy/
 
 # Analysis artifacts - keep local only
 /figures/
@@ -33,8 +35,11 @@ generate_*.rb
 
 # AI agent rules - personal development use only
 AGENTS.md
-test/dummy/tmp/
+# test/dummy/tmp/
 
 # from test_jinda_installation.sh
 jinda_test_app*
 
+test/dummy-bk/
+test/dummy-bootstrap/
+test/dummy-old/

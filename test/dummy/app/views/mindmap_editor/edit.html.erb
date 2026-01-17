@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mindmap Editor</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/jsmind@0.9.1/style/jsmind.css" />
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jsmind@0.9.1/es6/jsmind.js"></script>
+  <style>
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    #mindmap-container { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+    #jsmind_container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-right: 1px solid #ccc; overflow: auto; transform-origin: 0 0; box-sizing: border-box; }
+    #sidebar { position: fixed; right: 0; top: 50%; transform: translateY(-50%); width: 50px; height: auto; max-height: 80vh; background: #f5f5f5; border-left: none; padding: 5px 0; box-sizing: border-box; overflow: hidden; z-index: 1000; transition: none; display: flex; flex-direction: column; justify-content: center; gap: 10px; opacity: 1; pointer-events: auto; }
+    #sidebar:hover { box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
+    #sidebar h3 { display: none; }
+    .controls { display: flex; flex-direction: column; gap: 5px; }
+    input[type="text"] { position: absolute; left: -160px; top: 0; width: 150px; padding: 6px; box-sizing: border-box; font-size: 12px; display: none; margin-top: 2px; background: white; border: 1px solid #ddd; z-index: 1002; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    input[type="text"].visible { display: block; }
+    input[type="file"] { display: none; }
+    button { width: 40px; height: 40px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    button:hover { background: #5a6268; }
+    button i { font-size: 16px; }
+    .icon-btn { background: #007bff; }
+    .icon-btn:hover { background: #0056b3; }
+    label { display: none; }
+    .control-group { display: flex; flex-direction: column; gap: 2px; align-items: center; position: relative; }
+    .path-input-group { position: relative; width: 100%; }
+    .jm-container { transform-origin: 0 0 !important; }
+    .jm-inner, canvas, svg, .jm-node, .jm-node-text { transform-origin: 0 0 !important; }
+  </style>
+</head>
+<body>
+  <div id="mindmap-container">
+    <div id="jsmind_container"></div>
+  </div>
+
+  <div id="sidebar">
+    <h3><i class="fas fa-brain"></i> Controls</h3>
+    <% if flash[:warning] %>
+      <div style="color: orange; margin-bottom: 10px; font-size: 12px;"><%= flash[:warning] %></div>
+    <% end %>
+    <% if flash[:error] %>
+      <div style="color: red; margin-bottom: 10px; font-size: 12px;"><%= flash[:error] %></div>
+    <% end %>
+    
+    <div class="controls">
+      <div class="control-group">
+        <button id="zoomIn" class="icon-btn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+        <button id="zoomOut" class="icon-btn" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+        <button id="fitView" class="icon-btn" title="Fit View"><i class="fas fa-expand-arrows-alt"></i></button>
+      </div>
+      
+      <div class="control-group path-input-group">
+        <input type="text" id="loadPath" name="loadPath" placeholder="app/jinda/index.mm" value="app/jinda/index.mm">
+        <button id="loadPathToggle" class="icon-btn" title="Toggle Path"><i class="fas fa-edit"></i></button>
+        <button id="load" class="icon-btn" title="Load"><i class="fas fa-folder-open"></i></button>
+      </div>
+      
+      <div class="control-group">
+        <input type="file" id="loadFile" name="file" accept=".mm">
+        <button id="loadFromFile" class="icon-btn" title="Browse File"><i class="fas fa-folder"></i></button>
+      </div>
+      
+      <div class="control-group path-input-group">
+        <input type="text" id="savePath" name="savePath" placeholder="app/jinda/index.mm" value="app/jinda/index.mm">
+        <button id="savePathToggle" class="icon-btn" title="Toggle Path"><i class="fas fa-edit"></i></button>
+        <button id="save" class="icon-btn" title="Save"><i class="fas fa-floppy-disk"></i></button>
+      </div>
+      
+      <div class="control-group">
+        <button id="export" class="icon-btn" title="Export JSON"><i class="fas fa-file-export"></i></button>
+        <button id="reload" class="icon-btn" title="Reload"><i class="fas fa-sync-alt"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log('Script starting');
+    var mind = null;
+    var isDirty = false;
+    var initialData = null;
+    var zoomLevel = 1.0;
+
+    // Parse initial data from ERB
+    <% if @mind_data %>
+      initialData = <%= @mind_data.to_json.html_safe %>;
+    <% else %>
+      initialData = { meta: {name: 'Default'}, format: 'node_tree', data: {id: 'root', topic: 'Jinda', children: []} };
+    <% end %>
+    console.log('Initial data parsed:', initialData);
+
+    function initMindmap() {
+      console.log('Initializing mindmap...');
+      const container = document.getElementById('jsmind_container');
+      if (container) {
+        container.innerHTML = '';
+        container.className = '';
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.transform = 'none';
+        container.style.overflow = 'auto';
+      }
+      try {
+        var options = {
+          container: 'jsmind_container',
+          editable: true,
+          theme: 'primary'
+        };
+        if (mind) {
+          mind.destroy();
+          mind = null;
+        }
+        mind = new jsMind(options);
+        console.log('jsMind instance created');
+        mind.show(initialData);
+        console.log('Data shown');
+        setTimeout(() => {
+          if (mind) {
+            mind.resize();
+            console.log('Forced resize after show');
+          }
+        }, 100);
+        setTimeout(() => {
+          if (mind) {
+            mind.resize();
+            console.log('Second resize');
+          }
+        }, 300);
+        console.log('Resized');
+      } catch (e) {
+        console.error('Error initializing mindmap:', e);
+        console.error('Stack:', e.stack);
+        if (container) {
+          container.innerHTML = '<p style="color: red; padding: 10px;">Error loading mindmap: ' + e.message + '</p>';
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded');
+      initMindmap();
+
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          if (mind) {
+            mind.resize();
+            console.log('Window load resize');
+          }
+        }, 300);
+      });
+
+      var container = document.getElementById('jsmind_container');
+      var jmContainer = null;
+      function updateContainers() {
+        jmContainer = container.querySelector('.jm-container');
+      }
+
+      // Zoom controls
+      if (document.getElementById('zoomIn')) {
+        document.getElementById('zoomIn').addEventListener('click', function() {
+          try {
+            zoomLevel *= 1.2;
+            updateContainers();
+            if (jmContainer) {
+              jmContainer.style.transform = 'scale(' + zoomLevel + ')';
+              jmContainer.style.transformOrigin = '0 0';
+            }
+            console.log('Zoom in to', zoomLevel);
+          } catch (e) {
+            console.error('Zoom in error:', e);
+          }
+        });
+      }
+      if (document.getElementById('zoomOut')) {
+        document.getElementById('zoomOut').addEventListener('click', function() {
+          try {
+            zoomLevel /= 1.2;
+            zoomLevel = Math.max(0.1, zoomLevel);
+            updateContainers();
+            if (jmContainer) {
+              jmContainer.style.transform = 'scale(' + zoomLevel + ')';
+              jmContainer.style.transformOrigin = '0 0';
+            }
+            console.log('Zoom out to', zoomLevel);
+          } catch (e) {
+            console.error('Zoom out error:', e);
+          }
+        });
+      }
+      if (document.getElementById('fitView')) {
+        document.getElementById('fitView').addEventListener('click', function() {
+          try {
+            zoomLevel = 1.0;
+            updateContainers();
+            if (jmContainer) {
+              jmContainer.style.transform = 'scale(1)';
+              jmContainer.style.transformOrigin = '0 0';
+            }
+            if (mind) {
+              mind.resize();
+              container.scrollTop = 0;
+              container.scrollLeft = 0;
+            }
+            console.log('Fit view');
+          } catch (e) {
+            console.error('Fit view error:', e);
+          }
+        });
+      }
+
+      // Toggle path inputs
+      function togglePathInput(id) {
+        const input = document.getElementById(id);
+        if (input) {
+          input.classList.toggle('visible');
+          if (input.classList.contains('visible')) {
+            input.focus();
+          }
+        }
+      }
+      if (document.getElementById('loadPathToggle')) {
+        document.getElementById('loadPathToggle').addEventListener('click', function() { togglePathInput('loadPath'); });
+      }
+      if (document.getElementById('savePathToggle')) {
+        document.getElementById('savePathToggle').addEventListener('click', function() { togglePathInput('savePath'); });
+      }
+
+      // Load from path
+      if (document.getElementById('load')) {
+        document.getElementById('load').addEventListener('click', async function() {
+          const input = document.getElementById('loadPath');
+          if (!input) return;
+          const path = input.value;
+          console.log('Loading from path:', path);
+          try {
+            const response = await fetch('/mindmap_editor/load?path=' + encodeURIComponent(path));
+            if (response.ok) {
+              const data = await response.json();
+              console.log('Loaded data:', data);
+              if (mind) {
+                mind.show(data);
+                initialData = data;
+                isDirty = false;
+              }
+            } else {
+              const error = await response.text();
+              console.error('Load failed:', response.status, error);
+              alert('Load failed: ' + response.statusText + ' - ' + error);
+            }
+          } catch (e) {
+            console.error('Load error:', e);
+            alert('Error: ' + e.message);
+          }
+        });
+      }
+
+      // Load from file
+      if (document.getElementById('loadFromFile')) {
+        document.getElementById('loadFromFile').addEventListener('click', function() {
+          const fileInput = document.getElementById('loadFile');
+          if (fileInput) fileInput.click();
+        });
+      }
+      if (document.getElementById('loadFile')) {
+        document.getElementById('loadFile').addEventListener('change', async function(e) {
+          const file = e.target.files[0];
+          if (file) {
+            console.log('Uploading file:', file.name);
+            const formData = new FormData();
+            formData.append('file', file);
+            try {
+              const response = await fetch('/mindmap_editor/upload', { method: 'POST', body: formData });
+              if (response.ok) {
+                const data = await response.json();
+                console.log('Upload success:', data);
+                if (data.success && mind) {
+                  mind.show(data.data);
+                  initialData = data.data;
+                  isDirty = false;
+                } else {
+                  alert('Load failed: ' + (data.error || 'Unknown error'));
+                }
+              } else {
+                const error = await response.text();
+                console.error('Upload failed:', response.status, error);
+                alert('Upload failed: ' + response.statusText);
+              }
+            } catch (e) {
+              console.error('Upload error:', e);
+              alert('Error: ' + e.message);
+            }
+          }
+        });
+      }
+
+      // Save to path
+      if (document.getElementById('save')) {
+        document.getElementById('save').addEventListener('click', async function() {
+          if (!mind) {
+            alert('Mindmap not initialized');
+            return;
+          }
+          const input = document.getElementById('savePath');
+          if (!input) return;
+          const path = input.value;
+          const data = mind.get_data();
+          console.log('Saving to path:', path);
+          try {
+            const response = await fetch('/mindmap_editor/save', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ mind_data: data, path: path })
+            });
+            const result = await response.json();
+            console.log('Save result:', result);
+            if (result.success) {
+              alert('Saved successfully: ' + result.message);
+              isDirty = false;
+            } else {
+              alert('Save failed: ' + (result.error || 'Unknown error'));
+            }
+          } catch (e) {
+            console.error('Save error:', e);
+            alert('Error: ' + e.message);
+          }
+        });
+      }
+
+      // Export JSON
+      if (document.getElementById('export')) {
+        document.getElementById('export').addEventListener('click', function() {
+          if (!mind) {
+            alert('Mindmap not initialized');
+            return;
+          }
+          const data = mind.get_data();
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'mindmap.json';
+          a.click();
+          URL.revokeObjectURL(url);
+          console.log('Exported JSON');
+        });
+      }
+
+      // Reload with confirm
+      if (document.getElementById('reload')) {
+        document.getElementById('reload').addEventListener('click', function() {
+          if (isDirty && !confirm('Unsaved changes will be lost. Continue?')) {
+            return;
+          }
+          console.log('Reloading...');
+          window.location.reload();
+        });
+      }
+
+      window.addEventListener('resize', function() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+          sidebar.style.top = '50%';
+          sidebar.style.transform = 'translateY(-50%)';
+        }
+        if (mind) {
+          mind.resize();
+          zoomLevel = 1.0;
+          updateContainers();
+          if (jmContainer) {
+            jmContainer.style.transform = 'scale(1)';
+          }
+          if (container) {
+            container.scrollTop = 0;
+            container.scrollLeft = 0;
+          }
+        }
+      });
+    });
+
+    console.log('Script loaded completely');
+  </script>
+</body>
+</html>
