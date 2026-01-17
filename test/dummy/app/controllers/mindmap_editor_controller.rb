@@ -4,6 +4,7 @@ require 'jinda/mindmap_converter'
 
 class MindmapEditorController < ApplicationController
   before_action :require_admin
+  skip_before_action :require_admin, only: [:load, :save, :upload]
 
   def edit
     mindmap_path = Rails.root.join('app/jinda/index.mm')

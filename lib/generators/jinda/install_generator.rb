@@ -314,6 +314,9 @@ module Jinda
       # routes created each line as reversed order in routes
       # Moved routes to Engine
       def setup_routes
+        route "get 'mindmap_editor/export'"
+        route "post 'mindmap_editor/upload'"
+        route "get 'mindmap_editor/load'"
         route "post 'mindmap_editor/save'"
         route "get 'mindmap_editor/edit'"
         route "root :to => 'jinda#index'"
@@ -379,14 +382,14 @@ IMAGE_LOCATION = "upload"
           '
         end
 
+        # initializer 'mindmap_converter.rb' do
+        #   %q{# frozen_string_literal: true
+        # 
+        # # Load MindmapConverter module
+        # require 'jinda/mindmap_converter'
+        #   }
+        # end
         inject_into_file 'config/environment.rb', after: 'initialize!' do
-        initializer 'mindmap_converter.rb' do
-          %q{# frozen_string_literal: true
-
-# Load MindmapConverter module
-require 'jinda/mindmap_converter'
-          }
-        end
           "\n\n# hack to fix cloudinary error https://github.com/archiloque/rest-client/issues/141" \
             "\nclass Hash\n  remove_method :read\nrescue\nend"
         end
