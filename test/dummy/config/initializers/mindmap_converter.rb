@@ -2,4 +2,3 @@
 
 # Load MindmapConverter module
 require 'jinda/mindmap_converter'
-          

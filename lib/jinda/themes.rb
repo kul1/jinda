@@ -92,9 +92,9 @@ end
 def ma_log(message)
   #  Jinda::Notice.create :message => ERB::Util.html_escape(message.gsub("`","'")),
   #    :unread=> true, :ip=> ($ip || request.env["REMOTE_ADDR"])
-  if session[:user_id]
+  if session[:user_id] && current_ma_user
     Jinda::Notice.create message: ERB::Util.html_escape(message.tr('`', "'")),
-                         user_id: $user.id, unread: true, ip: request.env['REMOTE_ADDR']
+                         user_id: current_ma_user.id, unread: true, ip: request.env['REMOTE_ADDR']
   else
     Jinda::Notice.create message: ERB::Util.html_escape(message.tr('`', "'")),
                          unread: true, ip: request.env['REMOTE_ADDR']

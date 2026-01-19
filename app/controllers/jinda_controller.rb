@@ -17,16 +17,20 @@ class JindaController < ApplicationController
         message = "Node missing action icon: cannot find action for xmain #{xmain.id}, the node required action(icon) in freemind eg: form, list, method"
         ma_log(message)
         flash[:notice] = message
-        redirect_to 'pending' and return
+        redirect_to root_path, alert: message
+      return
       end
       xmain.update_attribute(:xvars, @xvars)
-      xmain.runseqs.last.update_attribute(:end, true)
+      if xmain.runseqs.last.present?
+  xmain.runseqs.last.update_attribute(:end, true)
+end
       # Above line cause error update_attribute in heroku shown in logs and it was proposed to fixed in github:'kul1/g241502'
       # Main action run with :id
       redirect_to action: 'run', id: xmain.id
 
     else
       refresh_to '/', alert: 'Error: cannot process'
+    return
       error_run_xmain = 'Error_run_xmain'
       ma_log(error_run_xmain)
     end
