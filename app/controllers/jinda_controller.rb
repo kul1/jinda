@@ -29,10 +29,10 @@ end
       redirect_to action: 'run', id: xmain.id
 
     else
-      refresh_to '/', alert: 'Error: cannot process'
-    return
       error_run_xmain = 'Error_run_xmain'
       ma_log(error_run_xmain)
+      refresh_to '/', alert: 'Error: cannot process'
+      return
     end
   end
 
