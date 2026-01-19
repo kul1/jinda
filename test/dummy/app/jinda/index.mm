@@ -1,384 +1,471 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<map version='1.0.1'>
-  <node TEXT='Jinda' ID='ID_1098419600' CREATED='1768519198364' MODIFIED='1768519198364'>
-    <node TEXT='services' ID='ID_282419531' POSITION='right' CREATED='1768519198364' MODIFIED='1768519198364'>
-      <node TEXT='users:User' ID='ID_1720745721' CREATED='1768519198364' MODIFIED='1768519198364'>
-        <node TEXT='role: m' ID='ID_417499145' CREATED='1768519198364' MODIFIED='1768519198364'/>
-        <node TEXT='link:info: /users' ID='ID_1266797279' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link:pending tasks: /jinda/pending' ID='ID_189841353' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='user:edit' ID='ID_154000410' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <node TEXT='enter_user:edit' ID='ID_1108188320' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='rule: login? &amp;&amp; own_xmain?' ID='ID_534938155' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='update_user' ID='ID_1221806432' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='pwd:change password' ID='ID_1382277695' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <node TEXT='enter: edit' ID='ID_1559014937' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='rule: login? &amp;&amp; own_xmain?' ID='ID_429506527' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='change_password' ID='ID_1566171053' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-      </node>
-      <node TEXT='admins:Admin' ID='ID_1348489452' CREATED='1768519198365' MODIFIED='1768519198365'>
-        <node TEXT='role: a' ID='ID_765498361' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='edit_role:edit user role' ID='ID_1213363124' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <node TEXT='select_user:select user' ID='ID_1190117882' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: a' ID='ID_346973267' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='edit_role:edit role' ID='ID_1325872490' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: a' ID='ID_181411445' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='update_role' ID='ID_1709875397' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='link: pending tasks: /jinda/pending' ID='ID_1088166839' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link: logs: /jinda/logs' ID='ID_829325467' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link: docs: /jinda/doc' ID='ID_351025910' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link: Mindmap Editor: /mindmap_editor/edit' ID='ID_999999999' CREATED='1768519198365' MODIFIED='1768519198365'/>
-      </node>
-      <node TEXT='devs: Developer' ID='ID_1003882979' CREATED='1768519198365' MODIFIED='1768519198365'>
-        <node TEXT='role: d' ID='ID_422196918' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link: error_logs: /jinda/error_logs' ID='ID_716276608' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        <node TEXT='link: notice_logs: /jinda/notice_logs' ID='ID_1570419198' CREATED='1768519198365' MODIFIED='1768519198365'/>
-      </node>
-      <node TEXT='docs: Document' ID='ID_853155456' CREATED='1768519198365' MODIFIED='1768519198365'>
-        <node TEXT='link: My Document: /docs/my' ID='ID_1938238774' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <node TEXT='role: m' ID='ID_284548338' CREATED='1768519198365' MODIFIED='1768519198365'/>
-        </node>
-        <node TEXT='doc_new: New Document' ID='ID_899042293' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <node TEXT='doc_form: Doc Form' ID='ID_1840278804' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_970192981' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='doc_update: Doc update' ID='ID_1352102524' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='doc_edit: Edit Document' ID='ID_339628868' CREATED='1768519198365' MODIFIED='1768519198365'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='doc_select: Select Document' ID='ID_801950372' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_958000020' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='doc_edit: Edit Document' ID='ID_1190499756' CREATED='1768519198365' MODIFIED='1768519198365'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_876506876' CREATED='1768519198365' MODIFIED='1768519198365'/>
-          </node>
-          <node TEXT='doc_update: Doc_update' ID='ID_447781815' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='doc_xedit: Doc_hidden_menu' ID='ID_278169779' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='doc_edit: Edit' ID='ID_541432768' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_291497358' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='doc_update: Doc_update' ID='ID_802199910' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-      </node>
-      <node TEXT='notes: Notes' ID='ID_554831343' CREATED='1768519198366' MODIFIED='1768519198366'>
-        <node TEXT='link:My Notes: /notes/my' ID='ID_737469676' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='role: m' ID='ID_452598006' CREATED='1768519198366' MODIFIED='1768519198366'/>
-        </node>
-        <node TEXT='new: New Note' ID='ID_553734932' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='new_note: New ' ID='ID_723334321' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_876248524' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='create: Create' ID='ID_1125779183' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-          <node TEXT='/notes/my' ID='ID_985992723' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='forward'/>
-          </node>
-        </node>
-        <node TEXT='edit: Edit' ID='ID_1241171950' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='select_note: Select' ID='ID_1790163920' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_576985859' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='edit_note: Edit' ID='ID_938262436' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_230824144' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='update: Update' ID='ID_1581002301' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='delete:Delete' ID='ID_320521408' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='select_note: Select' ID='ID_1631275659' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_508955334' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='delete: Delete' ID='ID_1347765598' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='mail: Mail' ID='ID_1325232876' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='select_note: Select' ID='ID_1817148049' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_148204442' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='display_mail: Dsiplay Mail' ID='ID_379926448' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-          </node>
-          <node TEXT='mail: Mail' ID='ID_1981382192' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='xedit: Future use' ID='ID_807216843' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='edit_note: Edit' ID='ID_6864095' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_374108361' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='update: Update' ID='ID_1206027492' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-      </node>
-      <node TEXT='articles: Article' ID='ID_328863650' CREATED='1768519198366' MODIFIED='1768519198366'>
-        <node TEXT='link: All Articles: /articles' ID='ID_1521905276' CREATED='1768519198366' MODIFIED='1768519198366'/>
-        <node TEXT='link: My article: /articles/my' ID='ID_1376361427' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='role: m' ID='ID_160100424' CREATED='1768519198366' MODIFIED='1768519198366'/>
-        </node>
-        <node TEXT='new_article: New Article' ID='ID_1355420049' CREATED='1768519198366' MODIFIED='1768519198366'>
-          <node TEXT='form_article: New Article' ID='ID_1468250197' CREATED='1768519198366' MODIFIED='1768519198366'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_311178525' CREATED='1768519198366' MODIFIED='1768519198366'/>
-          </node>
-          <node TEXT='create: Create Article' ID='ID_1687683396' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-          <node TEXT='/articles/my' ID='ID_657878492' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='forward'/>
-          </node>
-        </node>
-        <node TEXT='edit_article: Edit Article' ID='ID_922854639' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <node TEXT='select_article: Select Article' ID='ID_938626803' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_936241713' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='edit_article: Edit Article' ID='ID_661682947' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_220712746' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='j_update: Update Article' ID='ID_1575963748' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-          <node TEXT='/articles/my' ID='ID_863187878' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='forward'/>
-          </node>
-        </node>
-        <node TEXT='xedit_article: xEdit Article' ID='ID_1861034169' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='edit_article: Edit Article' ID='ID_91386173' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_989824378' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='j_update: Update Article' ID='ID_1635586443' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-      </node>
-      <node TEXT='comments: Comment' ID='ID_704959130' CREATED='1768519198367' MODIFIED='1768519198367'>
-        <icon BUILTIN='button_cancel'/>
-        <node TEXT='role: m' ID='ID_720892787' CREATED='1768519198367' MODIFIED='1768519198367'/>
-        <node TEXT='new_comment: New Comment' ID='ID_1973520751' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='create' ID='ID_345629058' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='bookmark'/>
-            <node TEXT='role: m' ID='ID_381086123' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='/articles/my' ID='ID_170265872' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='forward'/>
-          </node>
-        </node>
-        <node TEXT='comments: Comment' ID='ID_298151177' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='role: m' ID='ID_849683976' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          <node TEXT='new_comment: New Comment' ID='ID_1683596181' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='button_cancel'/>
-            <node TEXT='create' ID='ID_933207888' CREATED='1768519198367' MODIFIED='1768519198367'>
-              <icon BUILTIN='bookmark'/>
-              <node TEXT='role: m' ID='ID_382283101' CREATED='1768519198367' MODIFIED='1768519198367'/>
-            </node>
-            <node TEXT='/articles/my' ID='ID_1293153336' CREATED='1768519198367' MODIFIED='1768519198367'>
-              <icon BUILTIN='forward'/>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node TEXT='ctrs: ctrs&amp; Menu' ID='ID_1495015891' CREATED='1768519198367' MODIFIED='1768519198367'>
-        <node TEXT='role: a' ID='ID_143003916' CREATED='1768519198367' MODIFIED='1768519198367'/>
-        <node TEXT='vfolder1:Sub Menu 1' ID='ID_1960607342' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <node TEXT='viewfile1: Title 1' ID='ID_328242903' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='rule: login? &amp;&amp; own_xmain?' ID='ID_538210971' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='viewfile2: Title 2' ID='ID_1316819449' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='rule: login? &amp;&amp; own_xmain?' ID='ID_926094925' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-          <node TEXT='update_viewfile1' ID='ID_171099141' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='vfolder2:Title 2' ID='ID_914236141' CREATED='1768519198367' MODIFIED='1768519198367'>
-          <node TEXT='viewfile2: Title 2' ID='ID_1222970183' CREATED='1768519198367' MODIFIED='1768519198367'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='rule: login? &amp;&amp; own_xmain?' ID='ID_321335369' CREATED='1768519198367' MODIFIED='1768519198367'/>
-          </node>
-        </node>
-      </node>
-      <node TEXT='sitemap: Sitemap' ID='ID_925257043' CREATED='1768519198368' MODIFIED='1768519198368'>
-        <node TEXT='role: a' ID='ID_918124789' CREATED='1768519198368' MODIFIED='1768519198368'/>
-        <node TEXT='sitemap: Sitemap' ID='ID_961056168' CREATED='1768519198368' MODIFIED='1768519198368'/>
-      </node>
-      <node TEXT='api/v1/notes: Notes API ' ID='ID_35210833' CREATED='1768519198368' MODIFIED='1768519198368'>
-        <node TEXT='link:My Notes: /api/v1/notes/my' ID='ID_1053900670' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <icon BUILTIN='button_cancel'/>
-          <node TEXT='role: m' ID='ID_689836583' CREATED='1768519198368' MODIFIED='1768519198368'/>
-        </node>
-        <node TEXT='new: New Note' ID='ID_1182560700' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <node TEXT='new_note: New ' ID='ID_840380967' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_981310587' CREATED='1768519198368' MODIFIED='1768519198368'/>
-          </node>
-          <node TEXT='create: Create' ID='ID_924027059' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='edit: Edit' ID='ID_963001770' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <node TEXT='edit_note: Edit' ID='ID_1362613316' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_427486434' CREATED='1768519198368' MODIFIED='1768519198368'/>
-          </node>
-          <node TEXT='update: Update' ID='ID_1445882396' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-        <node TEXT='delete:Delete' ID='ID_918406528' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <node TEXT='select_note: Select' ID='ID_809771470' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='attach'/>
-            <node TEXT='role: m' ID='ID_671801258' CREATED='1768519198368' MODIFIED='1768519198368'/>
-          </node>
-          <node TEXT='delete: Delete' ID='ID_506410154' CREATED='1768519198368' MODIFIED='1768519198368'>
-            <icon BUILTIN='bookmark'/>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node TEXT='roles' ID='ID_855471610' POSITION='right' CREATED='1768519198368' MODIFIED='1768519198368'>
-      <node TEXT='m: member' ID='ID_1681080231' CREATED='1768519198368' MODIFIED='1768519198368'/>
-      <node TEXT='a: admin' ID='ID_1429503284' CREATED='1768519198368' MODIFIED='1768519198368'/>
-      <node TEXT='d: developer' ID='ID_568365839' CREATED='1768519198368' MODIFIED='1768519198368'/>
-    </node>
-    <node TEXT='models' ID='ID_1677010054' POSITION='right' CREATED='1768519198368' MODIFIED='1768519198368'>
-      <node TEXT='person' ID='ID_1957754752' CREATED='1768519198368' MODIFIED='1768519198368'>
-        <node TEXT='fname' ID='ID_1617970069' CREATED='1768519198368' MODIFIED='1768519198368'/>
-        <node TEXT='lname' ID='ID_1200135538' CREATED='1768519198368' MODIFIED='1768519198368'/>
-        <node TEXT='sex: integer' ID='ID_1770958985' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <node TEXT='1: male' ID='ID_793089342' CREATED='1768519198368' MODIFIED='1768519198368'/>
-          <node TEXT='2: female' ID='ID_1796007763' CREATED='1768519198368' MODIFIED='1768519198368'/>
-        </node>
-        <node TEXT='belongs_to :address' ID='ID_1509464300' CREATED='1768519198368' MODIFIED='1768519198368'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='dob: date' ID='ID_604231613' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='phone' ID='ID_936807610' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='photo' ID='ID_1957301629' CREATED='1768519198369' MODIFIED='1768519198369'/>
-      </node>
-      <node TEXT='address' ID='ID_959987887' CREATED='1768519198369' MODIFIED='1768519198369'>
-        <node TEXT='address_street' ID='ID_430517150' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='city' ID='ID_1797865138' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='state' ID='ID_1964490487' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='zip' ID='ID_1226075540' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='phone' ID='ID_65427990' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='lat: float' ID='ID_1859608350' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='lng: float' ID='ID_48497260' CREATED='1768519198369' MODIFIED='1768519198369'/>
-      </node>
-      <node TEXT='article' ID='ID_1995497233' CREATED='1768519198369' MODIFIED='1768519198369'>
-        <node TEXT='title' ID='ID_364756011' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='text' ID='ID_1676483995' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='belongs_to :user, :class_name =&gt; &quot;User&quot;' ID='ID_1334057464' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='has_many :comments' ID='ID_408271104' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='validates :title, :text, :user_id, presence: true' ID='ID_944554146' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='body' ID='ID_229502630' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='keywords' ID='ID_404103076' CREATED='1768519198369' MODIFIED='1768519198369'/>
-      </node>
-      <node TEXT='picture' ID='ID_864577403' CREATED='1768519198369' MODIFIED='1768519198369'>
-        <node TEXT='picture' ID='ID_679208099' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='description' ID='ID_1266154874' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='belongs_to :user' ID='ID_1422817360' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-      </node>
-      <node TEXT='note' ID='ID_1450593753' CREATED='1768519198369' MODIFIED='1768519198369'>
-        <node TEXT='include Mongoid::Attributes::Dynamic' ID='ID_537548385' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='title' ID='ID_1611227370' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='body' ID='ID_88547965' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='belongs_to :user' ID='ID_1655403736' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='before_validation :ensure_title_has_a_value ' ID='ID_1934899110' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='validates :title, length: { maximum: (MAX_TITLE_LENGTH = 30), message: &quot;Must be less   than 30 characters&quot; }, presence: true' ID='ID_1430552418' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='validates :body, length: { maximum: (MAX_BODY_LENGTH = 1000), message: &quot;Must be less   than 1000 characters&quot;} ' ID='ID_1231500988' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='private
-  def ensure_title_has_a_value
-    if title.blank?
-      self.title = body[0..(MAX_TITLE_LENGTH-1)] unless body.blank?
-    end
-  end
-  
-' ID='ID_1069060625' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-      </node>
-      <node TEXT='comment' ID='ID_429078131' CREATED='1768519198369' MODIFIED='1768519198369'>
-        <node TEXT='body' ID='ID_1251093062' CREATED='1768519198369' MODIFIED='1768519198369'/>
-        <node TEXT='belongs_to :article, :class_name =&gt; &quot;Article&quot;  ' ID='ID_911071644' CREATED='1768519198369' MODIFIED='1768519198369'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='belongs_to :user, :class_name =&gt; &quot;User&quot;  ' ID='ID_588013696' CREATED='1768519198370' MODIFIED='1768519198370'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='belongs_to :job, :class_name =&gt; &quot;Job&quot;  ' ID='ID_31602545' CREATED='1768519198370' MODIFIED='1768519198370'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='belongs_to :commentable, polymorphic: true ' ID='ID_1288333428' CREATED='1768519198370' MODIFIED='1768519198370'>
-          <icon BUILTIN='edit'/>
-        </node>
-        <node TEXT='index({ commentable_id: 1, commentable_type: 1}) ' ID='ID_598892151' CREATED='1768519198370' MODIFIED='1768519198370'>
-          <icon BUILTIN='edit'/>
-        </node>
-      </node>
-    </node>
-  </node>
+<map version="freeplane 1.12.15">
+<!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
+<bookmarks/>
+<node TEXT="Jinda" FOLDED="false" ID="ID_1098419600" CREATED="1768519198364" MODIFIED="1768519198364"><hook NAME="MapStyle" zoom="3.0">
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" auto_compact_layout="true" fit_to_viewport="false" show_icons="BESIDE_NODES" show_tags="UNDER_NODES" show_icon_for_attributes="true" showTagCategories="false" show_note_icons="true"/>
+    <tags category_separator="::"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24 pt">
+<font SIZE="24"/>
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="bottom_or_right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="default" ID="ID_271890427" ICON_SIZE="12 pt" COLOR="#000000" STYLE="fork">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" DASH="" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_271890427" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<richcontent TYPE="DETAILS" CONTENT-TYPE="plain/auto"/>
+<richcontent TYPE="NOTE" CONTENT-TYPE="plain/auto"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.tags">
+<font SIZE="10"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.attributes">
+<font SIZE="9"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.note" COLOR="#000000" BACKGROUND_COLOR="#ffffff" TEXT_ALIGN="LEFT"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating">
+<edge STYLE="hide_edge"/>
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.selection" BACKGROUND_COLOR="#afd3f7" BORDER_COLOR_LIKE_EDGE="false" BORDER_COLOR="#afd3f7"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="bottom_or_right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important" ID="ID_67550811">
+<icon BUILTIN="yes"/>
+<arrowlink COLOR="#003399" TRANSPARENCY="255" DESTINATION="ID_67550811"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.flower" COLOR="#ffffff" BACKGROUND_COLOR="#255aba" STYLE="oval" TEXT_ALIGN="CENTER" BORDER_WIDTH_LIKE_EDGE="false" BORDER_WIDTH="22 pt" BORDER_COLOR_LIKE_EDGE="false" BORDER_COLOR="#f9d71c" BORDER_DASH_LIKE_EDGE="false" BORDER_DASH="CLOSE_DOTS" MAX_WIDTH="6 cm" MIN_WIDTH="3 cm"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="bottom_or_right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="oval" SHAPE_HORIZONTAL_MARGIN="10 pt" SHAPE_VERTICAL_MARGIN="10 pt">
+<font SIZE="18"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff">
+<font SIZE="16"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439">
+<font SIZE="14"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000">
+<font SIZE="12"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111">
+<font SIZE="10"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,5"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,6"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,7"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,8"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,9"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,10"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,11"/>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<node TEXT="services" POSITION="bottom_or_right" ID="ID_282419531" CREATED="1768519198364" MODIFIED="1768519198364">
+<node TEXT="users:User" FOLDED="true" ID="ID_1720745721" CREATED="1768519198364" MODIFIED="1768519198364">
+<node TEXT="role: m" ID="ID_417499145" CREATED="1768519198364" MODIFIED="1768519198364"/>
+<node TEXT="link:info: /users" ID="ID_1266797279" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link:pending tasks: /jinda/pending" ID="ID_189841353" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="user:edit" FOLDED="true" ID="ID_154000410" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="enter_user:edit" FOLDED="true" ID="ID_1108188320" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="rule: login? &amp;&amp; own_xmain?" ID="ID_534938155" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="update_user" ID="ID_1221806432" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="pwd:change password" FOLDED="true" ID="ID_1382277695" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="enter: edit" FOLDED="true" ID="ID_1559014937" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="rule: login? &amp;&amp; own_xmain?" ID="ID_429506527" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="change_password" ID="ID_1566171053" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+</node>
+<node TEXT="admins:Admin" ID="ID_1348489452" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="role: a" ID="ID_765498361" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="edit_role:edit user role" FOLDED="true" ID="ID_1213363124" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="select_user:select user" FOLDED="true" ID="ID_1190117882" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="role: a" ID="ID_346973267" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="edit_role:edit role" FOLDED="true" ID="ID_1325872490" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="role: a" ID="ID_181411445" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="update_role" ID="ID_1709875397" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="link: pending tasks: /jinda/pending" ID="ID_1088166839" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link: logs: /jinda/logs" ID="ID_829325467" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link: docs: /jinda/doc" ID="ID_351025910" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link: Mindmap Editor: /mindmap_editor/edit" ID="ID_999999999" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="mindmap: Mindmap" ID="ID_1288940930" CREATED="1768753474659" MODIFIED="1768753600313">
+<node TEXT="zoom_in: Zoom In" ID="ID_1422056065" CREATED="1768753606445" MODIFIED="1768753634750"/>
+<node TEXT="zoom_out: Zoom Out" ID="ID_1659963811" CREATED="1768753637495" MODIFIED="1768753650220"/>
+<node TEXT="fit_view: Fit View" ID="ID_1558145700" CREATED="1768753655915" MODIFIED="1768753719085"/>
+<node TEXT="map_open: Open" ID="ID_764632956" CREATED="1768753723100" MODIFIED="1768753913198"/>
+<node TEXT="map_save: Save" ID="ID_259365744" CREATED="1768753813896" MODIFIED="1768753939680"/>
+<node TEXT="path_edit: Edit Path" ID="ID_286723378" CREATED="1768753829647" MODIFIED="1768753878846"/>
+<node TEXT="export_json: Export" ID="ID_205016978" CREATED="1768753940898" MODIFIED="1768753996870"/>
+<node TEXT="reset: Reset Index" ID="ID_913353713" CREATED="1768754000195" MODIFIED="1768754040669"/>
+</node>
+</node>
+<node TEXT="devs: Developer" FOLDED="true" ID="ID_1003882979" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="role: d" ID="ID_422196918" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link: error_logs: /jinda/error_logs" ID="ID_716276608" CREATED="1768519198365" MODIFIED="1768519198365"/>
+<node TEXT="link: notice_logs: /jinda/notice_logs" ID="ID_1570419198" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="docs: Document" FOLDED="true" ID="ID_853155456" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="link: My Document: /docs/my" FOLDED="true" ID="ID_1938238774" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="role: m" ID="ID_284548338" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="doc_new: New Document" FOLDED="true" ID="ID_899042293" CREATED="1768519198365" MODIFIED="1768519198365">
+<node TEXT="doc_form: Doc Form" FOLDED="true" ID="ID_1840278804" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_970192981" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="doc_update: Doc update" ID="ID_1352102524" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="doc_edit: Edit Document" FOLDED="true" ID="ID_339628868" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="doc_select: Select Document" FOLDED="true" ID="ID_801950372" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_958000020" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="doc_edit: Edit Document" FOLDED="true" ID="ID_1190499756" CREATED="1768519198365" MODIFIED="1768519198365">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_876506876" CREATED="1768519198365" MODIFIED="1768519198365"/>
+</node>
+<node TEXT="doc_update: Doc_update" ID="ID_447781815" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="doc_xedit: Doc_hidden_menu" FOLDED="true" ID="ID_278169779" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="doc_edit: Edit" FOLDED="true" ID="ID_541432768" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_291497358" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="doc_update: Doc_update" ID="ID_802199910" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+</node>
+<node TEXT="notes: Notes" FOLDED="true" ID="ID_554831343" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="link:My Notes: /notes/my" FOLDED="true" ID="ID_737469676" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="role: m" ID="ID_452598006" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="new: New Note" FOLDED="true" ID="ID_553734932" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="new_note: New " FOLDED="true" ID="ID_723334321" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_876248524" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="create: Create" ID="ID_1125779183" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+<node TEXT="/notes/my" ID="ID_985992723" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="forward"/>
+</node>
+</node>
+<node TEXT="edit: Edit" FOLDED="true" ID="ID_1241171950" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="select_note: Select" FOLDED="true" ID="ID_1790163920" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_576985859" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="edit_note: Edit" FOLDED="true" ID="ID_938262436" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_230824144" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="update: Update" ID="ID_1581002301" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="delete:Delete" FOLDED="true" ID="ID_320521408" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="select_note: Select" FOLDED="true" ID="ID_1631275659" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_508955334" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="delete: Delete" ID="ID_1347765598" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="mail: Mail" FOLDED="true" ID="ID_1325232876" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="select_note: Select" FOLDED="true" ID="ID_1817148049" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_148204442" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="display_mail: Dsiplay Mail" ID="ID_379926448" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+</node>
+<node TEXT="mail: Mail" ID="ID_1981382192" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="xedit: Future use" FOLDED="true" ID="ID_807216843" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="edit_note: Edit" FOLDED="true" ID="ID_6864095" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_374108361" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="update: Update" ID="ID_1206027492" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+</node>
+<node TEXT="articles: Article" ID="ID_328863650" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="link: All Articles: /articles" ID="ID_1521905276" CREATED="1768519198366" MODIFIED="1768519198366"/>
+<node TEXT="link: My article: /articles/my" FOLDED="true" ID="ID_1376361427" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="role: m" ID="ID_160100424" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="new_article: New Article" ID="ID_1355420049" CREATED="1768519198366" MODIFIED="1768519198366">
+<node TEXT="form_article: New Article" FOLDED="true" ID="ID_1468250197" CREATED="1768519198366" MODIFIED="1768519198366">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_311178525" CREATED="1768519198366" MODIFIED="1768519198366"/>
+</node>
+<node TEXT="create: Create Article" ID="ID_1687683396" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+</node>
+<node TEXT="/articles/my" ID="ID_657878492" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="forward"/>
+</node>
+</node>
+<node TEXT="edit_article: Edit Article" FOLDED="true" ID="ID_922854639" CREATED="1768519198367" MODIFIED="1768519198367">
+<node TEXT="select_article: Select Article" FOLDED="true" ID="ID_938626803" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_936241713" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="edit_article: Edit Article" FOLDED="true" ID="ID_661682947" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_220712746" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="j_update: Update Article" ID="ID_1575963748" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+</node>
+<node TEXT="/articles/my" ID="ID_863187878" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="forward"/>
+</node>
+</node>
+<node TEXT="xedit_article: xEdit Article" FOLDED="true" ID="ID_1861034169" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="edit_article: Edit Article" FOLDED="true" ID="ID_91386173" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_989824378" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="j_update: Update Article" ID="ID_1635586443" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+</node>
+<node TEXT="comments: Comment" FOLDED="true" ID="ID_704959130" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="role: m" ID="ID_720892787" CREATED="1768519198367" MODIFIED="1768519198367"/>
+<node TEXT="new_comment: New Comment" FOLDED="true" ID="ID_1973520751" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="create" FOLDED="true" ID="ID_345629058" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+<node TEXT="role: m" ID="ID_381086123" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="/articles/my" ID="ID_170265872" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="forward"/>
+</node>
+</node>
+<node TEXT="comments: Comment" FOLDED="true" ID="ID_298151177" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="role: m" ID="ID_849683976" CREATED="1768519198367" MODIFIED="1768519198367"/>
+<node TEXT="new_comment: New Comment" FOLDED="true" ID="ID_1683596181" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="create" FOLDED="true" ID="ID_933207888" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+<node TEXT="role: m" ID="ID_382283101" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="/articles/my" ID="ID_1293153336" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="forward"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="ctrs: ctrs&amp; Menu" FOLDED="true" ID="ID_1495015891" CREATED="1768519198367" MODIFIED="1768519198367">
+<node TEXT="role: a" ID="ID_143003916" CREATED="1768519198367" MODIFIED="1768519198367"/>
+<node TEXT="vfolder1:Sub Menu 1" FOLDED="true" ID="ID_1960607342" CREATED="1768519198367" MODIFIED="1768519198367">
+<node TEXT="viewfile1: Title 1" FOLDED="true" ID="ID_328242903" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="rule: login? &amp;&amp; own_xmain?" ID="ID_538210971" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="viewfile2: Title 2" FOLDED="true" ID="ID_1316819449" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="rule: login? &amp;&amp; own_xmain?" ID="ID_926094925" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+<node TEXT="update_viewfile1" ID="ID_171099141" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="vfolder2:Title 2" FOLDED="true" ID="ID_914236141" CREATED="1768519198367" MODIFIED="1768519198367">
+<node TEXT="viewfile2: Title 2" FOLDED="true" ID="ID_1222970183" CREATED="1768519198367" MODIFIED="1768519198367">
+<icon BUILTIN="attach"/>
+<node TEXT="rule: login? &amp;&amp; own_xmain?" ID="ID_321335369" CREATED="1768519198367" MODIFIED="1768519198367"/>
+</node>
+</node>
+</node>
+<node TEXT="sitemap: Sitemap" FOLDED="true" ID="ID_925257043" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="role: a" ID="ID_918124789" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="sitemap: Sitemap" ID="ID_961056168" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="api/v1/notes: Notes API " FOLDED="true" ID="ID_35210833" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="link:My Notes: /api/v1/notes/my" FOLDED="true" ID="ID_1053900670" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="button_cancel"/>
+<node TEXT="role: m" ID="ID_689836583" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="new: New Note" FOLDED="true" ID="ID_1182560700" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="new_note: New " FOLDED="true" ID="ID_840380967" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_981310587" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="create: Create" ID="ID_924027059" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="edit: Edit" FOLDED="true" ID="ID_963001770" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="edit_note: Edit" FOLDED="true" ID="ID_1362613316" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_427486434" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="update: Update" ID="ID_1445882396" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node TEXT="delete:Delete" FOLDED="true" ID="ID_918406528" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="select_note: Select" FOLDED="true" ID="ID_809771470" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="attach"/>
+<node TEXT="role: m" ID="ID_671801258" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="delete: Delete" ID="ID_506410154" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="mindmap_edit:Mindmap Editor" ID="ID_MINDMAP_EDIT" CREATED="1768519198370" MODIFIED="1768519198370">
+<node TEXT="role: a,d" ID="ID_ROLE_MINDMAP" CREATED="1768519198370" MODIFIED="1768519198370"/>
+<node TEXT="edit:Edit" ID="ID_EDIT_SERVICE" CREATED="1768519198370" MODIFIED="1768519198370">
+<node TEXT="load_map:Load" ID="ID_LOAD_STEP" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="attach"/>
+</node>
+<node TEXT="save_map:Save" ID="ID_SAVE_STEP" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="bookmark"/>
+<node TEXT="to: app/jinda/index.mm" ID="ID_SAVE_TO" CREATED="1768519198370" MODIFIED="1768519198370"/>
+<node TEXT="subject: Update mindmap and regenerate code" ID="ID_SAVE_SUBJECT" CREATED="1768519198370" MODIFIED="1768519198370"/>
+</node>
+</node>
+</node>
+<node TEXT="roles" FOLDED="true" POSITION="bottom_or_right" ID="ID_855471610" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="m: member" ID="ID_1681080231" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="a: admin" ID="ID_1429503284" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="d: developer" ID="ID_568365839" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="models" POSITION="bottom_or_right" ID="ID_1677010054" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="person" FOLDED="true" ID="ID_1957754752" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="fname" ID="ID_1617970069" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="lname" ID="ID_1200135538" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="sex: integer" FOLDED="true" ID="ID_1770958985" CREATED="1768519198368" MODIFIED="1768519198368">
+<node TEXT="1: male" ID="ID_793089342" CREATED="1768519198368" MODIFIED="1768519198368"/>
+<node TEXT="2: female" ID="ID_1796007763" CREATED="1768519198368" MODIFIED="1768519198368"/>
+</node>
+<node TEXT="belongs_to :address" ID="ID_1509464300" CREATED="1768519198368" MODIFIED="1768519198368">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="dob: date" ID="ID_604231613" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="phone" ID="ID_936807610" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="photo" ID="ID_1957301629" CREATED="1768519198369" MODIFIED="1768519198369"/>
+</node>
+<node TEXT="address" FOLDED="true" ID="ID_959987887" CREATED="1768519198369" MODIFIED="1768519198369">
+<node TEXT="address_street" ID="ID_430517150" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="city" ID="ID_1797865138" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="state" ID="ID_1964490487" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="zip" ID="ID_1226075540" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="phone" ID="ID_65427990" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="lat: float" ID="ID_1859608350" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="lng: float" ID="ID_48497260" CREATED="1768519198369" MODIFIED="1768519198369"/>
+</node>
+<node TEXT="article" FOLDED="true" ID="ID_1995497233" CREATED="1768519198369" MODIFIED="1768519198369">
+<node TEXT="title" ID="ID_364756011" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="text" ID="ID_1676483995" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="belongs_to :user, :class_name =&gt; &quot;User&quot;" ID="ID_1334057464" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="has_many :comments" ID="ID_408271104" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="validates :title, :text, :user_id, presence: true" ID="ID_944554146" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="body" ID="ID_229502630" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="keywords" ID="ID_404103076" CREATED="1768519198369" MODIFIED="1768519198369"/>
+</node>
+<node TEXT="picture" FOLDED="true" ID="ID_864577403" CREATED="1768519198369" MODIFIED="1768519198369">
+<node TEXT="picture" ID="ID_679208099" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="description" ID="ID_1266154874" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="belongs_to :user" ID="ID_1422817360" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+</node>
+<node TEXT="note" FOLDED="true" ID="ID_1450593753" CREATED="1768519198369" MODIFIED="1768519198369">
+<node TEXT="include Mongoid::Attributes::Dynamic" ID="ID_537548385" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="title" ID="ID_1611227370" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="body" ID="ID_88547965" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="belongs_to :user" ID="ID_1655403736" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="before_validation :ensure_title_has_a_value " ID="ID_1934899110" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="validates :title, length: { maximum: (MAX_TITLE_LENGTH = 30), message: &quot;Must be less   than 30 characters&quot; }, presence: true" ID="ID_1430552418" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="validates :body, length: { maximum: (MAX_BODY_LENGTH = 1000), message: &quot;Must be less   than 1000 characters&quot;} " ID="ID_1231500988" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="private   def ensure_title_has_a_value     if title.blank?       self.title = body[0..(MAX_TITLE_LENGTH-1)] unless body.blank?     end   end    " ID="ID_1069060625" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+</node>
+<node TEXT="comment" FOLDED="true" ID="ID_429078131" CREATED="1768519198369" MODIFIED="1768519198369">
+<node TEXT="body" ID="ID_1251093062" CREATED="1768519198369" MODIFIED="1768519198369"/>
+<node TEXT="belongs_to :article, :class_name =&gt; &quot;Article&quot;  " ID="ID_911071644" CREATED="1768519198369" MODIFIED="1768519198369">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="belongs_to :user, :class_name =&gt; &quot;User&quot;  " ID="ID_588013696" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="belongs_to :job, :class_name =&gt; &quot;Job&quot;  " ID="ID_31602545" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="belongs_to :commentable, polymorphic: true " ID="ID_1288333428" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="edit"/>
+</node>
+<node TEXT="index({ commentable_id: 1, commentable_type: 1}) " ID="ID_598892151" CREATED="1768519198370" MODIFIED="1768519198370">
+<icon BUILTIN="edit"/>
+</node>
+</node>
+</node>
+</node>
 </map>
