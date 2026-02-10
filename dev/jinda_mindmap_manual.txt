@@ -1,0 +1,29 @@
+To create models, table and field
+- create new node from main: models
+- to create table: create new child nodes for any tables like person, address
+- in each table node: create new child nodes for it's fields with format field_name: field_type or field details such as
+a. lat: float
+b. user: belongs_to
+c. validate: title, :text, :user_id, presence: true
+d. include Mongoid::Attributes::Dynamic
+e. dob: date
+f. or any mongodb valid value for the field
+So it should be option with proper validation instead of manual enter with in proper value that can be defined to use for selection instead of manual input tha can cause error except really need to
+This should be analyse the best solution for this.
+
+For Services Node which split from Main Jinda
+- each node that split from Services will represent
+a. menu node with format controllers_prefix: Menu label
+b. Then next child node of each menu node will represent sub menu(s) that can be
+b.1 link: Sub Menu Name: path to call (need pop up for link then enter path to be verify)
+b.2  sub_menu: Sub Menu Name (inform of sub_parent-menu)
+
+c. method or def: Sub Menu Name (methods like new, edit, method with no show in menu which need to make as option)
+a1. option for select form. form as prefix name_menu-body-name: Step Name, role require (choose be pop up to choose what roles defined) This form with certain symbol will generate form which require another method with star symbol and each symbol were defined in the code. We need to fully analyse all code about this and re-design to have it work better  more understandable. And once for was created and must add submenu to run then need another sub menu to define the final end call or return to
+any url which should make it default or editable to it's menu
+a2. another kind of form is to edit form or input form which need another sub menu to run after to update in format method: Update Name and final in only 2 steps
+
+d. In each menu node or it's sub menu we can defind child node for any rule like rule: login? && own_xmain? as sample (should be set for easy option when need)
+
+Please fully analyse and try to understand the flow from ~/mygem/todo/jinda.png and all codes in lib/jinda/ directory
+
